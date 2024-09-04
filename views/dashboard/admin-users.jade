@@ -1,0 +1,44 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-users.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .user-control
+                    h1.title
+                        i.fa.fa-users
+                        | مدیریت کاربران
+                        .stat #{users.length} کاربر
+                .users-list 
+                    -for(var i=0; i<users.length; i++){
+                        .item
+                            .name
+                                i.fa.fa-user
+                                | #{users[i].fullname}
+                            .phone 
+                                i.fa.fa-phone
+                                | #{users[i].phone}
+                            .email 
+                                i.fa.fa-envelope
+                                | #{users[i].email}
+                            .role(class="#{users[i].role == 'admin'? 'red': 'green'}")= users[i].role
+                            .actions
+                                a.edit(href="#") 
+                                    i.fa.fa-edit
+                                a.delete(href="#") 
+                                    i.fa.fa-trash
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-2').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

@@ -1,0 +1,55 @@
+extends layout-white
+block styles
+    link(rel="stylesheet", href="/css/users.css")
+
+block content
+    //- include partials/messages
+    -if(errors){
+        .errors-area
+            -for(var i=0; i<errors.length; i++){
+                .error(id='error#{i}')
+                    i.fa.fa-warning
+                    h1= errors[i].msg
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time#{i}')
+            -}
+    -}
+    .users-view
+       .info
+            a.close-btn(href="/") 
+                i.fa.fa-times
+            h1 حساب کاربری دارید؟
+            p لطفا جهت ثبت سفارش و استفاده از خدمات سایت ابتدا وارد شوید. در صورتی که حساب کاربری دارید می‌توانید از این قسمت ثبت وارد شوید.
+            a.btn(href="/users/login") ورود
+            .socials
+                a(href="https://instagram.com/S.R.Brobotic" target="_blank") 
+                    i.fa.fa-instagram 
+                a(href="https://t.me/fdmxfarhan" target="_blank") 
+                    i.fa.fa-telegram 
+                a(href="mailto:fdmxfarhan@yahoo.com") 
+                    i.fa.fa-envelope 
+                a(href="tel:+989336448037") 
+                    i.fa.fa-phone 
+        .form-view
+            img.logo(src="/img/logo.png", alt="")
+            h1.title 
+                i.fa.fa-sign-in
+                | ورود به حساب کاربری
+            .line 
+            form(action="/users/register" id="register" method="POST")
+                .text-input-raw
+                    input.dual(type="text" placeholder="نام" name="firstName" value= "#{ typeof firstName != 'undefined' ? firstName: '' }")
+                    input.dual(type="text" placeholder="نام خانوادگی" name="lastName" value= "#{ typeof lastName != 'undefined' ? lastName: '' }")
+                .text-input-raw
+                    input.dual(type="text" placeholder="تلفن" name="phone" value= "#{ typeof phone != 'undefined' ? phone: '' }")
+                    input.dual(type="text" placeholder="ایمیل" name="email" value= "#{ typeof idNumber != 'undefined' ? idNumber: '' }")
+                .text-input-raw
+                    input.dual(type="password" placeholder="رمز عبور" name="password" value= "#{ typeof psw != 'undefined' ? psw: '' }")
+                    input.dual(type="password" placeholder="تایید رمز عبور" name="configpassword" value= "#{ typeof configpsw != 'undefined' ? configpsw: '' }")
+                .text-input-raw
+                    input.address(type="text" placeholder="آدرس" name="address" value= "#{ typeof address != 'undefined' ? address: '' }")
+                
+                .text-input-raw
+                    button.submit(type="submit") ثبت نام
+                //- a.link(href="/users/login") قبلا عضو شده اید؟
+    script(src="/js/users.js")

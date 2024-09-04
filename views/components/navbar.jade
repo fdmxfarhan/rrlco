@@ -1,0 +1,62 @@
+-if(lang == 'EN'){
+    nav 
+        #nav-collapse-button
+            i.fa.fa-bars
+        #nav-collapse-view 
+            a.active(href="/") Home 
+            a(href="/#more-about-me") About
+            a(href="/#members") Members
+            a(href="/publication") Publications
+            a(href="/gallery") Gallery
+            a(href="/#") Contact
+        .languages 
+            a.lang#farsi(href="/?lang=FA" class="#{lang == 'FA'? 'active' : ''}") FA 
+            a.lang#english(href="/?lang=EN" class="#{lang == 'EN'? 'active' : ''}") EN
+-}else{
+    nav 
+        #nav-collapse-button
+            i.fa.fa-bars
+        #nav-collapse-view 
+            a#navlink-1(href="/") صفحه اصلی 
+            a#navlink-2(href="/products") فروشگاه 
+            a#navlink-3(href="/courses") دوره‌ها 
+            a#navlink-4(href="/print3d") پرینت سه بعدی 
+            a#navlink-5(href="/project") انجام پروژه 
+            a#navlink-6(href="/cooperation") همکاری با ما
+            //- a#navlink-7(href="/about-us") درباره ما
+        .user-nav
+            -if(user){
+                a.user(href="/dashboard")
+                    .text= user.fullname
+                    i.fa.fa-user
+            -}else{
+                a.user(href="/users/login")
+                    .text ورود/ثبت نام
+                    i.fa.fa-user
+            -}
+            a.cart(href="/dashboard/shopping-cart")  
+                i.fa.fa-shopping-cart
+                -if(user){
+                    -if(user.shoppingcart.length > 0)
+                        .shopping-cart-count= user.shoppingcart.length
+                -}
+            a.cart(href="#")  
+                i.fa.fa-search
+            -if(theme){
+                -if(theme == 'light'){
+                    a.dark(href="/theme?theme=dark") 
+                        i.fa.fa-moon-o
+                -}else{
+                    a.dark(href="/theme?theme=light") 
+                        i.fa.fa-sun-o
+                -}
+            -}else{
+                a.dark(href="/theme?theme=dark") 
+                    i.fa.fa-moon-o
+            -}
+            
+            
+        //- .languages 
+        //-     a(href="/?lang=FA").lang#farsi(class="#{lang == 'FA'? 'active' : ''}") FA 
+        //-     a(href="/?lang=EN").lang#english(class="#{lang == 'EN'? 'active' : ''}") EN
+-}

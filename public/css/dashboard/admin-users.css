@@ -1,0 +1,84 @@
+@media only screen and (min-width: 800px) {
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    .user-control h1.title{
+        color: var(--red);
+        font-size: 1.2vw;
+        margin: 0;
+        padding: 1vw 3vw;
+        position: relative;        
+    }
+    .user-control h1.title i{
+        padding-left: 0.5vw;
+    }
+    .user-control h1.title .stat{
+        position: absolute;
+        color: var(--text);
+        left: 3vw;
+        top: 1.2vw;
+        font-weight: normal;
+        font-size: 1vw;
+    }
+    .users-list {
+        width: 90%;
+        margin: 1vw auto;
+    }
+    .users-list .item{
+        overflow: hidden;
+        padding: 0.5vw 0;
+        border-bottom: 0.1vw solid var(--lightergray);
+    }
+    .users-list .item .name{
+        font-size: 1vw;
+        color: var(--text);
+        float: right;
+        width: 25%;
+    }
+    .users-list .item .name i{
+        padding-left: 1vw;
+    }
+    .users-list .item .phone{
+        font-size: 1vw;
+        color: var(--text);
+        float: right;
+        width: 20%;
+    }
+    .users-list .item .phone i{
+        padding-left: 0.5vw;
+    }
+    .users-list .item .email{
+        font-size: 1vw;
+        color: var(--text);
+        float: right;
+        width: 30%;
+    }
+    .users-list .item .email i{
+        padding-left: 0.5vw;
+    }
+    .users-list .item .role{
+        font-size: 1vw;
+        /* color: var(--text); */
+        float: right;
+        width: 15%;
+        text-align: center;
+    }
+    .users-list .item .role.red{color: var(--red);}
+    .users-list .item .role.green{color: var(--green);}
+    .users-list .item .role i{
+        padding-left: 0.5vw;
+    }
+    .users-list .item .actions{
+        font-size: 1vw;
+        color: var(--text);
+        float: right;
+        width: 10%;
+    }
+    .users-list .item .actions a.delete{color: var(--red);}
+    .users-list .item .actions a.edit{color: var(--blue);}
+    .users-list .item .actions i{
+        padding-left: 1vw;
+    }
+    .users-list .item:hover .name,
+    .users-list .item:hover .phone,
+    .users-list .item:hover .email{color: var(--skyblue);}
+}
+@media only screen and (max-width: 800px) {}

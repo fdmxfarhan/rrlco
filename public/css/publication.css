@@ -1,0 +1,13 @@
+.pdf-view{
+    width: 80%;
+    margin: 2vw auto;
+    height: 80vh;
+    display: block;
+}
+
+iframe.video-view{
+    width: 80%;
+    margin: 2vw auto;
+    height: 80vh;
+    display: block;
+}

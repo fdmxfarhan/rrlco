@@ -1,0 +1,67 @@
+@media only screen and (min-width: 800px) {
+    .edit-user-view{
+        margin-top: 2vw;
+        margin-bottom: 2vw;
+    }
+    .edit-user-view .text-input-raw{
+        text-align: center;
+    }
+    .edit-user-view .text-input-raw input.textinput{
+        display: block;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 50%;
+        padding: 1vw 3vw;
+        margin-bottom: 1vw;
+        border-radius: 1.5vw;
+        font-family: 'iransans';
+    }
+    .edit-user-view .text-input-raw input.dual{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 30%;
+        padding: 1vw 3vw;
+        margin-bottom: 1vw;
+        border-radius: 1.5vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .edit-user-view .text-input-raw input.address{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 71%;
+        padding: 1vw 3vw;
+        margin-bottom: 1vw;
+        border-radius: 1.5vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .edit-user-view button{
+        display: block;
+        width: 25%;
+        padding: 0.4vw 4vw;
+        font-size: 1.4vw;
+        border-radius: 1vw;
+        color: white;
+        background-color: var(--red);
+        margin: auto;
+        border: none;
+        font-family: 'iransans';
+        margin-top: 1.6vw;
+    }
+    .edit-user-view button:hover{
+        cursor: pointer;
+        background-color: var(--pink);
+    }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+}
+@media only screen and (max-width: 800px) {
+}

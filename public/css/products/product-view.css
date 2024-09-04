@@ -1,0 +1,490 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    /* direction: ltr; */
+    background-color: var(--white);
+    direction: rtl;
+    text-align: right;
+    background-color: var(--lightergray);
+}
+@media only screen and (min-width: 800px) {
+    .product-view .content {
+        overflow: hidden;
+        width: 90%;
+        margin: 1vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        margin-top: 4vw;
+        position: relative;
+    }
+    .product-view .content .pictures{
+        width: 30%;
+        float: right;
+        margin: 1vw 5%;
+    }
+    .product-view .content .info-view{
+        float: right;
+        width: 60%;
+    }
+    .product-view .content .info-view h1{
+        font-size: 1.6vw;
+        margin-top: 2vw;
+        padding: 1vw 1vw;
+        color: var(--black);
+    }
+    .product-view .content .info-view .stat{
+        overflow: hidden;
+        border: 0.1vw solid var(--lightergray);
+        width: 90%;
+        margin-right: 1vw;
+        padding: 0.5vw 1vw;
+        border-radius: 0.5vw;
+    }
+    .product-view .content .info-view .stat .title{
+        float: right;
+        width: 10%;
+        color: var(--black);
+        font-weight: bold;
+        font-size: 1vw;
+    }
+    .product-view .content .info-view .stat .code{
+        float: right;
+        width: 45%;
+        font-size: 1vw;
+        color: var(--text);
+    }
+    .product-view .content .info-view .stat .comments{
+        float: right;
+        width: 10%;
+        font-size: 1vw;
+    }
+    .product-view .content .info-view .stat .comments a{
+        color: var(--skyblue);
+    }
+    .product-view .content .info-view .stat .stars{
+        float: right;
+        width: 25%;
+        font-size: 1vw;
+    }
+    .product-view .content .info-view .stat .stars i{
+        color: var(--yellow);
+    }
+    .product-view .content .info-view .stat .share{
+        float: right;
+        font-size: 1vw;
+        width: 5%;
+    }
+    .product-view .content .info-view .stat .share a{
+        color: var(--text);
+    }
+    .product-view .content .info-view .stat .like{
+        float: right;
+        width: 5%;
+        font-size: 1vw;
+    }
+    .product-view .content .info-view .stat .like a{
+        color: var(--red);
+    }
+    .product-view .content .info-view .shortdecription{
+        background-color: var(--lightergray);
+        width: 90%;
+        margin-right: 1vw;
+        padding: 1vw 1vw;
+        border-radius: 0.5vw;
+        margin-top: 2vw;
+        font-size: 1.2vw;
+        text-align: justify;
+        color: var(--text);
+    }
+    .product-view .content .info-view .shop-control {
+        overflow: hidden;
+        width: 90%;
+        margin-top: 2vw;
+        margin-right: 1vw;
+        padding: 1vw 1vw;
+        border: 0.1vw solid var(--lightergray);
+        border-radius: 0.5vw;
+    }
+    .product-view .content .info-view .shop-control .label{
+        float: right;
+        width: 10%;
+        font-size: 1.3vw;
+        margin-top: 2vw;
+        color: var(--black);
+    }
+    .product-view .content .info-view .shop-control .count{
+        float: right;
+        width: 50%;
+        margin-top: 2vw;
+    }
+    .product-view .content .info-view .shop-control .actions{
+        float: right;
+        width: 35%;
+        text-align: center;
+    }
+    .product-view .content .info-view .shop-control .count button.add{
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: 0.1vw solid var(--lightgray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.3vw 1vw;
+        border-top-right-radius: 0.5vw;
+        border-bottom-right-radius: 0.5vw;
+        cursor: pointer;
+    }
+    .product-view .content .info-view .shop-control .count button.sub{
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: 0.1vw solid var(--lightgray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.3vw 1vw;
+        border-top-left-radius: 0.5vw;
+        border-bottom-left-radius: 0.5vw;
+        cursor: pointer;
+    }
+    .product-view .content .info-view .shop-control .count button.add:hover,
+    .product-view .content .info-view .shop-control .count button.sub:hover{
+        background-color: var(--lightgray);
+    }
+    .product-view .content .info-view .shop-control .count input{
+        text-align: center;
+        width: 3vw;
+        color: var(--text);
+        border: none;
+        font-family: 'iransans';
+        font-size: 1vw;
+        padding: 0.3vw 1vw;
+        border-top: 0.1vw solid var(--lightgray);
+        border-bottom: 0.1vw solid var(--lightgray);
+        outline: none;
+    }
+    .product-view .content .info-view .shop-control .count input::-webkit-outer-spin-button,
+    .product-view .content .info-view .shop-control .count input::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .product-view .content .info-view .shop-control .actions .price{
+        color: var(--green);
+        font-weight: bold;
+        font-size: 2vw;
+    }
+    .product-view .content .info-view .shop-control .actions .not-available{
+        color: var(--red);
+        font-weight: bold;
+        font-size: 1.2vw;
+        padding-top: 1vw;
+    }
+    .product-view .content .info-view .shop-control .actions button.submit{
+        background-color: var(--red);
+        color: white;
+        border-radius: 0.8vw;
+        border: none;
+        font-family: 'iransans';
+        margin-top: 1vw;
+        padding: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .product-view .content .info-view .shop-control .actions button.submit i{
+        padding: 1.3vw 1vw;
+        background-color: var(--red3);
+    }
+    .product-view .content .info-view .shop-control .actions button.submit .text{
+        padding: 1.3vw;
+        display: inline;
+    }
+    .product-view .content .info-view .shop-control .actions button.submit:hover{
+        background-color: var(--red3);
+    }
+    .product-view .content h1.title{
+        color: var(--red);
+        font-size: 1.2vw;
+        margin: 0;
+        padding: 1vw 3vw;
+        position: relative;  
+        border-bottom: 0.1vw solid var(--lightergray);
+    }
+    .product-view .content p.desc{
+        font-size: 1.2vw;
+        width: 90%;
+        margin: 2vw auto;
+        text-align: justify;
+    }
+    .admin-control{
+        position: absolute;
+        top: 3vw;
+        left: 3vw;
+    }
+    .admin-control a{
+        font-size: 1.5vw;
+        padding-right: 1vw;
+    }
+    .admin-control a.edit{color: var(--blue);}
+    .admin-control a.enable{color: var(--green);}
+    .admin-control a.disable{color: var(--gray);}
+    .admin-control a.times{color: var(--red);}
+    .admin-control a:hover{color: var(--pink);}
+    .info-view .category{
+        margin-top: 2vw;
+        padding: 0 1vw;
+    }
+    .info-view .category .label{
+        display: inline;
+        font-size: 1vw;
+        font-weight: bold;
+        color: var(--text);
+    }
+    .info-view .category .value{
+        display: inline;
+        font-size: 1vw;
+        color: var(--skyblue);
+        padding-right: 0.5vw;
+    }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+}
+@media only screen and (max-width: 800px) {
+    .product-view .content {
+        overflow: hidden;
+        width: 90%;
+        margin: 1vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        margin-top: 4vw;
+        position: relative;
+    }
+    .product-view .content .pictures{
+        width: 90%;
+        float: right;
+        margin: 5vw 5%;
+        
+    }
+    .product-view .content .info-view{
+        float: right;
+        width: 100%;
+    }
+    .product-view .content .info-view h1{
+        font-size: 4vw;
+        margin-top: 5vw;
+        padding: 3vw 3vw;
+        color: var(--black);
+    }
+    .product-view .content .info-view .stat{
+        overflow: hidden;
+        border: 0.3vw solid var(--lightergray);
+        width: 90%;
+        margin-right: 3%;
+        padding: 0.5vw 1vw;
+        border-radius: 0.5vw;
+    }
+    .product-view .content .info-view .stat .title{
+        float: right;
+        width: 15%;
+        color: var(--black);
+        font-weight: bold;
+        font-size: 3vw;
+    }
+    .product-view .content .info-view .stat .code{
+        float: right;
+        width: 30%;
+        font-size: 3vw;
+        color: var(--text);
+    }
+    .product-view .content .info-view .stat .comments{
+        float: right;
+        width: 10%;
+        font-size: 3vw;
+    }
+    .product-view .content .info-view .stat .comments a{
+        color: var(--skyblue);
+    }
+    .product-view .content .info-view .stat .stars{
+        float: right;
+        width: 25%;
+        font-size: 3vw;
+    }
+    .product-view .content .info-view .stat .stars i{
+        color: var(--yellow);
+    }
+    .product-view .content .info-view .stat .share{
+        float: right;
+        font-size: 3vw;
+        width: 10%;
+    }
+    .product-view .content .info-view .stat .share a{
+        color: var(--text);
+    }
+    .product-view .content .info-view .stat .like{
+        float: right;
+        width: 10%;
+        font-size: 3vw;
+    }
+    .product-view .content .info-view .stat .like a{
+        color: var(--red);
+    }
+    .product-view .content .info-view .shortdecription{
+        background-color: var(--lightergray);
+        width: 86%;
+        margin-right: 3%;
+        padding: 3vw 3vw;
+        border-radius: 1.5vw;
+        margin-top: 2vw;
+        font-size: 3.2vw;
+        text-align: justify;
+        color: var(--text);
+    }
+    .product-view .content .info-view .shop-control {
+        overflow: hidden;
+        width: 90%;
+        margin-top: 2vw;
+        margin-right: 3%;
+        padding: 6vw 1vw;
+        border: 0.1vw solid var(--lightergray);
+        border-radius: 0.5vw;
+    }
+    .product-view .content .info-view .shop-control .label{
+        float: right;
+        width: 20%;
+        font-size: 3.3vw;
+        margin-top: 2vw;
+        color: var(--black);
+    }
+    .product-view .content .info-view .shop-control .count{
+        float: right;
+        width: 80%;
+        margin-top: 1vw;
+    }
+    .product-view .content .info-view .shop-control .actions{
+        float: right;
+        width: 100%;
+        text-align: center;
+        margin-top: 9vw;
+    }
+    .product-view .content .info-view .shop-control .count button.add{
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: 0.1vw solid var(--lightgray);
+        font-family: 'iransans';
+        font-size: 3vw;
+        padding: 0.9vw 3vw;
+        border-top-right-radius: 1.5vw;
+        border-bottom-right-radius: 1.5vw;
+        cursor: pointer;
+    }
+    .product-view .content .info-view .shop-control .count button.sub{
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: 0.1vw solid var(--lightgray);
+        font-family: 'iransans';
+        font-size: 3vw;
+        padding: 0.9vw 3vw;
+        border-top-left-radius: 1.5vw;
+        border-bottom-left-radius: 1.5vw;
+        cursor: pointer;
+    }
+    .product-view .content .info-view .shop-control .count button.add:hover,
+    .product-view .content .info-view .shop-control .count button.sub:hover{
+        background-color: var(--lightgray);
+    }
+    .product-view .content .info-view .shop-control .count input{
+        /* background-color: var(--lightergray); */
+        text-align: center;
+        width: 7vw;
+        color: var(--text);
+        border: none;
+        font-family: 'iransans';
+        font-size: 3vw;
+        padding: 0.9vw 3vw;
+        border-top: 0.1vw solid var(--lightgray);
+        border-bottom: 0.1vw solid var(--lightgray);
+        outline: none;
+    }
+    .product-view .content .info-view .shop-control .count input::-webkit-outer-spin-button,
+    .product-view .content .info-view .shop-control .count input::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .product-view .content .info-view .shop-control .actions .price{
+        color: var(--green);
+        font-weight: bold;
+        font-size: 6vw;
+    }
+    .product-view .content .info-view .shop-control .actions .not-available{
+        color: var(--red);
+        font-weight: bold;
+        font-size: 4vw;
+        padding-top: 1vw;
+    }
+    .product-view .content .info-view .shop-control .actions button.submit{
+        background-color: var(--red);
+        color: white;
+        border-radius: 1.5vw;
+        border: none;
+        font-family: 'iransans';
+        margin-top: 5vw;
+        font-size: 4vw;
+        padding: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .product-view .content .info-view .shop-control .actions button.submit i{
+        padding: 4vw 5vw;
+        background-color: var(--red3);
+    }
+    .product-view .content .info-view .shop-control .actions button.submit .text{
+        padding: 4vw;
+        display: inline;
+    }
+    .product-view .content .info-view .shop-control .actions button.submit:hover{
+        background-color: var(--red3);
+    }
+    .product-view .content h1.title{
+        color: var(--red);
+        font-size: 3.2vw;
+        margin: 0;
+        padding: 3vw 5vw;
+        position: relative;  
+        border-bottom: 0.1vw solid var(--lightergray);
+    }
+    .product-view .content p.desc{
+        font-size: 3.2vw;
+        padding: 1vw 5vw;
+        margin: 2vw auto;
+        text-align: justify;
+    }
+    .admin-control{
+        position: absolute;
+        top: 3vw;
+        left: 3vw;
+    }
+    .admin-control a{
+        font-size: 1.5vw;
+        padding-right: 1vw;
+    }
+    .admin-control a.edit{color: var(--blue);}
+    .admin-control a.enable{color: var(--green);}
+    .admin-control a.disable{color: var(--gray);}
+    .admin-control a.times{color: var(--red);}
+    .admin-control a:hover{color: var(--pink);}
+    .info-view .category{
+        margin-top: 5vw;
+        padding: 0 3vw;
+        margin-bottom: 5vw;
+    }
+    .info-view .category .label{
+        display: inline;
+        font-size: 3vw;
+        font-weight: bold;
+        color: var(--text);
+    }
+    .info-view .category .value{
+        display: inline;
+        font-size: 3vw;
+        color: var(--skyblue);
+        padding-right: 0.5vw;
+    }
+}

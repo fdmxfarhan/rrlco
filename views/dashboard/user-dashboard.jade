@@ -1,0 +1,42 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .stat-view
+                    .item 
+                        .info 
+                            i.fa.fa-tag.skyblue
+                            h1 سفارش‌ها
+                        .num 0
+                    .item 
+                        .info 
+                            i.fa.fa-book.yellow
+                            h1 دوره‌ها
+                        .num 0
+                    .item 
+                        .info 
+                            i.fa.fa-heart.green
+                            h1 علاقه‌مندی‌ها
+                        .num 0
+            -if(!user.phoneConfirmed){
+                .dashboard-msg
+                    i.fa.fa-times.close-btn#dashboard-msg-close-btn 
+                    p.text لطفا شماره تلفن خود را تایید نمایید. برای تایید تلفن همراه 
+                        a.link(href="/dashboard/confirm-phone") اینجا 
+                        | کلیک کنید.
+            -}
+            .content
+        .sidebar-view 
+            include sidebar
+        
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link1').classList.add('active');
+

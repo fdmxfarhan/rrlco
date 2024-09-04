@@ -1,0 +1,37 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/user-edit.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .edit-user-view 
+                    form(action="/dashboard/user-edit" method="POST")
+                        .text-input-raw
+                            input.dual(type="text" placeholder="نام" name="firstName" value= "#{user.firstName}")
+                            input.dual(type="text" placeholder="نام خانوادگی" name="lastName" value= "#{user.lastName}")
+                        .text-input-raw
+                            input.dual(type="text" placeholder="تلفن" name="phone" value= "#{user.phone}")
+                            input.dual(type="text" placeholder="ایمیل" name="email" value= "#{user.email}")
+                        .text-input-raw
+                            input.address(type="text" placeholder="آدرس" name="address" value= "#{user.address}")
+                        .text-input-raw
+                            button.submit(type="submit") ثبت نام
+                    br
+                    br
+                    form(action="/dashboard/user-edit-password" method="POST")
+                        .text-input-raw
+                            input.dual(type="password" placeholder="رمز عبور" name="password")
+                            input.dual(type="password" placeholder="تایید رمز عبور" name="configpassword")
+                        .text-input-raw
+                            button.submit(type="submit") ثبت نام
+        .sidebar-view 
+            include sidebar
+        
+
+                 
+    script(src="/js/dashboard.js") 
+

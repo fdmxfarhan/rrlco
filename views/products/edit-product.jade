@@ -1,0 +1,51 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-shop.css")
+    link(rel="stylesheet", href="/css/four-card.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-edit
+                        | ویرایش محصول
+                .add-product-form 
+                    form(action="/products/edit-product" method="POST") 
+                        input.hide(type="text" name="id" value="#{product._id}")
+                        .raw 
+                            input.dual(type="text" name="title" placeholder="عنوان" value="#{product.title}")
+                            input.quarter(type="number" name="price" placeholder="قیمت (تومان)" value="#{product.price}")
+                            input.quarter(type="number" name="nodiscountprice" placeholder="قیمت بدون تخفیف" value="#{product.nodiscountprice}")
+                        .raw
+                            textarea.short(name="shortdescription" placeholder="توضیحات کوتاه")= product.shortdescription
+                        .raw
+                            textarea.long(name="description" placeholder="توضیحات کامل")= product.description
+                        .raw
+                            select.quarter(name="category")  
+                                option(value="#{product.category}")= product.category
+                                -for(var i=0; i<productCategories.length; i++)
+                                    option(value="#{productCategories[i]}")= productCategories[i]
+                            input.quarter(type="number" name="defaultcount" placeholder="تعداد دیفالت" value="#{product.defaultcount}")
+                            select.quarter(name="available")  
+                                option(value="true") موجود
+                                option(value="false") ناموجود
+                            
+                        //- .upload 
+                        //-     input.file(type="file" name="picture" value="#{product.picture}")
+                        .align-left
+                            button(type="submit") ثبت
+
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-3').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

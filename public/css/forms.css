@@ -1,0 +1,103 @@
+@media only screen and (min-width: 800px) {
+    .form-view {
+        width: 90%;
+        margin: 1vw auto;
+    }
+    .form-view form{
+        margin-bottom: 5vw;
+        display: block;
+    }
+    .form-view .raw input.dual,
+    .form-view .raw select.dual{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 40%;
+        padding: 0.7vw 1.5vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .form-view .raw input.quarter,
+    .form-view .raw select.quarter{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 18.7%;
+        padding: 0.7vw 1vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .form-view .raw select.quarter{width: 23%;}
+    .form-view .raw textarea.short,
+    .form-view .raw textarea.long{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 89%;
+        padding: 1vw 1.5vw;
+        margin-bottom: 0.5vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+        resize: vertical;
+        font-size: 1vw;
+    }
+    .form-view .raw textarea.short{height: 3vw;}
+    .form-view .raw textarea.long{height: 10vw;}
+    .form-view button{
+        display: block;
+        width: fit-content;
+        padding: 0.4vw 3vw;
+        font-size: 1vw;
+        border-radius: 1vw;
+        color: white;
+        background-color: var(--blue);
+        border: none;
+        font-family: 'iransans';
+        margin-top: 1.6vw;
+        margin-left: 5%;
+    }
+    .form-view button:hover{
+        cursor: pointer;
+        background-color: var(--pink);
+    }
+    .form-view .date-input{
+        display: block;
+        width: 45%;
+        background-color: var(--lightergray);
+        border-radius: 1vw;
+        overflow: hidden;
+    }
+    .form-view .date-input .label{
+        display: block;
+        font-size: 1vw;
+        float: right;
+        padding: 0.7vw 1vw;
+        width: 20%;
+    }
+    .form-view .date-input input{
+        background-color: transparent;
+        display: block;
+        float: right;
+        margin: auto;
+        border: none;
+        outline: none;
+        width: 20%;
+        padding: 0.7vw 0;
+        /* margin-bottom: 1vw; */
+        font-family: 'iransans';
+        /* margin-left: 1vw; */
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 800px) {}

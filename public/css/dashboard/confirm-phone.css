@@ -1,0 +1,39 @@
+@media only screen and (min-width: 800px) {
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    .confirm-phone-view {
+        width: 90%;
+        margin: 1vw auto;
+    }
+    .confirm-phone-view h1.title{
+        font-size: 1.2vw;
+        color: var(--red);
+    }
+    .confirm-phone-view .raw input.text{
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: none;
+        outline: none;
+        padding: 0.5vw 3vw;
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+    }
+    .confirm-phone-view .raw button.submit{
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        background-color: var(--red);
+        border: none;
+        outline: none;
+        padding: 0.5vw 1vw;
+        color: var(--white);
+        border-top-left-radius: 1vw;
+        border-bottom-left-radius: 1vw;
+        cursor: pointer;
+    }
+    .confirm-phone-view .raw button.submit:hover{
+        background-color: var(--pink);
+    }
+}
+@media only screen and (max-width: 800px) {
+}

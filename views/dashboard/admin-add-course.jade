@@ -1,0 +1,53 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-course.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-plus
+                        | افزودن دوره جدید
+                .add-product-form 
+                    form(action="/upload/add-course" method="POST" enctype="multipart/form-data") 
+                        .raw 
+                            input.dual(type="text" name="title" placeholder="عنوان")
+                            input.quarter(type="number" name="price" placeholder="قیمت (تومان)")
+                            input.quarter(type="number" name="nodiscountprice" placeholder="قیمت بدون تخفیف")
+                        .raw
+                            textarea.short(name="shortdescription" placeholder="توضیحات کوتاه")
+                        .raw
+                            textarea.long(name="description" placeholder="توضیحات کامل")
+                        .raw 
+                            input.dual(type="text" name="teacher" placeholder="مدرس")
+                            select.quarter(name="type") 
+                                -for(var i=0; i<coursetypes.length; i++)
+                                    option(value="#{coursetypes[i]}")= coursetypes[i]
+                            select.quarter(name="category") 
+                                -for(var i=0; i<courseCategories.length; i++)
+                                    option(value="#{courseCategories[i]}")= courseCategories[i]
+                        .raw 
+                            input.quarter(type="number" name="sessions" placeholder="تعداد جلسات")
+                            input.quarter(type="number" name="hours" placeholder="تعداد ساعت")
+                            input.quarter(type="number" name="minutes" placeholder="تعداد دقیقه")
+                            input.quarter(type="number" name="capacity" placeholder="ظرفیت")
+                        
+                        .upload 
+                            input.file(type="file" name="picture")
+                        .align-left
+                            button(type="submit") ثبت
+
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-4').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

@@ -1,0 +1,84 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/print3d/print3d.css")
+    link(rel='stylesheet', href='/css/four-card.css')
+    
+block content
+    .product-view 
+        .sidebar-view 
+            .sidebar 
+                .user-info 
+                    h1 استعلام قیمت پرینت سه بعدی آنلاین
+                .nav-view 
+                    .print3d-info 
+                        h1 
+                            i.fa.fa-file
+                            | فایل خود را انتخاب کنید
+                        p فرمت قابل قبول stl می‌باشد. لطفا جهت استعلام قیمت و ثبت سفارش، فایل خود را آپلود نمایید.
+                        form(action="/upload/print3d" method="POST" enctype="multipart/form-data") 
+                            .upload-area انتخاب فایل 
+                                i.fa.fa-cloud-upload
+                                input#fileinput(type="file" name="myfile" accept=".stl")
+                            .label#upload-filename فایل stl خود را انتخاب کنید.
+                            .submit 
+                                button(type="submit")
+                                    i.fa.fa-upload 
+                                    | استعلام قیمت و سفارش
+        .product-cont-view
+            .content
+                .stl_cont#stl_cont
+                .print3d-stat 
+                    .item
+                        i.fa.fa-database
+                        .label حجم(mm
+                            sup 3
+                            | ): 
+                        .val#info-volume 0
+                    .item
+                        i.fa.fa-arrows-h
+                        .label طول(mm): 
+                        .val#info-width 0
+                    .item
+                        i.fa.fa-arrows-v
+                        .label عرض(mm): 
+                        .val#info-length 0
+                    .item
+                        i.fa.fa-arrows
+                        .label ارتفاع(mm): 
+                        .val#info-height 0
+            .content 
+                include description
+            .content 
+                h1.print3d-title محصولات پرینت سه بعدی
+                .four-card-view
+                    -for(var i=0; i<products.length; i++){
+                        a(href="/products/product-view?id=#{products[i]._id}").card.triple
+                            .image 
+                                img(src="#{products[i].pictures[0]}", alt="")
+                            h1= products[i].title
+                            -if(products[i].available)
+                                .available.green موجود
+                            -else
+                                .available.red نا موجود
+                            .nodiscount
+                                .val= dot(products[i].nodiscountprice)
+                                .unit تومان
+                            .info 
+                                .price
+                                    .val= dot(products[i].price)
+                                    .unit تومان
+                                -if(products[i].available){
+                                    .buy-btn 
+                                        i.fa.fa-shopping-cart
+                                        | خرید
+                                -}
+                    -}
+                          
+
+    
+
+    script(src="/js/stl/stl_viewer.min.js")
+    script(src="/js/print3d.js")
+    script.
+        document.getElementById('navlink-4').classList.add('active');

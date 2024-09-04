@@ -1,0 +1,248 @@
+@media only screen and (min-width: 800px) {
+    .triple-card-view{
+        width: 95%;
+        margin: auto;
+        overflow: hidden;
+        margin-bottom: 2vw;
+    }
+    .triple-card-view.width80{
+        width: 80%;
+    }
+    .triple-card-view a.card{
+        display: block;
+        width: 30%;
+        margin: 1vw 1.6%;
+        /* border: 0.1vw solid var(--lightgray); */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+        border-radius: 0.5vw;
+        overflow: hidden;
+        float: right;
+    }
+    .triple-card-view a.card:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.304), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+    }
+    .triple-card-view a.card .image{
+        position: relative;
+    }
+    .triple-card-view a.card .image .type{
+        position: absolute;
+        bottom: 0.4vw;
+        left: 0.4vw;
+        color: white;
+        font-size: 1vw;
+        padding: 0.1vw 1vw;
+        border-radius: 0.2vw;
+    }
+    .triple-card-view a.card .image .type.pink{background-color: var(--pink);}
+    .triple-card-view a.card .image .type.green{background-color: var(--green);}
+    .triple-card-view a.card .image .type.purple{background-color: var(--purple);}
+    .triple-card-view a.card .image .type.blue{background-color: var(--blue);}
+    .triple-card-view a.card .image .type.red{background-color: var(--red2);}
+    .triple-card-view a.card img{
+        width: 100%;
+        display: block;
+    }
+    .triple-card-view a.card h1{
+        color: var(--dark);
+        font-size: 1vw;
+        margin: 0;
+        margin-top: 0.5vw;
+        padding: 0.4vw 1vw;
+    }
+    .triple-card-view a.card p{
+        font-size: 0.8vw;
+        padding: 0 1vw;
+        margin: 0;
+        text-align: justify;
+        color: var(--text);
+    }
+    .triple-card-view a.card .teacher{
+        font-size: 1vw;
+        color: var(--lightgray);
+        padding: 0 1vw;
+        margin-top: 0.5vw;
+        margin-bottom: 0.5vw;
+    }
+    .triple-card-view a.card .teacher i{
+        padding-left: 0.5vw;
+    }
+    .triple-card-view a.card .teacher .text{
+        display: inline;
+    }
+    .triple-card-view a.card .line{
+        background-color: var(--lightergray);
+        height: 0.1vw;
+        width: 100%;
+    }
+    .triple-card-view a.card .info{
+        padding: 1vw 1vw;
+        overflow: hidden;
+    }
+    .triple-card-view a.card .info .stat{
+        float: right;
+        color: var(--skyblue);
+        font-size: 1vw;
+        padding-top: 0.4vw;
+    }
+    .triple-card-view a.card .info .stat i{
+        padding-left: 0.5vw;
+    }
+    .triple-card-view a.card .info .stat .val{
+        display: inline;
+    }
+    .triple-card-view a.card .info .price{
+        float: left;
+        color: var(--green);
+        font-size: 1.3vw;
+        /* font-weight: bold; */
+    }
+    .triple-card-view a.card .info .price .val{
+        display: inline;
+    }
+    .triple-card-view a.card .info .price .unit{
+        display: inline;
+        padding-right: 0.5vw;
+    }
+    a.seemore{
+        width: 80%;
+        display: block;
+        padding: 0;
+        margin: auto;
+        text-align: left;
+        color: var(--red);
+        font-size: 1.2vw;
+    }
+    a.seemore i{
+        padding-right: 0.5vw;
+        font-size: 0.7vw;
+        margin-bottom: 2vw;
+
+    }
+    a.seemore:hover{
+        color: var(--purple);
+    }
+}
+@media only screen and (max-width: 800px) {
+    .triple-card-view{
+        width: 95%;
+        margin: auto;
+        overflow-x: scroll;
+        margin-bottom: 2vw;
+    }
+    .triple-card-view.width80{
+        width: 80%;
+    }
+    .triple-card-view a.card{
+        display: block;
+        width: 96%;
+        margin: 4vw 2%;
+        /* border: 0.1vw solid var(--lightgray); */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+        border-radius: 1.5vw;
+        overflow: hidden;
+        float: right;
+    }
+    .triple-card-view a.card:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.304), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+    }
+    .triple-card-view a.card .image{
+        position: relative;
+    }
+    .triple-card-view a.card .image .type{
+        position: absolute;
+        bottom: 0.4vw;
+        left: 0.4vw;
+        color: white;
+        font-size: 3vw;
+        padding: 0.6vw 3vw;
+        border-radius: 0.2vw;
+    }
+    .triple-card-view a.card .image .type.pink{background-color: var(--pink);}
+    .triple-card-view a.card .image .type.green{background-color: var(--green);}
+    .triple-card-view a.card .image .type.purple{background-color: var(--purple);}
+    .triple-card-view a.card .image .type.blue{background-color: var(--blue);}
+    .triple-card-view a.card .image .type.red{background-color: var(--red2);}
+    .triple-card-view a.card img{
+        width: 100%;
+        display: block;
+    }
+    .triple-card-view a.card h1{
+        color: var(--dark);
+        font-size: 3.2vw;
+        margin: 0;
+        margin-top: 1vw;
+        padding: 1.5vw 3vw;
+    }
+    .triple-card-view a.card p{
+        font-size: 2.8vw;
+        padding: 0 3vw;
+        margin: 0;
+        text-align: justify;
+        color: var(--text);
+    }
+    .triple-card-view a.card .teacher{
+        font-size: 3vw;
+        color: var(--lightgray);
+        padding: 0 3vw;
+        margin-top: 1.5vw;
+        margin-bottom: 1.5vw;
+    }
+    .triple-card-view a.card .teacher i{
+        padding-left: 1.5vw;
+    }
+    .triple-card-view a.card .teacher .text{
+        display: inline;
+    }
+    .triple-card-view a.card .line{
+        background-color: var(--lightergray);
+        height: 0.4vw;
+        width: 100%;
+    }
+    .triple-card-view a.card .info{
+        padding: 3vw 3vw;
+        overflow: hidden;
+    }
+    .triple-card-view a.card .info .stat{
+        float: right;
+        color: var(--skyblue);
+        font-size: 3vw;
+        padding-top: 1.4vw;
+    }
+    .triple-card-view a.card .info .stat i{
+        padding-left: 1.5vw;
+    }
+    .triple-card-view a.card .info .stat .val{
+        display: inline;
+    }
+    .triple-card-view a.card .info .price{
+        float: left;
+        color: var(--green);
+        font-size: 4vw;
+        /* font-weight: bold; */
+    }
+    .triple-card-view a.card .info .price .val{
+        display: inline;
+    }
+    .triple-card-view a.card .info .price .unit{
+        display: inline;
+        padding-right: 3.5vw;
+    }
+    a.seemore{
+        width: 80%;
+        display: block;
+        padding: 0;
+        margin: auto;
+        text-align: left;
+        color: var(--red);
+        font-size: 3.2vw;
+    }
+    a.seemore i{
+        padding-right: 0.5vw;
+        font-size: 2.7vw;
+        margin-bottom: 2vw;
+
+    }
+    a.seemore:hover{
+        color: var(--purple);
+    }
+}

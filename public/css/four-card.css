@@ -1,0 +1,275 @@
+@media only screen and (min-width: 800px) {
+    .four-card-view{
+        width: 95%;
+        margin: auto;
+        overflow: hidden;
+        margin-bottom: 2vw;
+    }
+    .four-card-view.width80{
+        width: 80%;
+    }
+    .four-card-view a.card{
+        display: block;
+        width: 21.5%;
+        margin: 1vw 1.6%;
+        /* border: 0.1vw solid var(--lightgray); */
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+        border-radius: 0.5vw;
+        overflow: hidden;
+        float: right;
+    }
+    .four-card-view a.card.triple{
+        width: 30%;
+        margin: 1vw 1.6%;
+    }
+    .four-card-view a.card:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.304), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+    }
+    .four-card-view a.card .image{
+        position: relative;
+    }
+    .four-card-view a.card .image .type{
+        position: absolute;
+        bottom: 0.4vw;
+        left: 0.4vw;
+        color: white;
+        font-size: 1vw;
+        padding: 0.1vw 1vw;
+        border-radius: 0.2vw;
+    }
+    .four-card-view a.card .image .type.pink{background-color: var(--pink);}
+    .four-card-view a.card .image .type.green{background-color: var(--green);}
+    .four-card-view a.card .image .type.purple{background-color: var(--purple);}
+    .four-card-view a.card .image .type.blue{background-color: var(--blue);}
+    .four-card-view a.card .image .type.red{background-color: var(--red2);}
+    .four-card-view a.card img{
+        width: 100%;
+        display: block;
+    }
+    .four-card-view a.card h1{
+        color: var(--dark);
+        font-size: 1vw;
+        margin: 0;
+        /* margin-top: 0.5vw; */
+        padding: 0.4vw 1vw;
+    }
+    .four-card-view a.card p{
+        font-size: 0.8vw;
+        padding: 0 1vw;
+        margin: 0;
+        text-align: justify;
+        color: var(--text);
+    }
+    .four-card-view a.card .teacher{
+        font-size: 1vw;
+        color: var(--lightgray);
+        padding: 0 1vw;
+        margin-top: 0.5vw;
+        margin-bottom: 0.5vw;
+    }
+    .four-card-view a.card .teacher i{
+        padding-left: 0.5vw;
+    }
+    .four-card-view a.card .teacher .text{
+        display: inline;
+    }
+    .four-card-view a.card .line{
+        background-color: var(--lightergray);
+        height: 0.1vw;
+        width: 100%;
+    }
+    .four-card-view a.card .info{
+        padding: 0 1vw;
+        padding-bottom: 1vw;
+        overflow: hidden;
+    }
+    .four-card-view a.card .info .buy-btn{
+        float: right;
+        color: white;
+        padding: 0.1vw 1vw;
+        background-color: var(--red);
+        font-size: 1vw;
+        border-radius: 0.5vw;
+    }
+    .four-card-view a.card .info .buy-btn:hover{
+        background-color: var(--pink);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+    }
+    .four-card-view a.card .info .buy-btn i{
+        padding-left: 0.5vw;
+    }
+    .four-card-view a.card .info .price{
+        float: left;
+        color: var(--red);
+        font-size: 1.1vw;
+        /* font-weight: bold; */
+    }
+    .four-card-view a.card .info .price .val{
+        display: inline;
+    }
+    .four-card-view a.card .info .price .unit{
+        display: inline;
+        padding-right: 0.5vw;
+    }
+    .four-card-view a.card .nodiscount{
+        text-align: left;
+        font-size: 1vw;
+        color: var(--lightgray);
+        padding: 0 1vw;
+        text-decoration: line-through;
+    }
+    .four-card-view a.card .nodiscount .val{
+        display: inline;
+    }
+    .four-card-view a.card .nodiscount .unit{
+        display: inline;
+        padding-right: 0.5vw;
+    }
+    .four-card-view a.card .available{
+        padding: 0 1vw;
+        font-size: 0.9vw;
+    }
+    .four-card-view a.card .available.green{color: var(--green);}
+    .four-card-view a.card .available.red{color: var(--red2);}
+}
+@media only screen and (max-width: 800px) {
+    .four-card-view{
+        width: 95%;
+        margin: auto;
+        overflow: hidden;
+        margin-bottom: 2vw;
+        padding: 0;
+    }
+    .four-card-view.width80{
+        width: 95%;
+    }
+    .four-card-view a.card{
+        display: block;
+        width: 45%;
+        margin: 4vw 2%;
+        /* border: 0.1vw solid var(--lightgray); */
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);; */
+        /* border-radius: 1.5vw; */
+        border: 0.5vw solid var(--lightergray);
+        overflow: hidden;
+        float: right;
+    }
+    .four-card-view a.card.triple{
+        width: 48%;
+        margin: 0;
+    }
+    .four-card-view a.card:hover{
+        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.304), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
+    }
+    .four-card-view a.card .image{
+        position: relative;
+    }
+    .four-card-view a.card .image .type{
+        position: absolute;
+        bottom: 0.4vw;
+        left: 0.4vw;
+        color: white;
+        font-size: 3vw;
+        padding: 0.6vw 3vw;
+        border-radius: 0.8vw;
+    }
+    .four-card-view a.card .image .type.pink{background-color: var(--pink);}
+    .four-card-view a.card .image .type.green{background-color: var(--green);}
+    .four-card-view a.card .image .type.purple{background-color: var(--purple);}
+    .four-card-view a.card .image .type.blue{background-color: var(--blue);}
+    .four-card-view a.card .image .type.red{background-color: var(--red2);}
+    .four-card-view a.card img{
+        width: 100%;
+        display: block;
+    }
+    .four-card-view a.card h1{
+        color: var(--dark);
+        font-size: 3.4vw;
+        margin: 0;
+        /* margin-top: 0.5vw; */
+        padding: 1vw 3vw;
+    }
+    .four-card-view a.card p{
+        font-size: 3vw;
+        padding: 0 3vw;
+        margin: 0;
+        text-align: justify;
+        color: var(--text);
+    }
+    .four-card-view a.card .teacher{
+        font-size: 3vw;
+        color: var(--lightgray);
+        padding: 0 3vw;
+        margin-top: 1.5vw;
+        margin-bottom: 1.5vw;
+    }
+    .four-card-view a.card .teacher i{
+        padding-left: 1.5vw;
+    }
+    .four-card-view a.card .teacher .text{
+        display: inline;
+    }
+    .four-card-view a.card .line{
+        background-color: var(--lightergray);
+        height: 0.1vw;
+        width: 100%;
+    }
+    .four-card-view a.card .info{
+        padding: 0 3vw;
+        padding-bottom: 3vw;
+        overflow: hidden;
+    }
+    .four-card-view a.card .info .buy-btn{
+        float: right;
+        color: white;
+        padding: 1vw 3.5vw;
+        background-color: var(--red);
+        font-size: 3.5vw;
+        border-radius: 1.5vw;
+        text-align: center;
+        width: 80%;
+    }
+    .four-card-view a.card .info .buy-btn:hover{
+        background-color: var(--pink);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+    }
+    .four-card-view a.card .info .buy-btn i{
+        padding-left: 0.5vw;
+    }
+    .four-card-view a.card .info .price{
+        float: left;
+        color: var(--red);
+        font-size: 4vw;
+        /* font-weight: bold; */
+    }
+    .four-card-view a.card .info .price .val{
+        display: inline;
+    }
+    .four-card-view a.card .info .price .unit{
+        display: inline;
+        padding-right: 1.5vw;
+    }
+    .four-card-view a.card .nodiscount{
+        text-align: left;
+        font-size: 3vw;
+        color: var(--lightgray);
+        padding: 0 3vw;
+        text-decoration: line-through;
+    }
+    .four-card-view a.card .nodiscount .val{
+        display: inline;
+    }
+    .four-card-view a.card .nodiscount .unit{
+        display: inline;
+        padding-right: 1.5vw;
+    }
+    .four-card-view a.card .available{
+        padding: 0 3vw;
+        font-size: 2.9vw;
+    }
+    .four-card-view a.card .available.green{color: var(--green);}
+    .four-card-view a.card .available.red{
+        color: var(--red2);
+        padding-bottom: 8vw;
+    }
+}

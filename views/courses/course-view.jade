@@ -1,0 +1,36 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/courses/course-view.css")
+
+block content
+    .course-view 
+        .course-cont-view
+            .content
+                .course-cover
+                    .cover
+                        img(src="#{course.cover}", alt="")
+                    h1.title= course.title
+                    p.desc= course.shortdescription
+                -if(user && user.role == 'admin'){
+                    .admin-control 
+                        -if(course.enable){
+                            a.enable(href="/courses/disable-course?id=#{course._id}")
+                                i.fa.fa-check-square-o
+                        -}else{
+                            a.disable(href="/courses/enable-course?id=#{course._id}")
+                                i.fa.fa-square-o
+                        -}
+                        a.edit(href="/courses/edit-session?id=#{course._id}")
+                            i.fa.fa-edit  
+                        a.times(href="/courses/delete-course?id=#{course._id}")
+                            i.fa.fa-times 
+                -}
+        .sidebar-view 
+            
+            include buy-course
+            include sessions
+                    
+            include sidebar
+    script.
+        document.getElementById('navlink-3').classList.add('active');

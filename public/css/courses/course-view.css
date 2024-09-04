@@ -1,0 +1,765 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    /* direction: ltr; */
+    background-color: var(--white);
+    direction: rtl;
+    text-align: right;
+    background-color: var(--lightergray);
+}
+@media only screen and (min-width: 800px) {
+    .course-view{
+        /* background-color: var(--lightergray); */
+        width: 90%;
+        margin: 2vw auto;
+        overflow: hidden;
+        padding: 0;
+        margin-bottom: 2vw;
+    }
+    .course-view .course-cont-view{
+        float: left;
+        width: 75%;
+    }
+    .course-view .sidebar-view{
+        width: 25%;
+        float: left;
+    }
+    .course-view .sidebar{
+        width: 95%;
+        margin: 1vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        overflow: hidden;
+        margin-bottom: 3vw;
+    }
+    .course-view .course-cont-view .content{
+        width: 90%;
+        margin: 1vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        overflow: hidden;
+        position: relative;
+    }
+    .course-view .sidebar .user-info{
+        background-color: var(--blue);
+        color: white;
+        overflow: hidden;
+    }
+    .course-view .sidebar .user-info h1{
+        font-size: 1vw;
+        /* margin-top: 2.1vw; */
+        /* margin-bottom: 0.5vw; */
+        margin: 0;
+        padding: 0.5vw 2vw;
+    }
+    .course-view .sidebar .user-info .info a.edit{
+        color: var(--lightergray);
+        font-size: 0.9vw;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 2vw;
+        display: block;
+    }
+    .course-view .sidebar .user-info .info a.edit:hover{
+        color: var(--blue);
+    }
+    .course-view .sidebar .user-info .info a.edit i{
+        padding-left: 0.5vw;
+    }
+    .course-view .sidebar .nav-view a.link{
+        display: block;
+        color: var(--text);
+        padding: 0.9vw 1vw;
+        border-bottom: 0.1vw solid var(--lightergray);
+        font-size: 1vw;
+        background-color: var(--white);
+    }
+    .course-view .sidebar .nav-view a.link.active{
+        color: var(--blue);
+    }
+    .course-view .sidebar .nav-view a.link:hover{
+        background-color: var(--light);
+    }
+    .course-view .sidebar .nav-view a.link i{
+        padding-left: 1vw;
+        color: var(--lightgray);
+    }
+    .course-view .sidebar .nav-view a.link:hover i{
+        color: var(--blue);
+    }
+    .course-view .sidebar .nav-view a.logout{
+        display: block;
+        color: var(--blue);
+        text-align: center;
+        padding: 0.8vw 1vw;
+        font-size: 1.1vw;
+        background-color: var(--white);
+    }
+    .course-view .sidebar .nav-view a.logout:hover{
+        /* background-color: var(--lightergray); */
+        color: var(--blue);
+    }
+    .course-view .sidebar .nav-view a.link{
+        position: relative;
+    }
+    .course-view .sidebar .nav-view a.link .info{
+        position: absolute;
+        left: 1.5vw;
+        top: 1.2vw;
+        color: var(--lightgray);
+        font-size: 0.8vw;
+    }
+    .course-view .sidebar .nav-view a.link .info i.lock{
+        color: var(--red);
+        padding: 0;
+        padding-right: 1.5vw;
+    }
+    .course-view .sidebar .nav-view a.link .info i.play{
+        color: var(--blue);
+        padding: 0;
+        padding-right: 1.5vw;
+    }
+    .course-view .sidebar .nav-view a.link .info i.clock{
+        color: var(--lightgray);
+        padding: 0;
+        padding-left: 0.5vw;
+    }
+    .course-view .content .sort-control{
+        position: relative;
+    }
+    .course-view .content .sort-control h1{
+        font-size: 1vw;
+        margin: 0;
+        padding: 1.5vw 3vw;
+        padding-right: 1vw;
+        margin-bottom: 1vw;
+        color: var(--text);
+    }
+    .course-view .content .sort-control h1 a{
+        color: var(--lightgray);
+        font-size: 0.8vw;
+        display: inline;
+        padding: 0 0.6vw;
+        border-left: 0.1vw solid var(--lightgray);
+    }
+    .course-view .content .sort-control h1 a.last{border: none;}
+    .course-view .content .sort-control h1 a:hover{
+        color: var(--blue);
+    }
+    .course-view .content .sort-control h1 .line{
+        display: inline;
+        width: 0.1vw;
+        height: 1vw;
+        background-color: var(--lightgray);
+    }
+    .searchbar{
+        position: absolute;
+        left: 2vw;
+        top: 1.2vw;
+    }
+    .searchbar input.text{
+        border: none;
+        background-color: var(--lightergray);
+        font-family: 'iransans';
+        padding: 0.5vw 2vw;
+        font-size: 1vw;
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+        outline: none;
+        width: 12vw;
+    }
+    .searchbar button.submit{
+        background-color: var(--blue);
+        border-top-left-radius: 1vw;
+        border-bottom-left-radius: 1vw;
+        border: none;
+        padding: 0.5vw 1vw;
+        font-size: 1vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+    }
+    .searchbar button:hover{
+        background-color: var(--pink);
+    }
+    .course-view .course-cover .cover{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 2vw;
+    }
+    .course-view .course-cover .cover img{
+        display: block;
+        width: 90%;
+        margin: 1vw auto;
+        margin-top: 3vw;
+        border-radius: 0.5vw;
+        height: fit-content;
+    }
+    .course-view .course-cover .cover video{
+        display: block;
+        width: 90%;
+        margin: 1vw auto;
+        margin-top: 3vw;
+        border-radius: 0.5vw;
+        height: fit-content;
+    }
+    .course-view .course-cover h1.title{
+        font-size: 1.4vw;
+        padding: 0.4vw 0;
+        width: 90%;
+        margin: 1vw auto;
+        color: var(--blue);
+        margin-bottom: 0;
+    }
+    .course-view .course-cover p.desc{
+        font-size: 1.1vw;
+        padding: 0.4vw 0;
+        width: 90%;
+        margin: 1vw auto;
+        color: var(--text);
+        margin-top: 0;
+    }
+    .course-view .nav-view .shop-course h1.coursetitle{
+        color: var(--blue);
+        font-size: 1.2vw;
+        padding: 0;
+        width: 90%;
+        margin: 0.5vw auto;
+        padding-top: 0.4vw;
+        margin-bottom: 1vw;
+        padding-bottom: 1vw;
+        border-bottom: 0.2vw solid var(--lightergray);
+        /* padding: 0.4vw 1vw; */
+    }
+    .course-view .nav-view .shop-course h1.coursetitle i{
+        padding-left: 0.5vw;
+    }
+    .course-view .nav-view .shop-course .info{
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+        font-size: 1vw;
+        margin-bottom: 1vw;
+    }
+    .course-view .nav-view .shop-course .info .label{
+        float: right;
+        font-weight: bold;
+        color: var(--text);
+    }
+    .course-view .nav-view .shop-course .info .val{
+        float: left;
+        color: var(--text);
+    }
+    .course-view .nav-view .shop-course .info .val i{
+        padding-right: 0.5vw;
+    }
+    .course-view .nav-view .shop-course .info .val.price{
+        color: var(--green);
+        font-weight: bold;
+        font-size: 1.2vw;
+    }
+    .course-view .nav-view .shop-course .actions{
+        width: 90%;
+        margin: 1vw auto;
+        border-top: 0.2vw solid var(--lightergray);
+        overflow: hidden;
+    }
+    .course-view .nav-view .shop-course .actions a.buy{
+        float: right;
+        margin: 1vw 0;
+        width: 60%;
+        color: white;
+        font-size: 1.1vw;
+        background-color: var(--green);
+        border-radius: 0.8vw;
+        padding: 0.8vw 1vw;
+        text-align: center;
+    }
+    .course-view .nav-view .shop-course .actions a.buy i{
+        padding-left: 1vw;
+    }
+    .course-view .nav-view .shop-course .actions a.buy:hover{
+        background-color: var(--red);
+    }
+    .course-view .nav-view .shop-course .actions a.like{
+        float: left;
+        text-align: center;
+        margin: 1vw 0;
+        width: 25%;
+        color: var(--text);
+        font-size: 2vw;
+        border-radius: 0.8vw;
+        padding: 0;
+    }
+    .course-view .nav-view .shop-course .actions a.like:hover{color: var(--red);}
+
+    .admin-control{
+        position: absolute;
+        top: 1vw;
+        left: 3vw;
+    }
+    .admin-control a{
+        font-size: 1.5vw;
+        padding-right: 1vw;
+    }
+    .admin-control a.edit{color: var(--blue);}
+    .admin-control a.enable{color: var(--green);}
+    .admin-control a.disable{color: var(--gray);}
+    .admin-control a.times{color: var(--red);}
+    .admin-control a:hover{color: var(--pink);}
+    .edit-session {
+        width: 90%;
+        margin: 3vw auto;
+    }
+    .edit-session form{
+        margin-bottom: 5vw;
+        display: block;
+    }
+    .edit-session .raw input.dual{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 40%;
+        padding: 0.7vw 1.5vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .edit-session .raw input.quarter,
+    .edit-session .raw select.quarter{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 18.7%;
+        padding: 0.7vw 1vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .edit-session .raw select.quarter{width: 23%;}
+    .edit-session .raw textarea.short,
+    .edit-session .raw textarea.long{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 89%;
+        padding: 1vw 1.5vw;
+        margin-bottom: 0.5vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+        resize: vertical;
+    }
+    .edit-session .raw textarea.short{height: 3vw;}
+    .edit-session .raw textarea.long{height: 10vw;}
+    .edit-session button{
+        display: block;
+        width: fit-content;
+        padding: 0.4vw 3vw;
+        font-size: 1vw;
+        border-radius: 1vw;
+        color: white;
+        background-color: var(--red);
+        border: none;
+        font-family: 'iransans';
+        margin-top: 1.6vw;
+        margin-left: 5%;
+    }
+    .edit-session button:hover{
+        cursor: pointer;
+        background-color: var(--pink);
+    }
+    .align-left{text-align: left;direction: ltr;}
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+}
+@media only screen and (max-width: 800px) {
+    .course-view{
+        /* background-color: var(--lightergray); */
+        width: 100%;
+        margin: 2vw auto;
+        overflow: hidden;
+        padding: 0;
+        margin-bottom: 2vw;
+    }
+    .course-view .course-cont-view{
+        float: left;
+        width: 100%;
+    }
+    .course-view .sidebar-view{
+        width: 100%;
+        float: left;
+    }
+    .course-view .sidebar{
+        width: 90%;
+        margin: 3vw auto;
+        background-color: var(--white);
+        border-radius: 2vw;
+        overflow: hidden;
+        margin-bottom: 3vw;
+    }
+    .course-view .course-cont-view .content{
+        width: 90%;
+        margin: 3vw auto;
+        background-color: var(--white);
+        border-radius: 2vw;
+        overflow: hidden;
+        position: relative;
+    }
+    .course-view .sidebar .user-info{
+        background-color: var(--blue);
+        color: white;
+        overflow: hidden;
+    }
+    .course-view .sidebar .user-info h1{
+        font-size: 3vw;
+        /* margin-top: 2.1vw; */
+        /* margin-bottom: 0.5vw; */
+        margin: 0;
+        padding: 1.5vw 4vw;
+    }
+    .course-view .sidebar .user-info .info a.edit{
+        color: var(--lightergray);
+        font-size: 2.9vw;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 2vw;
+        display: block;
+    }
+    .course-view .sidebar .user-info .info a.edit:hover{
+        color: var(--blue);
+    }
+    .course-view .sidebar .user-info .info a.edit i{
+        padding-left: 0.5vw;
+    }
+    .course-view .sidebar .nav-view a.link{
+        display: block;
+        color: var(--text);
+        padding: 2.5vw 3vw;
+        border-bottom: 0.1vw solid var(--lightergray);
+        font-size: 3vw;
+        background-color: var(--white);
+    }
+    .course-view .sidebar .nav-view a.link.active{
+        color: var(--blue);
+    }
+    .course-view .sidebar .nav-view a.link:hover{
+        background-color: var(--light);
+    }
+    .course-view .sidebar .nav-view a.link i{
+        padding-left: 3vw;
+        color: var(--lightgray);
+    }
+    .course-view .sidebar .nav-view a.link:hover i{
+        color: var(--blue);
+    }
+    .course-view .sidebar .nav-view a.logout{
+        display: block;
+        color: var(--blue);
+        text-align: center;
+        padding: 1.8vw 3vw;
+        font-size: 3.1vw;
+        background-color: var(--white);
+    }
+    .course-view .sidebar .nav-view a.logout:hover{
+        /* background-color: var(--lightergray); */
+        color: var(--blue);
+    }
+    .course-view .sidebar .nav-view a.link{
+        position: relative;
+    }
+    .course-view .sidebar .nav-view a.link .info{
+        position: absolute;
+        left: 3.5vw;
+        top: 3.2vw;
+        color: var(--lightgray);
+        font-size: 2.8vw;
+    }
+    .course-view .sidebar .nav-view a.link .info i.lock{
+        color: var(--red);
+        padding: 0;
+        padding-right: 2.5vw;
+    }
+    .course-view .sidebar .nav-view a.link .info i.play{
+        color: var(--blue);
+        padding: 0;
+        padding-right: 2.5vw;
+    }
+    .course-view .sidebar .nav-view a.link .info i.clock{
+        color: var(--lightgray);
+        padding: 0;
+        padding-left: 1.5vw;
+    }
+    .course-view .content .sort-control{
+        position: relative;
+    }
+    .course-view .content .sort-control h1{
+        font-size: 3vw;
+        margin: 0;
+        padding: 1.5vw 3vw;
+        padding-right: 1vw;
+        margin-bottom: 1vw;
+        color: var(--text);
+    }
+    .course-view .content .sort-control h1 a{
+        color: var(--lightgray);
+        font-size: 2.8vw;
+        display: inline;
+        padding: 0 0.6vw;
+        border-left: 0.1vw solid var(--lightgray);
+    }
+    .course-view .content .sort-control h1 a.last{border: none;}
+    .course-view .content .sort-control h1 a:hover{
+        color: var(--blue);
+    }
+    .course-view .content .sort-control h1 .line{
+        display: inline;
+        width: 0.1vw;
+        height: 1vw;
+        background-color: var(--lightgray);
+    }
+    .searchbar{
+        position: absolute;
+        left: 2vw;
+        top: 1.2vw;
+    }
+    .searchbar input.text{
+        border: none;
+        background-color: var(--lightergray);
+        font-family: 'iransans';
+        padding: 0.5vw 2vw;
+        font-size: 1vw;
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+        outline: none;
+        width: 12vw;
+    }
+    .searchbar button.submit{
+        background-color: var(--blue);
+        border-top-left-radius: 1vw;
+        border-bottom-left-radius: 1vw;
+        border: none;
+        padding: 0.5vw 1vw;
+        font-size: 1vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+    }
+    .searchbar button:hover{
+        background-color: var(--pink);
+    }
+    .course-view .course-cover .cover{
+        width: 100%;
+        margin: 0;
+        margin-bottom: 2vw;
+    }
+    .course-view .course-cover .cover img{
+        display: block;
+        width: 100%;
+        /* margin: 1vw auto; */
+        /* margin-top: 3vw; */
+        border-radius: 0.5vw;
+        height: fit-content;
+    }
+    .course-view .course-cover .cover video{
+        display: block;
+        width: 100%;
+        /* margin: 1vw auto; */
+        /* margin-top: 3vw; */
+        border-radius: 0.5vw;
+        height: fit-content;
+    }
+    .course-view .course-cover h1.title{
+        font-size: 3.4vw;
+        padding: 1vw 0;
+        width: 90%;
+        margin: 3vw auto;
+        color: var(--blue);
+        margin-bottom: 0;
+    }
+    .course-view .course-cover p.desc{
+        font-size: 3.1vw;
+        padding: 1vw 0;
+        width: 90%;
+        margin: 3vw auto;
+        color: var(--text);
+        margin-top: 0;
+    }
+    .course-view .nav-view .shop-course h1.coursetitle{
+        color: var(--blue);
+        font-size: 3.2vw;
+        padding: 0;
+        width: 90%;
+        margin: 1.5vw auto;
+        padding-top: 1.4vw;
+        margin-bottom: 1vw;
+        padding-bottom: 1vw;
+        border-bottom: 0.2vw solid var(--lightergray);
+        /* padding: 0.4vw 1vw; */
+    }
+    .course-view .nav-view .shop-course h1.coursetitle i{
+        padding-left: 1.5vw;
+    }
+    .course-view .nav-view .shop-course .info{
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+        font-size: 3vw;
+        margin-bottom: 4vw;
+    }
+    .course-view .nav-view .shop-course .info .label{
+        float: right;
+        font-weight: bold;
+        color: var(--text);
+    }
+    .course-view .nav-view .shop-course .info .val{
+        float: left;
+        color: var(--text);
+    }
+    .course-view .nav-view .shop-course .info .val i{
+        padding-right: 1.5vw;
+    }
+    .course-view .nav-view .shop-course .info .val.price{
+        color: var(--green);
+        font-weight: bold;
+        font-size: 3.6vw;
+    }
+    .course-view .nav-view .shop-course .actions{
+        width: 90%;
+        margin: 3vw auto;
+        border-top: 0.2vw solid var(--lightergray);
+        overflow: hidden;
+    }
+    .course-view .nav-view .shop-course .actions a.buy{
+        float: right;
+        margin: 3vw 0;
+        width: 60%;
+        color: white;
+        font-size: 3.1vw;
+        background-color: var(--green);
+        border-radius: 1.8vw;
+        padding: 2.5vw 3vw;
+        text-align: center;
+    }
+    .course-view .nav-view .shop-course .actions a.buy i{
+        padding-left: 3vw;
+    }
+    .course-view .nav-view .shop-course .actions a.buy:hover{
+        background-color: var(--red);
+    }
+    .course-view .nav-view .shop-course .actions a.like{
+        float: left;
+        text-align: center;
+        margin: 3vw 0;
+        width: 25%;
+        color: var(--text);
+        font-size: 6vw;
+        border-radius: 0.8vw;
+        padding: 0;
+    }
+    .course-view .nav-view .shop-course .actions a.like:hover{color: var(--red);}
+
+    .admin-control{
+        position: absolute;
+        top: 3vw;
+        left: 6vw;
+    }
+    .admin-control a{
+        font-size: 3.5vw;
+        padding-right: 3vw;
+    }
+    .admin-control a.edit{color: var(--blue);}
+    .admin-control a.enable{color: var(--green);}
+    .admin-control a.disable{color: var(--gray);}
+    .admin-control a.times{color: var(--red);}
+    .admin-control a:hover{color: var(--pink);}
+    .edit-session {
+        width: 90%;
+        margin: 3vw auto;
+    }
+    .edit-session form{
+        margin-bottom: 5vw;
+        display: block;
+    }
+    .edit-session .raw input.dual{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 40%;
+        padding: 0.7vw 1.5vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .edit-session .raw input.quarter,
+    .edit-session .raw select.quarter{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 18.7%;
+        padding: 0.7vw 1vw;
+        margin-bottom: 1vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
+    .edit-session .raw select.quarter{width: 23%;}
+    .edit-session .raw textarea.short,
+    .edit-session .raw textarea.long{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 89%;
+        padding: 1vw 1.5vw;
+        margin-bottom: 0.5vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+        resize: vertical;
+    }
+    .edit-session .raw textarea.short{height: 3vw;}
+    .edit-session .raw textarea.long{height: 10vw;}
+    .edit-session button{
+        display: block;
+        width: fit-content;
+        padding: 1.4vw 6vw;
+        font-size: 3vw;
+        border-radius: 3vw;
+        color: white;
+        background-color: var(--red);
+        border: none;
+        font-family: 'iransans';
+        margin-top: 1.6vw;
+        margin-left: 5%;
+    }
+    .edit-session button:hover{
+        cursor: pointer;
+        background-color: var(--pink);
+    }
+    .align-left{text-align: left;direction: ltr;}
+}
+
+
+
+
+
+

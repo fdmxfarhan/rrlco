@@ -1,0 +1,78 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-discount.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .add-discount
+                    .form-view
+                        form(action="/dashboard/admin-add-discount" method="POST") 
+                            .raw 
+                                input.quarter(type="text" name="code" placeholder="کد تخفیف" value="#{genDiscountCode(6)}")
+                                input.quarter(type="number" name="maxDiscount" placeholder="سقف تخفیف")
+                                input.quarter(type="number" name="minPurchase" placeholder="حداقل خرید")
+                                input.quarter(type="number" name="numofuse" placeholder="تعداد استفاده")
+                            .raw
+                                input.quarter(type="number" name="amount" placeholder="میزان تخفیف")
+                                select.quarter(name="type") 
+                                    option(value="درصد") درصد
+                                    option(value="تومان") مبلغ
+                                select.quarter(name="userID") 
+                                    option(value="all") همه کاربران
+                                    -for(var i=0; i<users.length; i++)
+                                        option(value="#{users[i]._id}")= users[i].fullname
+                                select.quarter(name="itemtype") 
+                                    option(value="all") همه خدمات
+                                    option(value="product") فروشگاه
+                                    option(value="course") دوره ها
+                                    option(value="print3d") پرینت سه بعدی
+                                    option(value="firstbuy") اولین خرید
+                            .raw 
+                                .date-input
+                                    .label تاریخ انقضا: 
+                                    input(type="number" name="day" placeholder="روز")
+                                    input(type="number" name="month" placeholder="ماه")
+                                    input(type="number" name="year" placeholder="سال")
+                            .align-left
+                                button(type="submit") افزودن کد تخفیف
+                .data-list-view 
+                    .title-raw 
+                        .item.center.col15 کد
+                        .item.center.col20 انقضا
+                        .item.center.col10 مقدار
+                        .item.center.col10 نوع
+                        .item.center.col10 خدمات
+                        .item.center.col10 سقف
+                        .item.center.col10 حداقل
+                        .item.center.col10 حذف
+                    -for(var i=0; i<discounts.length; i++){
+                        .raw 
+                            .item.center.col15.bold 
+                                i.fa.fa-tag.icon
+                                | #{discounts[i].code}
+                            .item.center.col20 #{discounts[i].expiredate.year}/#{discounts[i].expiredate.month}/#{discounts[i].expiredate.day}
+                            .item.center.col10 #{discounts[i].amount}
+                            .item.center.col10 #{discounts[i].type}
+                            .item.center.col10 #{discounts[i].itemtype}
+                            .item.center.col10 #{discounts[i].maxDiscount}
+                            .item.center.col10 #{discounts[i].minPurchase}
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-discount?id=#{discounts[i]._id}") 
+                                    i.fa.fa-trash 
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-8').classList.add('active');
+

@@ -1,0 +1,33 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-course.css")
+    link(rel="stylesheet", href="/css/triple-card.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .files
+                    -for(var i=0; i<files.length; i++){
+                        .file-view
+                            a.download(href="#{files[i].file}") 
+                                i.fa.fa-cloud-download
+                                | دانلود فایل
+                            a.download(href="/print3d/print3d-view?id=#{files[i]._id}") 
+                                i.fa.fa-eye
+                                | مشاهده
+                            a.download(href="/print3d/print3d-delete?id=#{files[i]._id}") 
+                                i.fa.fa-trash
+                                | حذف
+                            
+                    -}
+        .sidebar-view 
+            include sidebar
+
+    script.
+        document.getElementById('sidebar-link-5').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

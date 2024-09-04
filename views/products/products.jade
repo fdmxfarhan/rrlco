@@ -1,0 +1,57 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/products/products.css")
+    link(rel='stylesheet', href='/css/four-card.css')
+    
+block content
+    .product-view 
+        .product-cont-view
+            .content
+                .sort-control
+                    h1 مرتب سازی بر اساس: 
+                        a(href="#") فروش، بیشترین به کمترین 
+                        a(href="#") ارزانترین 
+                        a(href="#") گرانترین 
+                        a.last(href="#") جدید ترین
+                    .searchbar 
+                        form(action="/dashboard/admin-product-search" method="POST")
+                            input.text(type="text" placeholder="جستجو..." name="search")
+                            button.submit(type="submit")
+                                i.fa.fa-search
+            .content
+                .filters-view
+                    -if(category){
+                        a.remove-filter(href="/products")= category
+                            i.fa.fa-times
+                    -}
+                br
+                .four-card-view
+                    -for(var i=0; i<products.length; i++){
+                        a(href="/products/product-view?id=#{products[i]._id}").card.triple
+                            .image 
+                                img(src="#{products[i].pictures[0]}", alt="")
+                            h1= products[i].title
+                            -if(products[i].available)
+                                .available.green موجود
+                            -else
+                                .available.red نا موجود
+                            .nodiscount
+                                .val= dot(products[i].nodiscountprice)
+                                .unit تومان
+                            .info 
+                                .price
+                                    .val= dot(products[i].price)
+                                    .unit تومان
+                                -if(products[i].available){
+                                    .buy-btn 
+                                        i.fa.fa-shopping-cart
+                                        | خرید
+                                -}
+                    -}
+                    
+        .sidebar-view 
+            include sidebar
+    script(src="/js/product.js")
+    script.
+        document.getElementById('navlink-2').classList.add('active');

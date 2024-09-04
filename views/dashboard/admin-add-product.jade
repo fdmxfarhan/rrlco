@@ -1,0 +1,45 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-shop.css")
+    link(rel="stylesheet", href="/css/four-card.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-plus
+                        | افزودن محصول جدید
+                .add-product-form 
+                    form(action="/upload/add-product" method="POST" enctype="multipart/form-data") 
+                        .raw 
+                            input.dual(type="text" name="title" placeholder="عنوان")
+                            input.quarter(type="number" name="price" placeholder="قیمت (تومان)")
+                            input.quarter(type="number" name="nodiscountprice" placeholder="قیمت بدون تخفیف")
+                        .raw
+                            textarea.short(name="shortdescription" placeholder="توضیحات کوتاه")
+                        .raw
+                            textarea.long(name="description" placeholder="توضیحات کامل")
+                        .raw
+                            select.quarter(name="category") 
+                                -for(var i=0; i<productCategories.length; i++)
+                                    option(value="#{productCategories[i]}")= productCategories[i]
+                            input.quarter(type="number" name="defaultcount" placeholder="تعداد دیفالت")
+                        .upload 
+                            input.file(type="file" name="picture")
+                        .align-left
+                            button(type="submit") ثبت
+
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-3').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

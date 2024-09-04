@@ -1,0 +1,105 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/shopping-cart.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content 
+                .shoppingcart-orders
+                    h1.title
+                        i.fa.fa-tags
+                        | سبد خرید
+                        a.delete-cart(href="/dashboard/delete-cart") 
+                            i.fa.fa-trash
+                            | حذف سبد خرید
+                    .list 
+                        -if(user.shoppingcart.length > 0){
+                            -for(var i=0; i<user.shoppingcart.length; i++){
+                                -if(user.shoppingcart[i].type == 'product'){
+                                    .item 
+                                        a.cover(href="/products/product-view?id=#{user.shoppingcart[i].item._id}")  
+                                            img(src="#{user.shoppingcart[i].item.pictures[0]}", alt="")
+                                        .info 
+                                            h1= user.shoppingcart[i].item.title
+                                            h2 #{dot(user.shoppingcart[i].item.price)} تومان
+                                            h3 کد کالا: #{user.shoppingcart[i].item.productCode}
+                                        .count
+                                            button.add(type="button" onclick="add()")
+                                                i.fa.fa-plus 
+                                            input#count-input(type="number" name="count" value="#{user.shoppingcart[i].count}")
+                                            button.sub(type="button" onclick="sub()")
+                                                i.fa.fa-minus
+                                        .total-price #{dot(user.shoppingcart[i].count * user.shoppingcart[i].item.price)} تومان
+                                        a.delete-item(href="/dashboard/delete-item-cart?index=#{i}") 
+                                            i.fa.fa-times
+                                -}
+                                -if(user.shoppingcart[i].type == 'course'){
+                                    .item 
+                                        a.cover(href="/courses/course-view?id=#{user.shoppingcart[i].item._id}")  
+                                            img(src="#{user.shoppingcart[i].item.cover}", alt="")
+                                        .info 
+                                            h1= user.shoppingcart[i].item.title
+                                            h2 #{dot(user.shoppingcart[i].item.price)} تومان
+                                            h3 کد کالا: #{user.shoppingcart[i].item.courseCode}
+                                        .count 
+
+                                        .total-price #{dot(user.shoppingcart[i].item.price)} تومان
+                                        a.delete-item(href="/dashboard/delete-item-cart?index=#{i}") 
+                                            i.fa.fa-times
+                                -}
+                                -if(user.shoppingcart[i].type == 'print3d'){
+                                    .item 
+                                        a.cover(href="/print3d/print3d-view?id=#{user.shoppingcart[i].item._id}")  
+                                            i.fa.fa-files-o.print3d-icon
+                                        .info 
+                                            h1 پرینت سه بعدی #{user.shoppingcart[i].item.title}
+                                            h2 #{user.shoppingcart[i].item.filament} #{user.shoppingcart[i].item.color}
+                                            h3 #{user.shoppingcart[i].item.infill}% - #{user.shoppingcart[i].item.layerhieght}
+                                        .count 
+                                            button.add(type="button" onclick="add()")
+                                                i.fa.fa-plus 
+                                            input#count-input(type="number" name="count" value="#{user.shoppingcart[i].count}")
+                                            button.sub(type="button" onclick="sub()")
+                                                i.fa.fa-minus
+                                        .total-price #{dot(user.shoppingcart[i].item.price)} تومان
+                                        a.delete-item(href="/dashboard/delete-item-cart?index=#{i}") 
+                                            i.fa.fa-times
+                                -}
+                            -}
+                        -}else
+                            .cart-empty سبد خرید شما خالی است.
+        .sidebar-view 
+            .sidebar 
+                .shopping-cart-info 
+                    h1 #{user.shoppingcart.length} کالا در سبد خرید شما
+                    .discount
+                        .label کد تخفیف دارید؟
+                        .val    
+                            form(action="/dashboard/apply-discount" method="POST") 
+                                input(type="text" name="discountnumber" placeholder="کد تخفیف")
+                                button(type="submit") بررسی
+                    .item 
+                        .label مجموع کالاها: 
+                        .val #{dot(totalPrice)} تومان
+                    .item 
+                        .label تخفیف: 
+                        .val #{dot(discount)} تومان
+                    .item 
+                        .label مالیات: 
+                        .val #{dot(tax)} تومان
+                    .item 
+                        .label مجموع: 
+                        .val.green #{dot(totalPrice - discount)} تومان
+                    a.buy(href="/dashboard/compelete-order")
+                        i.fa.fa-shopping-cart 
+                        | ادامه و پرداخت
+            //- include sidebar
+        
+
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-2').classList.add('active');
+

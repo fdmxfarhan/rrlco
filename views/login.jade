@@ -1,0 +1,70 @@
+extends layout-white
+block styles
+    link(rel="stylesheet", href="/css/users.css")
+
+block content
+    //- include partials/messages
+    -if(errors || success_msg || error_msg || error){
+        .errors-area
+            -if(errors){
+                -for(var i=0; i<errors.length; i++){
+                    .error(id='error#{i}')
+                        i.fa.fa-warning
+                        h1= errors[i].msg
+                        i.fa.fa-times.close-error
+                        .time-interval(id='time#{i}')
+                -}
+            -}
+            -if(success_msg != ''){
+                .error.green-error(id='error3')
+                    i.fa.fa-check
+                    h1= success_msg
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time3')
+            -}
+            -if(error_msg != ''){
+                .error(id='error4')
+                    i.fa.fa-warning
+                    h1= error_msg
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time4')
+            -}
+            -if(error != ''){
+                .error(id='error5')
+                    i.fa.fa-warning
+                    h1= error
+                    i.fa.fa-times.close-error
+                    .time-interval(id='time5')
+            -}
+    -}
+    .users-view
+        .info
+            a.close-btn(href="/") 
+                i.fa.fa-times
+            h1 قبلا ثبت نام نکرده اید؟
+            p لطفا جهت ثبت سفارش و استفاده از خدمات سایت ابتدا وارد شوید. در صورتی که حساب کاربری ندارید می‌توانید از این قسمت ثبت نام کنید.
+            a.btn(href="/users/register") ثبت نام
+            .socials
+                a(href="https://instagram.com/S.R.Brobotic" target="_blank") 
+                    i.fa.fa-instagram 
+                a(href="https://t.me/fdmxfarhan" target="_blank") 
+                    i.fa.fa-telegram 
+                a(href="mailto:fdmxfarhan@yahoo.com") 
+                    i.fa.fa-envelope 
+                a(href="tel:+989336448037") 
+                    i.fa.fa-phone 
+        .form-view
+            img.logo(src="/img/logo.png", alt="")
+            h1.title 
+                i.fa.fa-sign-in
+                | ورود به حساب کاربری
+            .line
+            form(action="/users/login" id="register" method="POST")
+                .text-input-raw
+                    input.textinput(type="text" placeholder="شماره تلفن / ایمیل" name="username" value= "#{ typeof uname != 'undefined' ? uname: '' }")
+                .text-input-raw
+                    input.textinput(type="password" placeholder="رمز عبور" name="password" value= "#{ typeof psw != 'undefined' ? psw: '' }")
+                .text-input-raw
+                    button.submit(type="submit") ورود
+                a.link(href="/users/register") فراموشی کلمه عبور
+    script(src="/js/users.js")

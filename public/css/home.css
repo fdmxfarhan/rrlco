@@ -1,0 +1,617 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    /* direction: ltr; */
+    background-color: var(--white);
+    direction: ltr;
+    text-align: left;
+    /* background-color: var(--light); */
+}
+@media only screen and (min-width: 800px) {
+    nav{
+        overflow: hidden;
+        padding-top: 2.5vw;
+        background-color: var(--light);
+    }
+    nav #nav-collapse-button{
+        float: left;
+        margin-left: 10%;
+        font-size: 1.4vw;
+        cursor: pointer;
+        /* display: none; */
+    }
+    nav #nav-collapse-button:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view{
+        overflow: hidden;
+        float: left;
+        margin-left: 6%;
+        margin-top: 0.2vw;
+    }
+    nav #nav-collapse-view a{
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        text-decoration: none;
+        padding: 0.4vw 1vw;
+        transition-duration: 500ms;
+    }
+    nav #nav-collapse-view a:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view a.active{
+        color: var(--purple);
+        font-weight: bold;
+    }
+    nav .languages{
+        float: right;
+        overflow: hidden;
+        margin-right: 10%;
+    }
+    nav .languages a.lang{
+        float: left;
+        padding: 0 1vw;
+        cursor: pointer;
+        color: var(--dark);
+        display: block;
+    }
+    nav .languages .lang:hover{
+        color: var(--blue);
+    }
+    nav .languages .lang.active{color: var(--purple);}
+    header{
+        height: 90vh;
+        position: relative;
+        background-color: var(--light);
+        overflow: hidden;
+    }
+    header .top-info{
+        position: absolute;
+        left: 10%;
+        top: 10vw;
+    }
+    header .top-info .hello{
+        color: var(--lightgray);
+        overflow: hidden;
+    }
+    header .top-info .hello .line{
+        background-color: var(--lightgray);
+        display: block;
+        width: 1.5vw;
+        height: 0.1vw;
+        float: left;
+        margin-top: 0.8vw;
+        margin-right: 1vw;
+    }
+    header .top-info .hello .text{
+        float: left;
+        color: var(--lightgray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        font-weight: bold;
+    }
+    header .top-info h1.name{
+        font-family: 'iransans';
+        font-size: 3vw;
+        margin: 0;
+        padding: 0;
+        padding-top: 1vw;
+        color: var(--gray);
+    }
+    header .top-info h1.name .red{
+        display: inline;
+        color: var(--purple);
+    }
+    header .top-info p{
+        margin: 0;
+        padding: 0;
+        /* margin-top: 1vw; */
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        width: 70%;
+    }
+    header .top-info a.button{
+        background-color: var(--purple);
+        padding: 0.5vw 1.3vw;
+        font-family: 'iransans';
+        font-size: 1vw;
+        color: white;
+        text-decoration: none;
+        display: block;
+        width: fit-content;
+        margin-top: 2vw;
+        transition-duration: 500ms;
+    }
+    header .top-info a.button:hover{
+        background-color: var(--green);
+    }
+    header .top-info .socials{
+        overflow: hidden;
+        margin-top: 13vw;
+    }
+    header .top-info .socials a{
+        text-decoration: none;
+        color: var(--lightgray);
+        font-size: 1.4vw;
+        margin-right: 0.5vw;
+        transition-duration: 500ms;
+    }
+    header .top-info .socials a:hover{
+        color: var(--blue);
+    }
+    header .top-image{
+        position: absolute;
+        top: 5vw;
+        right: 7%;
+        width: 38vw;
+    }
+    header .top-image img{
+        width: 100%;
+        display: block;
+    }
+    .center-img{
+        margin: auto;
+        width: 45%;
+        margin-top: 10vw;
+    }
+    .center-img img{
+        width: 100%;
+    }
+    .dark-content {
+        margin-top: -0.7vw;
+        background-color: var(--dark);
+        color: white;
+        /* z-index: 100; */
+        /* overflow: hidden; */
+    }
+    .dark-content .text{
+        width: 60%;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 3vw 0;
+        text-align: center;
+        padding-bottom: 13vw;
+    }
+    .dark-content .text h1{
+        font-family: 'iransans';
+        font-size: 2vw;
+    }
+    .dark-content .text p{
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        color: var(--lightergray);
+    }
+    .triple-content {
+        width: 80%;
+        background-color: var(--white);
+        margin: auto;
+        border-radius: 1vw;
+        /* border: var(--lightergray) 0.1vw solid; */
+        margin-top: -8vw;
+        overflow: hidden;
+        margin-bottom: 3vw;
+        box-shadow: 0 0.3vw 0.6vw 0.1vw rgba(0, 0, 0, 0.1);
+    }
+    .triple-content .column{
+        float: right;
+        width: 33%;
+        text-align: center;
+        /* padding-bottom: 5vw; */
+        height: 52vw;
+    }
+    .triple-content .column img.icon{
+        height: 3vw;
+        display: block;
+        margin: 3vw auto;
+        margin-top: 5vw;
+    }
+    .triple-content .column h1.name{
+        color: var(--dark);
+        font-family: 'iransans';
+        font-size: 1.7vw;
+    }
+    .triple-content .column h1.app{
+        color: var(--blue);
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        margin-top: 3vw;
+    }
+    .triple-content .column p{
+        width: 70%;
+        margin: auto;
+    }
+    .triple-content .column.bordered{border-left: var(--lightergray) 0.1vw solid;}
+    section{
+        overflow: hidden;
+    }
+    .team-members {
+        background-color: var(--light);
+        margin-top: 6vw;
+        overflow: hidden;
+    }
+    .team-members h1.title{
+        text-align: center;
+        color: var(--purple);
+        padding-top: 4vw;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .team-members h2.under-title{
+        text-align: center;
+        color: var(--gray);
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 3vw;
+        font-weight: normal;
+        font-size: 1vw;
+    }
+    .two-side-cont{
+        overflow: hidden;
+        width: 70%;
+        margin: auto;
+        padding-bottom: 7vw;
+    }
+    .two-side-cont .card{
+        float: left;
+        width: 50%;
+        overflow: hidden;
+        margin-top: 1.5vw;
+    }
+    .two-side-cont .card .profile-image{
+        float: left;
+        width: 25%;
+        overflow: hidden;
+        border-radius: 2vw;
+    }
+    .two-side-cont .card .profile-image img{
+        display: block;
+        width: 100%;
+    }
+    .two-side-cont .card .info {
+        float: left;
+        margin-left: 5%;
+        width: 65%;
+    }
+    .two-side-cont .card .info h1.name{
+        margin: 0;
+        color: var(--dark);
+        margin-top: 1.5vw;
+        font-size: 1.1vw;
+    }
+    .two-side-cont .card .info .desc{
+        color: var(--textcolor);
+    }
+    .two-side-cont .card .info .item-contancts {
+        overflow: hidden;
+        color: var(--gray);
+    }
+    .two-side-cont .card .info .item-contancts .item{
+        margin-right: 1vw;
+        float: left;
+    }
+    .two-side-cont .card .info .item-contancts .item i{
+        padding-right: 0.5vw;
+        font-size: 0.8vw;
+    }
+    .two-side-cont .card .info .item-contancts .item .text{
+        display: inline;
+        font-size: 0.8vw;
+    }
+
+}
+@media only screen and (max-width: 800px) {
+    nav{
+        overflow: hidden;
+        padding-top: 5vw;
+        background-color: var(--light);
+        position: inherit;
+    }
+    nav #nav-collapse-button{
+        float: left;
+        margin-left: 10%;
+        font-size: 4vw;
+        cursor: pointer;
+    }
+    nav #nav-collapse-button:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view{
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        /* height: 40vh; */
+        padding-top: 5vw;
+        padding-bottom: 5vw;
+        background-color: var(--white);
+        display: none;
+    }
+    nav #nav-collapse-view a{
+        display: block;
+        text-align: center;
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        text-decoration: none;
+        padding: 1vw 1vw;
+        transition-duration: 500ms;
+    }
+    nav #nav-collapse-view a:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view a.active{
+        color: var(--purple);
+        font-weight: bold;
+    }
+    nav .languages{
+        float: right;
+        overflow: hidden;
+        margin-right: 10%;
+    }
+    nav .languages .lang{
+        float: left;
+        padding: 0 1vw;
+        cursor: pointer;
+        font-size: 3vw;
+    }
+    nav .languages .lang:hover{
+        color: var(--blue);
+    }
+    nav .languages .lang.active{color: var(--purple);}
+    header{
+        height: 90vh;
+        position: relative;
+        background-color: var(--light);
+        overflow: hidden;
+    }
+    header .top-info{
+        position: absolute;
+        left: 10%;
+        top: 15vw;
+    }
+    header .top-info .hello{
+        color: var(--lightgray);
+        overflow: hidden;
+    }
+    header .top-info .hello .line{
+        background-color: var(--lightgray);
+        display: block;
+        width: 3.5vw;
+        height: 0.5vw;
+        float: left;
+        margin-top: 2vw;
+        margin-right: 2vw;
+    }
+    header .top-info .hello .text{
+        float: left;
+        color: var(--lightgray);
+        font-family: 'iransans';
+        font-size: 3vw;
+        font-weight: bold;
+    }
+    header .top-info h1.name{
+        font-family: 'iransans';
+        font-size: 9vw;
+        margin: 0;
+        padding: 0;
+        padding-top: 1vw;
+        color: var(--gray);
+    }
+    header .top-info h1.name .red{
+        display: inline;
+        color: var(--purple);
+    }
+    header .top-info p{
+        margin: 0;
+        padding: 0;
+        /* margin-top: 1vw; */
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 3vw;
+        width: 80%;
+    }
+    header .top-info a.button{
+        background-color: var(--purple);
+        padding: 1.5vw 3vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+        color: white;
+        text-decoration: none;
+        display: block;
+        width: fit-content;
+        margin-top: 2vw;
+        transition-duration: 500ms;
+    }
+    header .top-info a.button:hover{
+        background-color: var(--green);
+    }
+    header .top-info .socials{
+        overflow: hidden;
+        margin-top: 5vw;
+    }
+    header .top-info .socials a{
+        text-decoration: none;
+        color: var(--lightgray);
+        font-size: 5vw;
+        margin-right: 1.5vw;
+        transition-duration: 500ms;
+    }
+    header .top-info .socials a:hover{
+        color: var(--blue);
+    }
+    header .top-image{
+        position: absolute;
+        top: 50vh;
+        right: 10vw;
+        width: 80vw;
+    }
+    header .top-image img{
+        width: 100%;
+        display: block;
+    }
+    .center-img{
+        margin: auto;
+        width: 70%;
+        margin-top: 10vw;
+    }
+    .center-img img{
+        width: 100%;
+    }
+    .dark-content {
+        margin-top: -0.7vw;
+        background-color: var(--dark);
+        color: white;
+        /* z-index: 100; */
+        /* overflow: hidden; */
+    }
+    .dark-content .text{
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        padding: 3vw 0;
+        text-align: center;
+        padding-bottom: 13vw;
+    }
+    .dark-content .text h1{
+        font-family: 'iransans';
+        font-size: 4vw;
+    }
+    .dark-content .text p{
+        font-family: 'iransans';
+        font-size: 3.3vw;
+        color: var(--lightergray);
+    }
+    .triple-content {
+        margin: auto;
+        /* border: var(--lightergray) 0.1vw solid; */
+        margin-top: -15vw;
+        overflow: hidden;
+        padding: 5vw
+    }
+    .triple-content .column{
+        width: 90%;
+        border-radius: 3vw;
+        background-color: var(--white);
+        box-shadow: 0 0.3vw 0.6vw 0.1vw rgba(0, 0, 0, 0.1);
+        border: var(--lightergray) 0.3vw solid;
+        float: right;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 3vw;
+        padding-bottom: 4vw;
+        /* padding-bottom: 5vw; */
+        /* height: 52vw; */
+    }
+    .triple-content .column img.icon{
+        height: 15vw;
+        display: block;
+        margin: 6vw auto;
+        margin-top: 5vw;
+    }
+    .triple-content .column h1.name{
+        color: var(--dark);
+        font-family: 'iransans';
+        font-size: 4vw;
+    }
+    .triple-content .column h1.app{
+        color: var(--blue);
+        font-family: 'iransans';
+        font-size: 3.6vw;
+        margin-top: 3vw;
+    }
+    .triple-content .column p{
+        width: 90%;
+        margin: auto;
+    }
+    .triple-content .item{
+        width: 90%;
+        margin: auto;
+    }
+    
+    .triple-content .column.bordered{border-left: var(--lightergray) 0.1vw solid;}
+    section{
+        overflow: hidden;
+    }
+    .team-members {
+        background-color: var(--light);
+        margin-top: 6vw;
+        overflow: hidden;
+    }
+    .team-members h1.title{
+        text-align: center;
+        color: var(--purple);
+        padding-top: 4vw;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        font-size: 5vw;
+    }
+    .team-members h2.under-title{
+        text-align: center;
+        color: var(--gray);
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 3vw;
+        font-weight: normal;
+        font-size: 3vw;
+        width: 90%;
+        margin: auto;
+    }
+    .two-side-cont{
+        overflow: hidden;
+        width: 80%;
+        margin: auto;
+        padding-bottom: 7vw;
+    }
+    .two-side-cont .card{
+        float: left;
+        width: 100%;
+        overflow: hidden;
+        margin-top: 5vw;
+    }
+    .two-side-cont .card .profile-image{
+        float: left;
+        width: 25%;
+        overflow: hidden;
+        border-radius: 2vw;
+    }
+    .two-side-cont .card .profile-image img{
+        display: block;
+        width: 100%;
+    }
+    .two-side-cont .card .info {
+        float: left;
+        margin-left: 5%;
+        width: 65%;
+    }
+    .two-side-cont .card .info h1.name{
+        margin: 0;
+        color: var(--dark);
+        /* margin-top: 3.5vw; */
+        font-size: 3.1vw;
+    }
+    .two-side-cont .card .info .desc{
+        color: var(--textcolor);
+    }
+    .two-side-cont .card .info .item-contancts {
+        overflow: hidden;
+        color: var(--gray);
+    }
+    .two-side-cont .card .info .item-contancts .item{
+        margin-right: 1vw;
+        float: left;
+    }
+    .two-side-cont .card .info .item-contancts .item i{
+        padding-right: 0.5vw;
+        font-size: 2.8vw;
+    }
+    .two-side-cont .card .info .item-contancts .item .text{
+        display: inline;
+        font-size: 2.8vw;
+    }
+}

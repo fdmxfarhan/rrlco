@@ -1,0 +1,25 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/confirm-phone.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .confirm-phone-view 
+                    h1.title لطفا کد تایید را وارد نمایید
+                    form(action="/dashboard/confirm-phone" method="POST") 
+                        .raw 
+                            input.text(type="text" name="confnum" placeholder="کد تایید") 
+                            button.submit(type="submit") ثبت
+        .sidebar-view 
+            include sidebar
+        
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link1').classList.add('active');
+

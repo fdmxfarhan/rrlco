@@ -1,0 +1,103 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/products/product-view.css")
+    link(rel="stylesheet", href="/css/gallery.css")
+
+block content
+    .product-view 
+        .content 
+            .pictures 
+                .gallery-container
+                    -for(var i = 0; i<product.pictures.length; i++){
+                        .mySlides
+                            .numbertext #{i+1} / #{product.pictures.length}
+                            img(src='#{product.pictures[i]}', style='width:100%')
+                    -}
+                    a.prev(onclick='plusSlides(-1)') &#x276F;
+                    a.next(onclick='plusSlides(1)') &#x276E;
+                    .row
+                        -for(var i = 0; i<product.pictures.length; i++){
+                            .column
+                                img.demo.cursor(src='#{product.pictures[i]}', style='width:100%', onclick='currentSlide(#{i+1})', alt='The Woods')
+                        -}
+            .info-view 
+                h1= product.title
+                .stat 
+                    .title کد کالا: 
+                    .code= product.productCode
+                    .comments 
+                        a(href="#") نظرات
+                    .stars 
+                        i.fa.fa-star.star 
+                        i.fa.fa-star.star 
+                        i.fa.fa-star.star 
+                        i.fa.fa-star.star 
+                        i.fa.fa-star.star 
+                    .share 
+                        a(href="#") 
+                            i.fa.fa-share-alt
+                    .like 
+                        a(href="#") 
+                            i.fa.fa-heart-o
+                .shortdecription= product.shortdescription 
+                .shop-control 
+                    form(action="/dashboard/add-to-cart" method="POST") 
+                        input.hide(type="text" name="type" value="product")
+                        input.hide(type="text" name="id" value="#{product._id}")
+                        .label تعداد: 
+                        .count 
+                            button.add(type="button" onclick="add()")
+                                i.fa.fa-plus 
+                            input#count-input(type="number" name="count" value="#{product.defaultcount}")
+                            button.sub(type="button" onclick="sub()")
+                                i.fa.fa-minus
+                        .actions 
+                            .price #{dot(product.price)} تومان
+                            -if(product.available){
+                                button.submit(type="submit")
+                                    i.fa.fa-shopping-cart 
+                                    .text افزودن به سبد خرید
+                            -} else{
+                                .not-available ناموجود
+                            -}
+                .category 
+                    .label دسته بندی: 
+                    a.value(href="/products?category=#{product.category}")= product.category
+            -if(user && user.role == 'admin'){
+                .admin-control 
+                    -if(product.enable){
+                        a.enable(href="/products/disable-product?id=#{product._id}")
+                            i.fa.fa-check-square-o
+                    -}else{
+                        a.disable(href="/products/enable-product?id=#{product._id}")
+                            i.fa.fa-square-o
+                    -}
+                    a.edit(href="/products/edit-product?id=#{product._id}")
+                        i.fa.fa-edit  
+                    a.times(href="/products/delete-product?id=#{product._id}")
+                        i.fa.fa-times 
+            -}
+        .content 
+            h1.title توضیحات بیشتر
+            p.desc
+                -for(var i=0; i<product.description.length; i++){
+                    -if(product.description[i] == '\n')
+                        br
+                    -else
+                        | #{product.description[i]}
+                -}
+    script(src="/js/dashboard.js") 
+    script(src="/js/gallery.js") 
+    //- script.
+    //-     document.getElementById('sidebar-link-1').classList.add('active');
+    script.
+        document.getElementById('navlink-2').classList.add('active');
+        function add(){
+            document.getElementById('count-input').value = parseInt(document.getElementById('count-input').value) + 1;
+        }
+        function sub(){
+            if(parseInt(document.getElementById('count-input').value) > 1)
+                document.getElementById('count-input').value = parseInt(document.getElementById('count-input').value) - 1;
+        }
+        

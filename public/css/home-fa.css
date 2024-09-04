@@ -1,0 +1,435 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    /* direction: ltr; */
+    background-color: var(--white);
+    direction: rtl;
+    text-align: right;
+    /* background-color: var(--light); */
+}
+@media only screen and (min-width: 800px) {
+    nav{
+        overflow: hidden;
+        padding-top: 2.5vw;
+        background-color: var(--light);
+    }
+    nav #nav-collapse-button{
+        float: right;
+        margin-right: 10%;
+        font-size: 1.4vw;
+        cursor: pointer;
+        /* display: none; */
+    }
+    nav #nav-collapse-button:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view{
+        overflow: hidden;
+        float: right;
+        margin-right: 2%;
+        margin-top: 0.2vw;
+    }
+    nav #nav-collapse-view a{
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        text-decoration: none;
+        padding: 0.4vw 1vw;
+        transition-duration: 500ms;
+    }
+    nav #nav-collapse-view a:hover{
+        color: var(--red);
+    }
+    nav #nav-collapse-view a.active{
+        color: var(--red);
+        font-weight: bold;
+    }
+    nav .languages{
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+    }
+    nav .languages a.lang{
+        float: right;
+        padding: 0.4vw 0.6vw;
+        cursor: pointer;
+        color: var(--dark);
+        font-size: 1vw;
+        display: block;
+    }
+    nav .languages .lang:hover{
+        color: var(--blue);
+    }
+    nav .languages .lang.active{
+        color: var(--red);
+        font-weight: bold;
+    }
+    header{
+        height: 90vh;
+        position: relative;
+        background-color: var(--light);
+        overflow: hidden;
+    }
+    header .top-info{
+        position: absolute;
+        right: 10%;
+        top: 10vw;
+    }
+    header .top-info .hello{
+        color: var(--lightgray);
+        overflow: hidden;
+        direction: rtl;
+        text-align: right;
+    }
+    header .top-info .hello .line{
+        background-color: var(--lightgray);
+        display: block;
+        width: 1.5vw;
+        height: 0.1vw;
+        float: right;
+        margin-top: 0.8vw;
+        margin-left: 1vw;
+    }
+    header .top-info .hello .text{
+        float: right;
+        color: var(--lightgray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        font-weight: bold;
+        /* direction: rtl;
+        text-align: right; */
+    }
+    header .top-info h1.name{
+        font-family: 'iransans';
+        font-size: 2.7vw;
+        margin: 0;
+        padding: 0;
+        padding-top: 1vw;
+        color: var(--gray);
+        direction: rtl;
+        text-align: right;
+        margin-bottom: 1vw;
+    }
+    header .top-info h1.name .red{
+        display: inline;
+        color: var(--red);
+    }
+    header .top-info p{
+        margin: 0;
+        padding: 0;
+        /* margin-top: 1vw; */
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        width: 80%;
+        direction: rtl;
+        text-align: right;
+    }
+    header .top-info ul.jobs li, 
+    header .top-info ul.jobs li a{
+        margin: 0;
+        padding: 0;
+        /* margin-top: 1vw; */
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 1vw;
+        width: 80%;
+        direction: rtl;
+        text-align: right;
+    }
+    header .top-info ul.jobs li a:hover{
+        color: var(--red);
+    }
+    header .top-info a.button{
+        background-color: var(--red);
+        padding: 0.5vw 2vw;
+        font-family: 'iransans';
+        font-size: 1vw;
+        color: white;
+        text-decoration: none;
+        display: block;
+        width: fit-content;
+        margin-top: 2vw;
+        transition-duration: 500ms;
+        border-radius: 0.5vw;
+    }
+    header .top-info a.button:hover{
+        background-color: var(--green);
+    }
+    header .top-info .socials{
+        overflow: hidden;
+        margin-top: 8vw;
+    }
+    header .top-info .socials a{
+        text-decoration: none;
+        color: var(--lightgray);
+        font-size: 1.9vw;
+        margin-left: 0.8vw;
+        transition-duration: 500ms;
+    }
+    header .top-info .socials a:hover{
+        color: var(--blue);
+    }
+    header .top-image{
+        position: absolute;
+        top: 5vw;
+        left: 7%;
+        width: 38vw;
+        padding-top: 2vw;
+    }
+    header .top-image img{
+        width: 100%;
+        display: block;
+    }
+    /* ------------------------ Sections ------------------------- */
+    section.white{
+        background-color: var(--white);
+    }
+    section h1.title{
+        font-size: 1.5vw;
+        color: var(--blue);
+        padding: 1vw 10%;
+        margin-top: 4vw;
+        margin-bottom: 0;
+    }
+    section h1.title .line{
+        background-color: var(--blue);
+        display: block;
+        width: 1.5vw;
+        height: 0.3vw;
+        float: right;
+        margin-top: 1.2vw;
+        margin-left: 1vw;
+        border-radius: 0.15vw;
+    }
+    nav .user-nav{
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+    }
+    nav .user-nav a{
+        float: right;
+        margin-right: 1vw;
+        cursor: pointer;
+        color: var(--text);
+        font-size: 1.5vw;
+        display: block;
+    }
+    nav .user-nav a i{
+        padding-right: 0.8vw;
+    }
+    nav .user-nav a .text{
+        display: inline;
+        font-size: 1.1vw;
+    }
+    nav .user-nav a:hover{
+        color: var(--red);
+    }
+}
+@media only screen and (max-width: 800px) {
+    nav{
+        overflow: hidden;
+        padding-top: 5vw;
+        background-color: var(--light);
+        position: inherit;
+    }
+    nav #nav-collapse-button{
+        float: right;
+        margin-right: 10%;
+        font-size: 6vw;
+        cursor: pointer;
+    }
+    nav #nav-collapse-button:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view{
+        z-index: 100;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        /* height: 40vh; */
+        padding-top: 5vw;
+        padding-bottom: 5vw;
+        background-color: var(--white);
+        display: none;
+    }
+    nav #nav-collapse-view a{
+        display: block;
+        text-align: center;
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 4vw;
+        text-decoration: none;
+        padding: 3.5vw 1vw;
+        transition-duration: 500ms;
+    }
+    nav #nav-collapse-view a:hover{
+        color: var(--blue);
+    }
+    nav #nav-collapse-view a.active{
+        color: var(--red);
+        font-weight: bold;
+    }
+    nav .languages{
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+    }
+    nav .languages .lang{
+        float: left;
+        padding: 0 1vw;
+        cursor: pointer;
+        font-size: 3vw;
+    }
+    nav .languages .lang:hover{
+        color: var(--blue);
+    }
+    nav .languages .lang.active{color: var(--red);}
+    header{
+        height: 90vh;
+        position: relative;
+        background-color: var(--light);
+        overflow: hidden;
+    }
+    header .top-info{
+        position: absolute;
+        right: 5%;
+        width: 90%;
+        top: 75vw;
+    }
+    header .top-info .hello{
+        color: var(--lightgray);
+        overflow: hidden;
+    }
+    header .top-info .hello .line{
+        background-color: var(--lightgray);
+        display: block;
+        width: 3.5vw;
+        height: 0.5vw;
+        float: right;
+        margin-top: 2vw;
+        margin-left: 2vw;
+    }
+    header .top-info .hello .text{
+        float: right;
+        color: var(--lightgray);
+        font-family: 'iransans';
+        font-size: 3vw;
+        font-weight: bold;
+    }
+    header .top-info h1.name{
+        font-family: 'iransans';
+        font-size: 9vw;
+        margin: 0;
+        padding: 0;
+        padding-top: 1vw;
+        color: var(--gray);
+    }
+    header .top-info h1.name .red{
+        display: inline;
+        color: var(--red);
+    }
+    header .top-info p{
+        margin: 0;
+        padding: 0;
+        /* margin-top: 1vw; */
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 3vw;
+        width: 80%;
+    }
+    header .top-info a.button{
+        background-color: var(--red);
+        padding: 1.5vw 3vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+        color: white;
+        text-decoration: none;
+        display: block;
+        width: fit-content;
+        margin-top: 2vw;
+        transition-duration: 500ms;
+    }
+    header .top-info a.button:hover{
+        background-color: var(--green);
+    }
+    header .top-info .socials{
+        overflow: hidden;
+        margin-top: 5vw;
+    }
+    header .top-info .socials a{
+        text-decoration: none;
+        color: var(--lightgray);
+        font-size: 5vw;
+        margin-right: 1.5vw;
+        transition-duration: 500ms;
+    }
+    header .top-info .socials a:hover{
+        color: var(--blue);
+    }
+    header .top-image{
+        position: absolute;
+        top: 1vh;
+        right: 0;
+        width: 100vw;
+    }
+    header .top-image img{
+        width: 100%;
+        display: block;
+    }
+    .center-img{
+        margin: auto;
+        width: 70%;
+        margin-top: 10vw;
+    }
+    .center-img img{
+        width: 100%;
+    }
+    section.white{
+        background-color: var(--white);
+    }
+    section h1.title{
+        font-size: 3.5vw;
+        color: var(--blue);
+        padding: 1vw 10%;
+        margin-top: 4vw;
+        margin-bottom: 0;
+    }
+    section h1.title .line{
+        background-color: var(--blue);
+        display: block;
+        width: 3vw;
+        height: 1vw;
+        float: right;
+        margin-top: 2.5vw;
+        margin-left: 3vw;
+        border-radius: 0.15vw;
+    }
+    nav .user-nav{
+        float: left;
+        overflow: hidden;
+        margin-left: 10%;
+    }
+    nav .user-nav a{
+        float: right;
+        margin-right: 2vw;
+        cursor: pointer;
+        color: var(--text);
+        font-size: 6vw;
+        display: block;
+    }
+    nav .user-nav a i{
+        padding-right: 2.8vw;
+    }
+    nav .user-nav a .text{
+        display: inline;
+        font-size: 3.1vw;
+    }
+    nav .user-nav a:hover{
+        color: var(--red);
+    }
+}

@@ -1,0 +1,109 @@
+@media only screen and (min-width: 800px) {
+    .double-side-view{
+        overflow: hidden;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 4vw;
+    }
+    .double-side-view .part{
+        width: 50%;
+        float: left;
+    }
+    .double-side-view .part img{
+        width: 100%;
+        display: block;
+        border-radius: 0.5vw;
+    }
+    .double-side-view .part p{
+        width: 90%;
+        font-size: 1.2vw;
+        text-align: justify;
+        margin-top: 0;
+        color: var(--text);
+    }
+    .double-side-view .part .order-btn{
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+    .double-side-view .part .order-btn a{
+        background-color: var(--blue);
+        color: white;
+        padding: 0.5vw 2vw;
+        border-radius: 0.5vw;
+        font-size: 1.2vw;
+    }
+    .double-side-view .part .order-btn a i{
+        padding-left: 0.5vw;
+    }
+    .double-side-view .part .order-btn a:hover{
+        background-color: var(--pink);
+    }
+    .double-side-view .part .stat{
+        margin-top: 2vw;
+        overflow: hidden;
+    }
+    .double-side-view .part .stat .item{
+        float: right;
+        color: var(--lightgray);
+        font-size: 1.2vw;
+        padding-left: 5vw;
+    }
+    .double-side-view .part .stat .item i{
+        padding-left: 0.5vw;
+    }
+}
+@media only screen and (max-width: 800px) {
+    .double-side-view{
+        overflow: hidden;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 4vw;
+    }
+    .double-side-view .part{
+        width: 100%;
+        float: left;
+    }
+    .double-side-view .part img{
+        width: 100%;
+        display: block;
+        border-radius: 1.5vw;
+        margin-top: 3vw;
+    }
+    .double-side-view .part p{
+        width: 100%;
+        font-size: 3.2vw;
+        text-align: justify;
+        margin-top: 4vw;
+        color: var(--text);
+    }
+    .double-side-view .part .order-btn{
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+    }
+    .double-side-view .part .order-btn a{
+        background-color: var(--blue);
+        color: white;
+        padding: 1.5vw 5vw;
+        border-radius: 1.5vw;
+        font-size: 3.2vw;
+    }
+    .double-side-view .part .order-btn a i{
+        padding-left: 1.5vw;
+    }
+    .double-side-view .part .order-btn a:hover{
+        background-color: var(--pink);
+    }
+    .double-side-view .part .stat{
+        margin-top: 4vw;
+        overflow: hidden;
+    }
+    .double-side-view .part .stat .item{
+        float: right;
+        color: var(--lightgray);
+        font-size: 3.2vw;
+        padding-left: 10vw;
+    }
+    .double-side-view .part .stat .item i{
+        padding-left: 1.5vw;
+    }
+}

@@ -1,0 +1,95 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/print3d/print3d.css")
+    link(rel='stylesheet', href='/css/four-card.css')
+    
+block content
+    #stlpath.hide= print3d.file
+    #abscost.hide= print3dCosts.ABS
+    #placost.hide= print3dCosts.PLA
+    
+    .product-view 
+        .sidebar-view 
+            .sidebar 
+                .user-info 
+                    h1 استعلام قیمت پرینت سه بعدی آنلاین
+                .nav-view 
+                    .print3d-info 
+                        h1 
+                            i.fa.fa-tags
+                            | انتخاب مشخصات
+                        p لطفا مشخصات سفارش خود را انتخاب نمایید. تکنولوژی ساخت قطعه به صورت FDM می‌باشد.
+                        form(action="/dashboard/add-to-cart" method="POST") 
+                            input.hide(type="text" name="id" value="#{print3d._id}")
+                            input.hide(type="text" name="type" value="print3d")
+                            input.hide(type="number" name="price" id="price-input")
+                            .item
+                                input.title(type="text" name="title" placeholder="عنوان" required)
+                            .item 
+                                .label نوع فیلامنت: 
+                                .val
+                                    select(onchange="updatePrice()" name="filament" id="filament") 
+                                        option(value="ABS") ABS
+                                        option(value="PLA") PLA
+                            .item 
+                                .label رنگ: 
+                                .val
+                                    select#colorABS(onchange="updatePrice()" name="colorABS") 
+                                        -for(var i=0; i<filaments.ABS.length; i++){
+                                            option(value="#{filaments.ABS[i]}") #{filaments.ABS[i]}
+                                        -}
+                                    select#colorPLA.hide(onchange="updatePrice()" name="colorPLA") 
+                                        -for(var i=0; i<filaments.PLA.length; i++){
+                                            option(value="#{filaments.PLA[i]}") #{filaments.PLA[i]}
+                                        -}
+                                    
+                            .item 
+                                .label تراکم (%): 
+                                .val 
+                                    input(type="number" onchange="updatePrice()" name="infill" id="infill" value="20" min="10" max="100")
+                            .item 
+                                .label تعداد: 
+                                .val 
+                                    input(type="number" onchange="updatePrice()" name="count" id="count" value="1" min="1" max="100")
+                            .item 
+                                .label ضخامت لایه: 
+                                .val 
+                                    input(type="number" onchange="updatePrice()" name="layerhieght" id="layerhieght" value="0.2" min="0.1" max="0.6" step="0.01")
+                            .item 
+                                .label قیمت
+                                .val.price#price-value 0 تومان
+                            .submit
+                                button.green(type="submit")
+                                    i.fa.fa-shopping-cart
+                                    | افزودن به سبد خرید
+        .product-cont-view
+            .content
+                .stl_cont#stl_cont
+                .print3d-stat 
+                    .item
+                        i.fa.fa-database
+                        .label حجم(mm
+                            sup 3
+                            | ): 
+                        .val#info-volume 0
+                    .item
+                        i.fa.fa-arrows-h
+                        .label طول(mm): 
+                        .val#info-width 0
+                    .item
+                        i.fa.fa-arrows-v
+                        .label عرض(mm): 
+                        .val#info-length 0
+                    .item
+                        i.fa.fa-arrows
+                        .label ارتفاع(mm): 
+                        .val#info-height 0
+            .content 
+                include description
+    
+    //- http://localhost:3000/print3d/print3d-view?id=66cc7124d2eee65b8c156e68
+    script(src="/js/stl/stl_viewer.min.js")
+    script(src="/js/print3d-view.js")
+    script.
+        document.getElementById('navlink-4').classList.add('active');

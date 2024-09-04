@@ -1,0 +1,261 @@
+doctype html
+
+html
+    head
+        title RRL
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="shortcut icon", href="/img/logo.png", type="image/x-icon")
+        script(src="/js/jquery-3.5.1.min.js")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/css/theme.css')
+        link(rel='stylesheet', href='/css/home-fa.css')
+        link(rel='stylesheet', href='/css/triple-card.css')
+        link(rel='stylesheet', href='/css/four-card.css')
+        link(rel='stylesheet', href='/css/double-side.css')
+        link(rel='stylesheet', href='/css/slideshow.css')
+    
+    body
+        .black-modal
+        nav 
+            #nav-collapse-button
+                i.fa.fa-bars
+            #nav-collapse-view 
+                a.active(href="/") صفحه اصلی 
+                a(href="/products") فروشگاه 
+                a(href="/courses") دوره‌ها 
+                a(href="/print3d") پرینت سه بعدی 
+                a(href="/project") انجام پروژه 
+                a(href="/cooperation") همکاری با ما
+                //- a(href="/about-us") درباره ما
+            .user-nav
+                -if(user){
+                    a.user(href="/dashboard")
+                        .text منوی کاربری
+                        i.fa.fa-user
+                -}else{
+                    a.user(href="/users/login")
+                        .text ورود/ثبت نام
+                        i.fa.fa-user
+                -}
+                a.cart(href="/dashboard/shopping-cart")  
+                    i.fa.fa-shopping-cart
+                a.cart(href="#")  
+                    i.fa.fa-search
+            //- .languages 
+            //-     a(href="/?lang=FA").lang#farsi(class="#{lang == 'FA'? 'active' : ''}") FA 
+            //-     a(href="/?lang=EN").lang#english(class="#{lang == 'EN'? 'active' : ''}") EN
+        header 
+            canvas(id="nokey" width="800" height="800")
+            .top-info 
+                .hello 
+                    .line 
+                    .text خوش آمدید به 
+                h1.name مرکز تحقیقات 
+                    .red روباتیک 
+                    | و 
+                    .red برنامه نویسی 
+                ul.jobs
+                    li 
+                        a(href="/tutorials") دوره های آموزشی رباتیک و برنامه نویسی
+                    li 
+                        a(href="/shop") فروشگاه اینترنتی رباتیک
+                    li 
+                        a(href="/project") انجام پروژه‌های صنعتی
+                    li 
+                        a(href="/3dprint") سفارش پرینت 3 بعدی
+                a.button(href="#more-about-me")  درباره تیم ما
+                .socials
+                    a(href="https://instagram.com/S.R.Brobotic" target="_blank") 
+                        i.fa.fa-instagram 
+                    a(href="https://t.me/fdmxfarhan" target="_blank") 
+                        i.fa.fa-telegram 
+                    a(href="mailto:fdmxfarhan@yahoo.com") 
+                        i.fa.fa-envelope 
+                    a(href="tel:+989336448037") 
+                        i.fa.fa-phone 
+            .top-image 
+                //- img(src="/img/robot.png")
+                .slideshow-container
+                    .mySlides.fade
+                        .numbertext 1 / 6
+                        img(src='/img/slideshow/01.jpg', style='width:100%')
+                        .text پروژه های رباتیک
+                    .mySlides.fade
+                        .numbertext 2 / 6
+                        img(src='/img/slideshow/02.jpg', style='width:100%')
+                        .text پروژه های برنامه نویسی
+                    .mySlides.fade
+                        .numbertext 3 / 6
+                        img(src='/img/slideshow/03.jpg', style='width:100%')
+                        .text پرینت سه بعدی
+                    .mySlides.fade
+                        .numbertext 4 / 6
+                        img(src='/img/slideshow/04.jpg', style='width:100%')
+                        .text پروژه‌های الکترونیک
+                    .mySlides.fade
+                        .numbertext 5 / 6
+                        img(src='/img/slideshow/05.jpg', style='width:100%')
+                        .text دوره‌های آموزشی رباتیک
+                    .mySlides.fade
+                        .numbertext 6 / 6
+                        img(src='/img/slideshow/06.jpg', style='width:100%')
+                        .text دوره‌های آموزشی برنامه نویسی
+                    //- a.prev(onclick='plusSlides(-1)') &#x276E;
+                    //- a.next(onclick='plusSlides(1)') &#x276F;
+                    .bulletpoints
+                        span.dot(onclick='currentSlide(1)')
+                        span.dot(onclick='currentSlide(2)')
+                        span.dot(onclick='currentSlide(3)')
+                        span.dot(onclick='currentSlide(4)')
+                        span.dot(onclick='currentSlide(5)')
+                        span.dot(onclick='currentSlide(6)')
+        section.white
+            h1.title
+                .line 
+                .text دوره‌های آموزشی
+            .triple-card-view.width80
+                a(href="#").card 
+                    .image 
+                        img(src="/img/programming.jpg", alt="")
+                        .type.pink آفلاین
+                    h1 دوره 1
+                    p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
+                    .teacher 
+                        i.fa.fa-user 
+                        .text نام مدرس
+                    .line
+                    .info 
+                        .stat 
+                            i.fa.fa-clock-o 
+                            .val 32:54:00
+                        .price
+                            .val 360.000
+                            .unit تومان
+                a(href="#").card 
+                    .image 
+                        img(src="/img/programming.jpg", alt="")
+                        .type.green حضوری
+                    h1 دوره 1
+                    p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
+                    .teacher 
+                        i.fa.fa-user 
+                        .text نام مدرس
+                    .line
+                    .info 
+                        .stat 
+                            i.fa.fa-clock-o 
+                            .val 32:54:00
+                        .price
+                            .val 360.000
+                            .unit تومان
+                a(href="#").card 
+                    .image 
+                        img(src="/img/programming.jpg", alt="")
+                        .type.blue آنلاین
+                    h1 دوره 1
+                    p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
+                    .teacher 
+                        i.fa.fa-user 
+                        .text نام مدرس
+                    .line
+                    .info 
+                        .stat 
+                            i.fa.fa-clock-o 
+                            .val 32:54:00
+                        .price
+                            .val 360.000
+                            .unit تومان
+            a.seemore(href="#") مشاهده بیشتر 
+                i.fa.fa-chevron-left
+        section.white
+            h1.title
+                .line 
+                .text تخفیف‌های ویژه فروشگاه
+            .four-card-view.width80
+                a(href="#").card 
+                    .image 
+                        img(src="/img/test.jpg", alt="")
+                    h1 محصول 1
+                    .available.green موجود
+                    .nodiscount
+                        .val 400.000
+                        .unit تومان
+                    .info 
+                        .buy-btn 
+                            i.fa.fa-shopping-cart
+                            | خرید
+                        .price
+                            .val 360.000
+                            .unit تومان
+                a(href="#").card 
+                    .image 
+                        img(src="/img/test4.jpg", alt="")
+                    h1 محصول 2
+                    .available.green موجود
+                    .nodiscount
+                        .val 400.000
+                        .unit تومان
+                    .info 
+                        .buy-btn 
+                            i.fa.fa-shopping-cart
+                            | خرید
+                        .price
+                            .val 360.000
+                            .unit تومان
+                a(href="#").card 
+                    .image 
+                        img(src="/img/test2.jpg", alt="")
+                    h1 محصول 3
+                    .available.red ناموجود
+                    .nodiscount
+                        .val 400.000
+                        .unit تومان
+                    .info 
+                        .buy-btn 
+                            i.fa.fa-shopping-cart
+                            | خرید
+                        .price
+                            .val 360.000
+                            .unit تومان
+                a(href="#").card 
+                    .image 
+                        img(src="/img/test3.jpg", alt="")
+                    h1 محصول 3
+                    .available.red ناموجود
+                    .nodiscount
+                        .val 400.000
+                        .unit تومان
+                    .info 
+                        .buy-btn 
+                            i.fa.fa-shopping-cart
+                            | خرید
+                        .price
+                            .val 360.000
+                            .unit تومان
+            a.seemore(href="#") مشاهده بیشتر 
+                i.fa.fa-chevron-left
+        section.white
+            h1.title
+                .line 
+                .text خدمات پرینت سه بعدی
+            .double-side-view
+                .part 
+                    img(src="/img/3dprint.jpg")
+                .part 
+                    p ما در کسب‌وکار خود خدمات چاپ سه‌بعدی و طراحی سه‌بعدی را ارائه می‌دهیم. اگر شما ایده‌ای برای یک محصول یا قطعه دارید، ما می‌توانیم آن را با استفاده از تکنولوژی پیشرفته چاپ سه‌بعدی به واقعیت تبدیل کنیم. همچنین، اگر به دنبال یک طراحی سفارشی برای پروژه‌های خود هستید، تیم ما آماده است تا با دقت و خلاقیت نیازهای شما را برآورده کند. هدف ما این است که با ارائه‌ی راه‌حل‌های نوآورانه و کیفیت برتر، پروژه‌های شما را به سطح جدیدی برسانیم.
+                    .order-btn
+                        a(href="#")
+                            i.fa.fa-shopping-cart
+                            | ثبت سفارش
+                    .stat 
+                        .item
+                            i.fa.fa-bullhorn
+                            | 100ها فایل سه بعدی 
+                        .item
+                            i.fa.fa-motorcycle
+                            | ارسال سریع
+        include ./components/footer
+        //- https://mattfarley.ca/
+        script(src="/js/home.js") 
+        script(src="/js/graph.js") 
+        script(src="/js/slideshow.js") 

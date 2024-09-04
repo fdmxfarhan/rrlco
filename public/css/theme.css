@@ -1,0 +1,74 @@
+/* --------- Declarations ----------- */
+@font-face{
+    font-family: 'iransans';
+    src: url('iransans.ttf');
+}
+
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes goRight {
+    from {margin-right: 3vw;}
+    to {margin-right: 0;}
+}
+@keyframes goUp {
+    from {margin-top: 5vw;}
+    to {margin-top: 0.5vw;}
+}
+:root {
+    --purple: #7209B7;
+    --yellow: #ffcc00;
+    --hover: #8305be;
+    --dark: #282C38;
+    --light: #EDF1FD;
+    --gray: #3F4253;
+    --text: #595b66;
+    --lightgray: #c0c0c0;
+    --lightergray: #eef1f7;
+    --red: #F72585;
+    --red3: #d92174;
+    --red2: #e63b41;
+    --pink: #B5179E;
+    --green: #4ac91c;
+    --green2: #34d634;
+    --blue: #4361EE;
+    --textcolor: #1d1d1d;
+    --darkblue: #3A0CA3;
+    --skyblue: #4CC9F0;
+    --lightblue: #4895EF;
+    --lighterblue: #bee4ed;
+    --verylightblue: #dddddd;
+    --darkpurple: #480CA8;
+    --white: #ffffff;
+    --black: #0c0c0c;
+}
+html{scroll-behavior: smooth;}
+body::-webkit-scrollbar {width: 0.5vw;}
+body::-webkit-scrollbar-track {background: var(--lightergray);}
+body::-webkit-scrollbar-thumb {background: var(--lightgray);}
+body::-webkit-scrollbar-thumb:hover{background: var(--gray);}
+a{
+    text-decoration: none;
+    font-family: 'iransans';
+}
+.transparent-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.black-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.256);
+    z-index: 1;
+}
+.hide{display: none;}

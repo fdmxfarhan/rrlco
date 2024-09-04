@@ -1,0 +1,175 @@
+doctype html
+
+html
+    head
+        title S.R.B Robotics
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="shortcut icon", href="/img/robot.png", type="image/x-icon")
+        script(src="/js/jquery-3.5.1.min.js")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/css/theme.css')
+        link(rel='stylesheet', href='/css/home.css')
+    
+    body
+        .black-modal
+        nav 
+            #nav-collapse-button
+                i.fa.fa-bars
+            #nav-collapse-view 
+                a.active(href="/") Home 
+                a(href="#more-about-me") About
+                a(href="#members") Members
+                a(href="/publication") Publications
+                a(href="/gallery") Gallery
+                a(href="#") Contact
+            .languages 
+                a.lang#farsi(href="/?lang=FA" class="#{lang == 'FA'? 'active' : ''}") FA 
+                a.lang#english(href="/?lang=EN" class="#{lang == 'EN'? 'active' : ''}") EN
+        header 
+            canvas(id="nokey" width="800" height="800")
+            .top-info 
+                .hello 
+                    .line 
+                    .text HELLO
+                h1.name We are 
+                    .red S.R.B Robotics 
+                    | team
+                p Islamic Azad University Science and Research Branch students, who are interested in robotic, science and technology.
+                a.button(href="#more-about-me")  MORE ABOUT US
+                .socials
+                    a(href="https://instagram.com/S.R.Brobotic" target="_blank") 
+                        i.fa.fa-instagram 
+                    a(href="https://t.me/fdmxfarhan" target="_blank") 
+                        i.fa.fa-telegram 
+                    a(href="mailto:fdmxfarhan@yahoo.com") 
+                        i.fa.fa-envelope 
+                    a(href="tel:+989336448037") 
+                        i.fa.fa-phone 
+            .top-image 
+                img(src="/img/robot.png")
+        
+        section.light
+            .center-img
+                img(src="/img/hero.png")
+        section.light
+            .dark-content 
+                .text#more-about-me
+                    h1 About S.R.B Robotics
+                    p S.R.B Robotics started it's jub in 2022, building an industerial robot and participating in Robocup2023, France. Our team is composed of professinal students in requiered subjects, including Software, Hardware, Mechanics, AI, Machine Learning, etc. The main purpose of our activity is to gain more experience and learn new knowledge.
+            .triple-content 
+                .column.bordered
+                    img.icon(src="/img/designer.png")
+                    h1.name Targets 
+                    p Our main target is to improve our knowledge and learn as many things as we could in each subject. Gaining experience, participating in a compitition and inspiring other teams is another purpose of our jub.
+                    h1.app Majers / Leagues
+                    .item Robocup Industerial @Work
+                    h1.app Up Coming Events
+                    .item Iran Open 2023
+                    .item World Robocup 2023
+                    .item Robocup Asia Pacific 2023
+                .column.bordered
+                    img.icon(src="/img/frontend.png")
+                    h1.name Activities
+                    p Researching and reading articles about the main subject of our project is something that all members do. We also provide training courses for students to help them learn.
+                    h1.app Research Fields
+                    .item ROS, Artificial Intelligence, Machine Learning, ...
+                    h1.app Training Courses
+                    .item ARM Microcontrolers
+                    .item PCB Design using Altium Designer
+                    .item 3D Designing using Solid Works
+                    .item Robot Operating System
+                    .item Machine Learning
+                    .item Image Proccessing using OpenCV
+                .column
+                    img.icon(src="/img/mentor.png")
+                    h1.name History
+                    p We began our work, deciding to participate in Iran Open Robocup 2023 and Robocup 2023. @Work League was more reliable due to the time and budget that we have at first.
+                    h1.app How our team was formed?
+                    p At first we started a project and researched about the subject. Developing this project, since we had some experiences in Robocup Junior before, we decided to try Major league as well.
+        section.light#members
+            .team-members 
+                h1.title Team Members
+                h2.under-title our team is composed of professional memebers which are listed below with their contact information. 
+                .two-side-cont
+                    .card
+                        .profile-image 
+                            img(src="/img/ali.jpg")
+                        .info 
+                            h1.name Alireza Daemi
+                            .desc Hardware Designing, AI Programming
+                            .item-contancts 
+                                .item
+                                    i.fa.fa-envelope
+                                    .text alirezadaemi1999@gmail.com 
+                                .item
+                                    i.fa.fa-phone
+                                    .text +989395631836
+                    .card
+                        .profile-image 
+                            img(src="/img/farhan.jpg")
+                        .info 
+                            h1.name Farhan Daemi
+                            .desc Hardware Designing, AI Programming
+                            .item-contancts 
+                                .item
+                                    i.fa.fa-envelope
+                                    .text fdmxfarhan@yahoo.com
+                                .item
+                                    i.fa.fa-phone
+                                    .text +989336448037
+                    .card
+                        .profile-image 
+                            img(src="/img/Taha.jpg")
+                        .info 
+                            h1.name Taha Ahmadzadeh
+                            .desc Hardware Designing, Microcontroler Programming
+                            .item-contancts 
+                                .item
+                                    i.fa.fa-envelope
+                                    .text tahaahmadzadeh76@gmail.com
+                                .item
+                                    i.fa.fa-phone
+                                    .text +989355775577
+                    .card
+                        .profile-image 
+                            img(src="/img/Padina.jpg")
+                        .info 
+                            h1.name Padina Farrokhian
+                            .desc AI Programming, GUI Designing
+                            .item-contancts 
+                                .item
+                                    i.fa.fa-envelope
+                                    .text padina3386@gmail.com
+                                .item
+                                    i.fa.fa-phone
+                                    .text +989339813016
+                    .card
+                        .profile-image 
+                            img(src="/img/Amirali.jpg")
+                        .info 
+                            h1.name Amir Ali Eskandari
+                            .desc Machine Learning, Image Proccessing
+                            .item-contancts 
+                                .item
+                                    i.fa.fa-envelope
+                                    .text amirali.eskandari.oa@gmail.com
+                                .item
+                                    i.fa.fa-phone
+                                    .text +989128331849
+                    .card
+                        .profile-image 
+                            img(src="/img/Iman.jpg")
+                        .info 
+                            h1.name Iman Moshtaghi
+                            .desc Microcontroler Programming, Researcher
+                            .item-contancts 
+                                .item
+                                    i.fa.fa-envelope
+                                    .text imanmoshtaghi1381@gmail.com
+                                .item
+                                    i.fa.fa-phone
+                                    .text +989108603616
+        include ./components/footer
+        //- https://mattfarley.ca/
+        script(src="/js/home.js") 
+        script(src="/js/graph.js") 

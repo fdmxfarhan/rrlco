@@ -1,0 +1,176 @@
+@media only screen and (min-width: 800px) {
+    .gallery-container * {
+        box-sizing: border-box;
+    }
+    .gallery-container img {
+        vertical-align: middle;
+    }
+    /* Position the image container (needed to position the left and right arrows) */
+    .gallery-container {
+        position: relative;
+    }
+    /* Hide the images by default */
+    .gallery-container .mySlides {
+        display: none;
+    }
+    /* Add a pointer when hovering over the thumbnail images */
+    .gallery-container .cursor {
+        cursor: pointer;
+    }
+    /* Next & previous buttons */
+    .gallery-container .prev,
+    .gallery-container .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    /* Position the "next button" to the right */
+    .gallery-container .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    .gallery-container .prev {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    /* On hover, add a black background color with a little bit see-through */
+    .gallery-container .prev:hover,
+    .gallery-container .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    /* Number text (1/3 etc) */
+    .gallery-container .numbertext {
+        color: var(--text);
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+        z-index: 12;
+    }
+    /* Container for image text */
+    .gallery-container .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+    .gallery-container .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Six columns side by side */
+    .gallery-container .column {
+        float: left;
+        width: 13.66%;
+        margin: 1vw 1.5%;
+    }
+    /* Add a transparency effect for thumnbail images */
+    .gallery-container .demo {
+        opacity: 0.6;
+        border: 0.1vw solid white;
+        border-radius: 0.5vw;
+    }
+    .gallery-container .active,
+    .gallery-container .demo:hover {
+        opacity: 1;
+        border: 0.1vw solid var(--red);
+    }
+}
+@media only screen and (max-width: 800px) {
+    .gallery-container * {
+        box-sizing: border-box;
+    }
+    .gallery-container img {
+        vertical-align: middle;
+    }
+    /* Position the image container (needed to position the left and right arrows) */
+    .gallery-container {
+        position: relative;
+    }
+    /* Hide the images by default */
+    .gallery-container .mySlides {
+        display: none;
+    }
+    /* Add a pointer when hovering over the thumbnail images */
+    .gallery-container .cursor {
+        cursor: pointer;
+    }
+    /* Next & previous buttons */
+    .gallery-container .prev,
+    .gallery-container .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    /* Position the "next button" to the right */
+    .gallery-container .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    .gallery-container .prev {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    /* On hover, add a black background color with a little bit see-through */
+    .gallery-container .prev:hover,
+    .gallery-container .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    /* Number text (1/3 etc) */
+    .gallery-container .numbertext {
+        color: var(--text);
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+        z-index: 12;
+    }
+    /* Container for image text */
+    .gallery-container .caption-container {
+        text-align: center;
+        background-color: #222;
+        padding: 2px 16px;
+        color: white;
+    }
+    .gallery-container .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Six columns side by side */
+    .gallery-container .column {
+        float: left;
+        width: 18%;
+        margin: 5vw 1%;
+    }
+    /* Add a transparency effect for thumnbail images */
+    .gallery-container .demo {
+        opacity: 0.6;
+        border: 0.1vw solid white;
+        border-radius: 1.5vw;
+    }
+    .gallery-container .active,
+    .gallery-container .demo:hover {
+        opacity: 1;
+        border: 0.3vw solid var(--red);
+    }
+}

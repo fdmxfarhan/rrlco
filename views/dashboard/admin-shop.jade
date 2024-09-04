@@ -1,0 +1,56 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-shop.css")
+    link(rel="stylesheet", href="/css/four-card.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-users
+                        | محصولات
+                        a.add(href="/dashboard/add-product") 
+                            i.fa.fa-plus 
+                            | افزودن 
+                        .searchbar 
+                            form(action="/dashboard/admin-product-search" method="POST")
+                                input.text(type="text" placeholder="جستجو..." name="search")
+                                button.submit(type="submit")
+                                    i.fa.fa-search
+                .four-card-view
+                    -for(var i=0; i<products.length; i++){
+                        a(href="/products/product-view?id=#{products[i]._id}").card.triple
+                            .image 
+                                img(src="#{products[i].pictures[0]}", alt="")
+                            h1= products[i].title
+                            -if(products[i].available)
+                                .available.green موجود
+                            -else
+                                .available.red نا موجود
+                            .nodiscount
+                                .val= dot(products[i].nodiscountprice)
+                                .unit تومان
+                            .info 
+                                -if(products[i].available){
+                                    .buy-btn 
+                                        i.fa.fa-shopping-cart
+                                        | خرید
+                                -}
+                                .price
+                                    .val= dot(products[i].price)
+                                    .unit تومان
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-3').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

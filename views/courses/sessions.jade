@@ -1,0 +1,25 @@
+.sidebar 
+    .user-info 
+        h1 جلسات
+    .nav-view 
+        -for(var i=0; i<course.sessions; i++){
+            a.link#sidebar-link-1(href="/courses/course-session?index=#{i}&id=#{course._id}") جلسه #{i+1}: #{course.sessionContents.length == course.sessions? course.sessionContents[i].title : '-'}
+                -if(course.sessionContents.length == course.sessions){
+                    .info
+                        i.fa.fa-clock-o.clock.clock
+                        | #{timedigit(course.sessionContents[i].hours)}:#{timedigit(course.sessionContents[i].minutes)}:00
+                        -if(course.sessionContents[i].type == 'free'){
+                            i.fa.fa-lock.lock.hide
+                            i.fa.fa-play.play
+                        -}else{
+                            i.fa.fa-lock.lock
+                            i.fa.fa-play.play.hide
+                        -}
+                -}else{
+                    .info
+                        i.fa.fa-clock-o.clock.clock
+                        | 00:54:00
+                        i.fa.fa-lock.lock.hide
+                        i.fa.fa-play.play
+                -}
+        -}

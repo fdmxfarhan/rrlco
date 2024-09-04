@@ -1,0 +1,34 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/courses/course-view.css")
+
+block content
+    .course-view 
+        .course-cont-view
+            .content
+                .edit-session
+                    form(action="/upload/add-session" method="POST" enctype="multipart/form-data") 
+                        input.hide(type="text" name="sessionIndex" value="#{sessionIndex}")
+                        input.hide(type="text" name="courseID" value="#{course._id}")
+                        .raw 
+                            input.dual(type="text" name="title" placeholder="عنوان")
+                            input.quarter(type="number" name="hours" placeholder="تعداد ساعت")
+                            input.quarter(type="number" name="minutes" placeholder="تعداد دقیقه")
+                        .raw
+                            textarea.long(name="description" placeholder="توضیحات کامل")
+                        .raw
+                            select.quarter(name="type") 
+                                option(value="free") رایگان
+                                option(value="locked") قفل
+                        .upload 
+                            input.file(type="file" name="picture")
+                        .align-left
+                            button(type="submit") ثبت
+
+        .sidebar-view 
+            include sessions
+                    
+            include sidebar
+    script. 
+        document.getElementById('navlink-3').classList.add('active');

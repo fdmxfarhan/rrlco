@@ -1,0 +1,737 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    /* direction: ltr; */
+    background-color: var(--white);
+    direction: rtl;
+    text-align: right;
+    background-color: var(--lightergray);
+}
+@media only screen and (min-width: 800px) {
+    .product-view{
+        /* background-color: var(--lightergray); */
+        width: 90%;
+        margin: 2vw auto;
+        overflow: hidden;
+        padding: 0;
+        margin-bottom: 2vw;
+    }
+    .product-view .product-cont-view{
+        float: right;
+        width: 75%;
+    }
+    .product-view .sidebar-view{
+        width: 25%;
+        float: right;
+    }
+    .product-view .sidebar{
+        width: 95%;
+        margin: 1vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        overflow: hidden;
+    }
+    .product-view .product-cont-view .content{
+        width: 90%;
+        margin: 1vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        overflow: hidden;
+        position: relative;
+    }
+    .product-view .sidebar .user-info{
+        background-color: var(--purple);
+        color: white;
+        overflow: hidden;
+    }
+    .product-view .sidebar .user-info h1{
+        font-size: 1vw;
+        /* margin-top: 2.1vw; */
+        /* margin-bottom: 0.5vw; */
+        margin: 0;
+        padding: 0.5vw 2vw;
+    }
+    .product-view .sidebar .user-info .info a.edit{
+        color: var(--lightergray);
+        font-size: 0.9vw;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 2vw;
+        display: block;
+    }
+    .product-view .sidebar .user-info .info a.edit:hover{
+        color: var(--blue);
+    }
+    .product-view .sidebar .user-info .info a.edit i{
+        padding-left: 0.5vw;
+    }
+    .product-view .sidebar .nav-view a.link{
+        display: block;
+        color: var(--text);
+        padding: 0.5vw 1vw;
+        border-bottom: 0.1vw solid var(--lightergray);
+        font-size: 1vw;
+        background-color: var(--white);
+    }
+    .product-view .sidebar .nav-view a.link.active{
+        color: var(--purple);
+    }
+    .product-view .sidebar .nav-view a.link:hover{
+        background-color: var(--light);
+    }
+    .product-view .sidebar .nav-view a.link i{
+        padding-left: 1vw;
+        color: var(--lightgray);
+    }
+    .product-view .sidebar .nav-view a.link:hover i{
+        color: var(--purple);
+    }
+    .product-view .sidebar .nav-view a.logout{
+        display: block;
+        color: var(--purple);
+        text-align: center;
+        padding: 0.8vw 1vw;
+        font-size: 1.1vw;
+        background-color: var(--white);
+    }
+    .product-view .sidebar .nav-view a.logout:hover{
+        /* background-color: var(--lightergray); */
+        color: var(--blue);
+    }
+    .product-view .content .sort-control{
+        position: relative;
+    }
+    .product-view .content .sort-control h1{
+        font-size: 1vw;
+        margin: 0;
+        padding: 1.5vw 3vw;
+        padding-right: 1vw;
+        margin-bottom: 1vw;
+        color: var(--text);
+    }
+    .product-view .content .sort-control h1 a{
+        color: var(--lightgray);
+        font-size: 0.8vw;
+        display: inline;
+        padding: 0 0.6vw;
+        border-left: 0.1vw solid var(--lightgray);
+    }
+    .product-view .content .sort-control h1 a.last{border: none;}
+    .product-view .content .sort-control h1 a:hover{
+        color: var(--purple);
+    }
+    .product-view .content .sort-control h1 .line{
+        display: inline;
+        width: 0.1vw;
+        height: 1vw;
+        background-color: var(--lightgray);
+    }
+    .searchbar{
+        position: absolute;
+        left: 2vw;
+        top: 1.2vw;
+    }
+    .searchbar input.text{
+        border: none;
+        background-color: var(--lightergray);
+        font-family: 'iransans';
+        padding: 0.5vw 2vw;
+        font-size: 1vw;
+        border-top-right-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+        outline: none;
+        width: 12vw;
+    }
+    .searchbar button.submit{
+        background-color: var(--purple);
+        border-top-left-radius: 1vw;
+        border-bottom-left-radius: 1vw;
+        border: none;
+        padding: 0.5vw 1vw;
+        font-size: 1vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+    }
+    .searchbar button:hover{
+        background-color: var(--pink);
+    }
+    .stl_cont{
+        width: 100%;
+        height: 70vh;
+        margin: 0 auto;
+        background-color: var(--verylightblue);
+        border-radius: 1vw;
+    }
+    .print3d-info {
+        width: 90%;
+        margin: auto;
+    }
+    .print3d-info h1{
+        font-size: 1.2vw;
+        margin: 2vw 0;
+        padding: 0;
+        color: var(--text);
+        margin-bottom: 0.6vw;
+    }
+    .print3d-info h1 i{
+        padding-left: 0.5vw;
+    }
+    .print3d-info p{
+        font-size: 1vw;
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+        text-align: justify;
+        margin-bottom: 1vw;
+    }
+    .print3d-info .label{
+        font-size: 0.8vw;
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 3vw;
+    }
+    .print3d-info .submit {
+        text-align: center;
+        margin-bottom: 2vw;
+    }
+    .print3d-info .submit button{
+        background-color: var(--green);
+        border-radius: 1vw;
+        border: none;
+        padding: 0.8vw 0;
+        font-size: 1.2vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .print3d-info .submit button i{
+        padding-left: 1vw;
+    }
+    .print3d-info .submit button:hover{
+        background-color: var(--red);
+    }
+    .print3d-info .upload-area{
+        border: 0.25vw dashed lightblue;
+        position: relative;
+        cursor: pointer;
+        padding: 2vw 0;
+        text-align: center;
+        color: #798AAF;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        width: 98%;
+        border-radius: 1vw;
+        /* margin-bottom: 1vw; */
+    }
+    .print3d-info .upload-area i{
+        font-size: 1.6vw;
+    }
+    .print3d-info .upload-area:hover {
+        background-color: var(--lightergray);
+    }
+    .print3d-info .upload-area input{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .print3d-stat{
+        position: absolute;
+        bottom: 0.5vw;
+        z-index: 1;
+        overflow: hidden;
+        width: 100%;
+        left: 0;
+    }
+    .print3d-stat .item{
+        width: 25%;
+        float: right;
+        text-align: center;
+        font-size: 1vw;
+    }
+    .print3d-stat .item i{
+        padding-left: 0.5vw;
+        color: var(--pink);
+    }
+    .print3d-stat .item .label{
+        display: inline;
+        color: var(--pink);
+        padding-left: 0.5vw;
+    }
+    .print3d-stat .item .val{
+        display: inline;
+        color: var(--text);
+        direction: ltr;
+    }
+    .print3d-info .item{
+        overflow: hidden;
+    }
+    .print3d-info .item .label{
+        float: right;
+        width: 40%;
+        margin: 0;
+        text-align: right;
+        font-weight: bold;
+        padding-top: 0.3vw;
+    }
+    .print3d-info .item .val{
+        float: right;
+        width: 60%;
+        margin: 0;
+        text-align: right;
+    }
+    .print3d-info .item .val.price{
+        color: var(--green);
+        font-size: 1.2vw;
+        font-weight: bold;
+        margin-bottom: 2vw;
+    }
+    .print3d-info .item .val select.hide{
+        display: none;
+    }
+    .print3d-info .item .val select,
+    .print3d-info .item .val input{
+        display: block;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        padding: 0.2vw 1vw;
+        margin-bottom: 1vw;
+        border-radius: 0.5vw;
+        font-family: 'iransans';
+        font-size: 1vw;
+    }
+    .print3d-info .item .val select{
+        width: 80%;
+        color: var(--text);
+    }
+    .print3d-info .item .val input{
+        width: 60%;
+        text-align: center;
+        color: var(--text);
+    }
+    .print3d-info .item input.title{
+        display: block;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        padding: 0.2vw 1vw;
+        margin-bottom: 1vw;
+        border-radius: 0.5vw;
+        font-family: 'iransans';
+        font-size: 1vw;
+        width: 80%;
+        color: var(--text);
+    }
+    section.decription-content{
+        width: 90%;
+        margin: 2vw auto;
+    }
+    section.decription-content h1{
+        color: var(--purple);
+        font-size: 1.2vw;
+        margin-top: 2vw;
+    }
+    section.decription-content p{
+        color: var(--text);
+        font-size: 1vw;
+        text-align: justify;
+    }
+    section.decription-content .images-view{
+        overflow: hidden;
+    }
+    section.decription-content .images-view img{
+        width: 23%;
+        margin: 0 1%;
+        border-radius: 0.5vw;
+    }
+    h1.print3d-title{
+        font-size: 1.3vw;
+        color: var(--purple);
+        width: 90%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+
+
+}
+@media only screen and (max-width: 800px) {
+    .product-view{
+        /* background-color: var(--lightergray); */
+        width: 100%;
+        margin: 2vw auto;
+        overflow: hidden;
+        padding: 0;
+        margin-bottom: 2vw;
+    }
+    .product-view .product-cont-view{
+        float: left;
+        width: 100%;
+    }
+    .product-view .sidebar-view{
+        width: 100%;
+        float: left;
+    }
+    .product-view .sidebar{
+        width: 90%;
+        margin: 3vw auto;
+        background-color: var(--white);
+        border-radius: 2vw;
+        overflow: hidden;
+    }
+    .product-view .product-cont-view .content{
+        width: 90%;
+        margin: 4vw auto;
+        background-color: var(--white);
+        border-radius: 1vw;
+        overflow: hidden;
+        position: relative;
+    }
+    .product-view .sidebar .user-info{
+        background-color: var(--purple);
+        color: white;
+        overflow: hidden;
+    }
+    .product-view .sidebar .user-info h1{
+        font-size: 3vw;
+        /* margin-top: 2.1vw; */
+        /* margin-bottom: 0.5vw; */
+        margin: 0;
+        padding: 1.5vw 4vw;
+    }
+    .product-view .sidebar .user-info .info a.edit{
+        color: var(--lightergray);
+        font-size: 2.9vw;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 2vw;
+        display: block;
+    }
+    .product-view .sidebar .user-info .info a.edit:hover{
+        color: var(--blue);
+    }
+    .product-view .sidebar .user-info .info a.edit i{
+        padding-left: 0.5vw;
+    }
+    .product-view .sidebar .nav-view a.link{
+        display: block;
+        color: var(--text);
+        padding: 2vw 3vw;
+        border-bottom: 0.1vw solid var(--lightergray);
+        font-size: 3vw;
+        background-color: var(--white);
+    }
+    .product-view .sidebar .nav-view a.link.active{
+        color: var(--purple);
+    }
+    .product-view .sidebar .nav-view a.link:hover{
+        background-color: var(--light);
+    }
+    .product-view .sidebar .nav-view a.link i{
+        padding-left: 3vw;
+        color: var(--lightgray);
+    }
+    .product-view .sidebar .nav-view a.link:hover i{
+        color: var(--purple);
+    }
+    .product-view .sidebar .nav-view a.logout{
+        display: block;
+        color: var(--purple);
+        text-align: center;
+        padding: 0.8vw 1vw;
+        font-size: 3.1vw;
+        background-color: var(--white);
+    }
+    .product-view .sidebar .nav-view a.logout:hover{
+        /* background-color: var(--lightergray); */
+        color: var(--blue);
+    }
+    .product-view .content .sort-control{
+        position: relative;
+    }
+    .product-view .content .sort-control h1{
+        font-size: 2.6vw;
+        margin: 0;
+        padding: 2.5vw 6vw;
+        padding-right: 3vw;
+        margin-bottom: 15vw;
+        color: var(--text);
+    }
+    .product-view .content .sort-control h1 a{
+        color: var(--lightgray);
+        font-size: 2.3vw;
+        display: inline;
+        padding: 0 0.8vw;
+        border-left: 0.1vw solid var(--lightgray);
+    }
+    .product-view .content .sort-control h1 a.last{border: none;}
+    .product-view .content .sort-control h1 a:hover{
+        color: var(--purple);
+    }
+    .product-view .content .sort-control h1 .line{
+        display: inline;
+        width: 0.3vw;
+        height: 3vw;
+        background-color: var(--lightgray);
+    }
+    .searchbar{
+        position: absolute;
+        left: 5vw;
+        top: 12vw;
+    }
+    .searchbar input.text{
+        border: none;
+        background-color: var(--lightergray);
+        font-family: 'iransans';
+        padding: 2vw 6vw;
+        font-size: 3vw;
+        border-top-right-radius: 2vw;
+        border-bottom-right-radius: 2vw;
+        outline: none;
+        width: 60vw;
+    }
+    .searchbar button.submit{
+        background-color: var(--purple);
+        border-top-left-radius: 2vw;
+        border-bottom-left-radius: 2vw;
+        border: none;
+        padding: 2vw 3vw;
+        font-size: 3vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+    }
+    .searchbar button:hover{
+        background-color: var(--pink);
+    }
+    .stl_cont{
+        width: 100%;
+        height: 40vh;
+        margin: 0 auto;
+        background-color: var(--verylightblue);
+        border-radius: 2vw;
+    }
+    .print3d-info {
+        width: 90%;
+        margin: auto;
+    }
+    .print3d-info h1{
+        font-size: 3.2vw;
+        margin: 4vw 0;
+        padding: 0;
+        color: var(--text);
+        margin-bottom: 3.6vw;
+    }
+    .print3d-info h1 i{
+        padding-left: 1.5vw;
+    }
+    .print3d-info p{
+        font-size: 3vw;
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+        text-align: justify;
+        margin-bottom: 3vw;
+    }
+    .print3d-info .label{
+        font-size: 2.8vw;
+        color: var(--gray);
+        text-align: center;
+        margin-bottom: 7vw;
+    }
+    .print3d-info .submit {
+        text-align: center;
+        margin-bottom: 4vw;
+    }
+    .print3d-info .submit button{
+        background-color: var(--green);
+        border-radius: 2vw;
+        border: none;
+        padding: 2.8vw 0;
+        font-size: 3.8vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .print3d-info .submit button i{
+        padding-left: 2vw;
+    }
+    .print3d-info .submit button:hover{
+        background-color: var(--red);
+    }
+    .print3d-info .upload-area{
+        border: 0.5vw dashed lightblue;
+        position: relative;
+        cursor: pointer;
+        padding: 5vw 0;
+        text-align: center;
+        color: #798AAF;
+        font-family: 'iransans';
+        font-size: 4vw;
+        width: 98%;
+        border-radius: 2vw;
+        /* margin-bottom: 1vw; */
+    }
+    .print3d-info .upload-area i{
+        font-size: 3.6vw;
+    }
+    .print3d-info .upload-area:hover {
+        background-color: var(--lightergray);
+    }
+    .print3d-info .upload-area input{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .print3d-stat{
+        position: absolute;
+        bottom: 0.5vw;
+        z-index: 1;
+        overflow: hidden;
+        width: 100%;
+        left: 0;
+        padding: 0;
+    }
+    .print3d-stat .item{
+        width: 50%;
+        float: right;
+        text-align: center;
+        font-size: 3vw;
+        height: 7vw;
+    }
+    .print3d-stat .item i{
+        padding-left: 1.5vw;
+        color: var(--pink);
+    }
+    .print3d-stat .item .label{
+        display: inline;
+        color: var(--pink);
+        padding-left: 0.5vw;
+    }
+    .print3d-stat .item .val{
+        display: inline;
+        color: var(--text);
+        direction: ltr;
+    }
+    .print3d-info .item{
+        overflow: hidden;
+        margin-bottom: 1.5vw;
+    }
+    .print3d-info .item .label{
+        float: right;
+        width: 40%;
+        margin: 0;
+        text-align: right;
+        font-weight: bold;
+        padding-top: 1vw;
+    }
+    .print3d-info .item .val{
+        float: right;
+        width: 60%;
+        margin: 0;
+        text-align: right;
+    }
+    .print3d-info .item .val.price{
+        color: var(--green);
+        font-size: 4vw;
+        font-weight: bold;
+        margin-bottom: 5vw;
+    }
+    .print3d-info .item .val select.hide{
+        display: none;
+    }
+    .print3d-info .item .val select,
+    .print3d-info .item .val input{
+        display: block;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        padding: 1.5vw 3vw;
+        margin-bottom: 3vw;
+        border-radius: 1.5vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+    }
+    .print3d-info .item .val select{
+        width: 82%;
+        color: var(--text);
+    }
+    .print3d-info .item .val input{
+        width: 70%;
+        text-align: center;
+        color: var(--text);
+    }
+    .print3d-info .item input.title{
+        display: block;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        padding: 1.5vw 3vw;
+        margin-bottom: 3vw;
+        border-radius: 1.5vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+        width: 85%;
+        color: var(--text);
+    }
+    section.decription-content{
+        width: 90%;
+        margin: 2vw auto;
+    }
+    section.decription-content h1{
+        color: var(--purple);
+        font-size: 3.6vw;
+        margin-top: 4vw;
+    }
+    section.decription-content p{
+        color: var(--text);
+        font-size: 3vw;
+        text-align: justify;
+    }
+    section.decription-content .images-view{
+        overflow: hidden;
+    }
+    section.decription-content .images-view img{
+        width: 48%;
+        margin: 0 1%;
+        border-radius: 1vw;
+    }
+    h1.print3d-title{
+        font-size: 3.3vw;
+        color: var(--purple);
+        width: 90%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+}
+
+
+
+
+
+

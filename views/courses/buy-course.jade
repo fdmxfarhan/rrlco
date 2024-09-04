@@ -1,0 +1,42 @@
+.sidebar 
+    .user-info 
+        h1 اطلاعات دوره
+    .nav-view 
+        .shop-course
+            h1.coursetitle
+                i.fa.fa-book
+                | #{course.title}
+            .info 
+                .label هزینه آموزش
+                -if(course.price > 0)
+                    .val.price #{dot(course.price)} تومان
+                -else
+                    .val.price رایگان
+            .info 
+                .label تعداد شرکت کننده
+                .val= course.numofattendes
+                    i.fa.fa-user
+            .info 
+                .label مدت زمان
+                .val #{timedigit(course.totalTime.hours)}:#{timedigit(course.totalTime.minutes)}:00
+                    i.fa.fa-clock-o
+            .info 
+                .label تعداد جلسات
+                .val= course.sessions
+                    i.fa.fa-play
+            .info 
+                .label نوع دوره
+                .val= course.type
+                    i.fa.fa-laptop
+            .actions 
+                -if(course.price == 0){
+                    a.buy(href="/courses/course-session?index=0&id=#{course._id}") 
+                        i.fa.fa-play 
+                        | شروع یادگیری
+                -}else{
+                    a.buy(href="/dashboard/add-to-cart?type=course&id=#{course._id}") 
+                        i.fa.fa-shopping-cart 
+                        | افزودن به سبد خرید
+                -}
+                a.like(href="#") 
+                    i.fa.fa-heart-o
