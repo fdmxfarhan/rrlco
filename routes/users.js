@@ -14,7 +14,6 @@ router.get('/register', (req, res, next) => {
     else
         res.render('register');
 });
-
 router.get('/login', (req, res, next) => {
     if(req.user)
         res.redirect('/dashboard');
@@ -53,7 +52,7 @@ router.post('/register', (req, res, next) => {
                 res.render('register', { firstName, lastName, phone, email, errors, address });
             }
             else {
-                const newUser = new User({ipAddress, fullname, firstName, lastName, phone, email, password, role, card});
+                const newUser = new User({ipAddress, fullname, firstName, lastName, phone, email, password, role, card, address});
                 // Hash password
                 bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
                     if(err) throw err;
@@ -68,7 +67,6 @@ router.post('/register', (req, res, next) => {
         });
     }  
 });
-  
 router.post('/login', function(req, res, next){
     const { username, password} = req.body;
     let errors = [];
@@ -85,12 +83,11 @@ router.post('/login', function(req, res, next){
       failureFlash: true
     })(req, res, next);
 });
-  
-// Logout handle
 router.get('/logout', function(req, res, next){
-    req.logOut();
-    req.flash('success_msg', 'شما با موفقیت خارج شدید');
-    res.redirect('/users/login');
+    req.logOut((err) => {
+        req.flash('success_msg', 'شما با موفقیت خارج شدید');
+        res.redirect('/users/login');
+    });
 });
 
 module.exports = router;

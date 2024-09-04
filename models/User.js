@@ -25,7 +25,7 @@ var UserSchema = new mongoose.Schema({
   date: Date,
   shoppingcart: {
     type: [Object],
-    default: 0,
+    default: [],
   },
   phoneConfirmed: {
     type: Boolean,

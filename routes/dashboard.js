@@ -18,6 +18,7 @@ const Discount = require('../models/Discount');
 
 
 router.get('/', ensureAuthenticated, (req, res, next) => {
+    console.log(req.user)
     if(req.user.role == 'user')
     {
         res.render('./dashboard/user-dashboard', {
