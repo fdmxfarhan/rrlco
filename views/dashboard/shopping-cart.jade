@@ -35,8 +35,7 @@ block content
                                         .total-price #{dot(user.shoppingcart[i].count * user.shoppingcart[i].item.price)} تومان
                                         a.delete-item(href="/dashboard/delete-item-cart?index=#{i}") 
                                             i.fa.fa-times
-                                -}
-                                -if(user.shoppingcart[i].type == 'course'){
+                                -}else if(user.shoppingcart[i].type == 'course'){
                                     .item 
                                         a.cover(href="/courses/course-view?id=#{user.shoppingcart[i].item._id}")  
                                             img(src="#{user.shoppingcart[i].item.cover}", alt="")
@@ -49,11 +48,10 @@ block content
                                         .total-price #{dot(user.shoppingcart[i].item.price)} تومان
                                         a.delete-item(href="/dashboard/delete-item-cart?index=#{i}") 
                                             i.fa.fa-times
-                                -}
-                                -if(user.shoppingcart[i].type == 'print3d'){
+                                -}else if(user.shoppingcart[i].type == 'print3d'){
                                     .item 
                                         a.cover(href="/print3d/print3d-view?id=#{user.shoppingcart[i].item._id}")  
-                                            i.fa.fa-files-o.print3d-icon
+                                            i.fa.fa-file-text.print3d-icon
                                         .info 
                                             h1 پرینت سه بعدی #{user.shoppingcart[i].item.title}
                                             h2 #{user.shoppingcart[i].item.filament} #{user.shoppingcart[i].item.color}
@@ -76,11 +74,18 @@ block content
                 .shopping-cart-info 
                     h1 #{user.shoppingcart.length} کالا در سبد خرید شما
                     .discount
-                        .label کد تخفیف دارید؟
-                        .val    
-                            form(action="/dashboard/apply-discount" method="POST") 
-                                input(type="text" name="discountnumber" placeholder="کد تخفیف")
-                                button(type="submit") بررسی
+                        -if(currentdicount){
+                            .label کد تخفیف اعمال شده
+                            a.remove(href="/dashboard/remove-discount-from-cart") 
+                                i.fa.fa-times 
+                                | حذف کد تخفیف
+                        -}else{
+                            .label کد تخفیف دارید؟
+                            .val    
+                                form(action="/dashboard/apply-discount-tocart" method="POST") 
+                                    input(type="text" name="discountnumber" placeholder="کد تخفیف")
+                                    button(type="submit") بررسی
+                        -}
                     .item 
                         .label مجموع کالاها: 
                         .val #{dot(totalPrice)} تومان

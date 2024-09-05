@@ -32,6 +32,10 @@ var UserSchema = new mongoose.Schema({
     default: false,
   },
   confirmcode: String,
+  currentdicount: {
+    type: Object,
+    default: {_id: ''},
+  }
 });
 
 var User = mongoose.model('User', UserSchema);

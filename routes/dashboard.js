@@ -15,10 +15,43 @@ const genDiscountCode = require('../config/genDiscountCode');
 const {coursetypes, courseCategories, productCategories} = require('../config/consts')
 const dateConvert = require('../config/dateConvert');
 const Discount = require('../models/Discount');
-
+// 3Ol9pc
+var cart_total_price = (cart) => {
+    totalPrice = 0;
+    for(var i=0; i<cart.length; i++){
+        if(cart[i].type == 'product'){
+            totalPrice += cart[i].count * cart[i].item.price;
+        }
+        if(cart[i].type == 'course'){
+            totalPrice += cart[i].item.price;
+        }
+        if(cart[i].type == 'print3d'){
+            totalPrice += cart[i].count * cart[i].item.price;
+        }
+    }
+    return totalPrice
+}
+var cart_discount = (currentdiscount, cart) => {
+    var totalPrice = cart_total_price(cart);
+    var discount = 0;
+    if(currentdiscount.type == 'درصد'){
+        if(currentdiscount.itemtype == 'all'){
+            discount = totalPrice * currentdiscount.amount / 100.0;
+        }else{
+            var typeTotalPrice = 0;
+            for(var i=0; i<cart.length; i++){
+                if(cart[i].type == currentdiscount.itemtype){
+                    typeTotalPrice += cart[i].count * cart[i].item.price;
+                }
+            }
+            discount = typeTotalPrice * currentdiscount.amount / 100.0;
+        }
+    }
+    if(discount > currentdiscount.maxDiscount) return currentdiscount.maxDiscount;
+    return discount;
+}
 
 router.get('/', ensureAuthenticated, (req, res, next) => {
-    console.log(req.user)
     if(req.user.role == 'user')
     {
         res.render('./dashboard/user-dashboard', {
@@ -110,7 +143,7 @@ router.get('/add-to-cart', ensureAuthenticated, (req, res, next) => {
                 req.flash('error_msg', 'این دوره در دسترس نمی‌باشد.');
                 res.redirect(`/courses/course-view?id=${course._id}`);
             }else{
-                shoppingcart.push({item: course, type});
+                shoppingcart.push({item: course, type, count: 1});
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart}}, (err, doc) => {
                     req.flash('success_msg', 'به سبد خرید اضافه شد');
                     res.redirect(`/courses/course-view?id=${course._id}`);
@@ -172,22 +205,19 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
 });
 router.get('/shopping-cart', ensureAuthenticated, (req, res, next) => {
     var totalPrice = 0, discount = 0, tax=0;
-    for(var i=0; i<req.user.shoppingcart.length; i++){
-        if(req.user.shoppingcart[i].type == 'product'){
-            totalPrice += req.user.shoppingcart[i].count * req.user.shoppingcart[i].item.price;
-        }
-        if(req.user.shoppingcart[i].type == 'course'){
-            totalPrice += req.user.shoppingcart[i].item.price;
-        }
-    }
-    res.render('./dashboard/shopping-cart', {
-        theme: req.session.theme,
-        user: req.user,
-        dot,
-        totalPrice,
-        discount,
-        tax,
-    });
+    totalPrice = cart_total_price(req.user.shoppingcart);
+    Discount.findById(req.user.currentdicount, (err, currentdicount) => {
+        if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
+        res.render('./dashboard/shopping-cart', {
+            theme: req.session.theme,
+            user: req.user,
+            dot,
+            totalPrice,
+            discount,
+            tax,
+            currentdicount,
+        });
+    })
 });
 router.get('/delete-cart', ensureAuthenticated, (req, res, next) => {
     User.updateMany({_id: req.user._id}, {$set: {shoppingcart: []}}, (err, doc) => {
@@ -256,7 +286,7 @@ router.get('/user-edit', ensureAuthenticated, (req, res, next) => {
 });
 router.post('/user-edit', ensureAuthenticated, (req, res, next) => {
     var {firstName, lastName, phone, email, address } = req.body;
-    User.updateMany({_id: req.user._id}, {firstName, lastName, phone, email, address, fullname: firstName + ' ' + lastName}, (err, doc) => {
+    User.updateMany({_id: req.user._id}, {$set: {firstName, lastName, phone, email, address, fullname: firstName + ' ' + lastName}}, (err, doc) => {
         req.flash('success_msg', 'به سبد خرید اضافه شد');
         res.redirect('/dashboard/user-edit');
     });
@@ -304,5 +334,36 @@ router.get('/delete-discount', ensureAuthenticated, (req, res, next) => {
     }
     else res.render('./error')
 });   
-
+router.post('/apply-discount-tocart', ensureAuthenticated, (req, res, next) => {
+    var { discountnumber } = req.body;
+    Discount.findOne({code: discountnumber}, (err, discount) => {
+        if(discount){
+            var totalPrice = cart_total_price(req.user.shoppingcart);
+            if(discount.userID == 'all' || discount.userID == req.user._id){
+                if(totalPrice > discount.minPurchase){
+                    User.updateMany({_id: req.user._id}, {$set: {currentdicount: discount}}, (err, doc) => {
+                        req.flash('success_msg', `کد تخفیف ${discount.code} اضافه شد.`);
+                        res.redirect('/dashboard/shopping-cart');    
+                    });
+                }else{
+                    req.flash('error_msg', `حداقل خرید مجاز ${dot(discount.minPurchase)} تومان می‌باشد.`);
+                    res.redirect('/dashboard/shopping-cart');    
+                }
+            }else{
+                req.flash('error_msg', 'این کد تخفیف برای شما تعریف نشده.');
+                res.redirect('/dashboard/shopping-cart');
+            }
+        }else{
+            req.flash('error_msg', 'کد تخفیف یافت نشد.');
+            res.redirect('/dashboard/shopping-cart');
+        }
+    })
+});   
+router.get('/remove-discount-from-cart', ensureAuthenticated, (req, res, next) => {
+    const previousUrl = req.get('referer'); 
+    User.updateMany({_id: req.user._id}, {$set: {currentdicount: {_id: ''}}}, (err) => {
+        req.flash('success_msg', `کد تخفیف حذف شد.`);
+        res.redirect(previousUrl);
+    });
+});
 module.exports = router;

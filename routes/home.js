@@ -41,7 +41,6 @@ router.get('/theme', (req, res, next) => {
     const previousUrl = req.get('referer'); // Get the referrer URL from the request headers
     var {theme} = req.query;
     if(theme) req.session.theme = theme;
-    console.log(theme);
     if (previousUrl) {
         res.redirect(previousUrl); // Redirect to the previous URL
     } else {
