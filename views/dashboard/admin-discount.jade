@@ -53,18 +53,18 @@ block content
                         .item.center.col10 حذف
                     -for(var i=0; i<discounts.length; i++){
                         .raw 
-                            .item.center.col15.bold 
-                                i.fa.fa-tag.icon
-                                | #{discounts[i].code}
-                            .item.center.col20 #{discounts[i].expiredate.year}/#{discounts[i].expiredate.month}/#{discounts[i].expiredate.day}
-                            .item.center.col10 #{discounts[i].amount}
-                            .item.center.col10 #{discounts[i].type}
-                            .item.center.col10 #{discounts[i].itemtype}
-                            .item.center.col10 #{discounts[i].maxDiscount}
-                            .item.center.col10 #{discounts[i].minPurchase}
+                            .item.center.col15.bold  
+                                i.fa.fa-tag.icon 
+                                | #{discounts[i].code}   
+                            .item.center.col20 #{discounts[i].expiredate.year}/#{discounts[i].expiredate.month}/#{discounts[i].expiredate.day} 
+                            .item.center.col10 #{discounts[i].amount} 
+                            .item.center.col10 #{discounts[i].type} 
+                            .item.center.col10 #{discounts[i].itemtype} 
+                            .item.center.col10 #{discounts[i].maxDiscount} 
+                            .item.center.col10 #{discounts[i].minPurchase} 
                             .item.center.col10 
                                 a.delete(href="/dashboard/delete-discount?id=#{discounts[i]._id}") 
-                                    i.fa.fa-trash 
+                                    i.fa.fa-trash-can 
                     -}
         .sidebar-view 
             include sidebar
