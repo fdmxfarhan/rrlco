@@ -1,4 +1,5 @@
 @media only screen and (min-width: 800px) {
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .shopping-cart-info h1{
         /* background-color: var(--verylightblue); */
         /* color: var(--blue); */
@@ -19,6 +20,12 @@
         color: var(--red);
         margin-top: 2vw;
     }
+    .shopping-cart-info .discount a.remove{
+        font-size: 1vw;
+        color: var(--blue);
+        cursor: pointer;
+    }
+    .shopping-cart-info .discount a.remove:hover{color: var(--pink);}
     .shopping-cart-info .discount .val{
         text-align: center;
         overflow: hidden;
@@ -241,5 +248,6 @@
         -webkit-appearance: none;
         margin: 0;
     }
+    
 }
 @media only screen and (max-width: 800px) {}

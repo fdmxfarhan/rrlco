@@ -40,7 +40,7 @@ block content
                                     input(type="number" name="month" placeholder="ماه")
                                     input(type="number" name="year" placeholder="سال")
                             .align-left
-                                button(type="submit") افزودن کد تخفیف
+                                button.blue(type="submit") افزودن کد تخفیف
                 .data-list-view 
                     .title-raw 
                         .item.center.col15 کد
@@ -55,7 +55,7 @@ block content
                         .raw 
                             .item.center.col15.bold  
                                 i.fa.fa-tag.icon 
-                                | #{discounts[i].code}   
+                                | #{discounts[i].code}  
                             .item.center.col20 #{discounts[i].expiredate.year}/#{discounts[i].expiredate.month}/#{discounts[i].expiredate.day} 
                             .item.center.col10 #{discounts[i].amount} 
                             .item.center.col10 #{discounts[i].type} 

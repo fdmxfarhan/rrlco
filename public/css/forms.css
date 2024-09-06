@@ -64,13 +64,12 @@
         font-size: 1vw;
         border-radius: 1vw;
         color: white;
-        color: var(--black);
-        background-color: var(--blue);
         border: none;
         font-family: 'iransans';
         margin-top: 1.6vw;
         margin-left: 5%;
     }
+    .form-view button.blue{background-color: var(--blue);}
     .form-view button:hover{
         cursor: pointer;
         background-color: var(--pink);
