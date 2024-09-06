@@ -8,6 +8,8 @@ router.get('/', (req, res, next) => {
         time: [
             { hour: 10, minute: 0, second: 0 },
             { hour: 0, minute: 0, second: 5 },
+            { hour: 0, minute: 0, second: 5 },
+            { hour: 0, minute: 0, second: 5 },
         ],
         id: 10,
     };
