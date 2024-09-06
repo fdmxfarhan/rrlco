@@ -76,9 +76,6 @@ var privateKey  = fs.readFileSync('ssl/server.key', 'utf8');
 var certificate = fs.readFileSync('ssl/server.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
-// port setup
-const port = 3000
-
 // Upload
 app.use('/upload', uploadHandler);
 
@@ -190,19 +187,6 @@ httpServer.listen(3000, () => {
 httpsServer.listen(443, () => {
     console.log('https server is started :)')
 });
-
-// app.listen(port, () => {
-//   console.log(`Juniorcup is started at port ${port}`);
-// });
-
-
-
-
-
-
-
-
-
 
 
 
