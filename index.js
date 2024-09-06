@@ -11,6 +11,7 @@ var createError = require('createerror');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport'); 
+const socketIo = require('socket.io');
 
 
 // routs requirement
@@ -130,8 +131,26 @@ app.use(function(err, req, res, next) {
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-const io = require('socket.io')(httpsServer);
+const http_io = require('socket.io')(httpServer);
+const https_io = require('socket.io')(httpsServer);
+var io_callback = (socket, io) => {
+    console.log('A client connected:', socket.id);
+  
+    // Handle messages from the ESP8266 client
+    socket.on('esp8266Message', (data) => {
+      console.log('Message from ESP8266:', data);
+      // Broadcast to other clients if necessary
+      io.emit('broadcastMessage', data);
+    });
+  
+    // Handle disconnection
+    socket.on('disconnect', () => {
+      console.log('A client disconnected:', socket.id);
+    });
+}
 
+http_io.on('connection', (socket) => io_callback(socket, http_io));
+https_io.on('connection', (socket) => io_callback(socket, https_io));
 
 httpServer.listen(3000);
 httpsServer.listen(443);
@@ -142,38 +161,53 @@ console.log('server is started :)')
 // });
 
 
-var seo = require('express-seo')(app);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var seo = require('express-seo')(app);
  
-// For internatanalization, set the supported languages
-seo.setConfig({
-    langs: ["en", "fa"]
-});
+// // For internatanalization, set the supported languages
+// seo.setConfig({
+//     langs: ["en", "fa"]
+// });
  
-// Set the default tags
-seo.setDefaults({
-    // html: "<a href='https://www.instagram.com/junior_cup/'>Follow me on instagram</a>" // Special property to insert html in the body (interesting to insert links)
-    title: "جونیورکاپ", // Page title
-    // All the other properties will be inserted as a meta property
-    description: {
-        en: "juniorcup",
-        fa: "جونیور کاپ"
-    },
-    image: "https://juniorcup.ir/images/landing/Juniorcup2021b-min.jpg"
-});
+// // Set the default tags
+// seo.setDefaults({
+//     // html: "<a href='https://www.instagram.com/junior_cup/'>Follow me on instagram</a>" // Special property to insert html in the body (interesting to insert links)
+//     title: "جونیورکاپ", // Page title
+//     // All the other properties will be inserted as a meta property
+//     description: {
+//         en: "juniorcup",
+//         fa: "جونیور کاپ"
+//     },
+//     image: "https://juniorcup.ir/images/landing/Juniorcup2021b-min.jpg"
+// });
  
-// Create an seo route
-seo.add("/contact", function(req, opts, next) {
-    /*س
-    req: Express request
-    opts: Object {
-        service: String ("facebook" || "twitter" || "search-engine")
-        lang: String (Detected language)
-    }
-    */
-    next({
-        description: "برگزاری سیزدهمین دوره برگزاری مسابقات رباتیک جوینورکاپ"
-    });
-});
+// // Create an seo route
+// seo.add("/contact", function(req, opts, next) {
+//     /*س
+//     req: Express request
+//     opts: Object {
+//         service: String ("facebook" || "twitter" || "search-engine")
+//         lang: String (Detected language)
+//     }
+//     */
+//     next({
+//         description: "برگزاری سیزدهمین دوره برگزاری مسابقات رباتیک جوینورکاپ"
+//     });
+// });
 
 
 

@@ -1,33 +1,32 @@
-const https = require('https');
+const express = require('express');
+const http = require('http');
+const WebSocket = require('ws');
 
-const data = JSON.stringify({
-    'from': '50004001448037',
-    'to': '09336448037',
-    'text': 'test sms'
+const app = express();
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+// Serve your client files or other routes if needed
+app.get('/', (req, res) => {
+  res.send('WebSocket Server is Running');
 });
 
-const options = {
-    hostname: 'console.melipayamak.com',
-    port: 443,
-    path: '/api/send/simple/c39c9f345eed44589146645ec66919a1',
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length
-    }
-};
+// WebSocket connection
+wss.on('connection', (ws) => {
+  console.log('Client connected');
 
-const req = https.request(options, res => {
-    console.log('statusCode: ' + res.statusCode);
+  ws.on('message', (message) => {
+    console.log(`Received: ${message}`);
+    ws.send(`o`); // Echo the message back to the client
+    // ws.send(`Echo: ${message}`); // Echo the message back to the client
+  });
 
-    res.on('data', d => {
-        process.stdout.write(d)
-    });
+  ws.on('close', () => {
+    console.log('Client disconnected');
+  });
 });
 
-req.on('error', error => {
-    console.error(error);
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-req.write(data);
-req.end();
