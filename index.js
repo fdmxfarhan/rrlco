@@ -12,6 +12,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport'); 
 const socketIo = require('socket.io');
+const { Server } = require('socket.io');
+const WebSocket = require('ws');
 
 
 // routs requirement
@@ -23,6 +25,7 @@ var productsRoute = require('./routes/products');
 var coursesRoute = require('./routes/courses');
 var print3dRoute = require('./routes/print3d');
 var paymentRoute = require('./routes/payment');
+var animalfeederRoute = require('./routes/animalfeeder');
 
 
 // Mongo DB connect
@@ -100,6 +103,7 @@ app.use('/products', productsRoute);
 app.use('/courses', coursesRoute);
 app.use('/print3d', print3dRoute);
 app.use('/payment', paymentRoute);
+app.use('/animalfeeder', animalfeederRoute);
 
 
 
@@ -131,26 +135,58 @@ app.use(function(err, req, res, next) {
 var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 
-const http_io = require('socket.io')(httpServer);
-const https_io = require('socket.io')(httpsServer);
-var io_callback = (socket, io) => {
-    console.log('A client connected:', socket.id);
-  
-    // Handle messages from the ESP8266 client
-    socket.on('esp8266Message', (data) => {
-      console.log('Message from ESP8266:', data);
-      // Broadcast to other clients if necessary
-      io.emit('broadcastMessage', data);
+// Initialize Socket.IO server
+// ----------------------------------NOTE: For ESP8266 install version 2.x -> npm install socket.io@2.4.1
+const io = socketIo(httpServer,{
+    cors: {
+        origin: "*",  // Allow all origins for simplicity
+        methods: ["GET", "POST"]
+    }
+}); // Make sure you have version 2.x installed
+
+// Handle WebSocket connections
+io.on('connection', (socket) => {
+    console.log('Client connected:', socket.id);
+
+    // Event listener for messages from clients
+    socket.on('message', (message) => {
+        console.log(`Received from ${socket.id}: ${message}`);
+
+        // Emit message to ESP8266
+        io.emit('controlLED', message);
     });
-  
-    // Handle disconnection
+
+    // Handle client disconnect
     socket.on('disconnect', () => {
-      console.log('A client disconnected:', socket.id);
+        console.log('Client disconnected:', socket.id);
+    });
+});
+
+
+
+// --------------- Websocket
+/*
+const http_wss = new WebSocket.Server({ server: httpServer });
+// const https_wss = new WebSocket.Server({ httpsServer });
+
+var io_callback = (ws) => {
+    console.log('Client connected');
+
+    ws.on('message', (message) => {
+        console.log(`Received: ${message}`);
+        // ws.send(`o`); // Echo the message back to the client
+        ws.send(`${message}`); // Echo the message back to the client
+    });
+
+    ws.on('close', () => {
+        console.log('Client disconnected');
     });
 }
 
-http_io.on('connection', (socket) => io_callback(socket, http_io));
-https_io.on('connection', (socket) => io_callback(socket, https_io));
+http_wss.on('connection', (ws) => io_callback(ws));
+// https_wss.on('connection', (socket) => io_callback(socket, https_wss));
+*/
+
 
 httpServer.listen(3000);
 httpsServer.listen(443);
