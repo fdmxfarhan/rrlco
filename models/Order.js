@@ -23,6 +23,7 @@ var OrderSchema = new mongoose.Schema({
     type: Number,
     default: 202400001,
   },
+  paymentAuthority: String,
 });
 
 var Order = mongoose.model('Order', OrderSchema);

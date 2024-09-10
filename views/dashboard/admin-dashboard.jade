@@ -13,22 +13,22 @@ block content
                         .info 
                             i.fa.fa-tag.skyblue
                             h1 محصولات
-                        .num 0
+                        .num= numOfProduct
                     .item 
                         .info 
                             i.fa.fa-book.yellow
                             h1 دوره‌ها
-                        .num 0
+                        .num= numOfCourse
                     .item 
                         .info 
-                            i.fa.fa-heart.green
-                            h1 علاقه‌مندی‌ها
-                        .num 0
+                            i.fa.fa-shopping-cart.green
+                            h1 سفارش ها
+                        .num= numOfOrder
             .content
-                //- -for(var i=0; i<orders.length; i++){
-                //-     -var order = orders[i];
-                //-     include order-progress
-                //- -}
+                -for(var i=0; i<orders.length; i++){
+                    -var order = orders[i];
+                    include order-progress
+                -}
         .sidebar-view 
             include sidebar
         

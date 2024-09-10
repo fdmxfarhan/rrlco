@@ -35,14 +35,23 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
     else if(req.user.role = 'admin')
     {
         Order.find({compeleted: false}, (err, orders) => {
-            res.render('./dashboard/admin-dashboard', {
-                theme: req.session.theme,
-                user: req.user,
-                orders,
-                dateConvert,
-                dot,
-                orderStateNum,
-            });
+            Product.countDocuments({}).then((numOfProduct) => {
+                Course.countDocuments({}).then((numOfCourse) => {
+                    Order.countDocuments({}).then((numOfOrder) => {
+                        res.render('./dashboard/admin-dashboard', {
+                            theme: req.session.theme,
+                            user: req.user,
+                            orders,
+                            dateConvert,
+                            dot,
+                            orderStateNum,
+                            numOfProduct,
+                            numOfCourse,
+                            numOfOrder,
+                        });
+                    });
+                });
+            })
         });
     }
 });
@@ -377,7 +386,11 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
         var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
         totalPrice = cart_total_price(req.user.shoppingcart);
         Discount.findById(req.user.currentdicount, (err, currentdicount) => {
-            if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
+            var discountID = '';
+            if(currentdicount) {
+                discount = cart_discount(currentdicount, req.user.shoppingcart);
+                discountID = currentdicount._id;
+            }
             if(delivery == 'پیک موتوری') deliveryPrice = 0;
             var newOrder = new Order({
                 ownerID: req.user._id,
@@ -388,7 +401,7 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
                 discount,
                 tax,
                 deliveryPrice, ////////////////////////////////
-                discountID: req.user.currentdicount,
+                discountID,
                 delivery,
                 city,
                 postCode,
@@ -400,11 +413,30 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
             });
             newOrder.save().then(discount => {
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart: []}}, (err, doc) => {
-                    res.send('done');
+                    res.redirect(`/payment/pay-order?id=${newOrder._id}`);
                 });
             }).catch(err => console.log(err));
         });
     }
 });
-
+router.get('/remove-order', ensureAuthenticated, (req, res, next) => {
+    var orderID = req.query.id;
+    if(req.user.role == 'admin'){
+        Order.deleteOne({_id: orderID}, (err) => {
+            req.flash('success_msg', 'سفارش حذف شد.');
+            res.redirect(`/dashboard`);
+        });
+    }
+    else{
+        Order.findById(orderID, (err, order) => {
+            if(order.ownerID == req.user._id){
+                Order.deleteOne({_id: orderID}, (err) => {
+                    req.flash('success_msg', 'سفارش حذف شد.');
+                    res.redirect(`/dashboard`);
+                });
+            }
+            else res.send('Access Denied!!!')
+        });
+    }
+});
 module.exports = router;

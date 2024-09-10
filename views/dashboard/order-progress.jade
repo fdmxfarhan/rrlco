@@ -2,7 +2,7 @@
     .progress-stat 
         .stage(class="#{orderStateNum(order.state) > 1? 'active':''}")
             i.fa.fa-credit-card-alt
-            -if(order.payed)
+            -if(orderStateNum(order.state) > 1)
                 .text پرداخت شده
             -else
                 .text در انتضار پرداخت
@@ -58,6 +58,11 @@
                         | کد پستی: 
                     .val= order.postCode
     .left-side 
+        -if(!order.payed){
+            a.remove-order(href="/dashboard/remove-order?id=#{order._id}") 
+                i.fa.fa-times 
+                | لغو سفارش
+        -}
         .item 
             .label جمع اقلام
             .val #{dot(order.totalPrice)} تومان
@@ -74,7 +79,7 @@
             .label مجموع
             .val #{dot(order.totalPrice + order.deliveryPrice + order.tax - order.discount)} تومان
         -if(!order.payed){
-            a.link.pay(href="#") 
+            a.link.pay(href="/payment/pay-order?id=#{order._id}") 
                 i.fa.fa-credit-card-alt 
                 | پرداخت
         -}else{

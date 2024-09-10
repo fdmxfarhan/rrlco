@@ -38,7 +38,7 @@
         border: 0.2vw solid var(--lightergray);
         border-radius: 0.9vw;
         overflow: hidden;
-        margin-bottom: 2vw;
+        margin-bottom: 5vw;
     }
     .order-info .right-side{
         float: right;
@@ -164,6 +164,36 @@
     }
     .order-info a.link.pay:hover{
         background-color: var(--green);
+    }
+    .order-info .payed{
+        color: var(--green);
+        font-size: 1vw;
+        font-family: 'iransans';
+        padding: 0.4vw 0;
+        display: block;
+        border-radius: 0.7vw;
+        width: 90%;
+        margin: 1vw auto;
+        text-align: center;
+        font-weight: bold;
+    }
+    .order-info .payed i{
+        padding-left: 0.6vw;
+    }
+    .order-info .left-side a.remove-order{
+        color: var(--red);
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 1vw;
+        padding-bottom: 1vw;
+    }
+    .order-info .left-side a.remove-order i{
+        padding-left: 0.5vw;
+    }
+    .order-info .left-side a.remove-order:hover{
+        color: var(--blue);
     }
 }
 @media only screen and (max-width: 800px) {
