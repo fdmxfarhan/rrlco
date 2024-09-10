@@ -9,8 +9,8 @@ const zarinpal = ZarinpalCheckout.create('8cf5f8c4-4e56-4851-8a42-7708e49bdd98',
 
 router.get('/', (req, res, next) => {
   zarinpal.PaymentRequest({
-      Amount: '1000', // In Tomans
-      CallbackURL: 'http://185.81.99.34:3000/payment/payment-call-back',
+      Amount: '5000', // In Tomans
+      CallbackURL: 'https://rrlco.ir/payment/payment-call-back',
       Description: 'A Payment from Node.JS',
       Email: 'hi@siamak.work',
       Mobile: '09120000000'
