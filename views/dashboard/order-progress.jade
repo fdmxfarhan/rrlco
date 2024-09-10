@@ -1,0 +1,84 @@
+.order-progress 
+    .progress-stat 
+        .stage(class="#{orderStateNum(order.state) > 1? 'active':''}")
+            i.fa.fa-credit-card-alt
+            -if(order.payed)
+                .text پرداخت شده
+            -else
+                .text در انتضار پرداخت
+        .line(class="#{orderStateNum(order.state) > 1? 'active':''}")
+        .stage(class="#{orderStateNum(order.state) > 2? 'active':''}")
+            i.fa.fa-arrows-rotate
+            .text در حال پردازش
+        .line(class="#{orderStateNum(order.state) > 2? 'active':''}")
+        .stage(class="#{orderStateNum(order.state) > 3? ''active:''}") 
+            i.fa.fa-boxes-packing
+            .text آماده سازی جهت ارسال
+        .line(class="#{orderStateNum(order.state) > 3? 'active':''}")
+        .stage(class="#{orderStateNum(order.state) > 4? ''active:''}") 
+            i.fa.fa-truck-fast
+            .text ارسال سفارش
+.order-info 
+    .right-side 
+        .info
+            .item
+                i.fa.fa-calendar-alt 
+                | #{dateConvert.convertDate(order.date)}
+            .item 
+                i.fa.fa-arrows-rotate
+                | وضعیت: #{order.state}
+        h1.order-title فاکتور سفارش:
+        .invoice-view 
+            -for(var j=0; j<order.items.length; j++){
+                .item 
+                    .name= order.items[j].item.title
+                    .count #{order.items[j].count} عدد
+                    .price #{dot(order.items[j].item.price)} تومان
+            -}
+        .delivery-info 
+            .raw 
+                .item
+                    .label
+                        i.fa.fa-motorcycle
+                        | نوع ارسال: 
+                    .val= order.delivery
+                .item
+                    .label
+                        i.fa.fa-user
+                        | گیرنده: 
+                    .val= order.ownerNmae
+            .address-raw
+                i.fa.fa-map-marker-alt
+                | آدرس: 
+                .text= order.address
+            .raw 
+                .item 
+                    .label
+                        i.fa.fa-barcode
+                        | کد پستی: 
+                    .val= order.postCode
+    .left-side 
+        .item 
+            .label جمع اقلام
+            .val #{dot(order.totalPrice)} تومان
+        .item 
+            .label تخفیف
+            .val #{dot(order.discount)} تومان
+        .item 
+            .label هزینه ارسال
+            .val #{dot(order.deliveryPrice)} تومان
+        .item 
+            .label مالیات
+            .val #{dot(order.tax)}  تومان
+        .item 
+            .label مجموع
+            .val #{dot(order.totalPrice + order.deliveryPrice + order.tax - order.discount)} تومان
+        -if(!order.payed){
+            a.link.pay(href="#") 
+                i.fa.fa-credit-card-alt 
+                | پرداخت
+        -}else{
+            .payed 
+                i.fa.fa-check
+                | پرداخت شده
+        -}

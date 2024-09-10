@@ -3,6 +3,10 @@
         width: 90%;
         margin: 1vw auto;
     }
+    .form-view.simple {
+        width: 100%;
+        margin: 0;
+    }
     .form-view form{
         margin-bottom: 5vw;
         display: block;
@@ -36,8 +40,14 @@
         font-family: 'iransans';
         margin-left: 1vw;
         color: var(--black);
+        font-size: 1vw;
     }
     .form-view .raw select.quarter{width: 23%;}
+    .form-view .raw .rawlabel{
+        color: var(--text);
+        font-size: 1vw;
+        padding-bottom: 0.6vw;
+    }
     .form-view .raw textarea.short,
     .form-view .raw textarea.long{
         display: inline;
@@ -55,8 +65,16 @@
         font-size: 1vw;
         color: var(--black);
     }
-    .form-view .raw textarea.short{height: 3vw;}
+    .form-view .raw textarea.short{height: 4vw;}
     .form-view .raw textarea.long{height: 10vw;}
+    .form-view .raw .label-quarter{
+        display: inline-block;
+        width: 14%;
+        color: var(--text);
+        font-size: 1vw;
+    }
+    .form-view .raw .label-quarter i{padding-left: 0.5vw;}
+    .form-view .raw .label-quarter.pad{padding-right: 5vw;}
     .form-view button{
         display: block;
         width: fit-content;

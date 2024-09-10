@@ -4,16 +4,16 @@ block styles
 
 block content
     //- include partials/messages
-    -if(errors){
-        .errors-area
-            -for(var i=0; i<errors.length; i++){
-                .error(id='error#{i}')
-                    i.fa.fa-warning
-                    h1= errors[i].msg
-                    i.fa.fa-times.close-error
-                    .time-interval(id='time#{i}')
-            -}
-    -}
+    //- -if(errors){
+    //-     .errors-area
+    //-         -for(var i=0; i<errors.length; i++){
+    //-             .error(id='error#{i}')
+    //-                 i.fa.fa-warning
+    //-                 h1= errors[i].msg
+    //-                 i.fa.fa-times.close-error
+    //-                 .time-interval(id='time#{i}')
+    //-         -}
+    //- -}
     .users-view
        .info
             a.close-btn(href="/") 

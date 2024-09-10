@@ -2,6 +2,7 @@ extends ../layout
 
 block styles
     link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/order-progress.css")
 
 block content
     .dashboard-view 
@@ -11,8 +12,8 @@ block content
                     .item 
                         .info 
                             i.fa.fa-tag.skyblue
-                            h1 سفارش‌ها
-                        .num 0
+                            h1 سفارش‌ فعال
+                        .num= orders.length
                     .item 
                         .info 
                             i.fa.fa-book.yellow
@@ -31,6 +32,10 @@ block content
                         | کلیک کنید.
             -}
             .content
+                -for(var i=0; i<orders.length; i++){
+                    -var order = orders[i];
+                    include order-progress
+                -}
         .sidebar-view 
             include sidebar
         

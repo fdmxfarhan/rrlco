@@ -1,0 +1,91 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/shopping-cart.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content 
+                .shoppingcart-orders
+                    h1.title
+                        i.fa.fa-map-location-dot
+                        | انتخاب آدرس و روش ارسال
+                    .important-note
+                        p لطفا به نکات زیر توجه فرمایید.
+                        ul 
+                            li هزینه پست پیشتاز 60.000 تومان می‌باشد.
+                            li به جز سفارش های پرینت سه بعدی مابقی سفارشات طی 1 الی 2 روز کاری ارسال می‌شوند.
+                            li پیک موتوری فقط در شهر تهران قابل استفاده است و کرایه هنگام تحویل در مقصد پرداخت می‌شود.
+                            li تلفن پشتیبانی: 09336448037
+                    .form-view.simple
+                        form#buyform(action="/dashboard/compelete-order" method="POST") 
+                            .raw 
+                                .label-quarter
+                                    i.fa.fa-location-dot
+                                    | شهر: 
+                                select.quarter#city-select(name="city" onchange="cityChange()") 
+                                    -for(var i=0; i<cities.length; i++)
+                                        option(value="#{cities[i]}")= cities[i]
+                                .label-quarter.pad
+                                    i.fa.fa-envelope
+                                    | کد پستی: 
+                                input.quarter(type="text" name="postCode" placeholder="کد پستی")
+                            .raw 
+                                .label-quarter
+                                    i.fa.fa-motorcycle
+                                    | نوع ارسال: 
+                                select.quarter#delivery-select(name="delivery" onchange="deliverychanged()") 
+                                    option#post-option(value="پست پیشتاز") پست پیشتاز (60 تومان)
+                                    option#peyk-option(value="پیک موتوری") پیک موتوری (پس کرایه)
+                                .label-quarter.pad
+                                    i.fa.fa-phone
+                                    | شماره تماس: 
+                                input.quarter(type="text" name="phone" placeholder="شماره تماس" value="#{user.phone}")
+                            .raw 
+                                .rawlabel آدرس:
+                                textarea.short(name="address" placeholder="آدرس خود را وارد کنید...")= user.address
+                            .raw 
+                                .rawlabel توضیحات:
+                                textarea.short(name="description" placeholder="اگر توضیح خاصی در مورد سفارش خود دارید آن را در این بنویسید.")
+        .sidebar-view 
+            .sidebar 
+                .shopping-cart-info 
+                    h1 #{user.shoppingcart.length} کالا در سبد خرید شما
+                    .discount 
+                    .item 
+                        .label مجموع کالاها: 
+                        .val 
+                            .value#total-price #{dot(totalPrice)}
+                            | تومان
+                    .item 
+                        .label تخفیف: 
+                        .val 
+                            .value#discount-price #{dot(discount)}
+                            | تومان
+                    .item 
+                        .label مالیات: 
+                        .val 
+                            .value#tax-price #{dot(tax)}
+                            | تومان
+                    .item 
+                        .label هزینه ارسال: 
+                        .val 
+                            .value#delivery-price #{dot(deliveryPrice)}
+                            | تومان
+                    .item 
+                        .label مجموع: 
+                        .val.green
+                            .value#sum-price #{dot(totalPrice + deliveryPrice - discount)}
+                            | تومان
+                    button.buy(type="submit" form="buyform")
+                        i.fa.fa-money-check-alt
+                        | پرداخت و ثبت سفارش
+            //- include sidebar
+        
+
+    script(src="/js/dashboard.js") 
+    script(src="/js/compelete-order.js") 
+

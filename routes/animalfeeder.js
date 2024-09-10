@@ -2,8 +2,17 @@ var express = require('express');
 var router = express.Router();
 
 const { ensureAuthenticated } = require('../config/auth');
+const Animalfeeder = require('../models/Animalfeeder');
 
 router.get('/', (req, res, next) => {
+    res.render('./animalfeeder/animalfeeder',{
+        theme: req.session.theme,
+        lang: req.session.lang,
+        user: req.user
+    });
+});
+router.get('/api', (req, res, next) => {
+    var { id } = req.query;
     const animalFeederData = {
         time: [
             { hour: 10, minute: 0, second: 0 },

@@ -12,58 +12,37 @@ const sms = require('../config/sms');
 const gencode = require('../config/gencode');
 const timedigit = require('../config/timedigit');
 const genDiscountCode = require('../config/genDiscountCode');
-const {coursetypes, courseCategories, productCategories} = require('../config/consts')
+const {coursetypes, courseCategories, productCategories, cities} = require('../config/consts')
 const dateConvert = require('../config/dateConvert');
 const Discount = require('../models/Discount');
-// 3Ol9pc
-var cart_total_price = (cart) => {
-    totalPrice = 0;
-    for(var i=0; i<cart.length; i++){
-        if(cart[i].type == 'product'){
-            totalPrice += cart[i].count * cart[i].item.price;
-        }
-        if(cart[i].type == 'course'){
-            totalPrice += cart[i].item.price;
-        }
-        if(cart[i].type == 'print3d'){
-            totalPrice += cart[i].count * cart[i].item.price;
-        }
-    }
-    return totalPrice
-}
-var cart_discount = (currentdiscount, cart) => {
-    var totalPrice = cart_total_price(cart);
-    var discount = 0;
-    if(currentdiscount.type == 'درصد'){
-        if(currentdiscount.itemtype == 'all'){
-            discount = totalPrice * currentdiscount.amount / 100.0;
-        }else{
-            var typeTotalPrice = 0;
-            for(var i=0; i<cart.length; i++){
-                if(cart[i].type == currentdiscount.itemtype){
-                    typeTotalPrice += cart[i].count * cart[i].item.price;
-                }
-            }
-            discount = typeTotalPrice * currentdiscount.amount / 100.0;
-        }
-    }
-    if(discount > currentdiscount.maxDiscount) return currentdiscount.maxDiscount;
-    return discount;
-}
+const Order = require('../models/Order');
+const { cart_total_price, cart_discount, orderStateNum } = require('../config/order');
 
 router.get('/', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'user')
     {
-        res.render('./dashboard/user-dashboard', {
-            theme: req.session.theme,
-            user: req.user,
-        });
+        Order.find({ownerID: req.user._id, compeleted: false}, (err, orders) => {
+            res.render('./dashboard/user-dashboard', {
+                theme: req.session.theme,
+                user: req.user,
+                orders,
+                dateConvert,
+                dot,
+                orderStateNum,
+            });
+        })
     }
     else if(req.user.role = 'admin')
     {
-        res.render('./dashboard/admin-dashboard', {
-            theme: req.session.theme,
-            user: req.user,
+        Order.find({compeleted: false}, (err, orders) => {
+            res.render('./dashboard/admin-dashboard', {
+                theme: req.session.theme,
+                user: req.user,
+                orders,
+                dateConvert,
+                dot,
+                orderStateNum,
+            });
         });
     }
 });
@@ -341,7 +320,7 @@ router.post('/apply-discount-tocart', ensureAuthenticated, (req, res, next) => {
             var totalPrice = cart_total_price(req.user.shoppingcart);
             if(discount.userID == 'all' || discount.userID == req.user._id){
                 if(totalPrice > discount.minPurchase){
-                    User.updateMany({_id: req.user._id}, {$set: {currentdicount: discount}}, (err, doc) => {
+                    User.updateMany({_id: req.user._id}, {$set: {currentdicount: discount._id}}, (err, doc) => {
                         req.flash('success_msg', `کد تخفیف ${discount.code} اضافه شد.`);
                         res.redirect('/dashboard/shopping-cart');    
                     });
@@ -366,4 +345,66 @@ router.get('/remove-discount-from-cart', ensureAuthenticated, (req, res, next) =
         res.redirect(previousUrl);
     });
 });
+router.get('/compelete-order', ensureAuthenticated, (req, res, next) => {
+    var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
+    totalPrice = cart_total_price(req.user.shoppingcart);
+    Discount.findById(req.user.currentdicount, (err, currentdicount) => {
+        if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
+        res.render('./dashboard/compelete-order', {
+            theme: req.session.theme,
+            user: req.user,
+            dot,
+            totalPrice,
+            discount,
+            tax,
+            currentdicount,
+            cities,
+            deliveryPrice,
+        });
+    });
+});
+router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
+    var {city, postCode, delivery, phone, address, description} = req.body;
+    if(!city || !postCode || !delivery || !phone || !address){
+        req.flash('error_msg', 'لطفا تمام فیلدها را پر کنید.');
+        res.redirect('/dashboard/compelete-order');
+    }
+    else if(postCode.length != 10){
+        req.flash('error_msg', 'کد پستی صحیح نمی‌باشد.');
+        res.redirect('/dashboard/compelete-order');
+    }
+    else{
+        var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
+        totalPrice = cart_total_price(req.user.shoppingcart);
+        Discount.findById(req.user.currentdicount, (err, currentdicount) => {
+            if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
+            if(delivery == 'پیک موتوری') deliveryPrice = 0;
+            var newOrder = new Order({
+                ownerID: req.user._id,
+                ownerNmae: req.user.fullname,
+                items: req.user.shoppingcart,
+                description: '',
+                totalPrice,
+                discount,
+                tax,
+                deliveryPrice, ////////////////////////////////
+                discountID: req.user.currentdicount,
+                delivery,
+                city,
+                postCode,
+                address,
+                payed: false,
+                compeleted: false,
+                state: 'در انتظار پرداخت',
+                date: new Date(),
+            });
+            newOrder.save().then(discount => {
+                User.updateMany({_id: req.user._id}, {$set: {shoppingcart: []}}, (err, doc) => {
+                    res.send('done');
+                });
+            }).catch(err => console.log(err));
+        });
+    }
+});
+
 module.exports = router;

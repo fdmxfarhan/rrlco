@@ -125,6 +125,11 @@ function convertDate(date) {
     convertDateTime = convertDateTime[0] + "/" + convertDateTime[1] + "/" + convertDateTime[2];
     return convertDateTime;
 }
+function convertClock(date) {
+    var convertDateTime = get_hour_minute_second(date);
+    convertDateTime = convertDateTime[0] + ":" + convertDateTime[1] + ":" + convertDateTime[2];
+    return convertDateTime;
+}
 
 function convertDateObject(date) {
     var convertDateTime = gregorian_to_jalali(date.year, date.month, date.day);
@@ -316,5 +321,6 @@ module.exports = {
     objToString, 
     arrayToObj,
     getAddress,
-    getToday
+    getToday,
+    convertClock,
 };

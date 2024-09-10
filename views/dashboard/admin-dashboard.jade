@@ -2,6 +2,7 @@ extends ../layout
 
 block styles
     link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/order-progress.css")
 
 block content
     .dashboard-view 
@@ -24,6 +25,10 @@ block content
                             h1 علاقه‌مندی‌ها
                         .num 0
             .content
+                //- -for(var i=0; i<orders.length; i++){
+                //-     -var order = orders[i];
+                //-     include order-progress
+                //- -}
         .sidebar-view 
             include sidebar
         

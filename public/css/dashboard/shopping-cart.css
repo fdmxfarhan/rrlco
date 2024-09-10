@@ -82,13 +82,21 @@
         color: var(--text);
         font-size: 1.1vw;
     }
+    .shopping-cart-info .item .val .value{
+        display: inline;
+        padding-left: 0.5vw;
+    }
     .shopping-cart-info .item .val.green{
         color: var(--green);
         font-weight: bold;
     }
+    .shopping-cart-info button.buy,
     .shopping-cart-info a.buy{
         overflow: hidden;
         width: 90%;
+        font-family: 'iransans';
+        border: none;
+        outline: none;
         margin: 1vw auto;
         background-color: var(--red);
         color: white;
@@ -98,10 +106,13 @@
         border-radius: 1vw;
         font-size: 1.2vw;
         margin-top: 3vw;
+        cursor: pointer;
     }
+    .shopping-cart-info button.buy:hover,
     .shopping-cart-info a.buy:hover{
         background-color: var(--green);
     }
+    .shopping-cart-info button.buy i,
     .shopping-cart-info a.buy i{
         padding-left: 0.5vw;
     }
@@ -248,6 +259,19 @@
         -webkit-appearance: none;
         margin: 0;
     }
-    
+    .shoppingcart-orders .important-note p{
+        color: var(--text);
+        font-size: 1.2vw;
+        padding: 0;
+        margin: 0;
+    }
+    .shoppingcart-orders .important-note ul{
+        margin-top: 0.7vw;
+        margin-bottom: 3vw;
+    }
+    .shoppingcart-orders .important-note ul li{
+        color: var(--text);
+        font-size: 1vw;
+    }
 }
 @media only screen and (max-width: 800px) {}
