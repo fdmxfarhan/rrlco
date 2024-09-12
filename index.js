@@ -190,43 +190,33 @@ httpsServer.listen(443, () => {
 
 
 
-
-
-
-
-
-// var seo = require('express-seo')(app);
- 
-// // For internatanalization, set the supported languages
-// seo.setConfig({
-//     langs: ["en", "fa"]
-// });
- 
-// // Set the default tags
-// seo.setDefaults({
-//     // html: "<a href='https://www.instagram.com/junior_cup/'>Follow me on instagram</a>" // Special property to insert html in the body (interesting to insert links)
-//     title: "جونیورکاپ", // Page title
-//     // All the other properties will be inserted as a meta property
-//     description: {
-//         en: "juniorcup",
-//         fa: "جونیور کاپ"
-//     },
-//     image: "https://juniorcup.ir/images/landing/Juniorcup2021b-min.jpg"
-// });
- 
-// // Create an seo route
-// seo.add("/contact", function(req, opts, next) {
-//     /*س
-//     req: Express request
-//     opts: Object {
-//         service: String ("facebook" || "twitter" || "search-engine")
-//         lang: String (Detected language)
-//     }
-//     */
-//     next({
-//         description: "برگزاری سیزدهمین دوره برگزاری مسابقات رباتیک جوینورکاپ"
-//     });
-// });
+var seo = require('express-seo')(app);
+seo.setConfig({
+    langs: ["en", "fa"]
+});
+seo.setDefaults({
+    title: "مرکز تحقیقات رباتیک و برنامه نویسی", // Page title
+    description: {
+        en: "Robotic Research Laboratory (RRL) is a leading online platform for electronic products, educational courses, and customized services in robotics, electronics, and programming. We offer a wide range of high-quality electronic components, including Arduino boards, modules, ICs, and transistors, available for purchase. In addition to our products, we provide comprehensive online courses to help you learn and master the latest in robotics and programming. Our services also include affordable 3D printing orders, allowing you to get precise prints at competitive prices. At RRL, we also take on custom electronic, programming, and robotics projects, ensuring your innovative ideas come to life.",
+        fa: "مرکز تحقیقات رباتیک و برنامه‌نویسی (RRL) یک پلتفرم پیشرو در فروش آنلاین محصولات الکترونیکی، دوره‌های آموزشی، و خدمات سفارشی در زمینه رباتیک، الکترونیک و برنامه‌نویسی است. ما مجموعه‌ای گسترده از قطعات الکترونیکی با کیفیت بالا، از جمله بردهای آردوینو، ماژول‌ها، آی‌سی‌ها و ترانزیستورها را برای خرید ارائه می‌دهیم. علاوه بر محصولات، دوره‌های آموزشی جامعی را برای یادگیری و تسلط بر جدیدترین فناوری‌های رباتیک و برنامه‌نویسی به صورت آنلاین فراهم کرده‌ایم. خدمات ما شامل پذیرش سفارشات پرینت سه‌بعدی ارزان و دقیق با قیمت‌های رقابتی نیز می‌شود. در RRL، ما همچنین پروژه‌های سفارشی الکترونیک، برنامه‌نویسی و رباتیک را برای به حقیقت پیوستن ایده‌های نوآورانه شما انجام می‌دهیم."
+    },
+    image: "https://rrlco.ir/img/logo.png"
+});
+seo.add("/products", function(req, opts, next) {
+    next({
+        description: "فروشگاه آنلاین مرکز تحقیقات رباتیک و برنامه‌نویسی (RRL) ارائه‌دهنده‌ی مجموعه‌ای متنوع از قطعات الکترونیکی و رباتیک با کیفیت بالا و قیمت مناسب می‌باشد. در این بخش می‌توانید خرید آردوینو، خرید ماژول، خرید قطعات الکترونیکی و خرید ربات را به سادگی انجام دهید. محصولات ما شامل انواع بردهای آردوینو مانند Arduino Uno، Arduino Mega و Arduino Nano، ماژول‌های کاربردی مانند ماژول بلوتوث HC-05، ماژول وای‌فای ESP8266 و ESP32، سنسورها مثل سنسورهای دما و رطوبت DHT11 و DHT22، سنسورهای فاصله‌یاب التراسونیک HC-SR04، موتورهای الکتریکی، ترانزیستور، آی‌سی، و دیگر ابزارهای الکترونیکی می‌باشد. همچنین، انواع پک‌های آموزش رباتیک و ماژول‌های GPS و GSM نیز برای پروژه‌های پیشرفته در دسترس است. ما در RRL به دنبال تامین نیازهای علاقه‌مندان به الکترونیک و رباتیک با بهترین محصولات از برندهای معتبر هستیم تا تجربه‌ای عالی از خرید آنلاین را برای شما فراهم کنیم."
+    });
+});
+seo.add("/courses", function(req, opts, next) {
+    next({
+        description: "در بخش دوره‌های آموزشی مرکز تحقیقات رباتیک و برنامه‌نویسی (RRL)، می‌توانید به مجموعه‌ای جامع و متنوع از دوره‌های آموزشی آنلاین در زمینه‌های مختلف دسترسی پیدا کنید. دوره‌های ما شامل دوره آموزشی پایتون و آموزش پایتون برای مبتدیان و حرفه‌ای‌ها، دوره‌های رباتیک مانند چگونه ربات بسازیم و ساخت ربات، و دوره‌های الکترونیک و آردوینو می‌باشد. همچنین آموزش‌های پیشرفته‌تری همچون کار با میکروکنترلرهای STM32، AVR و رزبری پای (Raspberry Pi) ارائه می‌شود. علاوه بر این، دوره‌های تخصصی در زمینه‌های برنامه‌نویسی مانند طراحی وب با استفاده از HTML، CSS، JavaScript، Node.js، React.js، Next.js و Express.js، و همچنین برنامه‌نویسی پایتون (Python) و C++ در دسترس است. برای علاقه‌مندان به بازی‌سازی با Unity و توسعه اپلیکیشن‌های موبایل با React Native نیز دوره‌های جامع و پروژه‌محوری تدارک دیده‌ایم.در بخش طراحی و مهندسی نیز دوره‌هایی مانند طراحی مدار با Altium Designer، مدل‌سازی سه‌بعدی با SolidWorks، و مباحث پیشرفته‌تری مانند اینترنت اشیا (IOT) برای علاقه‌مندان به آموزش IOT و برنامه‌نویسی میکروکنترلرها ارائه شده است. دوره‌های ما با هدف آموزش عملی و پروژه‌محور طراحی شده‌اند تا شما بتوانید مهارت‌های لازم برای موفقیت در دنیای فناوری و رباتیک را کسب کنید."
+    });
+});
+seo.add("/print3d", function(req, opts, next) {
+    next({
+        description: "در بخش سفارش پرینت سه بعدی مرکز تحقیقات رباتیک و برنامه‌نویسی (RRL)، خدمات پرینت سه بعدی پیشرفته و با کیفیت بالا برای پروژه‌های مختلف شما ارائه می‌شود. شما می‌توانید برای چاپ سه‌بعدی قطعات صنعتی، نمونه‌های اولیه، ماکت‌ها، و حتی پروژه‌های شخصی خود از خدمات ما استفاده کنید. ما از تکنولوژی‌های روز دنیا و مواد با کیفیت مانند PLA، ABS، PETG، و غیره استفاده می‌کنیم تا نتیجه‌ای بی‌نظیر را به شما تحویل دهیم. در صفحه سفارش پرینت سه بعدی، می‌توانید با انتخاب قیمت پرینت سه بعدی متناسب با نیاز خود، سفارش پرینت سه بعدی خود را به‌صورت آنلاین ثبت کنید. برای پروژه‌های کوچک تا بزرگ، خدمات پرینت سه بعدی ارزان و سفارشی در دسترس است. همچنین، کارشناسان ما در طراحی و بهینه‌سازی مدل‌های سه‌بعدی به شما کمک می‌کنند تا قطعات پرینت سه‌بعدی مورد نظر خود را با بهترین کیفیت و در کمترین زمان ممکن دریافت کنید. ما آماده‌ایم تا به نیازهای خاص شما پاسخ دهیم، چه برای پروژه‌های رباتیک، الکترونیک، پروژه‌های مهندسی، یا آموزش‌های رباتیک. سفارش دهید و تجربه‌ای متفاوت از خدمات پرینت سه بعدی ما را تجربه کنید!"
+    });
+});
 
 
 
