@@ -188,6 +188,23 @@ body{
         color: var(--red);
     }
     .sidebar-collapse-btn{display: none;}
+    .usefull-links{
+        overflow: hidden;
+    }
+    .usefull-links a.link{
+        float: right;
+        width: 30%;
+        margin: 1vw 1.6%;
+        font-size: 1.2vw;
+        text-align: center;
+        padding: 1vw 0;
+        background-color: var(--skyblue);
+        color: white;
+        border-radius: 1vw;
+    }
+    .usefull-links a.link i{
+        padding-left: 1vw;
+    }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
@@ -386,6 +403,23 @@ body{
         padding: 3vw 5vw;
         border-top-left-radius: 50%;
         border-bottom-left-radius: 50%;
+    }
+    .usefull-links{
+        overflow: hidden;
+    }
+    .usefull-links a.link{
+        float: right;
+        width: 94%;
+        margin: 3vw 3%;
+        font-size: 3.2vw;
+        text-align: center;
+        padding: 3vw 0;
+        background-color: var(--skyblue);
+        color: white;
+        border-radius: 3vw;
+    }
+    .usefull-links a.link i{
+        padding-left: 1vw;
     }
 }
 

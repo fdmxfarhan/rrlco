@@ -32,6 +32,17 @@ block content
                         | کلیک کنید.
             -}
             .content
+                .usefull-links
+                    a.link(href="/courses")
+                        i.fa.fa-user-graduate
+                        | دوره های آموزشی
+                    a.link(href="/products")
+                        i.fa.fa-shopping-cart
+                        | محصولات
+                    a.link(href="/print3d")
+                        i.fa.fa-building-wheat
+                        | پرینت سه بعدی
+            .content
                 -for(var i=0; i<orders.length; i++){
                     -var order = orders[i];
                     include order-progress
