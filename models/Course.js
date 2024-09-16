@@ -7,7 +7,7 @@ var CourseSchema = new mongoose.Schema({
   },
   title: String, 
   price: Number, // Rial
-  pricenodiscount: Number, //percent
+  nodiscountprice: Number, //percent
   shortdescription: String,
   description: String,
   teacher: String,
@@ -40,6 +40,10 @@ var CourseSchema = new mongoose.Schema({
   sessionContents: {
     type: [Object],
     default: [],
+  },
+  classLink: {
+    type: String,
+    default: '',
   },
 });
 

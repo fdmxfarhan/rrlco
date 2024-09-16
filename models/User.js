@@ -35,7 +35,13 @@ var UserSchema = new mongoose.Schema({
   currentdicount: {
     type: Object,
     default: {_id: ''},
-  }
+  },
+  courses: {
+    type: [Object],
+    default: [],
+  },
+  payableCourse: Object,
+  paymentAuthority: String,
 });
 
 var User = mongoose.model('User', UserSchema);

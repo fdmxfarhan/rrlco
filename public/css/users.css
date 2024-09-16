@@ -56,7 +56,7 @@
     }
     .users-view .info{
         width: 35%;
-        float: left;
+        float: right;
         background-color: var(--blue);
         color: white;
         height: 100vh;
@@ -64,7 +64,7 @@
     }
     .users-view .form-view{
         width: 65%;
-        float: left;
+        float: right;
     }
     .users-view .info h1{
         text-align: center;
@@ -208,46 +208,158 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .errors-area{
-        /* background-color: coral; */
-        position: fixed;
-        width: 90%;
-        bottom: 0;
-        left: 5%;
-        z-index: 100;
+    .users-view{
+        overflow: hidden;
     }
-    .errors-area .error{
-        background-color: rgba(220, 20, 20, 0.842);
-        position: relative;
-        margin: 1vw;
-        border-radius: 2vw;
+    .users-view .info{
+        width: 100%;
+        float: right;
+        background-color: var(--blue);
         color: white;
-        padding: 1vw 3vw;
+        height: 100vh;
+        position: relative;
     }
-    .errors-area .error h1{
-        display: inline-block;
-        padding-right: 0;
-        margin: 0;
+    .users-view .form-view{
+        width: 100%;
+        float: right;
+    }
+    .users-view .info h1{
+        text-align: center;
+        width: 80%;
+        margin: auto;
+        margin-top: 15vw;
+        font-size: 4vw;
+    }
+    .users-view .info p{
+        text-align: center;
+        width: 80%;
+        margin: auto;
+        margin-top: 2vw;
+        font-size: 3vw;
+    }
+    .users-view .info a.btn{
+        display: block;
+        width: fit-content;
+        padding: 1vw 8vw;
+        font-size: 4vw;
+        border-radius: 1.5vw;
+        color: white;
+        background-color: var(--red);
+        margin: auto;
+        margin-top: 2vw;
+    }
+    .users-view .info a.btn:hover{
+        background-color: var(--pink);
+    }
+    .users-view .info .socials{
+        overflow: hidden;
+        margin-top: 10vw;
+        text-align: center;
+    }
+    .users-view .info .socials a{
+        text-decoration: none;
+        color: white;
+        font-size: 4.5vw;
+        margin-left: 1vw;
+        transition-duration: 500ms;
+    }
+    .users-view .info .socials a:hover{
+        color: var(--red);
+    }
+    .users-view .info a.close-btn{display: none;}
+    .users-view .info a.close-btn:hover{
+        color: var(--red);
+    }
+    .users-view .form-view img.logo{
+        width: 20vw;
+    }
+    .users-view .form-view h1.title{
+        text-align: center;
+        color: var(--red);
+        font-size: 4vw;
+    }
+    .users-view .form-view h1.title i{
+        padding-left: 1vw;
+    }
+    .users-view .form-view .line{
+        background-color: var(--verylightblue);
+        display: block;
+        width: 70%;
+        height: 0.1vw;
+        margin-top: 2vw;
+        margin: auto;
+        margin-bottom: 2vw;
+    }
+    .users-view .form-view form{
+        text-align: center;
+    }
+    .users-view .form-view .text-input-raw{
+        text-align: center;
+    }
+    .users-view .form-view .text-input-raw input.textinput{
+        display: block;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 80%;
+        padding: 3vw 3vw;
+        margin-bottom: 4vw;
+        border-radius: 3vw;
         font-family: 'iransans';
-        font-size: 3.2vw;
+        font-size: 3.5vw;
+        text-align: center;
     }
-    .errors-area .error i{
-        display: inline-block;
-        padding-left: 3vw;
+    .users-view .form-view .text-input-raw input.dual{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 40%;
+        padding: 3vw 3vw;
+        margin-bottom: 4vw;
+        border-radius: 3vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+        font-size: 3.5vw;
     }
-    .errors-area .error i.close-error{
-        position: absolute;
-        top: 2vw;
-        left: 0;
+    .users-view .form-view .text-input-raw input.address{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 85%;
+        padding: 3vw 3vw;
+        margin-bottom: 4vw;
+        border-radius: 3vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+        font-size: 3.5vw;
+    }
+    .users-view .form-view form a.link{
+        font-size: 3vw;
+        color: var(--blue);
+        display: block;
+    }
+    .users-view .form-view form button{
+        display: block;
+        width: 60%;
+        padding: 2vw 4vw;
+        font-size: 4vw;
+        border-radius: 3vw;
+        color: white;
+        background-color: var(--red);
+        margin: auto;
+        border: none;
+        font-family: 'iransans';
+        margin-top: 1.6vw;
+        margin-bottom: 10vw;
+    }
+    .users-view .form-view form button:hover{
         cursor: pointer;
-    }
-    .errors-area .error .time-interval{
-        background-color: rgba(255, 255, 255, 0.664);
-        /* position: absolute;
-        bottom: 0; */
-        width: 0;
-        height: 1vw;
-        margin-top: 0.5vw;
+        background-color: var(--pink);
     }
 }
 

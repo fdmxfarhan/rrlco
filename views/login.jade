@@ -38,6 +38,20 @@ block content
             -}
     -}
     .users-view
+        .form-view
+            img.logo(src="/img/logo.png", alt="")
+            h1.title 
+                i.fa.fa-sign-in
+                | ورود به حساب کاربری
+            .line
+            form(action="/users/login" id="register" method="POST")
+                .text-input-raw
+                    input.textinput(type="text" placeholder="شماره تلفن / ایمیل" name="username" value= "#{ typeof uname != 'undefined' ? uname: '' }" required)
+                .text-input-raw
+                    input.textinput(type="password" placeholder="رمز عبور" name="password" value= "#{ typeof psw != 'undefined' ? psw: '' }" required)
+                a.link(href="/users/register") فراموشی کلمه عبور
+                .text-input-raw
+                    button.submit(type="submit") ورود
         .info
             a.close-btn(href="/") 
                 i.fa.fa-times
@@ -53,18 +67,4 @@ block content
                     i.fa.fa-envelope 
                 a(href="tel:+989336448037") 
                     i.fa.fa-phone 
-        .form-view
-            img.logo(src="/img/logo.png", alt="")
-            h1.title 
-                i.fa.fa-sign-in
-                | ورود به حساب کاربری
-            .line
-            form(action="/users/login" id="register" method="POST")
-                .text-input-raw
-                    input.textinput(type="text" placeholder="شماره تلفن / ایمیل" name="username" value= "#{ typeof uname != 'undefined' ? uname: '' }")
-                .text-input-raw
-                    input.textinput(type="password" placeholder="رمز عبور" name="password" value= "#{ typeof psw != 'undefined' ? psw: '' }")
-                .text-input-raw
-                    button.submit(type="submit") ورود
-                a.link(href="/users/register") فراموشی کلمه عبور
     script(src="/js/users.js")

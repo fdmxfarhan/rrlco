@@ -10,6 +10,7 @@ body{
     text-align: right;
     background-color: var(--lightergray);
 }
+p{text-align: justify;}
 @media only screen and (min-width: 800px) {
     .course-view{
         /* background-color: var(--lightergray); */
@@ -383,6 +384,15 @@ body{
     }
     .align-left{text-align: left;direction: ltr;}
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    .course-cover a.enter-link{
+        display: block;
+        width: 90%;
+        margin: 1vw auto;
+        color: var(--blue);
+        font-size: 2vw;
+    }
+    .course-cover a.enter-link i{padding-left: 1vw;}
+    .course-cover a.enter-link:hover{color: var(--red);}
 }
 @media only screen and (max-width: 800px) {
     .course-view{

@@ -12,13 +12,14 @@ block content
                         input.hide(type="text" name="sessionIndex" value="#{sessionIndex}")
                         input.hide(type="text" name="courseID" value="#{course._id}")
                         .raw 
-                            input.dual(type="text" name="title" placeholder="عنوان")
-                            input.quarter(type="number" name="hours" placeholder="تعداد ساعت")
-                            input.quarter(type="number" name="minutes" placeholder="تعداد دقیقه")
+                            input.dual(type="text" name="title" value="#{session.title}" placeholder="عنوان")
+                            input.quarter(type="number" name="hours" value="#{session.hours}" placeholder="تعداد ساعت")
+                            input.quarter(type="number" name="minutes" value="#{session.minutes}" placeholder="تعداد دقیقه")
                         .raw
-                            textarea.long(name="description" placeholder="توضیحات کامل")
+                            textarea.long(name="description" placeholder="توضیحات کامل") #{session.description}
                         .raw
                             select.quarter(name="type") 
+                                option(value="#{session.type}") #{session.type}
                                 option(value="free") رایگان
                                 option(value="locked") قفل
                         .upload 

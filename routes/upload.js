@@ -90,11 +90,11 @@ router.post('/print3d', ensureAuthenticated, upload.single('myfile'), (req, res,
 router.post('/add-session', ensureAuthenticated, upload.single('picture'), (req, res, next) => {
     const file = req.file;
     var {sessionIndex, courseID, title, hours, minutes, description, type} = req.body;
-    if (!file) {
-        res.send('no file to upload');
-    }
-    else if(req.user.role == 'admin'){
-        Course.findById(courseID, (err, course) => {
+    Course.findById(courseID, (err, course) => {
+        if (!file && course.type != 'مجازی') {
+            res.send('no file to upload');
+        }
+        else if(req.user.role == 'admin'){
             if(course.sessionContents.length != course.sessions){
                 course.sessionContents = [];
                 for(var i=0; i<course.sessions; i++){
@@ -103,14 +103,16 @@ router.post('/add-session', ensureAuthenticated, upload.single('picture'), (req,
                     });
                 }
             }
+            var filePath = '';
+            if (file) filePath = file.destination.slice(6) + '/' + file.originalname;
             course.sessionContents[sessionIndex] = {
-                title, hours, minutes, description, type, file: file.destination.slice(6) + '/' + file.originalname,
+                title, hours, minutes, description, type, file: filePath,
             }
             Course.updateMany({_id: courseID}, {$set: {sessionContents: course.sessionContents}}, (err) => {
                 res.redirect(`/courses/course-session?index=${sessionIndex}&id=${courseID}`);
             });
-        });
-    }
+        }
+    });
 });
 
 module.exports = router;

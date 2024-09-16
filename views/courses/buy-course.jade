@@ -19,7 +19,7 @@
             .info 
                 .label مدت زمان
                 .val #{timedigit(course.totalTime.hours)}:#{timedigit(course.totalTime.minutes)}:00
-                    i.fa.fa-clock-o
+                    i.fa.fa-clock
             .info 
                 .label تعداد جلسات
                 .val= course.sessions
@@ -34,9 +34,14 @@
                         i.fa.fa-play 
                         | شروع یادگیری
                 -}else{
-                    a.buy(href="/dashboard/add-to-cart?type=course&id=#{course._id}") 
-                        i.fa.fa-shopping-cart 
-                        | افزودن به سبد خرید
+                    -if(course.type == 'مجازی')
+                        a.buy(href="/courses/register-course?id=#{course._id}") 
+                            i.fa.fa-user-graduate
+                            | ثبت نام در دوره
+                    -else
+                        a.buy(href="/dashboard/add-to-cart?type=course&id=#{course._id}") 
+                            i.fa.fa-shopping-cart 
+                            | افزودن به سبد خرید
                 -}
                 a.like(href="#") 
                     i.fa.fa-heart-o

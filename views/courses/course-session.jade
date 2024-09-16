@@ -30,7 +30,8 @@ block content
                 -}
         .sidebar-view 
             include sessions
-            include buy-course
+            -if(!purchased)
+                include buy-course
                     
             include sidebar
     script. 

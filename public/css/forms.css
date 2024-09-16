@@ -88,6 +88,8 @@
         margin-left: 5%;
     }
     .form-view button.blue{background-color: var(--blue);}
+    .form-view button.red{background-color: var(--red);}
+    .form-view button.green{background-color: var(--green);}
     .form-view button:hover{
         cursor: pointer;
         background-color: var(--pink);

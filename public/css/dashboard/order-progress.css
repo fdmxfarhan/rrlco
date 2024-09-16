@@ -1,5 +1,4 @@
 @media only screen and (min-width: 800px) {
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .order-progress{
         width: 90%;
         margin: 1vw auto;
@@ -195,9 +194,204 @@
     .order-info .left-side a.remove-order:hover{
         color: var(--blue);
     }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
-    
+    .order-progress{
+        width: 95%;
+        margin: 4vw auto;
+    }
+    .order-progress .progress-stat{
+        overflow: hidden;
+        text-align: center;
+        margin-top: 2vw;
+    }
+    .order-progress .progress-stat .stage{
+        float: right;
+        width: 20%;
+        color: var(--lightgray);
+    }
+    .order-progress .progress-stat .stage.active{color: var(--skyblue);}
+    .order-progress .progress-stat .stage i{
+        font-size: 7vw;
+    }
+    .order-progress .progress-stat .stage .text{
+        font-size: 2.5vw;
+        color: var(--text);
+    }
+    .order-progress .progress-stat .stage.active .text{color: var(--skyblue);}
+    .order-progress .progress-stat .line{
+        float: right;
+        width: 5%;
+        height: 0.5vw;
+        background-color: var(--lightgray);
+        margin-top: 4vw;
+        border-radius: 0.5vw;
+    }
+    .order-progress .progress-stat .line.active{background-color: var(--skyblue);}
+    .order-info {
+        width: 90%;
+        margin: 0 auto;
+        border: 0.2vw solid var(--lightergray);
+        border-radius: 2vw;
+        overflow: hidden;
+        margin-bottom: 5vw;
+    }
+    .order-info .right-side{
+        float: right;
+        width: 96%;
+        margin: 0.8vw 2%;
+    }
+    .order-info .left-side{
+        float: right;
+        width: 96%;
+        margin: 0.8vw 2%;
+        background-color: var(--lightergray);
+        border-radius: 1.5vw;
+        padding: 4vw 0;
+    }
+    .order-info .right-side .info{
+        overflow: hidden;
+    }
+    .order-info .right-side .info .item{
+        float: right;
+        width: 50%;
+        color: var(--lightgray);
+        font-size: 2.8vw;
+    }
+    .order-info .right-side .info .item i{
+        padding-left: 1.5vw;
+    }
+    .order-info .right-side h1.order-title{
+        font-size: 3.2vw;
+        color: var(--red);
+        margin: 0.6vw 0;
+    }
+    .order-info .right-side .invoice-view .item{
+        overflow: hidden;
+        border: 0.1vw solid var(--lightergray);
+        padding: 0.3vw 0;
+    }
+    .order-info .right-side .invoice-view .item .name{
+        float: right;
+        width: 45%;
+        color: var(--text);
+        margin-right: 3vw;
+        font-size: 2.9vw;
+    }
+    .order-info .right-side .invoice-view .item .count{
+        float: right;
+        width: 10%;
+        color: var(--lightgray);
+        font-size: 2.9vw;
+    }
+    .order-info .right-side .invoice-view .item .price{
+        float: right;
+        width: 40%;
+        color: var(--green);
+        font-size: 2.9vw;
+        text-align: left;
+    }
+    .order-info .right-side .delivery-info{
+        margin-top: 3.5vw;
+    }
+    .order-info .right-side .delivery-info .raw{
+        overflow: hidden;
+        margin-top: 1.6vw;
+    }
+    .order-info .right-side .delivery-info .raw .item{
+        width: 50%;
+        float: right;
+        font-size: 2.7vw;
+    }
+    .order-info .right-side .delivery-info .raw .item .label{
+        color: var(--text);
+        font-weight: bold;
+        display: inline;
+    }
+    .order-info .right-side .delivery-info .address-raw i,
+    .order-info .right-side .delivery-info .raw .item .label i{
+        padding-left: 1.5vw;
+    }
+    .order-info .right-side .delivery-info .raw .item .val{
+        display: inline;
+        color: var(--text);
+    }
+    .order-info .right-side .delivery-info .address-raw{
+        font-size: 2.7vw;
+        color: var(--text);
+        margin-top: 1.6vw;
+        font-weight: bold;
+    }
+    .order-info .right-side .delivery-info .address-raw .text{
+        font-weight: normal;
+        display: inline;
+    }
+    .order-info .left-side .item{
+        overflow: hidden;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 2vw;
+    }
+    .order-info .left-side .item .label{
+        float: right;
+        font-size: 2.9vw;
+        color: var(--text);
+        font-weight: bold;
+    }
+    .order-info .left-side .item .val{
+        float: left;
+        font-size: 2.9vw;
+        color: var(--text);
+    }
+    .order-info a.link.pay{
+        background-color: var(--red);
+        color: var(--white);
+        font-size: 3vw;
+        font-family: 'iransans';
+        padding: 1vw 0;
+        display: block;
+        border-radius: 2vw;
+        width: 90%;
+        margin: 3vw auto;
+        text-align: center;
+    }
+    .order-info a.link.pay i{
+        padding-left: 1.6vw;
+    }
+    .order-info a.link.pay:hover{
+        background-color: var(--green);
+    }
+    .order-info .payed{
+        color: var(--green);
+        font-size: 3vw;
+        font-family: 'iransans';
+        padding: 1vw 0;
+        display: block;
+        border-radius: 0.7vw;
+        width: 90%;
+        margin: 3vw auto;
+        text-align: center;
+        font-weight: bold;
+    }
+    .order-info .payed i{
+        padding-left: 0.6vw;
+    }
+    .order-info .left-side a.remove-order{
+        color: var(--red);
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        padding: 0;
+        font-size: 3vw;
+        padding-bottom: 3vw;
+    }
+    .order-info .left-side a.remove-order i{
+        padding-left: 1.5vw;
+    }
+    .order-info .left-side a.remove-order:hover{
+        color: var(--blue);
+    }
 }
 
 

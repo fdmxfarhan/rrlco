@@ -29,12 +29,15 @@ router.get('/', (req, res, next) => {
 router.get('/course-view', (req, res, next) => {
     var courseID = req.query.id;
     Course.findById(courseID, (err, course) => {
+        var purchased = false;
+        if(req.user) purchased = req.user.courses.some(item => item.id === courseID);
         res.render('./courses/course-view', {
             theme: req.session.theme,
             user: req.user,
             course,
             courseCategories,
             dot, timedigit,
+            purchased,
         });
     })
 });
@@ -43,6 +46,8 @@ router.get('/course-session', (req, res, next) => {
     var sessionIndex = req.query.index;
     console.log(req.query);
     Course.findById(courseID, (err, course) => {
+        var purchased = false;
+        if(req.user) purchased = req.user.courses.some(item => item.id === courseID);
         res.render('./courses/course-session', {
             theme: req.session.theme,
             user: req.user,
@@ -51,6 +56,7 @@ router.get('/course-session', (req, res, next) => {
             dot, timedigit,
             sessionIndex,
             session: course.sessionContents[sessionIndex],
+            purchased,
         });
     })
 });
@@ -98,6 +104,38 @@ router.get('/delete-course', ensureAuthenticated, (req, res, next) => {
     }
     else res.render('./error')
 });   
-
+router.get('/edit-course', ensureAuthenticated, (req, res, next) => {
+    var courseID = req.query.id;
+    Course.findById(courseID, (err, course) => {
+        res.render('./courses/edit-course', {
+            theme: req.session.theme,
+            user: req.user,
+            course,
+            courseCategories,
+            coursetypes,
+            dot, timedigit,
+        });
+    });
+});   
+router.post('/edit-course', ensureAuthenticated, (req, res, next) => {
+    var {courseID, title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, hours, minutes, capacity, classLink} = req.body;
+    if(req.user.role == 'admin'){
+        Course.updateMany({_id: courseID}, {$set: {title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, totalTime: {hours, minutes, seconds: 0}, capacity, classLink}}, (err, course) => {
+            req.flash('success_msg', 'تغیرات ذخیره شد.');
+            res.redirect(`/courses/course-view?id=${courseID}`);
+        });
+    }
+});   
+router.get('/register-course', ensureAuthenticated, (req, res, next) => {
+    var courseID = req.query.id;
+    User.updateMany({_id: req.user._id}, {$set: {
+        payableCourse: {
+            id: courseID, 
+            payed: false, 
+            auth: ''
+        }}}, (err) => {
+        res.redirect(`/payment/pay-online-course`)
+    });
+});   
 
 module.exports = router;

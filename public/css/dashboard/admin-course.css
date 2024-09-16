@@ -1,5 +1,4 @@
 @media only screen and (min-width: 800px) {
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .products-view h1.title{
         color: var(--blue);
         font-size: 1.2vw;
@@ -137,5 +136,144 @@
         background-color: var(--pink);
     }
     .align-left{text-align: left;direction: ltr;}
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
-@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 800px) {
+    .products-view h1.title{
+        color: var(--blue);
+        font-size: 3.2vw;
+        margin: 0;
+        padding: 4vw 3vw;
+        position: relative;    
+        margin-bottom: 10vw;    
+    }
+    .products-view h1.title i{
+        padding-left: 1.5vw;
+    }
+    .products-view h1.title .stat{
+        position: absolute;
+        color: var(--text);
+        left: 3vw;
+        top: 1.2vw;
+        font-weight: normal;
+        font-size: 1vw;
+    }
+    .products-view h1.title a.add{
+        font-size: 3vw;
+        color: white;
+        background-color: var(--skyblue);
+        margin-right: 3vw;
+        padding: 0.7vw 3vw;
+        border-radius: 1.7vw;
+        font-weight: normal;
+    }
+    .products-view h1.title a.add:hover{
+        background-color: var(--pink);
+    }
+    .products-view h1.title a.add i{
+        font-size: 2.8vw;
+    }
+    .searchbar{
+        position: absolute;
+        left: 5vw;
+        top: 14vw;
+    }
+    .searchbar input.text{
+        border: none;
+        background-color: var(--lightergray);
+        font-family: 'iransans';
+        padding: 2vw 5vw;
+        font-size: 3vw;
+        border-top-right-radius: 3vw;
+        border-bottom-right-radius: 3vw;
+        outline: none;
+        width: 65vw;
+    }
+    .searchbar button.submit{
+        background-color: var(--blue);
+        border-top-left-radius: 3vw;
+        border-bottom-left-radius: 3vw;
+        border: none;
+        padding: 2vw 3vw;
+        font-size: 3vw;
+        color: white;
+        font-family: 'iransans';
+        outline: none;
+        cursor: pointer;
+    }
+    .searchbar button:hover{
+        background-color: var(--pink);
+    }
+    .add-product-form {
+        width: 90%;
+        margin: 1vw auto;
+    }
+    .add-product-form form{
+        margin-bottom: 5vw;
+        display: block;
+    }
+    .add-product-form .raw input.dual,
+    .add-product-form .raw select.dual{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 90%;
+        padding: 2vw 1.5vw;
+        margin-bottom: 3vw;
+        border-radius: 2vw;
+        font-family: 'iransans';
+        margin-left: 3vw;
+    }
+    .add-product-form .raw input.quarter,
+    .add-product-form .raw select.quarter{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 87%;
+        padding: 2vw 3vw;
+        margin-bottom: 3vw;
+        border-radius: 2vw;
+        font-family: 'iransans';
+        margin-left: 3vw;
+    }
+    .add-product-form .raw select.quarter{width: 90%;}
+    .add-product-form .raw textarea.short,
+    .add-product-form .raw textarea.long{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 90%;
+        padding: 3vw 1.5vw;
+        margin-bottom: 0.5vw;
+        border-radius: 2vw;
+        font-family: 'iransans';
+        margin-left: 3vw;
+        resize: vertical;
+    }
+    .add-product-form .raw textarea.short{height: 20vw;}
+    .add-product-form .raw textarea.long{height: 40vw;}
+    .add-product-form button{
+        display: block;
+        width: fit-content;
+        padding: 2vw 6vw;
+        font-size: 3vw;
+        border-radius: 2vw;
+        color: white;
+        background-color: var(--blue);
+        border: none;
+        font-family: 'iransans';
+        margin-top: 3.6vw;
+        margin-left: 5%;
+    }
+    .add-product-form button:hover{
+        cursor: pointer;
+        background-color: var(--pink);
+    }
+    .align-left{text-align: left;direction: ltr;}
+}

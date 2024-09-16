@@ -7,16 +7,12 @@ $(document).ready(function(){
     });
 
     var modal = $('.black-modal');
-    var commutes = [];
-    for(var i=0; i<100; i++){
-        commutes.push({btn: $(`#day${i}`), commute: $(`#commute${i}`)});
-    }
-    commutes.forEach(commute => {
-        commute.btn.click(() => {
-            // modal.fadeIn(500);
-            commute.commute.slideToggle(500);
-        });
+    $('#sidebar-collapse-btn').click(() => {
+        modal.show();
+        $('.sidebar').show(500);
     });
-
-    
+    modal.click(() => {
+        modal.hide();
+        $('.sidebar').hide();
+    });
 });

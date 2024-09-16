@@ -439,4 +439,22 @@ router.get('/remove-order', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
+router.get('/courses', ensureAuthenticated, (req, res, next) => {
+    var coursesList = req.user.courses;
+    var coursesID = coursesList.map(item => item.id);
+    console.log(coursesList)
+    console.log(coursesID)
+    Course.find({_id: {$in: coursesID}}, (err, courses) => {
+        console.log(courses)
+        res.render('./dashboard/user-courses', {
+            theme: req.session.theme,
+            user: req.user,
+            coursetypes,
+            courseCategories,
+            courses,
+            dot,
+            timedigit,
+        });
+    });
+});
 module.exports = router;

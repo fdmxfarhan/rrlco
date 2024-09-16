@@ -1,0 +1,55 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/courses/course-view.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .course-view 
+        .course-cont-view
+            .content
+                .form-view
+                    form(action="/courses/edit-course" method="POST")
+                        input.hide(type="text" name="courseID" value="#{course._id}")
+                        .raw 
+                            input.dual(type="text" name="title" value="#{course.title}" placeholder="عنوان")
+                            input.quarter(type="number" name="price" value="#{course.price}" placeholder="قیمت (تومان)")
+                            input.quarter(type="number" name="nodiscountprice" value="#{course.nodiscountprice}" placeholder="قیمت بدون تخفیف")
+                        .raw
+                            textarea.short(name="shortdescription" placeholder="توضیحات کوتاه") #{course.shortdescription}
+                        .raw
+                            textarea.long(name="description" placeholder="توضیحات کامل") #{course.description}
+                        .raw 
+                            .label-quarter مدرس:
+                            input.quarter(type="text" name="teacher" value="#{course.teacher}" placeholder="مدرس")
+                            select.quarter(name="type" value="#{course.type}") 
+                                option(value="#{course.type}")= course.type
+                                -for(var i=0; i<coursetypes.length; i++)
+                                    option(value="#{coursetypes[i]}")= coursetypes[i]
+                            select.quarter(name="category" value="#{course.category}") 
+                                option(value="#{course.category}")= course.category
+                                -for(var i=0; i<courseCategories.length; i++)
+                                    option(value="#{courseCategories[i]}")= courseCategories[i]
+                        .raw 
+                            .label-quarter تعداد جلسات:
+                            input.quarter(type="number" name="sessions" value="#{course.sessions}" placeholder="تعداد جلسات")
+                            .label-quarter تعداد ساعت:
+                            input.quarter(type="number" name="hours" value="#{course.totalTime.hours}" placeholder="تعداد ساعت")
+                        .raw 
+                            .label-quarter تعداد دقیقه:
+                            input.quarter(type="number" name="minutes" value="#{course.totalTime.minutes}" placeholder="تعداد دقیقه")
+                            .label-quarter ظرفیت:
+                            input.quarter(type="number" name="capacity" value="#{course.capacity}" placeholder="ظرفیت")
+                        .raw 
+                            .label-quarter لینک کلاس:
+                            input.dual(type="text" name="classLink" value="#{course.totalTime.classLink}" placeholder="لینک کلاس")
+                        .align-left
+                            button.red(type="submit") ثبت
+
+        .sidebar-view 
+            //- include sessions
+            include buy-course
+                    
+            include sidebar
+    script. 
+        document.getElementById('navlink-3').classList.add('active');

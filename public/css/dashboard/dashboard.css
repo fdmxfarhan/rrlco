@@ -11,7 +11,6 @@ body{
     background-color: var(--lightergray);
 }
 @media only screen and (min-width: 800px) {
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .dashboard-view{
         /* background-color: var(--lightergray); */
         width: 90%;
@@ -188,9 +187,206 @@ body{
     .dashboard-view .dashboard-cont-view .dashboard-msg p.text a.link:hover{
         color: var(--red);
     }
+    .sidebar-collapse-btn{display: none;}
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
-    
+    .dashboard-view{
+        /* background-color: var(--lightergray); */
+        width: 100%;
+        margin: 2vw auto;
+        overflow: hidden;
+        padding: 0;
+        margin-bottom: 2vw;
+        min-height: 100vh;
+    }
+    .dashboard-view .dashboard-cont-view{
+        width: 100%;
+    }
+    .dashboard-view .sidebar-view{
+        width: 25%;
+    }
+    .dashboard-view .sidebar{
+        width: 60vw;
+        background-color: var(--white);
+        /* border-radius: 1vw; */
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 10;
+        height: 100vh;
+        display: none;
+    }
+    .dashboard-view .dashboard-cont-view .content{
+        width: 95%;
+        margin: 3vw auto;
+        background-color: var(--white);
+        border-radius: 3vw;
+        overflow: hidden;
+    }
+    .dashboard-view .sidebar .user-info{
+        background-color: var(--red);
+        color: white;
+        overflow: hidden;
+    }
+    .dashboard-view .sidebar .user-info .user-icon{
+        float: right;
+        width: 35%;
+    }
+    .dashboard-view .sidebar .user-info .user-icon i{
+        font-size: 13vw;
+        margin-top: 4vw;
+        margin-right: 1.5vw;
+    }
+    .dashboard-view .sidebar .user-info .info{
+        float: right;
+        width: 65%;
+    }
+    .dashboard-view .sidebar .user-info .info h1{
+        font-size: 3.2vw;
+        margin-top: 4vw;
+        margin-bottom: 1vw;
+        padding: 0;
+    }
+    .dashboard-view .sidebar .user-info .info a.edit{
+        color: var(--lightergray);
+        font-size: 3vw;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 5vw;
+        display: block;
+    }
+    .dashboard-view .sidebar .user-info .info a.edit:hover{
+        color: var(--blue);
+    }
+    .dashboard-view .sidebar .user-info .info a.edit i{
+        padding-left: 0.5vw;
+    }
+    .dashboard-view .sidebar .nav-view a.link{
+        display: block;
+        color: var(--text);
+        padding: 2.5vw 3vw;
+        border-bottom: 0.2vw solid var(--lightergray);
+        font-size: 3.5vw;
+        background-color: var(--white);
+    }
+    .dashboard-view .sidebar .nav-view a.link.active{
+        color: var(--red);
+    }
+    .dashboard-view .sidebar .nav-view a.link:hover{
+        background-color: var(--light);
+    }
+    .dashboard-view .sidebar .nav-view a.link i{
+        padding-left: 1vw;
+        color: var(--lightgray);
+    }
+    .dashboard-view .sidebar .nav-view a.link:hover i{
+        color: var(--red);
+    }
+    .dashboard-view .sidebar .nav-view a.logout{
+        display: block;
+        color: var(--red);
+        text-align: center;
+        padding: 2vw 1vw;
+        font-size: 3.1vw;
+        background-color: var(--white);
+        margin-top: 10vw;
+    }
+    .dashboard-view .sidebar .nav-view a.logout:hover{
+        /* background-color: var(--lightergray); */
+        color: var(--blue);
+    }
+    .dashboard-view .content .stat-view{
+        overflow: hidden;
+        margin: 3vw 0;
+    }
+    .dashboard-view .content .stat-view .item{
+        background-color: var(--lightergray);
+        border-radius: 1.5vw;
+        float: right;
+        width: 90%;
+        margin: 2vw 5%;
+    }
+    .dashboard-view .content .stat-view .item .info{
+        float: right;
+        width: 50%;
+    }
+    .dashboard-view .content .stat-view .item .info i{
+        margin-right: 3vw;
+        margin-top: 3vw;
+        font-size: 4vw;
+        /* color: var(--text); */
+    }
+    .dashboard-view .content .stat-view .item .info i.skyblue{color: var(--skyblue);}
+    .dashboard-view .content .stat-view .item .info i.red{color: var(--red);}
+    .dashboard-view .content .stat-view .item .info i.purple{color: var(--purple);}
+    .dashboard-view .content .stat-view .item .info i.green{color: var(--green);}
+    .dashboard-view .content .stat-view .item .info i.yellow{color: var(--yellow);}
+    .dashboard-view .content .stat-view .item .info h1{
+        font-size: 3.2vw;
+        margin: 0;
+        padding: 0;
+        padding-right: 3vw;
+        margin-bottom: 3vw;
+        color: var(--text);
+    }
+    .dashboard-view .content .stat-view .item .num{
+        float: left;
+        width: fit-content;
+        text-align: left;
+        margin-left: 4vw;
+        margin-top: 5vw;
+        color: var(--text);
+        font-size: 4vw;
+    }
+    .dashboard-view .dashboard-cont-view .dashboard-msg{
+        width: 90%;
+        margin: 3vw auto;
+        background-color: var(--lighterblue);
+        border-radius: 3vw;
+        overflow: hidden;
+        position: relative;
+    }
+    .dashboard-view .dashboard-cont-view .dashboard-msg i.close-btn{
+        position: absolute;
+        top: 3vw;
+        left: 3vw;
+        font-size: 3vw;
+        color: var(--text);
+    }
+    .dashboard-view .dashboard-cont-view .dashboard-msg i.close-btn:hover{
+        color: var(--red);
+        cursor: pointer;
+    }
+    .dashboard-view .dashboard-cont-view .dashboard-msg p.text{
+        font-size: 3vw;
+        width: 80%;
+        margin: 3vw auto;
+        color: var(--text);
+    }
+    .dashboard-view .dashboard-cont-view .dashboard-msg p.text a.link{
+        font-family: 'iransans';
+        font-size: 3vw;
+        color: var(--blue);
+        font-weight: bold;
+    }
+    .dashboard-view .dashboard-cont-view .dashboard-msg p.text a.link:hover{
+        color: var(--red);
+    }
+    .sidebar-collapse-btn{
+        display: block;
+        position: fixed;
+        right: 0;
+        z-index: 3;
+        background-color: var(--red);
+        color: var(--white);
+        bottom: 10vh;
+        font-size: 4vw;
+        padding: 3vw 5vw;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+    }
 }
 
 

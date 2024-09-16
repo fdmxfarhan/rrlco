@@ -2,6 +2,7 @@ extends ../layout
 
 block styles
     link(rel="stylesheet", href="/css/courses/course-view.css")
+    link(rel="stylesheet", href="/css/forms.css")
 
 block content
     .course-view 
@@ -11,7 +12,26 @@ block content
                     .cover
                         img(src="#{course.cover}", alt="")
                     h1.title= course.title
-                    p.desc= course.shortdescription
+                    p.desc
+                        -for(var i=0; i<course.shortdescription.length; i++) {
+                            -if(course.shortdescription[i] == '\n')
+                                br
+                            -else
+                                | #{course.shortdescription[i]}
+                        -}
+                    p.desc
+                        -for(var i=0; i<course.description.length; i++) {
+                            -if(course.description[i] == '\n')
+                                br
+                            -else
+                                | #{course.description[i]}
+                        -}
+                    -if(purchased && course.type == 'مجازی'){
+                        a.enter-link(href="#{course.classLink}") 
+                            i.fa.fa-sign-in-alt
+                            | ورود به کلاس
+                    -}
+
                 -if(user && user.role == 'admin'){
                     .admin-control 
                         -if(course.enable){
@@ -21,16 +41,24 @@ block content
                             a.disable(href="/courses/enable-course?id=#{course._id}")
                                 i.fa.fa-square-o
                         -}
-                        a.edit(href="/courses/edit-session?id=#{course._id}")
+                        a.edit(href="/courses/edit-course?id=#{course._id}")
                             i.fa.fa-edit  
                         a.times(href="/courses/delete-course?id=#{course._id}")
                             i.fa.fa-times 
+                    //- .form-view.simple
+                    //-     form#buyform(action="/courses/add-exteradesc" method="POST") 
+                    //-         .raw 
+                    //-             .label-quarter کد پستی: 
+                    //-             input.quarter(type="text" name="postCode" placeholder="کد پستی")
+                    //-             .label-quarter.pad شماره تماس: 
+                    //-             input.quarter(type="text" name="phone" placeholder="شماره تماس" value="#{user.phone}")
+                    //-         .align-left
+                    //-             button.blue(type="submit") افزودن
                 -}
         .sidebar-view 
-            
-            include buy-course
+            -if(!purchased)
+                include buy-course
             include sessions
-                    
             include sidebar
     script.
         document.getElementById('navlink-3').classList.add('active');
