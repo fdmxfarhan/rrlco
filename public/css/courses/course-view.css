@@ -383,7 +383,6 @@ p{text-align: justify;}
         background-color: var(--pink);
     }
     .align-left{text-align: left;direction: ltr;}
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .course-cover a.enter-link{
         display: block;
         width: 90%;
@@ -393,6 +392,7 @@ p{text-align: justify;}
     }
     .course-cover a.enter-link i{padding-left: 1vw;}
     .course-cover a.enter-link:hover{color: var(--red);}
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
     .course-view{
@@ -766,6 +766,15 @@ p{text-align: justify;}
         background-color: var(--pink);
     }
     .align-left{text-align: left;direction: ltr;}
+    .course-cover a.enter-link{
+        display: block;
+        width: 90%;
+        margin: 3vw auto;
+        color: var(--blue);
+        font-size: 4vw;
+    }
+    .course-cover a.enter-link i{padding-left: 1vw;}
+    .course-cover a.enter-link:hover{color: var(--red);}
 }
 
 
