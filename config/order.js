@@ -39,9 +39,32 @@ var orderStateNum = (orderText) => {
     if(orderText == 'ارسال سفارش') return 4;
     if(orderText == 'تکمیل شده') return 5;
 }
-
+var orderNum2State = (num) => {
+    if(orderText == 1) return 'در انتظار پرداخت';
+    if(orderText == 2) return 'در حال پردازش';
+    if(orderText == 3) return 'آماده سازی جهت ارسال';
+    if(orderText == 4) return 'ارسال سفارش';
+    if(orderText == 5) return 'تکمیل شده';
+}
+var nextOrderState = (orderText) => {
+    if(orderText == 'در انتظار پرداخت') return 'در حال پردازش';
+    if(orderText == 'در حال پردازش') return 'آماده سازی جهت ارسال';
+    if(orderText == 'آماده سازی جهت ارسال') return 'ارسال سفارش';
+    if(orderText == 'ارسال سفارش') return 'تکمیل شده';
+    return 'تکمیل شده';
+}
+var prevOrderState = (orderText) => {
+    if(orderText == 'در حال پردازش') return 'در انتظار پرداخت';
+    if(orderText == 'آماده سازی جهت ارسال') return 'در حال پردازش';
+    if(orderText == 'ارسال سفارش') return 'آماده سازی جهت ارسال';
+    if(orderText == 'تکمیل شده') return 'ارسال سفارش';
+    return 'در انتظار پرداخت';
+}
 module.exports = {
     cart_total_price,
     cart_discount,
     orderStateNum,
+    orderNum2State,
+    nextOrderState,
+    prevOrderState,
 }

@@ -6,6 +6,7 @@ const ZarinpalCheckout = require('zarinpal-checkout');
 const Order = require('../models/Order');
 const Course = require('../models/Course');
 const zarinpal = ZarinpalCheckout.create('8cf5f8c4-4e56-4851-8a42-7708e49bdd98', false);
+const sms = require('../config/sms');
 
 // Docs: https://www.npmjs.com/package/zarinpal-checkout
 
@@ -63,6 +64,7 @@ router.get('/order-payment-call-back', (req, res, next) => {
     console.log(req.query);
     if(req.query.Status == 'OK'){
         Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, order) => {
+            sms(req.user.phone, `پرداخت با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
             req.flash('success_msg', 'پرداخت با موفقیت انجام شد');
             res.redirect('/dashboard');
         });
@@ -105,6 +107,8 @@ router.get('/online-course-payment-call-back', (req, res, next) => {
         payableCourse.auth = req.query.Authority;
         courses.push(payableCourse)
         User.updateMany({paymentAuthority: req.query.Authority}, {$set: {courses}}, (err, doc) => {
+            sms(req.user.phone, 'ثبت نام شما با موفقیت انجام شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses')
+            sms('09336448037', `ثبت نام دوره جدید:\nکاربر: ${req.user.fullname}\nتلفن: ${req.user.phone}`);
             req.flash('success_msg', 'پرداخت با موفقیت انجام شد');
             res.redirect(`/courses/course-view?id=${payableCourse.id}`);
         });

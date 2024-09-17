@@ -1,0 +1,41 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/order-progress.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .stat-view
+                    .item 
+                        .info 
+                            i.fa.fa-tag.skyblue
+                            h1 محصولات
+                        .num= numOfProduct
+                    .item 
+                        .info 
+                            i.fa.fa-book.yellow
+                            h1 دوره‌ها
+                        .num= numOfCourse
+                    .item 
+                        .info 
+                            i.fa.fa-shopping-cart.green
+                            h1 سفارش ها
+                        .num= numOfOrder
+            .content
+                -for(var i=0; i<orders.length; i++){
+                    -var order = orders[i];
+                    include order-progress
+                -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-6').classList.add('active');
+

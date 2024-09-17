@@ -16,7 +16,9 @@ const {coursetypes, courseCategories, productCategories, cities} = require('../c
 const dateConvert = require('../config/dateConvert');
 const Discount = require('../models/Discount');
 const Order = require('../models/Order');
-const { cart_total_price, cart_discount, orderStateNum } = require('../config/order');
+const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState } = require('../config/order');
+
+// sms('09336448037', 'hello');
 
 router.get('/', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'user')
@@ -413,6 +415,8 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
             });
             newOrder.save().then(discount => {
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart: []}}, (err, doc) => {
+                    sms('09336448037', `ثبت سفارش جدید:\nکاربر: ${req.user.fullname}\nتلفن: ${req.user.phone}`);
+                    sms(req.user.phone, `سفارش شما با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
                     res.redirect(`/payment/pay-order?id=${newOrder._id}`);
                 });
             }).catch(err => console.log(err));
@@ -457,4 +461,48 @@ router.get('/courses', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
+router.get('/admin-order-prev', ensureAuthenticated, (req, res, next) => {
+    var orderID = req.query.id;
+    if(req.user.role == 'admin'){
+        Order.findById(orderID, (err, order) => {
+            Order.updateMany({_id: orderID}, {$set: {state: prevOrderState(order.state)}}, (err, doc) => {
+                req.flash('success_msg', 'تغییرات با موفقیت ثبت شد.');
+                res.redirect('/dashboard');
+            })
+        });
+    }
+});
+router.get('/admin-order-next', ensureAuthenticated, (req, res, next) => {
+    var orderID = req.query.id;
+    if(req.user.role == 'admin'){
+        Order.findById(orderID, (err, order) => {
+            order.state = nextOrderState(order.state);
+            if(order.state == 'تکمیل شده'){
+                Order.updateMany({_id: orderID}, {$set: {state: order.state, compeleted: true}}, (err, doc) => {
+                    sms(order.phone, 'سفارش شما ارسال شد.\nسپاس از اعتماد شما.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/products')
+                    req.flash('success_msg', 'تغییرات با موفقیت ثبت شد.');
+                    res.redirect('/dashboard');
+                })
+            }else{
+                Order.updateMany({_id: orderID}, {$set: {state: order.state}}, (err, doc) => {
+                    req.flash('success_msg', 'تغییرات با موفقیت ثبت شد.');
+                    res.redirect('/dashboard');
+                })
+            }
+        });
+    }
+});
+router.get('/admin-orders', ensureAuthenticated, (req, res, next) => {
+    Order.find({}, (err, orders) => {
+        res.render('./dashboard/admin-orders', {
+            theme: req.session.theme,
+            user: req.user,
+            orders,
+            dateConvert,
+            dot,
+            orderStateNum,
+        });
+    })
+});
+
 module.exports = router;

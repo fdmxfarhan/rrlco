@@ -195,6 +195,27 @@
         color: var(--blue);
     }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    .admin-control-order{
+        overflow: hidden;
+    }
+    .admin-control-order a{
+        background-color: var(--red);
+        color: white;
+        display: block;
+        float: right;
+        width: 46%;
+        text-align: center;
+        margin: 0 2%;
+        border-radius: 0.5vw;
+        padding: 0.3vw 0;
+        font-size: 0.8vw;
+    }
+    .admin-control-order a i{
+        padding: 0 0.5vw;
+    }
+    .admin-control-order a:hover{
+        background-color: var(--green);
+    }
 }
 @media only screen and (max-width: 800px) {
     .order-progress{

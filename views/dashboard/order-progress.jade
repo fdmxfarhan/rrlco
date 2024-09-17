@@ -1,23 +1,34 @@
 .order-progress 
-    .progress-stat 
-        .stage(class="#{orderStateNum(order.state) > 1? 'active':''}")
-            i.fa.fa-credit-card-alt
-            -if(orderStateNum(order.state) > 1)
-                .text پرداخت شده
-            -else
-                .text در انتضار پرداخت
-        .line(class="#{orderStateNum(order.state) > 1? 'active':''}")
-        .stage(class="#{orderStateNum(order.state) > 2? 'active':''}")
-            i.fa.fa-arrows-rotate
-            .text در حال پردازش
-        .line(class="#{orderStateNum(order.state) > 2? 'active':''}")
-        .stage(class="#{orderStateNum(order.state) > 3? ''active:''}") 
-            i.fa.fa-boxes-packing
-            .text آماده سازی جهت ارسال
-        .line(class="#{orderStateNum(order.state) > 3? 'active':''}")
-        .stage(class="#{orderStateNum(order.state) > 4? ''active:''}") 
-            i.fa.fa-truck-fast
-            .text ارسال سفارش
+    -if(order.state != 'تکمیل شده'){
+        .progress-stat 
+            .stage(class="#{orderStateNum(order.state) > 1? 'active':''}")
+                i.fa.fa-credit-card-alt
+                -if(orderStateNum(order.state) > 1)
+                    .text پرداخت شده
+                -else
+                    .text در انتضار پرداخت
+            .line(class="#{orderStateNum(order.state) > 1? 'active':''}")
+            .stage(class="#{orderStateNum(order.state) > 2? 'active':''}")
+                i.fa.fa-arrows-rotate
+                -if(orderStateNum(order.state) > 2)
+                    .text پردازش شده
+                -else
+                    .text در حال پردازش
+            .line(class="#{orderStateNum(order.state) > 2? 'active':''}")
+            .stage(class="#{orderStateNum(order.state) > 3? 'active':''}") 
+                i.fa.fa-boxes-packing
+                -if(orderStateNum(order.state) > 3)
+                    .text آماده ارسال
+                -else
+                    .text آماده سازی جهت ارسال
+            .line(class="#{orderStateNum(order.state) > 3? 'active':''}")
+            .stage(class="#{orderStateNum(order.state) > 4? 'active':''}") 
+                i.fa.fa-truck-fast
+                -if(orderStateNum(order.state) > 4)
+                    .text ارسال شده
+                -else
+                    .text ارسال سفارش
+    -}
 .order-info 
     .right-side 
         .info
@@ -86,4 +97,13 @@
             .payed 
                 i.fa.fa-check
                 | پرداخت شده
+        -}
+        -if(user.role == 'admin' && order.state != 'تکمیل شده'){
+            .admin-control-order 
+                a.prev(href="/dashboard/admin-order-prev?id=#{order._id}") 
+                    i.fa.fa-chevron-right 
+                    | مرحله قبل
+                a.next(href="/dashboard/admin-order-next?id=#{order._id}") 
+                    | مرحله بعد
+                    i.fa.fa-chevron-left 
         -}
