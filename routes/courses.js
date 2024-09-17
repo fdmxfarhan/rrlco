@@ -118,9 +118,9 @@ router.get('/edit-course', ensureAuthenticated, (req, res, next) => {
     });
 });   
 router.post('/edit-course', ensureAuthenticated, (req, res, next) => {
-    var {courseID, title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, hours, minutes, capacity, classLink} = req.body;
+    var {courseID, minCap, title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, hours, minutes, capacity, classLink} = req.body;
     if(req.user.role == 'admin'){
-        Course.updateMany({_id: courseID}, {$set: {title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, totalTime: {hours, minutes, seconds: 0}, capacity, classLink}}, (err, course) => {
+        Course.updateMany({_id: courseID}, {$set: {minCap, title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, totalTime: {hours, minutes, seconds: 0}, capacity, classLink}}, (err, course) => {
             req.flash('success_msg', 'تغیرات ذخیره شد.');
             res.redirect(`/courses/course-view?id=${courseID}`);
         });

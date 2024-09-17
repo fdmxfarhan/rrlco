@@ -45,6 +45,10 @@ var CourseSchema = new mongoose.Schema({
     type: String,
     default: '',
   },
+  minCap: {
+    type: Number,
+    default: 1,
+  },
 });
 
 var Course = mongoose.model('Course', CourseSchema);

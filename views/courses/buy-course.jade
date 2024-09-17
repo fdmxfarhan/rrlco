@@ -17,6 +17,14 @@
                 .val= course.numofattendes
                     i.fa.fa-user
             .info 
+                .label ظرفیت
+                .val= course.capacity
+                    i.fa.fa-user
+            .info 
+                .label حداقل تعداد
+                .val= course.minCap
+                    i.fa.fa-user
+            .info 
                 .label مدت زمان
                 .val #{timedigit(course.totalTime.hours)}:#{timedigit(course.totalTime.minutes)}:00
                     i.fa.fa-clock
