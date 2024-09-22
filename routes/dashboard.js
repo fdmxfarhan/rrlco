@@ -17,6 +17,7 @@ const dateConvert = require('../config/dateConvert');
 const Discount = require('../models/Discount');
 const Order = require('../models/Order');
 const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState } = require('../config/order');
+const Animalfeeder = require('../models/Animalfeeder');
 
 // sms('09336448037', 'hello');
 
@@ -504,5 +505,16 @@ router.get('/admin-orders', ensureAuthenticated, (req, res, next) => {
         });
     })
 });
-
+router.get('/admin-animalfeeder', ensureAuthenticated, (req, res, next) => {
+    Animalfeeder.find({}, (err, animalfeeders) => {
+        res.render('./dashboard/admin-animalfeeder', {
+            theme: req.session.theme,
+            user: req.user,
+            animalfeeders,
+            dateConvert,
+            dot,
+            orderStateNum,
+        });
+    })
+});
 module.exports = router;

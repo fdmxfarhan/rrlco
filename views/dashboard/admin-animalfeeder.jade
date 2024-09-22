@@ -1,0 +1,53 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-discount.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .add-discount
+                    .form-view
+                        form(action="/dashboard/admin-add-animalfeeder" method="POST") 
+                            .raw 
+                                input.quarter(type="text" name="id" placeholder="id")
+                                input.quarter(type="number" name="fullname" placeholder="نام و نام خانوادگی" value="")
+                                input.quarter(type="number" name="phone" placeholder="تلفن" value="")
+                                input.quarter(type="number" name="password" placeholder="کلمه عبور" value="1234")
+                            .align-left
+                                button.blue(type="submit") افزودن دستگاه
+                .data-list-view 
+                    .title-raw 
+                        .item.center.col15 آی دی
+                        .item.center.col25 مالک
+                        .item.center.col20 شماره تماس
+                        .item.center.col20 کلمه عبور
+                        .item.center.col10 ساسکریبشن
+                        .item.center.col10 حذف
+                    -for(var i=0; i<animalfeeders.length; i++){
+                        .raw 
+                            .item.center.col15.bold  
+                                i.fa.fa-tag.icon 
+                                | #{animalfeeders[i].id}  
+                            .item.center.col25 #{animalfeeders[i].fullname}
+                            .item.center.col20 #{animalfeeders[i].phone} 
+                            .item.center.col20 #{animalfeeders[i].password} 
+                            .item.center.col10 #{animalfeeders[i].subscribed} 
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-discount?id=#{animalfeeders[i]._id}") 
+                                    i.fa.fa-trash-can 
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-8').classList.add('active');
+

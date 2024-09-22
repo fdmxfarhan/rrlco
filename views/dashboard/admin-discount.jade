@@ -15,11 +15,11 @@ block content
                         form(action="/dashboard/admin-add-discount" method="POST") 
                             .raw 
                                 input.quarter(type="text" name="code" placeholder="کد تخفیف" value="#{genDiscountCode(6)}")
-                                input.quarter(type="number" name="maxDiscount" placeholder="سقف تخفیف")
-                                input.quarter(type="number" name="minPurchase" placeholder="حداقل خرید")
-                                input.quarter(type="number" name="numofuse" placeholder="تعداد استفاده")
+                                input.quarter(type="number" name="maxDiscount" placeholder="سقف تخفیف" value="50000")
+                                input.quarter(type="number" name="minPurchase" placeholder="حداقل خرید" value="100000")
+                                input.quarter(type="number" name="numofuse" placeholder="تعداد استفاده" value="1")
                             .raw
-                                input.quarter(type="number" name="amount" placeholder="میزان تخفیف")
+                                input.quarter(type="number" name="amount" placeholder="میزان تخفیف" value="10")
                                 select.quarter(name="type") 
                                     option(value="درصد") درصد
                                     option(value="تومان") مبلغ
@@ -28,17 +28,17 @@ block content
                                     -for(var i=0; i<users.length; i++)
                                         option(value="#{users[i]._id}")= users[i].fullname
                                 select.quarter(name="itemtype") 
-                                    option(value="all") همه خدمات
+                                    option(value="print3d") پرینت سه بعدی
                                     option(value="product") فروشگاه
                                     option(value="course") دوره ها
-                                    option(value="print3d") پرینت سه بعدی
                                     option(value="firstbuy") اولین خرید
+                                    option(value="all") همه خدمات
                             .raw 
                                 .date-input
                                     .label تاریخ انقضا: 
-                                    input(type="number" name="day" placeholder="روز")
-                                    input(type="number" name="month" placeholder="ماه")
-                                    input(type="number" name="year" placeholder="سال")
+                                    input(type="number" name="day" placeholder="روز" value="1")
+                                    input(type="number" name="month" placeholder="ماه" value="1")
+                                    input(type="number" name="year" placeholder="سال" value="1405")
                             .align-left
                                 button.blue(type="submit") افزودن کد تخفیف
                 .data-list-view 

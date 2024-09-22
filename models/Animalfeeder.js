@@ -13,7 +13,15 @@ var AnimalfeederSchema = new mongoose.Schema({
   enable: {
     type: Boolean,
     default: true,
-  }
+  },
+  fullname: String,
+  password: String,
+  subscribed: {
+    type: Boolean,
+    default: true,
+  },
+  phone: String,
+  lastUpdate: Date,
 });
 
 var Animalfeeder = mongoose.model('Animalfeeder', AnimalfeederSchema);
