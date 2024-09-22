@@ -15,7 +15,10 @@ router.use(bodyparser.urlencoded({extended: true}));
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         const dir = 'public/files/' + Date.now().toString();
-        mkdirp(dir, err => cb(err, dir));
+        mkdirp(dir, err => {
+            if(err) console.log(err);
+            cb(err, dir);
+        });
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
