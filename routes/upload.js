@@ -71,6 +71,7 @@ router.post('/add-course', ensureAuthenticated, upload.single('picture'), (req, 
 });
 router.post('/print3d', ensureAuthenticated, upload.single('myfile'), (req, res, next) => {
     const file = req.file;
+    console.log(file)
     if (!file) {
         req.flash('error_msg', 'لطفا یک فایل stl انتخاب کنید.');
         res.redirect(`/print3d`);
