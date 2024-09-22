@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 
 const { ensureAuthenticated } = require('../config/auth');
+const { homedir } = require('os');
 
 router.get('/', (req, res, next) => {
     var {lang} = req.query;
@@ -46,5 +48,9 @@ router.get('/theme', (req, res, next) => {
     } else {
         res.redirect('/'); // Fallback: redirect to home if there's no referrer
     }
+})
+router.get('/sitemap.xml', (req, res, next) => {
+    console.log(__dirname)
+    res.sendFile(path.join(__dirname, '../config/sitemap.xml'));
 })
 module.exports = router;
