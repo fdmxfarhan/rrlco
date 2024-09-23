@@ -49,8 +49,8 @@ router.get('/theme', (req, res, next) => {
         res.redirect('/'); // Fallback: redirect to home if there's no referrer
     }
 })
-// router.get('/sitemap.xml', (req, res, next) => {
-//     console.log(__dirname)
-//     res.sendFile(path.join(__dirname, '../config/sitemap.xml'));
-// })
+router.get('/app/sitemap.xml', (req, res, next) => {
+    console.log(__dirname)
+    res.sendFile(path.join(__dirname, '../config/sitemap.xml'));
+})
 module.exports = router;
