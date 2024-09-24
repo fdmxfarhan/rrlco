@@ -78,7 +78,7 @@
     .form-view button{
         display: block;
         width: fit-content;
-        padding: 0.4vw 3vw;
+        padding: 0.4vw 2vw;
         font-size: 1vw;
         border-radius: 1vw;
         color: white;
@@ -87,6 +87,9 @@
         margin-top: 1.6vw;
         margin-left: 5%;
     }
+    .form-view button.inline{
+        display: inline;
+    }
     .form-view button.blue{background-color: var(--blue);}
     .form-view button.red{background-color: var(--red);}
     .form-view button.green{background-color: var(--green);}
@@ -94,6 +97,7 @@
         cursor: pointer;
         background-color: var(--pink);
     }
+    .form-view button i{padding-left: 0.5vw;}
     .form-view .date-input{
         display: block;
         width: 45%;

@@ -29,17 +29,45 @@ router.get('/', (req, res, next) => {
 router.get('/course-view', (req, res, next) => {
     var courseID = req.query.id;
     Course.findById(courseID, (err, course) => {
-        var purchased = false;
-        if(req.user) purchased = req.user.courses.some(item => item.id === courseID);
-        res.render('./courses/course-view', {
-            theme: req.session.theme,
-            user: req.user,
-            course,
-            courseCategories,
-            dot, timedigit,
-            purchased,
-        });
-    })
+        if(!req.user){
+            res.render('./courses/course-view', {
+                theme: req.session.theme,
+                user: req.user,
+                course,
+                courseCategories,
+                dot, timedigit,
+                purchased: false,
+            });
+        }
+        else if(req.user.role == 'user'){
+            var purchased = req.user.courses.some(item => item.id === courseID);
+            res.render('./courses/course-view', {
+                theme: req.session.theme,
+                user: req.user,
+                course,
+                courseCategories,
+                dot, timedigit,
+                purchased,
+            });
+        }
+        else if(req.user.role == 'admin'){
+            var purchased = req.user.courses.some(item => item.id === courseID);
+            User.find({role: 'user'}, (err, allUsers) => {
+                // User.find({role: 'user', courses: { $elemMatch: { id: courseID } }}, (err, participators) => {});
+                const participators = allUsers.filter(user => user.courses.some(course => course.id === courseID));
+                res.render('./courses/course-view', {
+                    theme: req.session.theme,
+                    user: req.user,
+                    course,
+                    courseCategories,
+                    dot, timedigit,
+                    purchased,
+                    participators,
+                    allUsers,
+                });
+            })
+        }
+    });
 });
 router.get('/course-session', (req, res, next) => {
     var courseID = req.query.id;

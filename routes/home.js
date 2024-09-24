@@ -2,8 +2,17 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
+var User = require('../models/User');
 const { ensureAuthenticated } = require('../config/auth');
 const { homedir } = require('os');
+
+
+// User.find({role: 'user'}, (err, users) => {
+//     console.log(users)
+//     for(var i=0; i<users.length; i++){
+//         console.log(users[i].courses)
+//     }
+// })
 
 router.get('/', (req, res, next) => {
     var {lang} = req.query;
