@@ -165,5 +165,41 @@ router.get('/register-course', ensureAuthenticated, (req, res, next) => {
         res.redirect(`/payment/pay-online-course`)
     });
 });   
+router.post('/online-course/add-participator', ensureAuthenticated, (req, res, next) => {
+    var {courseID, userID} = req.body;
+    if(req.user.role == 'admin'){
+        User.findById(userID, (err, user) => {
+            if(user){
+                var userCourses = user.courses;
+                var purchased = userCourses.some(item => item.id === courseID);
+                if(purchased){
+                    req.flash('error_msg', 'کاربر در دوره ثبت نام شده');
+                    res.redirect(`/courses/course-view?id=${courseID}`);
+                }else{
+                    userCourses.push({id: courseID, payed: true, auth: 'added-by-admin'});
+                    User.updateMany({_id: userID}, {$set: {courses: userCourses}}, (err, doc) => {
+                        req.flash('success_msg', 'کاربر اضافه شد');
+                        res.redirect(`/courses/course-view?id=${courseID}`);
+                    });
+                }
+            }else res.send('no user found!!');
+        })
+    }
+});
+router.get('/online-course/delete-participator', ensureAuthenticated, (req, res, next) => {
+    var {courseID, userID} = req.query;
+    if(req.user.role == 'admin'){
+        User.findById(userID, (err, user) => {
+            if(user){
+                var userCourses = user.courses.filter(course => course.id !== courseID);;
+                User.updateMany({_id: userID}, {$set: {courses: userCourses}}, (err, doc) => {
+                    req.flash('success_msg', 'کاربر حذف شد');
+                    res.redirect(`/courses/course-view?id=${courseID}`);
+                });
+            }else res.send('no user found!!');
+        })
+    }
+});
+
 
 module.exports = router;

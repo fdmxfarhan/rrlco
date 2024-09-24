@@ -64,14 +64,14 @@ block content
                                 .item.center.col20 #{participators[i].phone}  
                                 .item.center.col25 #{participators[i].email}  
                                 .item.center.col10 
-                                    a.delete(href="/courses/online-course/delete-participator?id=#{participators[i]._id}" onclick="return confirm('مطمئن هستید؟')")
+                                    a.delete(href="/courses/online-course/delete-participator?userID=#{participators[i]._id}&courseID=#{course._id}" onclick="return confirm('مطمئن هستید؟')")
                                         i.fa.fa-trash-can 
                         -}
                     .form-view
                         form#buyform(action="/courses/online-course/add-participator" method="POST") 
                             input.hide(type="text" name="courseID" value="#{course._id}")
                             .raw 
-                                select.quarter(name="type") 
+                                select.quarter(name="userID") 
                                     -for(var i=0; i<allUsers.length; i++){
                                         option(value="#{allUsers[i]._id}") #{allUsers[i].fullname}
                                     -}
