@@ -1,5 +1,4 @@
 @media only screen and (min-width: 800px) {
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .shopping-cart-info h1{
         /* background-color: var(--verylightblue); */
         /* color: var(--blue); */
@@ -273,5 +272,280 @@
         color: var(--text);
         font-size: 1vw;
     }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
-@media only screen and (max-width: 800px) {}
+@media only screen and (max-width: 800px) {
+    .shopping-cart-info h1{
+        /* background-color: var(--verylightblue); */
+        /* color: var(--blue); */
+        background-color: var(--red);
+        color: white;
+        margin: 0;
+        font-size: 3.2vw;
+        text-align: center;
+        padding: 3vw 0;
+    }
+    .shopping-cart-info .discount{
+        width: 90%;
+        margin: auto;
+        margin-bottom: 2vw;
+    }
+    .shopping-cart-info .discount .label{
+        font-size: 1.2vw;
+        color: var(--red);
+        margin-top: 2vw;
+    }
+    .shopping-cart-info .discount a.remove{
+        font-size: 1vw;
+        color: var(--blue);
+        cursor: pointer;
+    }
+    .shopping-cart-info .discount a.remove:hover{color: var(--pink);}
+    .shopping-cart-info .discount .val{
+        text-align: center;
+        overflow: hidden;
+    }
+    .shopping-cart-info .discount .val input{
+        display: block;
+        width: 68%;
+        float: right;
+        font-family: 'iransans';
+        border: none;
+        outline: none;
+        margin: 0;
+        padding: 0.5vw 5%;
+        background-color: var(--lightergray);
+        border-top-right-radius: 0.5vw;
+        border-bottom-right-radius: 0.5vw;
+    }
+    .shopping-cart-info .discount .val button{
+        display: block;
+        width: 20%;
+        float: right;
+        font-family: 'iransans';
+        border: none;
+        outline: none;
+        margin: 0;
+        padding: 0.5vw 5%;
+        background-color: var(--red);
+        color: white;
+        border-top-left-radius: 0.5vw;
+        border-bottom-left-radius: 0.5vw;
+    }
+    .shopping-cart-info .discount .val button:hover{
+        background-color: var(--green);
+        cursor: pointer;
+    }
+    .shopping-cart-info .item{
+        overflow: hidden;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1vw;
+    }
+    .shopping-cart-info .item .label{
+        width: 50%;
+        float: right;
+        text-align: right;
+        font-size: 1.2vw;
+        color: var(--text);
+        font-weight: bold;
+    }
+    .shopping-cart-info .item .val{
+        width: 50%;
+        float: left;
+        text-align: left;
+        color: var(--text);
+        font-size: 1.1vw;
+    }
+    .shopping-cart-info .item .val .value{
+        display: inline;
+        padding-left: 0.5vw;
+    }
+    .shopping-cart-info .item .val.green{
+        color: var(--green);
+        font-weight: bold;
+    }
+    .shopping-cart-info button.buy,
+    .shopping-cart-info a.buy{
+        overflow: hidden;
+        width: 90%;
+        font-family: 'iransans';
+        border: none;
+        outline: none;
+        margin: 1vw auto;
+        background-color: var(--red);
+        color: white;
+        display: block;
+        text-align: center;
+        padding: 0.7vw 0;
+        border-radius: 1vw;
+        font-size: 1.2vw;
+        margin-top: 3vw;
+        cursor: pointer;
+    }
+    .shopping-cart-info button.buy:hover,
+    .shopping-cart-info a.buy:hover{
+        background-color: var(--green);
+    }
+    .shopping-cart-info button.buy i,
+    .shopping-cart-info a.buy i{
+        padding-left: 0.5vw;
+    }
+    .shoppingcart-orders {
+        width: 90%;
+        margin: 1vw auto;
+    }
+    .shoppingcart-orders h1.title{
+        font-size: 1.2vw;
+        color: var(--text);
+        padding-top: 1vw;
+        position: relative;
+        padding-bottom: 1vw;
+        border-bottom: 0.2vw solid var(--lightergray);
+    }
+    .shoppingcart-orders h1.title i{
+        padding-left: 0.5vw;
+    }
+    .shoppingcart-orders h1.title a.delete-cart{
+        color: var(--red);
+        position: absolute;
+        top: 1.4vw;
+        left: 1vw;
+        font-weight: normal;
+        font-size: 1vw;
+    }
+    .shoppingcart-orders h1.title a.delete-cart i{
+        padding-left: 0.5vw;
+    }
+    .shoppingcart-orders .list {
+        margin: 1vw 0;
+    }
+    .shoppingcart-orders .list .item{
+        overflow: hidden;
+        border: 0.1vw solid var(--lightergray);
+        margin-bottom: 1vw;
+        border-radius: 0.5vw;
+    }
+    .shoppingcart-orders .list .item a.cover{
+        float: right;
+        width: 25%;
+    }
+    .shoppingcart-orders .list .item .info{
+        float: right;
+        width: 30%;
+    }
+    .shoppingcart-orders .list .item .count{
+        float: right;
+        width: 20%;
+        margin-top: 1vw;
+        /* padding-top: 2.7vw; */
+    }
+    .shoppingcart-orders .list .item .total-price{
+        float: right;
+        width: 20%;
+        margin-top: 1vw;
+        padding-top: 0.5vw;
+        font-size: 1.1vw;
+        color: var(--green);
+    }
+    .shoppingcart-orders .list .item a.delete-item{
+        float: right;
+        width: 5%;
+        color: var(--red);
+        margin-top: 1vw;
+        padding-top: 0.5vw;
+        font-size: 1.1vw;
+    }
+    .shoppingcart-orders .list .item a.cover .print3d-icon{
+        display: block;
+        font-size: 5vw;
+        color: var(--text);
+        padding: 1vw;
+        text-align: center;
+    }
+    .shoppingcart-orders .list .item a.cover img{
+        width: 70%;
+        display: block;
+        margin: 1vw auto;
+    }
+    .shoppingcart-orders .list .item .info h1{
+        margin: 0;
+        padding: 0;
+        font-size: 1vw;
+        margin-top: 1vw;
+        /* padding-top: 2vw; */
+        color: var(--text);
+    }
+    .shoppingcart-orders .list .item .info h2{
+        margin: 0;
+        padding: 0;
+        font-size: 0.9vw;
+        color: var(--lightgray);
+
+    }
+    .shoppingcart-orders .list .item .info h3{
+        margin: 0;
+        padding: 0;
+        font-size: 0.7vw;
+        font-weight: normal;
+        color: var(--lightgray);
+    }
+    .shoppingcart-orders .list .item .count button.add{
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: 0.1vw solid var(--lightgray);
+        font-family: 'iransans';
+        font-size: 0.7vw;
+        padding: 0.5vw 1vw;
+        border-top-right-radius: 0.5vw;
+        border-bottom-right-radius: 0.5vw;
+        cursor: pointer;
+    }
+    .shoppingcart-orders .list .item .count button.sub{
+        background-color: var(--lightergray);
+        color: var(--text);
+        border: 0.1vw solid var(--lightgray);
+        font-family: 'iransans';
+        font-size: 0.7vw;
+        padding: 0.5vw 1vw;
+        border-top-left-radius: 0.5vw;
+        border-bottom-left-radius: 0.5vw;
+        cursor: pointer;
+    }
+    .shoppingcart-orders .list .item .count button.add:hover,
+    .shoppingcart-orders .list .item .count button.sub:hover{
+        background-color: var(--lightgray);
+    }
+    .shoppingcart-orders .list .item .count input{
+        /* background-color: var(--lightergray); */
+        text-align: center;
+        width: 2vw;
+        color: var(--text);
+        border: none;
+        font-family: 'iransans';
+        font-size: 0.8vw;
+        padding: 0.4vw 0.5vw;
+        border-top: 0.1vw solid var(--lightgray);
+        border-bottom: 0.1vw solid var(--lightgray);
+        outline: none;
+    }
+    .shoppingcart-orders .list .item .count input::-webkit-outer-spin-button,
+    .shoppingcart-orders .list .item .count input::-webkit-inner-spin-button{
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .shoppingcart-orders .important-note p{
+        color: var(--text);
+        font-size: 1.2vw;
+        padding: 0;
+        margin: 0;
+    }
+    .shoppingcart-orders .important-note ul{
+        margin-top: 0.7vw;
+        margin-bottom: 3vw;
+    }
+    .shoppingcart-orders .important-note ul li{
+        color: var(--text);
+        font-size: 1vw;
+    }
+}
