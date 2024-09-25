@@ -8,7 +8,7 @@ block content
         .course-cont-view
             .content
                 .edit-session
-                    form(action="/upload/add-session" method="POST" enctype="multipart/form-data") 
+                    form(action="/courses/add-session" method="POST")
                         input.hide(type="text" name="sessionIndex" value="#{sessionIndex}")
                         input.hide(type="text" name="courseID" value="#{course._id}")
                         .raw 
@@ -22,8 +22,8 @@ block content
                                 option(value="#{session.type}") #{session.type}
                                 option(value="free") رایگان
                                 option(value="locked") قفل
-                        .upload 
-                            input.file(type="file" name="picture")
+                        .raw
+                            input.dual(type="text" name="filePath" value="#{session.file}" placeholder="لینک ویدئو")
                         .align-left
                             button(type="submit") ثبت
 

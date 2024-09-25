@@ -74,18 +74,25 @@ router.get('/course-session', (req, res, next) => {
     var sessionIndex = req.query.index;
     console.log(req.query);
     Course.findById(courseID, (err, course) => {
+        var session = course.sessionContents[sessionIndex];
         var purchased = false;
         if(req.user) purchased = req.user.courses.some(item => item.id === courseID);
-        res.render('./courses/course-session', {
-            theme: req.session.theme,
-            user: req.user,
-            course,
-            courseCategories,
-            dot, timedigit,
-            sessionIndex,
-            session: course.sessionContents[sessionIndex],
-            purchased,
-        });
+        if(session.type != 'locked' || purchased || req.user.role == 'admin'){
+            res.render('./courses/course-session', {
+                theme: req.session.theme,
+                user: req.user,
+                course,
+                courseCategories,
+                dot, timedigit,
+                sessionIndex,
+                session: session,
+                purchased,
+            });
+        }
+        else{
+            req.flash('error_msg', `دسترسی مجاز نمی‌باشد.`);
+            res.redirect(`/courses/course-view?id=${courseID}`);
+        }
     })
 });
 router.get('/edit-session', ensureAuthenticated, (req, res, next) => {
@@ -200,6 +207,26 @@ router.get('/online-course/delete-participator', ensureAuthenticated, (req, res,
         })
     }
 });
-
+router.post('/add-session', ensureAuthenticated, (req, res, next) => {
+    var {sessionIndex, courseID, title, hours, minutes, description, type, filePath} = req.body;
+    Course.findById(courseID, (err, course) => {
+        if(req.user.role == 'admin'){
+            if(course.sessionContents.length != course.sessions){
+                course.sessionContents = [];
+                for(var i=0; i<course.sessions; i++){
+                    course.sessionContents.push({
+                        title: '', hours: 0, minutes: 0, description: '', type: 'locked', file: '',
+                    });
+                }
+            }
+            course.sessionContents[sessionIndex] = {
+                title, hours, minutes, description, type, file: filePath,
+            }
+            Course.updateMany({_id: courseID}, {$set: {sessionContents: course.sessionContents}}, (err) => {
+                res.redirect(`/courses/course-session?index=${sessionIndex}&id=${courseID}`);
+            });
+        }
+    });
+});
 
 module.exports = router;
