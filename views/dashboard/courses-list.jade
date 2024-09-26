@@ -1,0 +1,30 @@
+.products-view
+    h1.title
+        i.fa.fa-user-graduate
+        | دوره های آموزشی من
+        .searchbar 
+            form(action="/dashboard/admin-course-search" method="POST")
+                input.text(type="text" placeholder="جستجو..." name="search")
+                button.submit(type="submit")
+                    i.fa.fa-search
+.triple-card-view
+    -for(var i=0; i<courses.length; i++){
+        a(href="/courses/course-view?id=#{courses[i]._id}").card 
+            .image 
+                img(src="#{courses[i].cover}", alt="")
+                -if(courses[i].type == 'مجازی')
+                    .type.green آنلاین
+                -if(courses[i].type == 'آفلاین')
+                    .type.pink آفلاین
+                -if(courses[i].type == 'حضوری')
+                    .type.blue حضوری
+            h1= courses[i].title
+            .teacher 
+                i.fa.fa-user 
+                .text= courses[i].teacher
+            .line
+            .info 
+                .stat 
+                    i.fa.fa-clock-o 
+                    .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
+    -}

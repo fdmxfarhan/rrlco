@@ -72,7 +72,6 @@ router.get('/course-view', (req, res, next) => {
 router.get('/course-session', (req, res, next) => {
     var courseID = req.query.id;
     var sessionIndex = req.query.index;
-    console.log(req.query);
     Course.findById(courseID, (err, course) => {
         var session = course.sessionContents[sessionIndex];
         var purchased = false;
@@ -90,8 +89,14 @@ router.get('/course-session', (req, res, next) => {
             });
         }
         else{
-            req.flash('error_msg', `دسترسی مجاز نمی‌باشد.`);
-            res.redirect(`/courses/course-view?id=${courseID}`);
+            if(req.user){
+                req.flash('error_msg', `دسترسی مجاز نمی‌باشد.`);
+                res.redirect(`/courses/course-view?id=${courseID}`);
+            }
+            else {
+                req.flash('error_msg', `لطفا ابتدا وارد حساب کاربری شوید`);
+                res.redirect(`/users/login`);
+            }
         }
     })
 });

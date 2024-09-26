@@ -24,15 +24,21 @@ const Animalfeeder = require('../models/Animalfeeder');
 router.get('/', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'user')
     {
-        Order.find({ownerID: req.user._id, compeleted: false}, (err, orders) => {
-            res.render('./dashboard/user-dashboard', {
-                theme: req.session.theme,
-                user: req.user,
-                orders,
-                dateConvert,
-                dot,
-                orderStateNum,
-            });
+        var coursesList = req.user.courses;
+        var coursesID = coursesList.map(item => item.id);
+        Course.find({_id: {$in: coursesID}}, (err, courses) => {
+            Order.find({ownerID: req.user._id, compeleted: false}, (err, orders) => {
+                res.render('./dashboard/user-dashboard', {
+                    theme: req.session.theme,
+                    user: req.user,
+                    orders,
+                    dateConvert,
+                    dot,
+                    orderStateNum,
+                    courses,
+                    timedigit,
+                });
+            })
         })
     }
     else if(req.user.role = 'admin')
@@ -447,10 +453,7 @@ router.get('/remove-order', ensureAuthenticated, (req, res, next) => {
 router.get('/courses', ensureAuthenticated, (req, res, next) => {
     var coursesList = req.user.courses;
     var coursesID = coursesList.map(item => item.id);
-    console.log(coursesList)
-    console.log(coursesID)
     Course.find({_id: {$in: coursesID}}, (err, courses) => {
-        console.log(courses)
         res.render('./dashboard/user-courses', {
             theme: req.session.theme,
             user: req.user,

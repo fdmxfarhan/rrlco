@@ -9,50 +9,9 @@ block content
     .dashboard-view 
         .dashboard-cont-view
             .content
-                .products-view
-                    h1.title
-                        i.fa.fa-user-graduate
-                        | دوره های آموزشی
-                        .searchbar 
-                            form(action="/dashboard/admin-course-search" method="POST")
-                                input.text(type="text" placeholder="جستجو..." name="search")
-                                button.submit(type="submit")
-                                    i.fa.fa-search
-                .triple-card-view
-                    -for(var i=0; i<courses.length; i++){
-                        a(href="/courses/course-view?id=#{courses[i]._id}").card 
-                            .image 
-                                img(src="#{courses[i].cover}", alt="")
-                                -if(courses[i].type == 'مجازی')
-                                    .type.green آنلاین
-                                -if(courses[i].type == 'آفلاین')
-                                    .type.pink آفلاین
-                                -if(courses[i].type == 'حضوری')
-                                    .type.blue حضوری
-                            h1= courses[i].title
-                            //- p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
-                            .teacher 
-                                i.fa.fa-user 
-                                .text= courses[i].teacher
-                            .line
-                            .info 
-                                .stat 
-                                    i.fa.fa-clock-o 
-                                    .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
-                                //- .price
-                                //-     -if(courses[i].price > 0){
-                                //-         .val= dot(courses[i].price)
-                                //-         .unit تومان
-                                //-     -}else{
-                                //-         .unit رایگان
-                                //-     -}
-                                    
-                    -}
+                include ./courses-list
         .sidebar-view 
             include sidebar
-        
-
-
     script.
         document.getElementById('sidebar-link3').classList.add('active');
     script(src="/js/dashboard.js") 
