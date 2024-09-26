@@ -147,9 +147,9 @@ router.post('/repair-form-submit', upload.single('picture'), (req, res, next) =>
                 date: now,
                 count,
             });
-            sms('09380982537', `ثبت سفارش جدید توسط ${fullname} \n\n${count} عدد پاور سوئیچینگ ${type}\mکد پیگیری: ${code} \n\nTehran Instruments \nteinco.ir`)
-            sms('09336448037', `ثبت سفارش جدید توسط ${fullname} \n\n${count} عدد پاور سوئیچینگ ${type}\mکد پیگیری: ${code} \n\nTehran Instruments \nteinco.ir`)
-            sms(phone, `${fullname} عزیز \n\n سفارش شما با موفقیت ثبت شد. \n\nلطفا قطعات خود را جهت تعمیر در ساعات اداری به آدرس زیر ارسال نمایید. \n\nخیابان 15 خرداد، نرسیده به چهارراه گلوبندک، کوچه شهید بادامچی، بن بست حمام تابش، پلاک 1 \nTehran Instruments \nteinco.ir`)
+            sms('09380982537', `ثبت سفارش جدید توسط ${fullname} \n\n${count} عدد پاور سوئیچینگ ${type}\nکد پیگیری: ${code} \n\nTehran Instruments \nteinco.ir`)
+            sms('09336448037', `ثبت سفارش جدید توسط ${fullname} \n\n${count} عدد پاور سوئیچینگ ${type}\nکد پیگیری: ${code} \n\nTehran Instruments \nteinco.ir`)
+            sms(phone, `${fullname} عزیز \n\n سفارش شما با موفقیت ثبت شد.\nکد پیگیری: ${code} \n\nلطفا قطعات خود را جهت تعمیر در ساعات اداری به آدرس زیر ارسال نمایید. \n\nخیابان 15 خرداد، نرسیده به چهارراه گلوبندک، کوچه شهید بادامچی، بن بست حمام تابش، پلاک 1 \nپیگیری سفارش: rrlco.ir/elecrepair/repair-order?orderID=${newOrder._id} \n\nTehran Instruments \nteinco.ir`)
             newOrder.save().then(doc => {
                 res.redirect(`/elecrepair/repair-order?orderID=${newOrder._id}`)
             }).catch(err => console.log(err));
