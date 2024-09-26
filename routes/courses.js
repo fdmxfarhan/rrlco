@@ -77,7 +77,7 @@ router.get('/course-session', (req, res, next) => {
         var session = course.sessionContents[sessionIndex];
         var purchased = false;
         if(req.user) purchased = req.user.courses.some(item => item.id === courseID);
-        if(session.type != 'locked' || purchased || req.user.role == 'admin'){
+        if(session.type != 'locked' || purchased || (req.user && req.user.role == 'admin')){
             res.render('./courses/course-session', {
                 theme: req.session.theme,
                 user: req.user,
