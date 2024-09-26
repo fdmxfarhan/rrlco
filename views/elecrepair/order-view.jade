@@ -1,0 +1,110 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/elecrepair/repair-form.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/dashboard/order-progress.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .repair-form
+                    .order-progress 
+                        .progress-stat 
+                            .stage(class="#{0 > 1? 'active':''}")
+                                i.fa.fa-credit-card-alt
+                                .text ثبت سفارش
+                            .line(class="#{0 > 1? 'active':''}")
+                            .stage(class="#{0 > 2? 'active':''}")
+                                i.fa.fa-arrows-rotate
+                                .text در حال تعمیر
+                            .line(class="#{0 > 2? 'active':''}")
+                            .stage(class="#{0 > 3? 'active':''}") 
+                                i.fa.fa-boxes-packing
+                                .text در انتظار پرداخت
+                            .line(class="#{0 > 3? 'active':''}")
+                            .stage(class="#{0 > 4? 'active':''}") 
+                                i.fa.fa-truck-fast
+                                .text آماده ارسال
+                    .order-info 
+                        .right-side 
+                            .info
+                                .item
+                                    i.fa.fa-calendar-alt 
+                                    | #{order.date.year}/#{order.date.month}/#{order.date.day}
+                                .item 
+                                    i.fa.fa-arrows-rotate
+                                    | وضعیت: #{order.state}
+                            h1.order-title فاکتور سفارش:
+                            .invoice-view 
+                                .item 
+                                    .name تعمیر پاور سوئیچینگ
+                                    .count #{order.count} عدد
+                                    .price پاور #{order.type}
+                            .delivery-info 
+                                .raw 
+                                    .item
+                                        .label
+                                            i.fa.fa-motorcycle
+                                            | نوع ارسال: 
+                                        .val ارسال با پیک (پس کرایه)
+                                    .item
+                                        .label
+                                            i.fa.fa-user
+                                            | گیرنده: 
+                                        .val= order.fullname
+                                .address-raw
+                                    i.fa.fa-map-marker-alt
+                                    | آدرس: 
+                                    .text= order.address
+                                .raw 
+                                    .item 
+                                        .label
+                                            i.fa.fa-barcode
+                                            | کد پیگیری: 
+                                        .val= order.code
+                        .left-side 
+                            .item 
+                                .label جمع اقلام
+                                .val #{dot(order.totalPrice)} تومان
+                            .item 
+                                .label تخفیف
+                                .val #{dot(order.discount)} تومان
+                            .item 
+                                .label هزینه ارسال
+                                .val #{dot(order.deliveryPrice)} تومان
+                            .item 
+                                .label مالیات
+                                .val #{dot(order.tax)}  تومان
+                            .item 
+                                .label مجموع
+                                .val #{dot(order.totalPrice + order.deliveryPrice + order.tax - order.discount)} تومان
+                            -if(!order.payed){
+                                a.link.pay(href="/payment/pay-order?id=#{order._id}") 
+                                    i.fa.fa-credit-card-alt 
+                                    | پرداخت
+                            -}else{
+                                .payed 
+                                    i.fa.fa-check
+                                    | پرداخت شده
+                            -}
+                    h1.title خدمات تخصصی تعمیر پاور سوئیچینگ و منابع تغذیه
+                    p.desc 
+                        | در شرکت تینکو، خدمات تعمیرات تخصصی پاور سوئیچینگ و انواع منابع تغذیه صنعتی و کامپیوتری را با بهترین کیفیت ارائه می‌دهیم. تیم ما با تکیه بر سال‌ها تجربه در تعمیرات الکترونیکی و تجهیزات حساس مانند آداپتورها، پاورهای صنعتی و پاورهای کامپیوتر، هرگونه مشکل فنی و خرابی را با دقت و سرعت برطرف می‌کند.
+                    p.desc 
+                        | ما با استفاده از تجهیزات پیشرفته و دانش فنی به‌روز، در تعمیر و رفع اشکال پاور سوئیچینگ، بازگرداندن عملکرد صحیح منبع تغذیه و سایر دستگاه‌های الکترونیکی شما تخصص داریم. خواه دستگاه شما نیاز به تعمیرات جزئی داشته باشد یا به تعویض قطعات اصلی، ما آماده‌ایم تا با ارائه خدمات حرفه‌ای و گارانتی کیفیت، نیازهای شما را برآورده کنیم.
+                    p.desc 
+                        | جهت دریافت مشاوره و ثبت سفارش تعمیرات، با ما تماس بگیرید یا از طریق فرم زیر اطلاعات دستگاه خود را ثبت کنید تا کارشناسان ما در کوتاه‌ترین زمان ممکن با شما تماس بگیرند.
+                    .images-view 
+                        img(src="/img/elecrepair/01.jpg")
+                        img(src="/img/elecrepair/02.jpg")
+                        img(src="/img/elecrepair/03.jpg")
+                        img(src="/img/elecrepair/04.jpg")
+        .sidebar-view 
+            include sidebar
+        
+                 
+    
+    script(src="/js/dashboard.js") 

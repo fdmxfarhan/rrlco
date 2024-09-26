@@ -12,33 +12,36 @@ block content
                 .repair-form
                     h1.title ثبت سفارش تعمیر پاورهای سوئیچینگ
                     .form-view
-                        form#buyform(action="/courses/online-course/add-participator" method="POST") 
-                            input.hide(type="text" name="courseID" value="")
+                        form#buyform(action="/upload/repair-form-submit" method="POST" enctype="multipart/form-data") 
+                            //- input.hide(type="text" name="courseID" value="")
                             .raw 
                                 .label-quarter نام:
-                                input.dual(type="text" name="firstName" placeholder="نام")
+                                input.dual(type="text" name="firstName" placeholder="نام" required)
                             .raw 
                                 .label-quarter نام خانوادگی:
-                                input.dual(type="text" name="lastName" placeholder="نام خانوادگی" )
+                                input.dual(type="text" name="lastName" placeholder="نام خانوادگی" required)
                             .raw 
                                 .label-quarter تلفن همراه:
-                                input.dual(type="text" name="phone" placeholder="تلفن همراه")
+                                input.dual(type="text" name="phone" placeholder="تلفن همراه" required)
+                            .raw 
+                                .label-quarter تعداد قطعه:
+                                input.dual(type="number" name="count" placeholder="تعداد قطعه" required)
                             .raw 
                                 .label-quarter نوع پاور:
                                 select.dual(name="type") 
-                                    option(value="12V5A") 12 ولت 5 آمپر
-                                    option(value="12V20A") 12 ولت 20 آمپر
-                                    option(value="12V10A") 12 ولت 10 آمپر
-                                    option(value="12V15A") 12 ولت 15 آمپر
-                                    option(value="5V40A") 5 ولت 40 آمپر
-                                    option(value="5V30A") 5 ولت 30 آمپر
-                                    option(value="5V15A") 5 ولت 15 آمپر
+                                    option(value="12 ولت 5 آمپر") 12 ولت 5 آمپر
+                                    option(value="12 ولت 20 آمپر") 12 ولت 20 آمپر
+                                    option(value="12 ولت 10 آمپر") 12 ولت 10 آمپر
+                                    option(value="12 ولت 15 آمپر") 12 ولت 15 آمپر
+                                    option(value="5 ولت 40 آمپر") 5 ولت 40 آمپر
+                                    option(value="5 ولت 30 آمپر") 5 ولت 30 آمپر
+                                    option(value="5 ولت 15 آمپر") 5 ولت 15 آمپر
                             .raw 
                                 .rawlabel آدرس:
-                                textarea.short(name="address" placeholder="آدرس خود را وارد کنید...")
+                                textarea.short(name="address" placeholder="آدرس خود را وارد کنید..." required)
                             .upload-area.absolute آپلود عکس محصول 
                                 i.fa.fa-cloud-upload
-                                input#fileinput(type="file" name="myfile" accept=".stl")
+                                input#fileinput(type="file" name="picture" required)
                             .raw 
                                 button.inline.blue(type="submit")
                                     i.fa.fa-save

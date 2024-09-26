@@ -4,12 +4,15 @@ var router = express.Router();
 var bodyparser = require('body-parser');
 const multer = require('multer');
 const mail = require('../config/mail');
+const sms = require('../config/sms');
 const {ensureAuthenticated} = require('../config/auth');
 const User = require('../models/User');
 const mkdirp = require('mkdirp');
 const Product = require('../models/Product');
 const Course = require('../models/Course');
 const Print3d = require('../models/Print3d');
+const RepairOrder = require('../models/RepairOrder');
+const dateConvert = require('../config/dateConvert');
 
 router.use(bodyparser.urlencoded({extended: true}));
 var storage = multer.diskStorage({
@@ -117,6 +120,41 @@ router.post('/add-session', ensureAuthenticated, upload.single('picture'), (req,
             });
         }
     });
+});
+router.post('/repair-form-submit', upload.single('picture'), (req, res, next) => {
+    const file = req.file;
+    var {firstName, lastName, phone, type, address, count} = req.body;
+    now = dateConvert.getNow();
+    if (!file) {
+        res.send('no file to upload');
+    }
+    else{
+        RepairOrder.find({}, (err, orders) => {
+            var code = `${now.year}${now.month}${now.day}001`;
+            if(orders.length > 0){
+                code = `${now.year}${now.month}${now.day}` + (parseInt(orders[orders.length-1].slice(-3)) + 1).toString();
+            }
+            var fullname = firstName + ' ' + lastName;
+            var newOrder = new RepairOrder({
+                firstName, 
+                lastName, 
+                fullname,
+                phone, 
+                type, 
+                address, 
+                picture: file.destination.slice(6) + '/' + file.originalname,
+                code,
+                date: now,
+                count,
+            });
+            sms('09380982537', `ثبت سفارش جدید توسط ${fullname} \n\n${count} عدد پاور سوئیچینگ ${type}\mکد پیگیری: ${code} \n\nTehran Instruments \nteinco.ir`)
+            sms('09336448037', `ثبت سفارش جدید توسط ${fullname} \n\n${count} عدد پاور سوئیچینگ ${type}\mکد پیگیری: ${code} \n\nTehran Instruments \nteinco.ir`)
+            sms(phone, `${fullname} عزیز \n\n سفارش شما با موفقیت ثبت شد. \n\nلطفا قطعات خود را جهت تعمیر در ساعات اداری به آدرس زیر ارسال نمایید. \n\nخیابان 15 خرداد، نرسیده به چهارراه گلوبندک، کوچه شهید بادامچی، بن بست حمام تابش، پلاک 1 \nTehran Instruments \nteinco.ir`)
+            newOrder.save().then(doc => {
+                res.redirect(`/elecrepair/repair-order?orderID=${newOrder._id}`)
+            }).catch(err => console.log(err));
+        });
+    }
 });
 
 module.exports = router;
