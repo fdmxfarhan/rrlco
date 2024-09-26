@@ -80,6 +80,8 @@ p{text-align: justify;}
     }
     .course-view .sidebar .nav-view a.link.active{
         color: var(--blue);
+        background-color: var(--lightergray);
+        font-weight: bold;
     }
     .course-view .sidebar .nav-view a.link:hover{
         background-color: var(--light);
@@ -463,6 +465,8 @@ p{text-align: justify;}
     }
     .course-view .sidebar .nav-view a.link.active{
         color: var(--blue);
+        background-color: var(--lightergray);
+        font-weight: bold;
     }
     .course-view .sidebar .nav-view a.link:hover{
         background-color: var(--light);

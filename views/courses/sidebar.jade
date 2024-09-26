@@ -2,6 +2,12 @@
     .user-info 
         h1 دسته بندی‌ها
     .nav-view 
-        -for(var i=0; i<courseCategories.length; i++)
-            a.link#sidebar-link-1(href="/courses?category=#{courseCategories[i]}")= courseCategories[i]
+        -for(var i=0; i<courseCategories.length; i++){
+            -if(category && category == courseCategories[i])
+                a.link.active#sidebar-link-1(href="/courses?category=#{courseCategories[i]}")
+                    | #{courseCategories[i]}
+            -else
+                a.link#sidebar-link-1(href="/courses?category=#{courseCategories[i]}")
+                    | #{courseCategories[i]}
+        -}
         

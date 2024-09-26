@@ -9,9 +9,12 @@ block content
             .content
                 .course-cover
                     .cover
-                        video(width="320" height="240" controls controlsList="nodownload" oncontextmenu="return false;") 
-                            source(src="#{session.file}")
-                        //- img(src="#{course.cover}", alt="")
+                        -if(session.file && session.file != ''){
+                            video(width="320" height="240" controls controlsList="nodownload" oncontextmenu="return false;") 
+                                source(src="#{session.file}")
+                        -}else{
+                            img(src="/img/courses/404.jpg", alt="")
+                        -}
                     h1.title= session.title
                     p.desc= session.description
                 -if(user && user.role == 'admin'){

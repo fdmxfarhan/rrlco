@@ -20,6 +20,11 @@ block content
                             button.submit(type="submit")
                                 i.fa.fa-search
             .content
+                .filters-view
+                    -if(category){
+                        a.remove-filter(href="/courses")= category
+                            i.fa.fa-times
+                    -}
                 br
                 .triple-card-view
                     -for(var i=0; i<courses.length; i++){

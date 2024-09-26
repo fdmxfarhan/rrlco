@@ -77,6 +77,8 @@ body{
     }
     .course-view .sidebar .nav-view a.link.active{
         color: var(--blue);
+        background-color: var(--lightergray);
+        font-weight: bold;
     }
     .course-view .sidebar .nav-view a.link:hover{
         background-color: var(--light);
@@ -159,6 +161,26 @@ body{
     .searchbar button:hover{
         background-color: var(--pink);
     }
+    .filters-view {
+        overflow: hidden;
+        width: 95%;
+        margin: auto;
+        margin-top: 1vw;
+    }
+    .filters-view  a.remove-filter{
+        background-color: var(--blue);
+        color: var(--white);
+        display: block;
+        float: right;
+        margin-left: 0.5vw;
+        font-size: 0.8vw;
+        font-weight: normal;
+        padding: 0.3vw 0.6vw;
+        border-radius: 0.8vw;
+    }
+    .filters-view a.remove-filter i{
+        padding-right: 0.5vw;
+    }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     
 }
@@ -229,6 +251,8 @@ body{
     }
     .course-view .sidebar .nav-view a.link.active{
         color: var(--blue);
+        background-color: var(--lightergray);
+        font-weight: bold;
     }
     .course-view .sidebar .nav-view a.link:hover{
         background-color: var(--light);
@@ -310,6 +334,26 @@ body{
     }
     .searchbar button:hover{
         background-color: var(--pink);
+    }
+    .filters-view {
+        overflow: hidden;
+        width: 95%;
+        margin: auto;
+        margin-top: 3vw;
+    }
+    .filters-view  a.remove-filter{
+        background-color: var(--blue);
+        color: var(--white);
+        display: block;
+        float: right;
+        margin-left: 1vw;
+        font-size: 2.8vw;
+        font-weight: normal;
+        padding: 1vw 2vw;
+        border-radius: 1.8vw;
+    }
+    .filters-view a.remove-filter i{
+        padding-right: 0.5vw;
     }
 }
 

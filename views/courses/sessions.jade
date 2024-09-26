@@ -3,7 +3,8 @@
         h1 جلسات
     .nav-view 
         -for(var i=0; i<course.sessions; i++){
-            a.link#sidebar-link-1(href="/courses/course-session?index=#{i}&id=#{course._id}") جلسه #{i+1}: #{course.sessionContents.length == course.sessions? course.sessionContents[i].title : '-'}
+            a.link#sidebar-link-1(href="/courses/course-session?index=#{i}&id=#{course._id}" class="#{sessionIndex == i? 'active': ''}")
+                | جلسه #{i+1}: #{course.sessionContents.length == course.sessions? course.sessionContents[i].title : '-'}
                 -if(course.sessionContents.length == course.sessions){
                     .info
                         //- i.fa.fa-clock.clock.clock
