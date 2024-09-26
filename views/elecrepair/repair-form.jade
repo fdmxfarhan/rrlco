@@ -1,0 +1,63 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/elecrepair/repair-form.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .repair-form
+                    h1.title ثبت سفارش تعمیر پاورهای سوئیچینگ
+                    .form-view
+                        form#buyform(action="/courses/online-course/add-participator" method="POST") 
+                            input.hide(type="text" name="courseID" value="")
+                            .raw 
+                                .label-quarter نام:
+                                input.dual(type="text" name="firstName" placeholder="نام")
+                            .raw 
+                                .label-quarter نام خانوادگی:
+                                input.dual(type="text" name="lastName" placeholder="نام خانوادگی" )
+                            .raw 
+                                .label-quarter تلفن همراه:
+                                input.dual(type="text" name="phone" placeholder="تلفن همراه")
+                            .raw 
+                                .label-quarter نوع پاور:
+                                select.dual(name="type") 
+                                    option(value="12V5A") 12 ولت 5 آمپر
+                                    option(value="12V20A") 12 ولت 20 آمپر
+                                    option(value="12V10A") 12 ولت 10 آمپر
+                                    option(value="12V15A") 12 ولت 15 آمپر
+                                    option(value="5V40A") 5 ولت 40 آمپر
+                                    option(value="5V30A") 5 ولت 30 آمپر
+                                    option(value="5V15A") 5 ولت 15 آمپر
+                            .raw 
+                                .rawlabel آدرس:
+                                textarea.short(name="address" placeholder="آدرس خود را وارد کنید...")
+                            .upload-area.absolute آپلود عکس محصول 
+                                i.fa.fa-cloud-upload
+                                input#fileinput(type="file" name="myfile" accept=".stl")
+                            .raw 
+                                button.inline.blue(type="submit")
+                                    i.fa.fa-save
+                                    | ثبت سفارش
+                    h1.title خدمات تخصصی تعمیر پاور سوئیچینگ و منابع تغذیه
+                    p.desc 
+                        | در شرکت تینکو، خدمات تعمیرات تخصصی پاور سوئیچینگ و انواع منابع تغذیه صنعتی و کامپیوتری را با بهترین کیفیت ارائه می‌دهیم. تیم ما با تکیه بر سال‌ها تجربه در تعمیرات الکترونیکی و تجهیزات حساس مانند آداپتورها، پاورهای صنعتی و پاورهای کامپیوتر، هرگونه مشکل فنی و خرابی را با دقت و سرعت برطرف می‌کند.
+                    p.desc 
+                        | ما با استفاده از تجهیزات پیشرفته و دانش فنی به‌روز، در تعمیر و رفع اشکال پاور سوئیچینگ، بازگرداندن عملکرد صحیح منبع تغذیه و سایر دستگاه‌های الکترونیکی شما تخصص داریم. خواه دستگاه شما نیاز به تعمیرات جزئی داشته باشد یا به تعویض قطعات اصلی، ما آماده‌ایم تا با ارائه خدمات حرفه‌ای و گارانتی کیفیت، نیازهای شما را برآورده کنیم.
+                    p.desc 
+                        | جهت دریافت مشاوره و ثبت سفارش تعمیرات، با ما تماس بگیرید یا از طریق فرم زیر اطلاعات دستگاه خود را ثبت کنید تا کارشناسان ما در کوتاه‌ترین زمان ممکن با شما تماس بگیرند.
+                    .images-view 
+                        img(src="/img/elecrepair/01.jpg")
+                        img(src="/img/elecrepair/02.jpg")
+                        img(src="/img/elecrepair/03.jpg")
+                        img(src="/img/elecrepair/04.jpg")
+        .sidebar-view 
+            include sidebar
+        
+                 
+    
+    script(src="/js/dashboard.js") 

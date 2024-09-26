@@ -2,6 +2,7 @@
     .form-view {
         width: 90%;
         margin: 1vw auto;
+        position: relative;
     }
     .form-view.simple {
         width: 100%;
@@ -126,6 +127,42 @@
         font-family: 'iransans';
         /* margin-left: 1vw; */
         text-align: center;
+    }
+    .form-view .upload-area{
+        border: 0.25vw dashed lightblue;
+        position: relative;
+        cursor: pointer;
+        padding: 2vw 0;
+        text-align: center;
+        color: #798AAF;
+        font-family: 'iransans';
+        font-size: 1.3vw;
+        width: 94%;
+        border-radius: 1vw;
+        /* margin-bottom: 1vw; */
+    }
+    .form-view .upload-area i{
+        font-size: 1.6vw;
+    }
+    .form-view .upload-area:hover {
+        background-color: var(--lightergray);
+    }
+    .form-view .upload-area input{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .form-view .upload-area.absolute{
+        position: absolute;
+        top: 0;
+        left: 4vw;
+        width: 15vw;
+        height: 8vw;
+        padding-top: 6vw;
     }
 }
 @media only screen and (max-width: 800px) {}

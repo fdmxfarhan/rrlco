@@ -207,6 +207,13 @@ body{
         padding-left: 1vw;
     }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    .dashboard-view .sidebar-view .user-info h1.single{
+        font-size: 1vw;
+        margin-top: 1.5w;
+        margin-bottom: 1vw;
+        padding: 0;
+        padding-right: 1vw;
+    }
 }
 @media only screen and (max-width: 800px) {
     .dashboard-view{

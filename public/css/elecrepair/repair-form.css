@@ -1,0 +1,29 @@
+@media only screen and (min-width: 800px) {
+    .repair-form h1.title{
+        font-size: 1.2vw;
+        width: 90%;
+        margin: 1vw auto;
+        margin-bottom: 2vw;
+        color: var(--red);
+    }
+    .repair-form p.desc{
+        width: 90%;
+        margin: auto;
+        font-size: 1.1vw;
+        text-align: justify;
+        margin-bottom: 1vw;
+    }
+    .repair-form .images-view{
+        overflow: hidden;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 3vw;
+    }
+    .repair-form .images-view img{
+        width: 23%;
+        margin: 0 1%;
+        border-radius: 0.5vw;
+    }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+}
+@media only screen and (max-width: 800px) {}

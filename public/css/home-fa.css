@@ -76,7 +76,7 @@ body{
     header .top-info{
         position: absolute;
         right: 10%;
-        top: 10vw;
+        top: 7vw;
     }
     header .top-info .hello{
         color: var(--lightgray);
@@ -99,19 +99,41 @@ body{
         font-family: 'iransans';
         font-size: 1vw;
         font-weight: bold;
+
+        /* direction: rtl;
+        text-align: right; */
+    }
+    header .top-info .hello .text.title2{
+        float: right;
+        color: var(--red);
+        font-family: 'iransans';
+        font-size: 1.4vw;
+        font-weight: bold;
+        padding-top: 0.5vw;
+        /* direction: rtl;
+        text-align: right; */
+    }
+    header .top-info .hello .text.title3{
+        float: right;
+        color: var(--dark);
+        font-family: 'iransans';
+        font-size: 2.5vw;
+        font-weight: bold;
+        padding-left: 0.5vw;
         /* direction: rtl;
         text-align: right; */
     }
     header .top-info h1.name{
         font-family: 'iransans';
-        font-size: 2.7vw;
+        font-size: 5vw;
+        font-weight: bold;
         margin: 0;
         padding: 0;
-        padding-top: 1vw;
+        padding-top: 0;
         color: var(--gray);
         direction: rtl;
         text-align: right;
-        margin-bottom: 1vw;
+        margin-bottom: 0;
     }
     header .top-info h1.name .red{
         display: inline;
