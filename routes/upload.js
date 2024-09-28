@@ -132,7 +132,7 @@ router.post('/repair-form-submit', upload.single('picture'), (req, res, next) =>
         RepairOrder.find({}, (err, orders) => {
             var code = `${now.year}${now.month}${now.day}001`;
             if(orders.length > 0){
-                code = `${now.year}${now.month}${now.day}` + (parseInt(orders[orders.length-1].slice(-3)) + 1).toString();
+                code = `${now.year}${now.month}${now.day}` + (parseInt(orders[orders.length-1].code.slice(-3)) + 1).toString();
             }
             var fullname = firstName + ' ' + lastName;
             var newOrder = new RepairOrder({

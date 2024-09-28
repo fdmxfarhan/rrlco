@@ -321,7 +321,7 @@ body{
         position: absolute;
         right: 5%;
         width: 90%;
-        top: 75vw;
+        top: 6vw;
     }
     header .top-info .hello{
         color: var(--lightgray);
@@ -343,9 +343,29 @@ body{
         font-size: 3vw;
         font-weight: bold;
     }
+    header .top-info .hello .text.title2{
+        float: right;
+        color: var(--red);
+        font-family: 'iransans';
+        font-size: 4vw;
+        font-weight: bold;
+        padding-top: 1vw;
+        /* direction: rtl;
+        text-align: right; */
+    }
+    header .top-info .hello .text.title3{
+        float: right;
+        color: var(--dark);
+        font-family: 'iransans';
+        font-size: 6.5vw;
+        font-weight: bold;
+        padding-left: 0.5vw;
+        /* direction: rtl;
+        text-align: right; */
+    }
     header .top-info h1.name{
         font-family: 'iransans';
-        font-size: 9vw;
+        font-size: 15vw;
         margin: 0;
         padding: 0;
         padding-top: 1vw;
@@ -363,6 +383,21 @@ body{
         font-family: 'iransans';
         font-size: 3vw;
         width: 80%;
+    }
+    header .top-info ul.jobs li, 
+    header .top-info ul.jobs li a{
+        margin: 0;
+        padding: 0;
+        /* margin-top: 1vw; */
+        color: var(--gray);
+        font-family: 'iransans';
+        font-size: 2.8vw;
+        width: 80%;
+        direction: rtl;
+        text-align: right;
+    }
+    header .top-info ul.jobs li a:hover{
+        color: var(--red);
     }
     header .top-info a.button{
         background-color: var(--red);
@@ -395,7 +430,7 @@ body{
     }
     header .top-image{
         position: absolute;
-        top: 1vh;
+        top: 51vh;
         right: 0;
         width: 100vw;
     }
