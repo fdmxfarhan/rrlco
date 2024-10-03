@@ -1,11 +1,20 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-        script(src="/socket.io/socket.io.js")
-    body 
-        h1 hello
-        button(id="sendButton") Send
-        script(src="/js/animalfeeder.js") 
+extends ./layout
+
+block styles
+    link(rel="stylesheet", href="/css/animalfeeder/cpanel.css")
+    meta(name="theme-color" content="#4361EE")
+
+block content
+    .panel-view
+        .header-view
+            nav 
+                a.left(href="#") 
+                    i.fa.fa-home
+                h1 Pet Feeder
+                a.left(href="#") 
+                    i.fa.fa-gear
+            headear
+                .circle
+                    i.fa.fa-cat 
+                    h1 دستگاه #{feeder.id}
+

@@ -5,11 +5,15 @@ const { ensureAuthenticated } = require('../config/auth');
 const Animalfeeder = require('../models/Animalfeeder');
 
 router.get('/', (req, res, next) => {
-    res.render('./animalfeeder/animalfeeder',{
-        theme: req.session.theme,
-        lang: req.session.lang,
-        user: req.user
-    });
+    var {id} = req.query;
+    Animalfeeder.findOne({id}, (err, feeder) => {
+        res.render('./animalfeeder/animalfeeder',{
+            theme: req.session.theme,
+            lang: req.session.lang,
+            user: req.user,
+            feeder,
+        });
+    })
 });
 router.get('/api', (req, res, next) => {
     var { id } = req.query;

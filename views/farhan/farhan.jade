@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        title Farhan Daemi
+        //- link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet" href="/fontawesome-free-6.6.0-web/css/all.css")
+        link(rel="shortcut icon", href="/img/logo.png", type="image/x-icon")
+        script(src="/js/jquery-3.5.1.min.js")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='/css/farhan/farhan.css')
+        -if(theme){
+            -if(theme == 'light'){
+                link(rel='stylesheet', href='/css/theme.css')
+            -}else{
+                link(rel='stylesheet', href='/css/theme-dark.css')
+            -}
+        -}else{
+            link(rel='stylesheet', href='/css/theme.css')
+        -}
+        block styles
+    body
+        .dual-side-cont 
+            .sidebar-view
+                .sidebar
+                    img.profile(src="/img/farhan/farhan.jpg", alt="")
+                    h1.name Farhan Daemi Mojdehi
+                    h2.role Bachelor student
+                    h2.subject Electrical Engineering
+                    a.link(target="_blank" href="http://old.ikiu.ac.ir/") IMAM KHOMEINI INTERNATIONAL UNIVERSITY
+                    .socials 
+                        .item 
+                            img.icon(src="/img/socials/scholar-min.jpg")
+                            a(target="_blank" href="https://scholar.google.com/citations?user=z4CPEZwAAAAJ") Google Scholar
+                        .item 
+                            img.icon(src="/img/socials/linkdin-min.jpg")
+                            a(target="_blank" href="https://www.linkedin.com/in/fdmxfarhan/") Linkdin
+                        .item 
+                            i.fa.fa-envelope 
+                            a(target="_blank" href="mailto:daemifarhan@gmail.com") daemifarhan@gmail.com
+                        .item 
+                            i.fa.fa-phone 
+                            a(target="_blank" href="tel:+989336448037") +98 (933) 6448 037
+                        .item 
+                            i.fa.fa-map-marker-alt 
+                            a(target="_blank" href="https://maps.app.goo.gl/8fprsUiNcVET7wAy9") Tehran, Iran
+            .body-view 
+                .paragraph 
+                    h1 About Me
+                    p As an electrical engineer with a strong background in programming and robotics, I have dedicated my career to the design and development of cutting-edge electronic systems. My journey includes leadership in multiple Robocup competitions, both nationally and internationally, where I have led teams to success in various robotics challenges. I hold a master’s degree in electrical engineering and have extensive experience in research, particularly in autonomous systems and machine learning. In addition to my engineering work, I teach programming and robotics, sharing my passion for technology with others. Currently, I lead Tehran Instrument, a company specializing in the design, manufacturing, and after-sales support of electronic gadgets and boards. I am continuously striving to innovate and contribute to the future of technology.
+                    h2 Interests
+                    ul 
+                        li Robots control system
+                        li Design and develop omnidirectional mobile robots
+                        li Hardware design
+                        li Embedded Systems programming
+                        li Microprocessor and digital systems design
+                        li Robots’ artificial intelligence
+                        li Using machine learning in robots AI
+
+            
+                    

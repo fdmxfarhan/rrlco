@@ -21,7 +21,8 @@ var AnimalfeederSchema = new mongoose.Schema({
     default: true,
   },
   phone: String,
-  lastUpdate: Date,
+  lastUpdate: Object,
+  date: Object,
 });
 
 var Animalfeeder = mongoose.model('Animalfeeder', AnimalfeederSchema);

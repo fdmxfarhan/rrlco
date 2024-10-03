@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    direction: rtl;
+    background-color: var(--white);
+}
+@media only screen and (min-width: 800px) {}
+@media only screen and (max-width: 800px) {
+    .panel-view .header-view{
+        background-color: var(--blue);
+        color: var(--white);
+    }
+}

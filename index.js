@@ -27,6 +27,7 @@ var print3dRoute = require('./routes/print3d');
 var paymentRoute = require('./routes/payment');
 var animalfeederRoute = require('./routes/animalfeeder');
 var elecrepairRoute = require('./routes/elecrepair');
+var farhanRoute = require('./routes/farhan');
 
 
 
@@ -105,6 +106,7 @@ app.use('/print3d', print3dRoute);
 app.use('/payment', paymentRoute);
 app.use('/animalfeeder', animalfeederRoute);
 app.use('/elecrepair', elecrepairRoute);
+app.use('/farhan', farhanRoute);
 
 
 

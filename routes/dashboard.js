@@ -520,4 +520,28 @@ router.get('/admin-animalfeeder', ensureAuthenticated, (req, res, next) => {
         });
     })
 });
+router.post('/admin-add-animalfeeder', ensureAuthenticated, (req, res, next) => {
+    var {id, fullname, phone, password} = req.body;
+    Animalfeeder.findOne({id}, (err, feeder) => {
+        if(feeder){
+            req.flash('error_msg', 'این ID قبلا ثبت شده.');
+            res.redirect('/dashboard/admin-animalfeeder');
+        }else{
+            var newFeeder = new Animalfeeder({
+                id,
+                fullname,
+                phone,
+                password,
+                date: dateConvert.getNow(),
+            })
+            newFeeder.save().then(doc => {
+                req.flash('success_msg', 'دستگاه با موفقیت ثبت شد.');
+                res.redirect('/dashboard/admin-animalfeeder');
+            }).catch(err => console.log(err));
+        }
+    });
+});
+
+
+
 module.exports = router;

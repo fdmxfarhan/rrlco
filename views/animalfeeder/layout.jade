@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        title PetFeeder
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="theme-color" content="#4361EE")
+        script(src="/js/jquery-3.5.1.min.js")
+        link(rel="shortcut icon", href="/img/logo.png", type="image/x-icon")
+        link(rel="stylesheet" href="/fontawesome-free-6.6.0-web/css/all.css")
+        link(rel='stylesheet', href='/css/messages.css')
+        link(rel='stylesheet', href='/css/animalfeeder/layout.css')
+        block styles
+        -if(theme){
+            -if(theme == 'light'){
+                link(rel='stylesheet', href='/css/theme.css')
+            -}else{
+                link(rel='stylesheet', href='/css/theme-dark.css')
+            -}
+        -}else{
+            link(rel='stylesheet', href='/css/theme.css')
+        -}
+        script(src="/socket.io/socket.io.js")
+    body 
+        .black-modal
+        block content
+        

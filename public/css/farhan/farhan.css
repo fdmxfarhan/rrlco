@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    font-family: 'iransans';
+    /* direction: ltr; */
+    background-color: var(--white);
+    direction: ltr;
+    text-align: left;
+    /* background-color: var(--light); */
+}
+a{color: var(--blue);}
+a:hover{color: var(--red);}
+
+@media only screen and (min-width: 800px) {
+    .dual-side-cont{
+        overflow: hidden;
+        width: 80%;
+        margin: 4vw auto;
+    }
+    .dual-side-cont .sidebar-view{
+        float: left;
+        width: 30%;
+    }
+    .dual-side-cont .body-view {
+        width: 70%;
+        float: left;
+    }
+    .dual-side-cont .sidebar-view .sidebar{
+        width: 90%;
+    }
+    .dual-side-cont .sidebar-view img.profile{
+        width: 60%;
+        display: block;
+        border-radius: 50%;
+        margin: auto;
+    }
+    .dual-side-cont .sidebar-view .sidebar h1.name{
+        color: var(--dark);
+        font-size: 1.7vw;
+        margin-top: 1vw;
+        padding: 0;
+        margin-bottom: 0;
+        text-align: center;
+    }
+    .dual-side-cont .sidebar-view .sidebar h2.role{
+        color: var(--text);
+        font-size: 1.2vw;
+        padding: 0;
+        margin-top: 0.1vw;
+        text-align: center;
+        font-weight: normal;
+    }
+    .dual-side-cont .sidebar-view .sidebar h2.subject{
+        font-size: 1vw;
+        margin: 0;
+        padding: 0;
+    }
+    .dual-side-cont .sidebar-view .sidebar a.link{
+        font-size: 0.9vw;
+    }
+    .dual-side-cont .sidebar-view .sidebar .socials{
+        margin-top: 2vw;
+    }
+    .dual-side-cont .sidebar-view .sidebar .socials .item{
+        margin-bottom: 1vw;
+        overflow: hidden;
+    }
+    .dual-side-cont .sidebar-view .sidebar .socials .item img{
+        width: 1.5vw;
+        margin-right: 0.5vw;
+        display: block;
+        float: left;
+    }
+    .dual-side-cont .sidebar-view .sidebar .socials .item i{
+        padding-right: 0.5vw;
+        font-size: 1.5vw;
+        color: var(--blue);
+        display: block;
+        float: left;
+    }
+    .dual-side-cont .sidebar-view .sidebar .socials .item a{
+        display: block;
+        float: left;
+        color: var(--blue);
+        font-size: 1vw;
+    }
+    .dual-side-cont .sidebar-view .sidebar .socials .item a:hover{
+        color: var(--red);
+    }
+    .dual-side-cont .body-view .paragraph h1{
+        color: var(--blue);
+        font-size: 1.5vw;
+    }
+    .dual-side-cont .body-view .paragraph h2{
+        color: var(--blue);
+        font-size: 1.2vw;
+    }
+    .dual-side-cont .body-view .paragraph p{
+        color: var(--text);
+        text-align: justify;
+        font-size: 1.3vw;
+    }
+    .dual-side-cont .body-view .paragraph ul li{
+        font-size: 1.2vw;
+        color: var(--text);
+        font-weight: normal;
+    }
+}
+@media only screen and (max-width: 800px) {}
