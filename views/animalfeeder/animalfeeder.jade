@@ -1,8 +1,5 @@
 extends ./layout
 
-block styles
-    link(rel="stylesheet", href="/css/animalfeeder/cpanel.css")
-
 block content
     .panel-view
         .header-view
@@ -38,18 +35,4 @@ block content
         a.add-time-btn(href="#") 
             i.fa.fa-plus
 
-        footer 
-            .footer-links-view
-                a.link.active(href="#") 
-                    i.fa.fa-home 
-                    .text خانه
-                a.link(href="#") 
-                    i.fa.fa-history
-                    .text تاریخچه
-                a.link(href="#") 
-                    i.fa.fa-user 
-                    .text حساب کاربری
-                a.link(href="#") 
-                    i.fa.fa-gear 
-                    .text تنظیمات
-                
+        include ./footer

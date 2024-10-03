@@ -1,0 +1,42 @@
+extends ./layout
+
+block styles
+    link(rel="stylesheet", href="/css/animalfeeder/login.css")
+
+block content
+    .panel-view
+        .header-view
+            nav 
+                a.left(href="#") 
+                    i.fa.fa-home
+                h1 Pet Feeder
+                a.right(href="#") 
+                    i.fa.fa-gear
+        svg.curve-border(width="100%" height="10vw" viewBox="0 0 100 20" preserveAspectRatio="none")
+            path(d="M0,0 C40,20 60,20 100,0 Z" fill="#4361EE")
+
+        .login-form 
+            form(action="/animalfeeder/login" method="post")         
+                .raw
+                    .label نام کاربری: 
+                    input.full(type="text" name="id" placeholder="آی دی دستگاه"  required)
+                .raw 
+                    .label کلمه عبور: 
+                    input.full(type="password" name="password" placeholder="کلمه عبور" required)
+
+        
+        footer 
+            .footer-links-view
+                a.link.disabled(href="#") 
+                    i.fa.fa-home 
+                    .text خانه
+                a.link.disabled(href="#") 
+                    i.fa.fa-history
+                    .text تاریخچه
+                a.link.active(href="#") 
+                    i.fa.fa-user 
+                    .text ورود
+                a.link.disabled(href="#") 
+                    i.fa.fa-gear 
+                    .text تنظیمات
+                

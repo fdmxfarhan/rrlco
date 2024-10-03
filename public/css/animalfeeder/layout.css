@@ -79,6 +79,7 @@ body{
         font-size: 3vw;
     }
     .panel-view footer .footer-links-view a.link.active{color: var(--blue);}
+    .panel-view footer .footer-links-view a.link.disabled{color: var(--lightgray);}
     .panel-view footer .footer-links-view a.link.active .text{font-weight: bold;}
 
 

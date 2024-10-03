@@ -6,15 +6,27 @@ const Animalfeeder = require('../models/Animalfeeder');
 
 router.get('/', (req, res, next) => {
     var {id} = req.query;
-    Animalfeeder.findOne({id}, (err, feeder) => {
-        res.render('./animalfeeder/animalfeeder',{
+    if(req.session.petid) id = req.session.petid;
+    if(id){
+        Animalfeeder.findOne({id}, (err, feeder) => {
+            if(feeder){
+                res.render('./animalfeeder/animalfeeder',{
+                    theme: req.session.theme,
+                    lang: req.session.lang,
+                    user: req.user,
+                    feeder,
+                    clock,
+                });
+            }else res.send('device not found!!');
+        })
+    }else{
+        res.render('./animalfeeder/login', {
             theme: req.session.theme,
             lang: req.session.lang,
             user: req.user,
-            feeder,
             clock,
         });
-    })
+    }
 });
 router.get('/api', (req, res, next) => {
     var { id } = req.query;

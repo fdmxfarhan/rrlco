@@ -1,0 +1,27 @@
+@media only screen and (min-width: 800px) {}
+@media only screen and (max-width: 800px) {
+    .login-form{
+        margin-top: 10vw;
+    }
+    .login-form form .raw{
+        margin-bottom: 10vw;
+    }
+    .login-form form .raw .label{
+        font-size: 3.5vw;
+        text-align: center;
+        margin-bottom: 1vw;
+    }
+    .login-form form .raw input.full{
+        display: block;
+        width: 80%;
+        margin: auto;
+        border: 0.2vw solid var(--blue);
+        font-family: 'iransans';
+        font-size: 3.5vw;
+        padding: 3vw 3vw;
+        border-radius: 5vw;
+        background-color: var(--lightergray);
+        text-align: center;
+        outline: none;
+    }
+}
