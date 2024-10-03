@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var clock = require('../config/clock');
 const { ensureAuthenticated } = require('../config/auth');
 const Animalfeeder = require('../models/Animalfeeder');
 
@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
             lang: req.session.lang,
             user: req.user,
             feeder,
+            clock,
         });
     })
 });
