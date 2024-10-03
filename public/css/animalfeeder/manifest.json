@@ -1,0 +1,20 @@
+{
+    "name": "Pet Feeder",
+    "short_name": "PET",
+    "start_url": "/animalfeeder",
+    "display": "standalone",
+    "background_color": "#4361EE",
+    "theme_color": "#4361EE",
+    "icons": [
+      {
+        "src": "/img/logo.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/img/logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
