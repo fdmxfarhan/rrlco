@@ -36,6 +36,8 @@ block content
 
                 -if(user && user.role == 'admin'){
                     .admin-control 
+                        a.edit(href="/dashboard/add-course")
+                            i.fa.fa-plus 
                         -if(course.enable){
                             a.enable(href="/courses/disable-course?id=#{course._id}" onclick="return confirm('مطمئن هستید؟')")
                                 i.fa.fa-check-square
