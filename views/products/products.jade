@@ -15,8 +15,8 @@ block content
                         a(href="#") گرانترین 
                         a.last(href="#") جدید ترین
                     .searchbar 
-                        form(action="/dashboard/admin-product-search" method="POST")
-                            input.text(type="text" placeholder="جستجو..." name="search")
+                        form(action="/products/search" method="POST")
+                            input.text(type="text" placeholder="جستجو..." name="word" value="#{typeof(word) != 'undefined'? word : ''}")
                             button.submit(type="submit")
                                 i.fa.fa-search
             .content

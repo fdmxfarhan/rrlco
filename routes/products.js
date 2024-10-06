@@ -6,7 +6,8 @@ var User = require('../models/User');
 var Product = require('../models/Product');
 const mail = require('../config/mail');
 const dot = require('../config/dot');
-const {productCategories} = require('../config/consts')
+const {productCategories} = require('../config/consts');
+const searchText = require('../config/searchText');
 
 
 router.get('/', (req, res, next) => {
@@ -101,5 +102,24 @@ router.get('/delete-product-picture', ensureAuthenticated, (req, res, next) => {
             }).catch(err => console.log(err));
         })
     } else res.send('access denied!!');
+});
+router.post('/search', (req, res, next) => {
+    var { word } = req.body;
+    Product.find({enable: true}, (err, allProducts) => {
+        var products = [];
+        for(var i=0; i < allProducts.length; i++){
+            if(searchText(allProducts[i].title, word) || searchText(allProducts[i].description, word)){
+                products.push(allProducts[i]);
+            }
+        }
+        res.render('./products/products', {
+            theme: req.session.theme,
+            user: req.user,
+            products,
+            productCategories,
+            dot,
+            word,
+        });
+    });
 });
 module.exports = router;
