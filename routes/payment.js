@@ -7,6 +7,8 @@ const Order = require('../models/Order');
 const Course = require('../models/Course');
 const zarinpal = ZarinpalCheckout.create('8cf5f8c4-4e56-4851-8a42-7708e49bdd98', false);
 const sms = require('../config/sms');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // Docs: https://www.npmjs.com/package/zarinpal-checkout
 
