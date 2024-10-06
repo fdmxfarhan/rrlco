@@ -60,14 +60,22 @@ router.get('/pay-order', (req, res, next) => {
     })
 });
 router.get('/order-payment-call-back', (req, res, next) => {
-    // req.query.Authority should be checked
-    console.log(req.query);
     if(req.query.Status == 'OK'){
-        Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, order) => {
-            sms(req.user.phone, `پرداخت با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
-            req.flash('success_msg', 'پرداخت با موفقیت انجام شد');
-            res.redirect('/dashboard');
-        });
+        Order.findOne({paymentAuthority: req.query.Authority}, (err, order) => {
+            User.findById(order.ownerID, (err, user) => {
+                Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, order) => {
+                    req.login(user, (err) => {
+                        if (err) {
+                            console.log(err);
+                            return res.redirect('/users/login');
+                        }
+                        sms(user.phone, `پرداخت با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
+                        req.flash('success_msg', 'پرداخت با موفقیت انجام شد');
+                        res.redirect('/dashboard');
+                    });
+                });
+            })
+        })
     }else{
         req.flash('error_msg', 'پرداخت انجام نشد');
         res.redirect('/dashboard');
