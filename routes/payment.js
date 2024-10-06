@@ -64,8 +64,10 @@ router.get('/pay-order', (req, res, next) => {
 router.get('/order-payment-call-back', (req, res, next) => {
     if(req.query.Status == 'OK'){
         Order.findOne({paymentAuthority: req.query.Authority}, (err, order) => {
+            console.log(order);
             Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, doc) => {
                 User.findById(order.ownerID, (err, user) => {
+                    console.log(user);
                     req.login(user, (err) => {
                         if (err) {
                             console.log(err);
