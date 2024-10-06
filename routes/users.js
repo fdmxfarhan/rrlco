@@ -58,10 +58,16 @@ router.post('/register', (req, res, next) => {
                     if(err) throw err;
                     newUser.password = hash;
                     newUser.save().then(user => {
-                        sms('09336448037', `ثبت نام کاربر جدید:\n ${fullname}\n ${phone}`);
-                        sms(phone, 'به مرکز تحقیقات رباتیک و برنامه نویسی خوش آمدید.\n https://rrlco.ir')
-                        req.flash('success_msg', 'ثبت نام با موفقیت انجام شد. اکنون میتوانید وارد شوید.');
-                        res.redirect('/users/login');
+                        req.login(user, (err) => {
+                            if (err) {
+                                console.log(err);
+                                return res.redirect('/users/login');
+                            }
+                            sms('09336448037', `ثبت نام کاربر جدید:\n ${fullname}\n ${phone}`);
+                            sms(phone, 'به مرکز تحقیقات رباتیک و برنامه نویسی خوش آمدید.\n https://rrlco.ir')
+                            req.flash('success_msg', 'ثبت نام با موفقیت انجام شد. اکنون میتوانید وارد شوید.');
+                            res.redirect('/users/login');
+                        });
                     }).catch(err => console.log(err));
                 }));
                 console.log(newUser);

@@ -179,6 +179,7 @@ body{
         font-size: 1.2vw;
         padding-top: 1vw;
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn,
     .product-view .content .info-view .shop-control .actions button.submit{
         background-color: var(--red);
         color: white;
@@ -190,14 +191,17 @@ body{
         overflow: hidden;
         cursor: pointer;
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn i,
     .product-view .content .info-view .shop-control .actions button.submit i{
         padding: 1.3vw 1vw;
         background-color: var(--red3);
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn .text,
     .product-view .content .info-view .shop-control .actions button.submit .text{
         padding: 1.3vw;
         display: inline;
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn:hover,
     .product-view .content .info-view .shop-control .actions button.submit:hover{
         background-color: var(--red3);
     }
@@ -225,6 +229,8 @@ body{
         padding-right: 1vw;
     }
     .admin-control a.edit{color: var(--blue);}
+    .admin-control a.home{color: var(--lightgray);}
+    .admin-control a.home.active{color: var(--green);}
     .admin-control a.enable{color: var(--green);}
     .admin-control a.disable{color: var(--gray);}
     .admin-control a.times{color: var(--red);}
@@ -419,7 +425,9 @@ body{
         font-size: 4vw;
         padding-top: 1vw;
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn,
     .product-view .content .info-view .shop-control .actions button.submit{
+        display: block;
         background-color: var(--red);
         color: white;
         border-radius: 1.5vw;
@@ -431,14 +439,17 @@ body{
         overflow: hidden;
         cursor: pointer;
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn i,
     .product-view .content .info-view .shop-control .actions button.submit i{
         padding: 4vw 5vw;
         background-color: var(--red3);
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn .text,
     .product-view .content .info-view .shop-control .actions button.submit .text{
         padding: 4vw;
         display: inline;
     }
+    .product-view .content .info-view .shop-control .actions #register-popup-btn:hover,
     .product-view .content .info-view .shop-control .actions button.submit:hover{
         background-color: var(--red3);
     }
@@ -455,6 +466,7 @@ body{
         padding: 1vw 5vw;
         margin: 2vw auto;
         text-align: justify;
+        color: var(--black);
     }
     .admin-control{
         position: absolute;
@@ -466,6 +478,8 @@ body{
         padding-right: 1vw;
     }
     .admin-control a.edit{color: var(--blue);}
+    .admin-control a.home{color: var(--lightgray);}
+    .admin-control a.home.active{color: var(--green);}
     .admin-control a.enable{color: var(--green);}
     .admin-control a.disable{color: var(--gray);}
     .admin-control a.times{color: var(--red);}

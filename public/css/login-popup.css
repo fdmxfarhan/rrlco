@@ -1,0 +1,86 @@
+@media only screen and (min-width: 600px) {
+    .popup{
+        position: fixed;
+        top: 10vh;
+        background-color: var(--white);
+        z-index: 100;
+        border-radius: 1vw;
+        display: none;
+        height: 80vh;
+    }
+    .popup.width50{width: 50%; left: 25%;}
+    .popup.width60{width: 60%; left: 20%;}
+    .popup.width30{width: 30%; left: 35%;}
+    .popup.width40{width: 40%; left: 30%;}
+    .popup h1.title{
+        text-align: center;
+        font-size: 1.2vw;
+        color: var(--blue);
+        padding: 0;
+        margin: 0;
+        margin-top: 1vw;
+    }
+    .popup h1.title i{
+        padding-left: 0.5vw;
+    }
+    .popup p.title{
+        font-size: 1vw;
+        color: var(--text);
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 2vw;
+    }
+    .popup #register-button,
+    .popup #login-button{
+        font-size: 1vw;
+        color: var(--blue);
+        cursor: pointer;
+    }
+    .popup #register-button:hover,
+    .popup #login-button:hover{color: var(--red);}
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    
+}
+@media only screen and (max-width: 600px) {
+    .popup{
+        position: fixed;
+        top: 2vh;
+        background-color: var(--white);
+        z-index: 100;
+        border-radius: 3vw;
+        display: none;
+        height: 90vh;
+    }
+    .popup.width50{width: 90%; left: 5%;}
+    .popup.width60{width: 90%; left: 5%;}
+    .popup.width30{width: 90%; left: 5%;}
+    .popup.width40{width: 90%; left: 5%;}
+    .popup h1.title{
+        text-align: center;
+        font-size: 3.2vw;
+        color: var(--blue);
+        padding: 0;
+        margin: 0;
+        margin-top: 3vw;
+    }
+    .popup h1.title i{
+        padding-left: 2vw;
+    }
+    .popup p.title{
+        font-size: 3vw;
+        color: var(--text);
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 4vw;
+    }
+    .popup #register-button,
+    .popup #login-button{
+        font-size: 3vw;
+        color: var(--blue);
+        cursor: pointer;
+    }
+    .popup #register-button:hover,
+    .popup #login-button:hover{color: var(--red);}
+}

@@ -143,7 +143,7 @@ router.get('/add-to-cart', ensureAuthenticated, (req, res, next) => {
                 shoppingcart.push({item: course, type, count: 1});
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart}}, (err, doc) => {
                     req.flash('success_msg', 'به سبد خرید اضافه شد');
-                    res.redirect(`/courses/course-view?id=${course._id}`);
+                    res.redirect(`/dashboard/shopping-cart`);
                 });
             }
         });
@@ -176,7 +176,8 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
                 }
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart}}, (err, doc) => {
                     req.flash('success_msg', 'به سبد خرید اضافه شد');
-                    res.redirect(`/products/product-view?id=${product._id}`);
+                    res.redirect(`/dashboard/shopping-cart`);
+                    // res.redirect(`/products/product-view?id=${product._id}`);
                 });
             }
         });
@@ -194,7 +195,7 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
                 });
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart}}, (err, doc) => {
                     req.flash('success_msg', 'به سبد خرید اضافه شد');
-                    res.redirect(`/print3d`);
+                    res.redirect(`/dashboard/shopping-cart`);
                 });
             })
         })
@@ -541,7 +542,15 @@ router.post('/admin-add-animalfeeder', ensureAuthenticated, (req, res, next) => 
         }
     });
 });
-
+router.get('/delete-user', ensureAuthenticated, (req, res, next) => {
+    var {userID} = req.query;
+    if(req.user.role == 'admin'){
+        User.deleteOne({_id: userID}, (err) => {
+            res.redirect(`/dashboard/admin-users`);
+        });
+    }
+    else res.render('./error')
+}); 
 
 
 module.exports = router;

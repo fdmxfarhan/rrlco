@@ -273,6 +273,20 @@ body{
     nav .user-nav a:hover{
         color: var(--red);
     }
+    nav .user-nav a.cart{
+        position: relative;
+    }
+    nav .user-nav a.cart .shopping-cart-count{
+        position: absolute;
+        font-size: 2.8vw;
+        background-color: var(--red);
+        color: white;
+        border-radius: 50%;
+        padding: 0.1vw 1.3vw 0 1.1vw;
+        z-index: 1;
+        right: 0;
+        bottom: 0;
+    }
 }
 
 

@@ -5,6 +5,10 @@ var path = require('path');
 var User = require('../models/User');
 const { ensureAuthenticated } = require('../config/auth');
 const { homedir } = require('os');
+const Product = require('../models/Product');
+const Course = require('../models/Course');
+const dot = require('../config/dot');
+const timedigit = require('../config/timedigit');
 
 
 // User.find({role: 'user'}, (err, users) => {
@@ -27,10 +31,18 @@ router.get('/', (req, res, next) => {
         });
     }
     else if(req.session.lang == 'FA'){
-        res.render('home-fa',{
-            theme: req.session.theme,
-            lang: req.session.lang,
-            user: req.user
+        Product.find({showHome: true}, (err, products) => {
+            Course.find({}, (err, courses) => {
+                res.render('home-fa',{
+                    theme: req.session.theme,
+                    lang: req.session.lang,
+                    user: req.user,
+                    products,
+                    courses,
+                    dot,
+                    timedigit,
+                });
+            })
         });
     }
     // res.redirect('/rcj');

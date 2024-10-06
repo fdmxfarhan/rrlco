@@ -29,7 +29,7 @@ block content
                             .actions
                                 a.edit(href="#") 
                                     i.fa.fa-edit
-                                a.delete(href="#") 
+                                a.delete(href="/dashboard/delete-user?userID=#{users[i]._id}" onclick="return confirm('مطمئن هستید؟')") 
                                     i.fa.fa-trash
                     -}
         .sidebar-view 

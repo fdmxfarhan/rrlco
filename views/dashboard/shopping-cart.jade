@@ -12,7 +12,7 @@ block content
                     h1.title
                         i.fa.fa-tags
                         | سبد خرید
-                        a.delete-cart(href="/dashboard/delete-cart") 
+                        a.delete-cart(href="/dashboard/delete-cart" onclick="return confirm('مطمئن هستید؟')") 
                             i.fa.fa-trash
                             | حذف سبد خرید
                     .list 
@@ -69,6 +69,8 @@ block content
                             -}
                         -}else
                             .cart-empty سبد خرید شما خالی است.
+                    a.continue-shopping(href="/products") ادامه خرید
+                        i.fa.fa-arrow-left
         .sidebar-view
             .sidebar-visible
                 .shopping-cart-info 

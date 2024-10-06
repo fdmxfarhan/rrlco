@@ -61,6 +61,7 @@ a{
     height: 100%;
     z-index: 1;
 }
+.nav-black-modal,
 .black-modal{
     display: none;
     position: fixed;

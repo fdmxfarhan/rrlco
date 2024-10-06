@@ -1,0 +1,60 @@
+link(rel="stylesheet", href="/css/login-popup.css")
+link(rel="stylesheet", href="/css/forms.css")
+.popup.width60#register-popup
+    h1.title
+        i.fa.fa-user-plus
+        | ثبت نام
+    p.title جهت ثبت سفارش لطفا لطفا فرم زیر را تکمیل نمایید.
+    .form-view
+        form(action="/products/register-and-addtocart" method="POST" required) 
+            input.hide(type="text" name="productID" value="#{product._id}" required)
+            .raw 
+                input.dual(type="text" name="firstName" placeholder="نام" required)
+                input.dual(type="text" name="lastName" placeholder="نام خانوادگی" required)
+            .raw 
+                input.dual(type="text" name="phone" placeholder="تلفن" required)
+                input.dual(type="text" name="email" placeholder="ایمیل" required)
+            .raw 
+                .rawlabel آدرس:
+                textarea.short(name="address" placeholder="آدرس خود را وارد کنید...")
+            .raw
+                input.dual(type="password" placeholder="رمز عبور" name="password" required)
+                input.dual(type="password" placeholder="تایید رمز عبور" name="configpassword" required)
+            #login-button قبلا ثبت نام کرده‌ام!
+            .align-left
+                button.red(type="submit") ثبت نام
+            
+.popup.width30#login-popup
+    h1.title
+        i.fa.fa-user-check
+        | ورود به حساب کاربری
+    p.title جهت ثبت سفارش لطفا لطفا ابتدا وارد حساب کاربری خود شوید.
+    .form-view
+        form(action="/products/login-and-addtocart" method="POST" required) 
+            input.hide(type="text" name="productID" value="#{product._id}" required)
+            .raw 
+                input.full(type="text" name="username" placeholder="تلفن یا ایمیل ..." required)
+                input.full(type="password" placeholder="رمز عبور" name="password" required)
+            #register-button حساب کاربری ندارم!
+            .align-left
+                button.red(type="submit") ورود
+
+script.
+    $(document).ready(function(){
+        $('#register-button').click(() => {
+            $('#register-popup').fadeIn(100);
+            $('#login-popup').fadeOut(100);
+        });
+        $('#login-button').click(() => {
+            $('#register-popup').fadeOut(100);
+            $('#login-popup').fadeIn(100);
+        });
+        $('#register-popup-btn').click(() => {
+            $('#register-popup').fadeIn(300);
+            $('.black-modal').fadeIn(300);
+        });
+        $('.black-modal').click(() => {
+            $('#register-popup').fadeOut(100);
+            $('#login-popup').fadeOut(100);
+        });
+    });

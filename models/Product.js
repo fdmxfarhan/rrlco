@@ -49,6 +49,14 @@ var ProductSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    weight: {
+        type: Number,
+        default: 0,
+    },
+    showHome: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 var Product = mongoose.model('Product', ProductSchema);

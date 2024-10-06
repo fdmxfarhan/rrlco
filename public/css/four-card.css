@@ -146,8 +146,8 @@
     }
     .four-card-view a.card{
         display: block;
-        width: 45%;
-        margin: 4vw 2%;
+        width: 48%;
+        margin: 0;
         /* border: 0.1vw solid var(--lightgray); */
         /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);; */
         /* border-radius: 1.5vw; */
@@ -158,9 +158,6 @@
     .four-card-view a.card.triple{
         width: 48%;
         margin: 0;
-    }
-    .four-card-view a.card:hover{
-        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.304), 0 6px 20px 0 rgba(0, 0, 0, 0.19);; */
     }
     .four-card-view a.card .image{
         position: relative;
@@ -184,11 +181,11 @@
         display: block;
     }
     .four-card-view a.card h1{
-        color: var(--dark);
+        color: var(--black);
         font-size: 3.4vw;
         margin: 0;
         /* margin-top: 0.5vw; */
-        padding: 1vw 3vw;
+        padding: 3vw 3vw;
         height: 12vw;
     }
     .four-card-view a.card p{

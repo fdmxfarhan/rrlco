@@ -430,11 +430,12 @@ body{
     }
     header .top-image{
         position: absolute;
-        top: 51vh;
-        right: 0;
-        width: 100vw;
+        top: 52vh;
+        right: 5vw;
+        width: 90vw;
     }
     header .top-image img{
+        border-radius: 3vw;
         width: 100%;
         display: block;
     }

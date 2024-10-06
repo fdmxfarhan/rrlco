@@ -16,6 +16,7 @@ html
         link(rel='stylesheet', href='/css/slideshow.css')
     
     body
+        .nav-black-modal
         .black-modal
         nav 
             #nav-collapse-button
@@ -59,9 +60,9 @@ html
                     .text.title2 TEHRAN 
                 ul.jobs
                     li 
-                        a(href="/tutorials") دوره های آموزشی رباتیک و برنامه نویسی
+                        a(href="/courses") دوره های آموزشی رباتیک و برنامه نویسی
                     li 
-                        a(href="/shop") فروشگاه اینترنتی قطعات الکترونیکی
+                        a(href="/products") فروشگاه اینترنتی قطعات الکترونیکی
                     li 
                         a(href="/project") انجام پروژه‌های الکترونیکی و صنعتی
                     li 
@@ -117,127 +118,66 @@ html
         section.white
             h1.title
                 .line 
-                .text دوره‌های آموزشی
-            .triple-card-view.width80
-                a(href="#").card 
-                    .image 
-                        img(src="/img/programming.jpg", alt="")
-                        .type.pink آفلاین
-                    h1 دوره 1
-                    p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
-                    .teacher 
-                        i.fa.fa-user 
-                        .text نام مدرس
-                    .line
-                    .info 
-                        .stat 
-                            i.fa.fa-clock-o 
-                            .val 32:54:00
-                        .price
-                            .val 360.000
+                .text تخفیف‌های ویژه فروشگاه
+            .four-card-view.width80
+                -for(var i=0; i<products.length; i++){
+                    a(href="/products/product-view?id=#{products[i]._id}").card 
+                        .image 
+                            img(src="#{products[i].pictures[0]}", alt="")
+                        h1= products[i].title
+                        -if(products[i].available)
+                            .available.green موجود
+                        -else
+                            .available.red نا موجود
+                        .nodiscount
+                            .val= dot(products[i].nodiscountprice)
                             .unit تومان
-                a(href="#").card 
-                    .image 
-                        img(src="/img/programming.jpg", alt="")
-                        .type.green حضوری
-                    h1 دوره 1
-                    p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
-                    .teacher 
-                        i.fa.fa-user 
-                        .text نام مدرس
-                    .line
-                    .info 
-                        .stat 
-                            i.fa.fa-clock-o 
-                            .val 32:54:00
-                        .price
-                            .val 360.000
-                            .unit تومان
-                a(href="#").card 
-                    .image 
-                        img(src="/img/programming.jpg", alt="")
-                        .type.blue آنلاین
-                    h1 دوره 1
-                    p این یک دوره آموزشی نمونه است و فقط جهت نمایش اینجا گذاشته شده. در آینده دوره های مهم و پر طرفدار اینجا نمایش داده میشن
-                    .teacher 
-                        i.fa.fa-user 
-                        .text نام مدرس
-                    .line
-                    .info 
-                        .stat 
-                            i.fa.fa-clock-o 
-                            .val 32:54:00
-                        .price
-                            .val 360.000
-                            .unit تومان
-            a.seemore(href="#") مشاهده بیشتر 
+                        .info 
+                            .price
+                                .val= dot(products[i].price)
+                                .unit تومان
+                            -if(products[i].available){
+                                .buy-btn 
+                                    i.fa.fa-shopping-cart
+                                    | خرید
+                            -}
+                -}
+            a.seemore(href="/products") مشاهده بیشتر 
                 i.fa.fa-chevron-left
         section.white
             h1.title
                 .line 
-                .text تخفیف‌های ویژه فروشگاه
-            .four-card-view.width80
-                a(href="#").card 
-                    .image 
-                        img(src="/img/test.jpg", alt="")
-                    h1 محصول 1
-                    .available.green موجود
-                    .nodiscount
-                        .val 400.000
-                        .unit تومان
-                    .info 
-                        .buy-btn 
-                            i.fa.fa-shopping-cart
-                            | خرید
-                        .price
-                            .val 360.000
-                            .unit تومان
-                a(href="#").card 
-                    .image 
-                        img(src="/img/test4.jpg", alt="")
-                    h1 محصول 2
-                    .available.green موجود
-                    .nodiscount
-                        .val 400.000
-                        .unit تومان
-                    .info 
-                        .buy-btn 
-                            i.fa.fa-shopping-cart
-                            | خرید
-                        .price
-                            .val 360.000
-                            .unit تومان
-                a(href="#").card 
-                    .image 
-                        img(src="/img/test2.jpg", alt="")
-                    h1 محصول 3
-                    .available.red ناموجود
-                    .nodiscount
-                        .val 400.000
-                        .unit تومان
-                    .info 
-                        .buy-btn 
-                            i.fa.fa-shopping-cart
-                            | خرید
-                        .price
-                            .val 360.000
-                            .unit تومان
-                a(href="#").card 
-                    .image 
-                        img(src="/img/test3.jpg", alt="")
-                    h1 محصول 3
-                    .available.red ناموجود
-                    .nodiscount
-                        .val 400.000
-                        .unit تومان
-                    .info 
-                        .buy-btn 
-                            i.fa.fa-shopping-cart
-                            | خرید
-                        .price
-                            .val 360.000
-                            .unit تومان
-            a.seemore(href="#") مشاهده بیشتر 
+                .text دوره‌های آموزشی
+            .triple-card-view.width80
+                -for(var i=0; i < courses.length; i++){
+                    a(href="/courses/course-view?id=#{courses[i]._id}").card 
+                        .image 
+                            img(src="#{courses[i].cover}", alt="")
+                            -if(courses[i].type == 'مجازی')
+                                .type.green آنلاین
+                            -if(courses[i].type == 'آفلاین')
+                                .type.pink آفلاین
+                            -if(courses[i].type == 'حضوری')
+                                .type.blue حضوری
+                        h1= courses[i].title
+                        p= courses[i].shortdescription
+                        .teacher 
+                            i.fa.fa-user 
+                            .text= courses[i].teacher
+                        .line
+                        .info 
+                            .stat 
+                                i.fa.fa-clock
+                                .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
+                            .price
+                                -if(courses[i].price > 0){
+                                    .val= dot(courses[i].price)
+                                    .unit تومان
+                                -}else{
+                                    .unit رایگان
+                                -}
+                -}
+            a.seemore(href="/courses") مشاهده بیشتر 
                 i.fa.fa-chevron-left
         section.white
             h1.title
@@ -249,7 +189,7 @@ html
                 .part 
                     p ما در کسب‌وکار خود خدمات چاپ سه‌بعدی و طراحی سه‌بعدی را ارائه می‌دهیم. اگر شما ایده‌ای برای یک محصول یا قطعه دارید، ما می‌توانیم آن را با استفاده از تکنولوژی پیشرفته چاپ سه‌بعدی به واقعیت تبدیل کنیم. همچنین، اگر به دنبال یک طراحی سفارشی برای پروژه‌های خود هستید، تیم ما آماده است تا با دقت و خلاقیت نیازهای شما را برآورده کند. هدف ما این است که با ارائه‌ی راه‌حل‌های نوآورانه و کیفیت برتر، پروژه‌های شما را به سطح جدیدی برسانیم.
                     .order-btn
-                        a(href="#")
+                        a(href="/print3d")
                             i.fa.fa-shopping-cart
                             | ثبت سفارش
                     .stat 
