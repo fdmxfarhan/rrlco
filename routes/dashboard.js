@@ -285,7 +285,7 @@ router.get('/user-edit', ensureAuthenticated, (req, res, next) => {
 router.post('/user-edit', ensureAuthenticated, (req, res, next) => {
     var {firstName, lastName, phone, email, address } = req.body;
     User.updateMany({_id: req.user._id}, {$set: {firstName, lastName, phone, email, address, fullname: firstName + ' ' + lastName}}, (err, doc) => {
-        req.flash('success_msg', 'به سبد خرید اضافه شد');
+        req.flash('success_msg', 'تغییرات ثبت شد.');
         res.redirect('/dashboard/user-edit');
     });
 });

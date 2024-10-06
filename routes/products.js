@@ -30,7 +30,6 @@ router.get('/', (req, res, next) => {
 });
 router.get('/product-view', (req, res, next) => {
     var productID = req.query.id;
-    req.flash('success_msg', 'به سبد خرید اضافه شد');
     Product.findById(productID, (err, product) => {
         if(product){
             res.render('./products/product-view', {

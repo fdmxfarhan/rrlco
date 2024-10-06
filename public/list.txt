@@ -1,5 +1,5 @@
-7seg	8000
-buzzer	7000
+7seg		8000
+buzzer		7000
 led 3mm red 	380
 led 3mm yellow 	380
 led 3mm green 	380

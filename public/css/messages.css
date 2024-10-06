@@ -176,4 +176,6 @@
         height: 1vw;
         margin-top: 0.5vw;
     }
+    
+    .errors-area .error.green-error{background-color: rgba(1, 170, 9, 0.842);}
 }
