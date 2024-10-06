@@ -62,14 +62,14 @@ router.get('/pay-order', (req, res, next) => {
 router.get('/order-payment-call-back', (req, res, next) => {
     if(req.query.Status == 'OK'){
         Order.findOne({paymentAuthority: req.query.Authority}, (err, order) => {
-            User.findById(order.ownerID, (err, user) => {
-                Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, order) => {
+            Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, doc) => {
+                User.findById(order.ownerID, (err, user) => {
                     req.login(user, (err) => {
                         if (err) {
                             console.log(err);
                             return res.redirect('/users/login');
                         }
-                        sms(user.phone, `پرداخت با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
+                        sms(order.phone, `پرداخت با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
                         req.flash('success_msg', 'پرداخت با موفقیت انجام شد');
                         res.redirect('/dashboard');
                     });

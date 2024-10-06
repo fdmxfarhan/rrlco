@@ -416,6 +416,7 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
                 city,
                 postCode,
                 address,
+                phone,
                 payed: false,
                 compeleted: false,
                 state: 'در انتظار پرداخت',
