@@ -28,7 +28,7 @@ block content
                 br
                 .four-card-view
                     -for(var i=0; i<products.length; i++){
-                        a(href="/products/product-view?id=#{products[i]._id}").card.triple
+                        a.card.triple(href="/products/product-view?id=#{products[i]._id}")
                             .image 
                                 img(src="#{products[i].pictures[0]}", alt="")
                             h1= products[i].title

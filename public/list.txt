@@ -6,26 +6,28 @@ led 3mm green 	380
 led 5mm	red	380
 led 5mm	yellow	380
 led 5mm	green	380
-res	
-cap
-alphanumeric LCD with i2c
-ir sensor	
-sharp
-LDR		
-Laser		
-TIP41
-TIP42		
-Relay 12V 5A
-Relay module	
-Multimeter	
-simchin
-dambarik
-pichgooshti do soo
-pichgooshti char soo
-pich
-mohre
-spacer
-bast kamarbandi	
+ir sensor	2200
+sharp		250000
+LDR		2000
+TIP41		20000
+TIP42		20000
+Relay 12V 5A	15000
+Relay single	35000
+Relay dual	65000
+Relay four	120000
+Multimeter	987000
+simchin		123000
+dambarik	123000
+spacer 10mm	2100
+spacer 15mm	2900
+spacer 20mm	3600
+spacer 25mm	4000
+spacer 30mm	5300
+spacer 35mm	5900
+spacer 40mm	6000
+bast kamarbandi	10cm	26400
+bast kamarbandi	20cm	44300
+bast kamarbandi	30cm	97800
 pixy		8500000
 toop ir		8500000
 toop golf	250000
@@ -40,3 +42,12 @@ pin header
 joy stick	35000
 cutter		
 pack 1 		1200000
+
+res	
+cap
+alphanumeric LCD with i2c
+Laser		
+pichgooshti do soo	
+pichgooshti char soo
+pich		
+mohre		
