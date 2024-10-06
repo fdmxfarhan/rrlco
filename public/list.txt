@@ -1,0 +1,42 @@
+7seg	8000
+buzzer	7000
+led 3mm red 	380
+led 3mm yellow 	380
+led 3mm green 	380
+led 5mm	red	380
+led 5mm	yellow	380
+led 5mm	green	380
+res	
+cap
+alphanumeric LCD with i2c
+ir sensor	
+sharp
+LDR		
+Laser		
+TIP41
+TIP42		
+Relay 12V 5A
+Relay module	
+Multimeter	
+simchin
+dambarik
+pichgooshti do soo
+pichgooshti char soo
+pich
+mohre
+spacer
+bast kamarbandi	
+pixy		8500000
+toop ir		8500000
+toop golf	250000
+rf id		
+servo sg90	
+sim 2pin socket khorde
+soil humidity 	
+dht11		
+lm35		
+touch sensor	
+pin header	
+joy stick	35000
+cutter		
+pack 1 		1200000

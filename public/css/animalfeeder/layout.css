@@ -22,6 +22,7 @@ body{
         padding: 4vw;
         margin-left: 2vw;
     }
+    .panel-view .header-view nav a:hover{color: var(--red);}
     .panel-view .header-view nav a.left{float: left;}
     .panel-view .header-view nav a.right{float: right;}
     .panel-view .header-view nav h1{
@@ -75,17 +76,16 @@ body{
         padding: 3vw 0;
         color: var(--text);
     }
-    .panel-view footer .footer-links-view a.link .text{
-        font-size: 3vw;
-    }
+    .panel-view footer .footer-links-view a.link:hover{color: var(--red);}
+    .panel-view footer .footer-links-view a.link .text{font-size: 3vw;}
     .panel-view footer .footer-links-view a.link.active{color: var(--blue);}
     .panel-view footer .footer-links-view a.link.disabled{color: var(--lightgray);}
     .panel-view footer .footer-links-view a.link.active .text{font-weight: bold;}
 
-
     .panel-view .times-list-view{
         width: 80%;
         margin: auto;
+        padding-bottom: 20vh;
     }
     .panel-view .times-list-view .item{
         overflow: hidden;
@@ -130,6 +130,7 @@ body{
     }
     .panel-view .times-list-view .item .actions a.edit{color: var(--skyblue);}
     .panel-view .times-list-view .item .actions a.delete{color: var(--red);}
+    .panel-view .times-list-view .item .actions a.edit:hover, .panel-view .times-list-view .item .actions a.delete:hover{color: var(--purple);}
     .panel-view a.add-time-btn{
         position: fixed;
         display: block;
@@ -145,4 +146,24 @@ body{
         align-content: center;
     }
     .panel-view a.add-time-btn i{display: block;}
+    .panel-view a.add-time-btn:hover{background-color: var(--red);}
+    .panel-view svg.curve-border{margin-top: -0.1vw;}
+    .panel-view button.install-app{
+        border: none;
+        background-color: white;
+        color: var(--blue);
+        display: block;
+        width: 80%;
+        margin: auto;
+        margin-top: 3vw;
+        font-family: 'iransans';
+        font-size: 4vw;
+    }
+    .panel-view button.install-app i{
+        padding-left: 1vw;
+    }
+    .panel-view .add-time-form{
+        width: 90%;
+        margin: auto;
+    }
 }

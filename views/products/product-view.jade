@@ -20,7 +20,18 @@ block content
                         -for(var i = 0; i<product.pictures.length; i++){
                             .column
                                 img.demo.cursor(src='#{product.pictures[i]}', style='width:100%', onclick='currentSlide(#{i+1})', alt='The Woods')
+                                -if(user && user.role == 'admin' && product.pictures.length > 1){
+                                    a.delete(href="/products/delete-product-picture?id=#{product._id}&index=#{i}" onclick="return confirm('مطمئن هستید؟')") 
+                                        i.fa.fa-trash
+                                -}
                         -}
+                -if(user && user.role == 'admin'){
+                    .add-photo
+                        form(action="/upload/add-product-photo" method="POST" enctype="multipart/form-data") 
+                            input.hide(type="text" name="id" value="#{product._id}")
+                            input.file(type="file" name="picture")
+                            button(type="submit") +
+                -}
             .info-view 
                 h1= product.title
                 .stat 
@@ -75,7 +86,7 @@ block content
                     -}
                     a.edit(href="/products/edit-product?id=#{product._id}")
                         i.fa.fa-edit  
-                    a.times(href="/products/delete-product?id=#{product._id}")
+                    a.times(href="/products/delete-product?id=#{product._id}" onclick="return confirm('مطمئن هستید؟')")
                         i.fa.fa-times 
             -}
         .content 

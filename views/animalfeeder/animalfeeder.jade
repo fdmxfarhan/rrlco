@@ -4,9 +4,9 @@ block content
     .panel-view
         .header-view
             nav 
-                a.left(href="#") 
+                a.left(href="/animalfeeder") 
                     i.fa.fa-home
-                h1 Pet Feeder
+                h1#page-title Pet Feeder
                 a.right(href="#") 
                     i.fa.fa-gear
             header
@@ -25,14 +25,22 @@ block content
                             .text #{clock(feeder.times[i].hour)}:#{clock(feeder.times[i].minute)}
                         h2 25 گرم غذای خشک
                     .actions 
-                        a.edit(href="#") 
+                        a.edit(href="/animalfeeder/edit-time?id=#{feeder.id}&index=#{i}") 
                             i.fa.fa-edit 
-                        a.delete(href="#" onclick="return confirm('مطمئن هستید؟')") 
+                        a.delete(href="/animalfeeder/delete-time?id=#{feeder.id}&index=#{i}" onclick="return confirm('مطمئن هستید؟')") 
                             i.fa.fa-trash
             -}
-        button(id="install-button" style="display:none;") Install App
+        button.install-app(id="install-button" style="display:none;")
+            i.fa.fa-mobile-screen
+            | Install App
         
-        a.add-time-btn(href="#") 
+        a.add-time-btn(href="/animalfeeder/add-time")
             i.fa.fa-plus
 
         include ./footer
+        script.
+            $(document).ready(function(){
+                $('.times-list-view').hide().fadeIn(500);
+                $('h1#page-title').hide().fadeIn(500);
+                $('footer').hide().fadeIn(500);
+            });

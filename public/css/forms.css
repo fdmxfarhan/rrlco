@@ -329,4 +329,37 @@
         height: 8vw;
         padding-top: 6vw;
     }
+    .form-view .clock-select{
+        display: block;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--lightergray);
+        width: 36%;
+        padding: 2vw 5%;
+        margin-bottom: 3vw;
+        border-radius: 4vw;
+        font-family: 'iransans';
+        margin-left: 3vw;
+        color: var(--black);
+        width: 90%;
+        font-size: 7vw;
+    }
+    .form-view .clock-select select{
+        border: none;
+        font-size: 7vw;
+        text-align: center;
+        width: 23%;
+        margin: 0 4%;
+        background-color: transparent;
+    }
+    .form-view button.fullsize{
+        width: 100%;
+        margin-top: 10vw;
+        display: block;
+        font-size: 4vw;
+        padding: 3vw 0;
+        border-radius: 4vw;
+    }
+    .form-view button.fullsize i{padding-left: 1vw;}
 }

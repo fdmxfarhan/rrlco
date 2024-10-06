@@ -64,5 +64,26 @@
         font-size: 1vw;
         text-align: center;
     }
+    .data-list-view.file{
+        width: 100%;
+        text-align: left;
+    }
+    .data-list-view.file .raw{
+        border-radius: 0;
+        box-shadow: none;
+        border: 0.1vw solid var(--lightgray);
+        margin: 0;
+    }
+    .data-list-view.file .raw .item{
+        float: left;
+        font-size: 0.8vw;
+        padding: 0.6vw 0;
+    }
+    .data-list-view.file .raw .item:hover{
+        background-color: var(--lightergray);
+    }
+    .data-list-view.file .raw .item i{
+        padding: 0 1vw;
+    }
 }
 @media only screen and (max-width: 800px) {}

@@ -156,5 +156,21 @@ router.post('/repair-form-submit', upload.single('picture'), (req, res, next) =>
         });
     }
 });
+router.post('/add-product-photo', upload.single('picture'), (req, res, next) => {
+    const file = req.file;
+    const { id } = req.body;
+    if (!file) {
+        res.send('no file to upload');
+    }
+    else if(req.user.role == 'admin'){
+        Product.findById(id, (err, product) => {
+            product.pictures.push(file.destination.slice(6) + '/' + file.originalname);
+            product.save().then(doc => {
+                req.flash('success_msg', 'تصویر به محصول اضافه شد.');
+                res.redirect(`/products/product-view?id=${id}`);
+            }).catch(err => console.log(err));
+        });
+    }
+});
 
 module.exports = router;
