@@ -84,6 +84,8 @@ block content
                     a.value(href="/products?category=#{product.category}")= product.category
             -if(user && user.role == 'admin'){
                 .admin-control 
+                    a.edit(href="/dashboard/add-product")
+                        i.fa.fa-plus  
                     -if(product.showHome){
                         a.home.active(href="/products/remove-home-product?id=#{product._id}" onclick="return confirm('مطمئن هستید؟')")
                             i.fa.fa-home
