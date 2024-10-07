@@ -554,7 +554,7 @@ router.get('/delete-user', ensureAuthenticated, (req, res, next) => {
 }); 
 router.get('/admin-sms', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
-        User.find({role: 'user'}, (err, users) => {
+        User.find({}, (err, users) => {
             res.render('./dashboard/admin-sms', {
                 theme: req.session.theme,
                 user: req.user,
@@ -564,6 +564,14 @@ router.get('/admin-sms', ensureAuthenticated, (req, res, next) => {
             });
         })
     }else res.send('Access Denied!!');
+}); 
+router.post('/admin-sms', ensureAuthenticated, (req, res, next) => {
+    var {target, text} = req.body;
+    if(req.user.role == 'admin'){
+        sms(target, text);
+        req.flash('success_msg', 'پیام با موفقیت ارسال شد.');
+        res.redirect('/dashboard/admin-sms');
+    }else res.send('access denied!!');
 }); 
 
 
