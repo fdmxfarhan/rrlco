@@ -1,0 +1,18 @@
+@media only screen and (min-width: 800px) {
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+    .sms-panel h1{
+        width: 90%;
+        color: var(--blue);
+        font-size: 1.1vw;
+        margin: 1vw auto;
+    }
+}
+@media only screen and (max-width: 800px) {
+    
+}
+
+
+
+
+
+

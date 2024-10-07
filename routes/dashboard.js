@@ -552,6 +552,19 @@ router.get('/delete-user', ensureAuthenticated, (req, res, next) => {
     }
     else res.render('./error')
 }); 
+router.get('/admin-sms', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        User.find({role: 'user'}, (err, users) => {
+            res.render('./dashboard/admin-sms', {
+                theme: req.session.theme,
+                user: req.user,
+                dateConvert,
+                dot,
+                users,
+            });
+        })
+    }else res.send('Access Denied!!');
+}); 
 
 
 module.exports = router;

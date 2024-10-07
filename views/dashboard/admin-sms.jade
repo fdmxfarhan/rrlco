@@ -1,0 +1,39 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/sms.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .sms-panel 
+                    h1 ارسال پیامک
+                    .form-view
+                        form#buyform(action="/dashboard/compelete-order" method="POST") 
+                            .raw 
+                                .label-quarter
+                                    i.fa.fa-location-dot
+                                    | گیرنده: 
+                                select.quarter(name="target") 
+                                    option(value="all") همه کاربران
+                                    -for(var i=0; i<users.length; i++)
+                                        option(value="#{users[i].phone}")= users[i].fullname
+                            .raw 
+                                .rawlabel متن:
+                                textarea.short(name="text" placeholder="متن پیام...")
+                            .align-left
+                                button.blue(type="submit") افزودن کد تخفیف
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-10').classList.add('active');
+
