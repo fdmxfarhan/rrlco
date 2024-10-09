@@ -78,7 +78,7 @@ block content
                     .item 
                         .label مجموع: 
                         .val.green
-                            .value#sum-price #{dot(totalPrice + deliveryPrice - discount)}
+                            .value#sum-price #{dot(totalPrice + deliveryPrice + tax - discount)}
                             | تومان
                     button.buy(type="submit" form="buyform")
                         i.fa.fa-money-check-alt

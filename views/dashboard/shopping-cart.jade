@@ -99,7 +99,7 @@ block content
                         .val #{dot(tax)} تومان
                     .item 
                         .label مجموع: 
-                        .val.green #{dot(totalPrice - discount)} تومان
+                        .val.green #{dot(totalPrice + tax - discount)} تومان
                     a.buy(href="/dashboard/compelete-order")
                         i.fa.fa-shopping-cart 
                         | ادامه و پرداخت

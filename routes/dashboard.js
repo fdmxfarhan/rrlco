@@ -16,7 +16,7 @@ const {coursetypes, courseCategories, productCategories, cities} = require('../c
 const dateConvert = require('../config/dateConvert');
 const Discount = require('../models/Discount');
 const Order = require('../models/Order');
-const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState } = require('../config/order');
+const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState, get_tax } = require('../config/order');
 const Animalfeeder = require('../models/Animalfeeder');
 
 // sms('09336448037', 'hello');
@@ -202,8 +202,9 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
     }
 });
 router.get('/shopping-cart', ensureAuthenticated, (req, res, next) => {
-    var totalPrice = 0, discount = 0, tax=0;
+    var totalPrice = 0, discount = 0, tax = 0;
     totalPrice = cart_total_price(req.user.shoppingcart);
+    tax = get_tax(req.user.shoppingcart);
     Discount.findById(req.user.currentdicount, (err, currentdicount) => {
         if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
         res.render('./dashboard/shopping-cart', {
@@ -367,6 +368,7 @@ router.get('/remove-discount-from-cart', ensureAuthenticated, (req, res, next) =
 router.get('/compelete-order', ensureAuthenticated, (req, res, next) => {
     var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
     totalPrice = cart_total_price(req.user.shoppingcart);
+    tax = get_tax(req.user.shoppingcart);
     Discount.findById(req.user.currentdicount, (err, currentdicount) => {
         if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
         res.render('./dashboard/compelete-order', {
@@ -395,6 +397,7 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
     else{
         var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
         totalPrice = cart_total_price(req.user.shoppingcart);
+        tax = get_tax(req.user.shoppingcart);
         Discount.findById(req.user.currentdicount, (err, currentdicount) => {
             var discountID = '';
             if(currentdicount) {

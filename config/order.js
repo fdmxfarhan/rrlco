@@ -13,6 +13,10 @@ var cart_total_price = (cart) => {
     }
     return totalPrice
 }
+var get_tax = (cart) => {
+    total = cart_total_price(cart);
+    return total * 0.05;
+}
 var cart_discount = (currentdiscount, cart) => {
     var totalPrice = cart_total_price(cart);
     var discount = 0;
@@ -67,4 +71,5 @@ module.exports = {
     orderNum2State,
     nextOrderState,
     prevOrderState,
+    get_tax,
 }
