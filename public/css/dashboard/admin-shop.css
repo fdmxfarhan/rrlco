@@ -49,6 +49,7 @@
         border-bottom-right-radius: 1vw;
         outline: none;
         width: 17vw;
+        color: var(--white);
     }
     .searchbar button.submit{
         background-color: var(--red);
@@ -115,6 +116,7 @@
         font-family: 'iransans';
         margin-left: 1vw;
         resize: vertical;
+        color: var(--white);
     }
     .add-product-form .raw textarea.short{height: 3vw;}
     .add-product-form .raw textarea.long{height: 10vw;}

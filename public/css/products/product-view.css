@@ -218,6 +218,7 @@ body{
         width: 90%;
         margin: 2vw auto;
         text-align: justify;
+        color: var(--black);
     }
     .admin-control{
         position: absolute;
