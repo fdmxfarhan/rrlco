@@ -514,6 +514,18 @@ router.get('/admin-orders', ensureAuthenticated, (req, res, next) => {
         });
     })
 });
+router.get('/orders', ensureAuthenticated, (req, res, next) => {
+    Order.find({ownerID: req.user._id}, (err, orders) => {
+        res.render('./dashboard/user-orders', {
+            theme: req.session.theme,
+            user: req.user,
+            orders,
+            dateConvert,
+            dot,
+            orderStateNum,
+        });
+    })
+});
 router.get('/admin-animalfeeder', ensureAuthenticated, (req, res, next) => {
     Animalfeeder.find({}, (err, animalfeeders) => {
         res.render('./dashboard/admin-animalfeeder', {
