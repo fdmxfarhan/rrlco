@@ -1,4 +1,7 @@
 @media only screen and (min-width: 800px) {
+    .scroll-card-view{
+        position: relative;
+    }
     .four-card-view{
         width: 95%;
         margin: auto;
@@ -8,6 +11,32 @@
     .four-card-view.width80{
         width: 80%;
     }
+    .four-card-view.width80.scroll{
+        overflow-x: scroll;
+    }
+    .four-card-view.width80.scroll::-webkit-scrollbar {height: 0.3vw;}
+    .four-card-view.width80.scroll::-webkit-scrollbar-track {background: var(--lightergray);}
+    .four-card-view.width80.scroll::-webkit-scrollbar-thumb {background: var(--lightgray);}
+    .four-card-view.width80.scroll::-webkit-scrollbar-thumb:hover{background: var(--gray);}
+    .four-card-view.width80.scroll .scroll-view{
+        width: max-content
+    }
+    .four-card-view.width80.scroll button.scroll-btn{
+        position: absolute;
+        top: 11vw;
+        font-size: 3vw;
+        color: var(--text);
+        z-index: 10;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+    }
+    .four-card-view.width80.scroll button.scroll-btn:hover{color: var(--red);}
+    .four-card-view.width80.scroll button.scroll-btn i{
+        padding: 0.6vw 1vw;
+    }
+    .four-card-view.width80.scroll button.scroll-btn#scroll-btn-right{right: 5vw;}
+    .four-card-view.width80.scroll button.scroll-btn#scroll-btn-left{left: 5vw;}
     .four-card-view a.card{
         display: block;
         width: 21.5%;
@@ -17,6 +46,13 @@
         border-radius: 0.5vw;
         overflow: hidden;
         float: right;
+    }
+    .four-card-view.scroll a.card{
+        background-color: var(--white);
+        width: 17vw;
+        margin: 1vw 1vw;
+        /* float: none;
+        display: inline-block; */
     }
     .four-card-view a.card.triple{
         width: 30%;
@@ -155,6 +191,9 @@
         overflow: hidden;
         float: right;
     }
+    .four-card-view.scroll a.card{
+        background-color: var(--white);
+    }
     .four-card-view a.card.triple{
         width: 48%;
         margin: 0;
@@ -270,5 +309,8 @@
     .four-card-view a.card .available.red{
         color: var(--red2);
         padding-bottom: 8vw;
+    }
+    .four-card-view.width80.scroll button.scroll-btn{
+        display: none;
     }
 }

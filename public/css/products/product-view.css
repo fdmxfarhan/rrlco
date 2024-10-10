@@ -252,6 +252,13 @@ body{
         color: var(--skyblue);
         padding-right: 0.5vw;
     }
+    .product-view h1.related{
+        font-size: 1.5vw;
+        color: var(--red);
+        padding: 1vw 5%;
+        margin-top: 4vw;
+        margin-bottom: 0;;
+    }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
@@ -501,5 +508,12 @@ body{
         font-size: 3vw;
         color: var(--skyblue);
         padding-right: 0.5vw;
+    }
+    .product-view h1.related{
+        font-size: 3.5vw;
+        color: var(--red);
+        padding: 1vw 5%;
+        margin-top: 4vw;
+        margin-bottom: 0;;
     }
 }

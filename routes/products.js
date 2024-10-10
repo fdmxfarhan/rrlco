@@ -31,15 +31,18 @@ router.get('/', (req, res, next) => {
 router.get('/product-view', (req, res, next) => {
     var productID = req.query.id;
     Product.findById(productID, (err, product) => {
-        if(product){
-            res.render('./products/product-view', {
-                theme: req.session.theme,
-                user: req.user,
-                product,
-                productCategories,
-                dot,
-            });
-        } else res.send('product not found');
+        Product.find({category: product.category}, (err, relatedProducts) => {
+            if(product){
+                res.render('./products/product-view', {
+                    theme: req.session.theme,
+                    user: req.user,
+                    product,
+                    productCategories,
+                    dot,
+                    relatedProducts,
+                });
+            } else res.send('product not found');
+        })
     })
 });
 router.get('/edit-product', ensureAuthenticated, (req, res, next) => {

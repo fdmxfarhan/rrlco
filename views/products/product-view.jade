@@ -3,6 +3,7 @@ extends ../layout
 block styles
     link(rel="stylesheet", href="/css/products/product-view.css")
     link(rel="stylesheet", href="/css/gallery.css")
+    link(rel='stylesheet', href='/css/four-card.css')
 
 block content
     include ./login-popup
@@ -116,8 +117,39 @@ block content
                     -else
                         | #{product.description[i]}
                 -}
+        h1.related محصولات مرتبط
+        .scroll-card-view
+            .four-card-view.width80.scroll#scroll-view-1
+                button.scroll-btn#scroll-btn-right(onclick="scroll_right()")
+                    i.fa.fa-chevron-right
+                .scroll-view
+                    -for(var i=0; i<relatedProducts.length; i++){
+                        a(href="/products/product-view?id=#{relatedProducts[i]._id}").card 
+                            .image 
+                                img(src="#{relatedProducts[i].pictures[0]}", alt="")
+                            h1= relatedProducts[i].title
+                            -if(relatedProducts[i].available)
+                                .available.green موجود
+                            -else
+                                .available.red نا موجود
+                            .nodiscount
+                                .val= dot(relatedProducts[i].nodiscountprice)
+                                .unit تومان
+                            .info 
+                                .price
+                                    .val= dot(relatedProducts[i].price)
+                                    .unit تومان
+                                -if(relatedProducts[i].available){
+                                    .buy-btn 
+                                        i.fa.fa-shopping-cart
+                                        | خرید
+                                -}
+                    -}
+                button.scroll-btn#scroll-btn-left(onclick="scroll_left()")
+                    i.fa.fa-chevron-left
     script(src="/js/dashboard.js") 
     script(src="/js/gallery.js") 
+    script(src="/js/scroll-card.js") 
     //- script.
     //-     document.getElementById('sidebar-link-1').classList.add('active');
     script.

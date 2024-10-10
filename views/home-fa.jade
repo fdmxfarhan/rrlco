@@ -119,29 +119,35 @@ html
             h1.title
                 .line 
                 .text تخفیف‌های ویژه فروشگاه
-            .four-card-view.width80
-                -for(var i=0; i<products.length; i++){
-                    a(href="/products/product-view?id=#{products[i]._id}").card 
-                        .image 
-                            img(src="#{products[i].pictures[0]}", alt="")
-                        h1= products[i].title
-                        -if(products[i].available)
-                            .available.green موجود
-                        -else
-                            .available.red نا موجود
-                        .nodiscount
-                            .val= dot(products[i].nodiscountprice)
-                            .unit تومان
-                        .info 
-                            .price
-                                .val= dot(products[i].price)
-                                .unit تومان
-                            -if(products[i].available){
-                                .buy-btn 
-                                    i.fa.fa-shopping-cart
-                                    | خرید
-                            -}
-                -}
+            .scroll-card-view
+                .four-card-view.width80.scroll#scroll-view-1
+                    button.scroll-btn#scroll-btn-right(onclick="scroll_right()")
+                        i.fa.fa-chevron-right
+                    .scroll-view
+                        -for(var i=0; i<products.length; i++){
+                            a(href="/products/product-view?id=#{products[i]._id}").card 
+                                .image 
+                                    img(src="#{products[i].pictures[0]}", alt="")
+                                h1= products[i].title
+                                -if(products[i].available)
+                                    .available.green موجود
+                                -else
+                                    .available.red نا موجود
+                                .nodiscount
+                                    .val= dot(products[i].nodiscountprice)
+                                    .unit تومان
+                                .info 
+                                    .price
+                                        .val= dot(products[i].price)
+                                        .unit تومان
+                                    -if(products[i].available){
+                                        .buy-btn 
+                                            i.fa.fa-shopping-cart
+                                            | خرید
+                                    -}
+                        -}
+                    button.scroll-btn#scroll-btn-left(onclick="scroll_left()")
+                        i.fa.fa-chevron-left
             a.seemore(href="/products") مشاهده بیشتر 
                 i.fa.fa-chevron-left
         section.white
@@ -203,5 +209,7 @@ html
         //- https://mattfarley.ca/
         script(src="/js/home.js") 
         script(src="/js/graph.js") 
+        script(src="/js/scroll-card.js") 
         script(src="/js/slideshow.js") 
         include ./components/goftino
+       
