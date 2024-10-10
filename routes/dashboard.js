@@ -79,8 +79,9 @@ router.get('/admin-users', ensureAuthenticated, (req, res, next) => {
 router.get('/admin-shop', ensureAuthenticated, (req, res, next) => {
     if(req.user.role = 'admin'){
         Product.find({}, (err, products) => {
+            products.sort((a, b) => b.weight - a.weight);
             res.render('./dashboard/admin-shop', {
-            theme: req.session.theme,
+                theme: req.session.theme,
                 user: req.user,
                 products,
                 dot
