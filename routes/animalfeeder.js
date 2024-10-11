@@ -87,13 +87,13 @@ router.get('/delete-time', (req, res, next) => {
 router.get('/api', (req, res, next) => {
     var { id } = req.query;
     if(id){
-        Animalfeeder.findById(id, (err, feeder) => {
+        Animalfeeder.findOne({id}, (err, feeder) => {
             const animalFeederData = {
                 time: feeder.times,
                 id,
             };
             res.json(animalFeederData);
-        })
+        });
     }else res.send('ID not defined!!');
 });
 
