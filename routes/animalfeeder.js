@@ -86,22 +86,15 @@ router.get('/delete-time', (req, res, next) => {
 });
 router.get('/api', (req, res, next) => {
     var { id } = req.query;
-    const animalFeederData = {
-        time: [
-            { hour: 10, minute: 0, second: 0 },
-            { hour: 0, minute: 0, second: 5 },
-            { hour: 0, minute: 0, second: 5 },
-            { hour: 0, minute: 0, second: 5 },
-        ],
-        id: 10,
-    };
-    res.json(animalFeederData);
-
-    // res.render('./animalfeeder/animalfeeder',{
-    //     theme: req.session.theme,
-    //     lang: req.session.lang,
-    //     user: req.user
-    // });
+    if(id){
+        Animalfeeder.findById(id, (err, feeder) => {
+            const animalFeederData = {
+                time: feeder.times,
+                id,
+            };
+            res.json(animalFeederData);
+        })
+    }else res.send('ID not defined!!');
 });
 
 module.exports = router;
