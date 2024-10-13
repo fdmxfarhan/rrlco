@@ -5,6 +5,7 @@ block styles
     link(rel='stylesheet', href='/css/four-card.css')
     
 block content
+    div#dataContainer(data-mydata='#{JSON.stringify(products)}')
     .product-view 
         .product-cont-view
             .content
@@ -55,3 +56,8 @@ block content
     script(src="/js/product.js")
     script.
         document.getElementById('navlink-2').classList.add('active');
+        
+        const dataElement = document.getElementById('dataContainer');
+        const myData = JSON.parse(dataElement.getAttribute('data-mydata'));
+        
+        console.log(myData); // Now you can use myData in your JS code

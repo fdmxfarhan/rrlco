@@ -6,6 +6,7 @@ block styles
     link(rel='stylesheet', href='/css/four-card.css')
 
 block content
+    div#dataContainer(data-mydata=!{JSON.stringify(products)})
     include ./login-popup
     .product-view 
         .content 
@@ -161,4 +162,8 @@ block content
             if(parseInt(document.getElementById('count-input').value) > 1)
                 document.getElementById('count-input').value = parseInt(document.getElementById('count-input').value) - 1;
         }
+
+        const dataElement = document.getElementById('dataContainer');
+        const myData = JSON.parse(dataElement.getAttribute('data-mydata'));
         
+        console.log(myData); // Now you can use myData in your JS code

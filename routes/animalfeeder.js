@@ -84,6 +84,32 @@ router.get('/delete-time', (req, res, next) => {
         })
     })  
 });
+router.get('/settings', (req, res, next) => {
+    id = req.session.petid;
+    if(id){
+        req.session.petid = id;
+        Animalfeeder.findOne({id}, (err, feeder) => {
+            if(feeder){
+                res.render('./animalfeeder/settings',{
+                    theme: req.session.theme,
+                    lang: req.session.lang,
+                    user: req.user,
+                    feeder,
+                    clock,
+                });
+            }else res.send('device not found!!');
+        })
+    }else{
+        res.render('./animalfeeder/login', {
+            theme: req.session.theme,
+            lang: req.session.lang,
+            user: req.user,
+            clock,
+        });
+    }
+});
+
+// ----------------- API -------------------
 router.get('/api', (req, res, next) => {
     var { id } = req.query;
     if(id){
