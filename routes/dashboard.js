@@ -18,6 +18,9 @@ const Discount = require('../models/Discount');
 const Order = require('../models/Order');
 const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState, get_tax } = require('../config/order');
 const Animalfeeder = require('../models/Animalfeeder');
+// const axios = require('axios');
+
+
 
 // sms('09336448037', 'hello');
 
@@ -368,22 +371,27 @@ router.get('/remove-discount-from-cart', ensureAuthenticated, (req, res, next) =
 });
 router.get('/compelete-order', ensureAuthenticated, (req, res, next) => {
     var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
-    totalPrice = cart_total_price(req.user.shoppingcart);
-    tax = get_tax(req.user.shoppingcart);
-    Discount.findById(req.user.currentdicount, (err, currentdicount) => {
-        if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
-        res.render('./dashboard/compelete-order', {
-            theme: req.session.theme,
-            user: req.user,
-            dot,
-            totalPrice,
-            discount,
-            tax,
-            currentdicount,
-            cities,
-            deliveryPrice,
+    if(req.user.shoppingcart.length > 0){
+        totalPrice = cart_total_price(req.user.shoppingcart);
+        tax = get_tax(req.user.shoppingcart);
+        Discount.findById(req.user.currentdicount, (err, currentdicount) => {
+            if(currentdicount) discount = cart_discount(currentdicount, req.user.shoppingcart);
+            res.render('./dashboard/compelete-order', {
+                theme: req.session.theme,
+                user: req.user,
+                dot,
+                totalPrice,
+                discount,
+                tax,
+                currentdicount,
+                cities,
+                deliveryPrice,
+            });
         });
-    });
+    }else{
+        req.flash('error_msg', 'سبد خرید شما خالی است.');
+        res.redirect('/dashboard/shopping-cart');
+    }
 });
 router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
     var {city, postCode, delivery, phone, address, description} = req.body;

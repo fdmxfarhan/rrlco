@@ -21,7 +21,7 @@ block content
                                 -if(user.shoppingcart[i].type == 'product'){
                                     .item 
                                         a.cover(href="/products/product-view?id=#{user.shoppingcart[i].item._id}")  
-                                            img(src="#{user.shoppingcart[i].item.pictures[0]}", alt="")
+                                            img(src="#{user.shoppingcart[i].item.pictures[0]}", alt="" loading="lazy")
                                         .info 
                                             h1= user.shoppingcart[i].item.title
                                             h2 #{dot(user.shoppingcart[i].item.price)} تومان
@@ -38,7 +38,7 @@ block content
                                 -}else if(user.shoppingcart[i].type == 'course'){
                                     .item 
                                         a.cover(href="/courses/course-view?id=#{user.shoppingcart[i].item._id}")  
-                                            img(src="#{user.shoppingcart[i].item.cover}", alt="")
+                                            img(src="#{user.shoppingcart[i].item.cover}", alt="" loading="lazy")
                                         .info 
                                             h1= user.shoppingcart[i].item.title
                                             h2 #{dot(user.shoppingcart[i].item.price)} تومان

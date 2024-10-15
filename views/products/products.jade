@@ -31,7 +31,7 @@ block content
                     -for(var i=0; i<products.length; i++){
                         a.card.triple(href="/products/product-view?id=#{products[i]._id}")
                             .image 
-                                img(src="#{products[i].pictures[0]}", alt="")
+                                img(src="#{products[i].pictures[0]}", alt="" loading="lazy")
                             h1= products[i].title
                             -if(products[i].available)
                                 .available.green موجود

@@ -314,6 +314,7 @@ body{
         border-bottom-right-radius: 2vw;
         outline: none;
         width: 60vw;
+        color: var(--text);
     }
     .searchbar button.submit{
         background-color: var(--red);

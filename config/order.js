@@ -15,7 +15,7 @@ var cart_total_price = (cart) => {
 }
 var get_tax = (cart) => {
     total = cart_total_price(cart);
-    return total * 0.02;
+    return total * 0.05;
 }
 var cart_discount = (currentdiscount, cart) => {
     var totalPrice = cart_total_price(cart);
