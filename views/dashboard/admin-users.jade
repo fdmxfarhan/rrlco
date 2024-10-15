@@ -23,8 +23,8 @@ block content
                                 i.fa.fa-phone
                                 | #{users[i].phone}
                             .email 
-                                i.fa.fa-envelope
-                                | #{users[i].email}
+                                i.fa.fa-map-marker
+                                | #{users[i].address}
                             .role(class="#{users[i].role == 'admin'? 'red': 'green'}")= users[i].role
                             .actions
                                 a.edit(href="#") 
