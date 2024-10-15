@@ -67,7 +67,7 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
             })
         })
     }
-    else if(req.user.role = 'admin')
+    else if(req.user.role == 'admin')
     {
         Order.find({compeleted: false}, (err, orders) => {
             Product.countDocuments({}).then((numOfProduct) => {
@@ -91,7 +91,7 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
     }
 });
 router.get('/admin-users', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role = 'admin'){
+    if(req.user.role == 'admin'){
         User.find({}, (err, users) => {
             res.render('./dashboard/admin-users', {
             theme: req.session.theme,
@@ -103,7 +103,7 @@ router.get('/admin-users', ensureAuthenticated, (req, res, next) => {
     else res.render('./error');
 });
 router.get('/admin-shop', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role = 'admin'){
+    if(req.user.role == 'admin'){
         Product.find({}, (err, products) => {
             products.sort((a, b) => b.weight - a.weight);
             res.render('./dashboard/admin-shop', {
@@ -117,7 +117,7 @@ router.get('/admin-shop', ensureAuthenticated, (req, res, next) => {
     else res.render('./error');
 });
 router.get('/admin-courses', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role = 'admin'){
+    if(req.user.role == 'admin'){
         Course.find({}, (err, courses) => {
             res.render('./dashboard/admin-courses', {
             theme: req.session.theme,
@@ -131,7 +131,7 @@ router.get('/admin-courses', ensureAuthenticated, (req, res, next) => {
     else res.render('./error');
 });
 router.get('/add-product', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role = 'admin'){
+    if(req.user.role == 'admin'){
         res.render('./dashboard/admin-add-product', {
             theme: req.session.theme,
             user: req.user,
@@ -141,7 +141,7 @@ router.get('/add-product', ensureAuthenticated, (req, res, next) => {
     else res.render('./error');
 });
 router.get('/add-course', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role = 'admin'){
+    if(req.user.role == 'admin'){
         res.render('./dashboard/admin-add-course', {
             theme: req.session.theme,
             user: req.user,

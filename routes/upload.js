@@ -89,7 +89,7 @@ router.post('/print3d', ensureAuthenticated, upload.single('myfile'), (req, res,
             userID: req.user._id,
             file: file.destination.slice(6) + '/' + file.originalname,
         });
-        newPrint3d.save().then(print3d => {
+        newPrint3d.save().then(doc => {
             res.redirect(`/print3d/print3d-view?id=${newPrint3d._id}`);
         }).catch(err => console.log(err));
     }
