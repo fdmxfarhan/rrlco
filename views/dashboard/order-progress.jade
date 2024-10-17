@@ -58,16 +58,21 @@
                         i.fa.fa-user
                         | گیرنده: 
                     .val= order.ownerNmae
-            .address-raw
-                i.fa.fa-map-marker-alt
-                | آدرس: 
-                .text= order.address
             .raw 
+                .item 
+                    .label
+                        i.fa.fa-phone
+                        | تلفن: 
+                    .val= order.phone
                 .item 
                     .label
                         i.fa.fa-barcode
                         | کد پستی: 
                     .val= order.postCode
+            .address-raw
+                i.fa.fa-map-marker-alt
+                | آدرس: 
+                .text= order.address
     .left-side 
         -if(!order.payed){
             a.remove-order(href="/dashboard/remove-order?id=#{order._id}") 
