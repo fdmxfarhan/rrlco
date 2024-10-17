@@ -1,4 +1,4 @@
-.orders-list-item(id="orders-list-item-#{i}")
+.orders-list-item(id="orders-list-item-#{i}" class="#{order.state == 'تکمیل شده' ? 'done' : ''}")
     .col= order.ownerNmae
     .col #{dateConvert.convertDate(order.date)}
     .col= order.phone

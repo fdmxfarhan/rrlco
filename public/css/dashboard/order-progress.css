@@ -224,6 +224,9 @@
         cursor: pointer;
         background-color: var(--skyblue);
     }
+    .orders-list-item.done{
+        background-color: var(--lightgray);
+    }
     .orders-list-item:hover{
         background-color: var(--blue);
     }
@@ -471,6 +474,9 @@
         padding: 1vw 0;
         font-size: 3vw;
         text-align: center;
+    }
+    .orders-list-item.done{
+        background-color: var(--lightgray);
     }
 }
 
