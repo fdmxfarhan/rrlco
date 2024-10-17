@@ -1,4 +1,4 @@
-.order-progress 
+.order-progress(id="order-progress-#{i}")
     -if(order.state != 'تکمیل شده'){
         .progress-stat 
             .stage(class="#{orderStateNum(order.state) > 1? 'active':''}")
@@ -29,7 +29,7 @@
                 -else
                     .text ارسال سفارش
     -}
-.order-info 
+.order-info(id="order-info-#{i}")
     .right-side 
         .info
             .item
@@ -103,7 +103,7 @@
                 i.fa.fa-check
                 | پرداخت شده
         -}
-        -if(user.role == 'admin' && order.state != 'تکمیل شده'){
+        -if(user.role == 'admin'){
             .admin-control-order 
                 a.prev(href="/dashboard/admin-order-prev?id=#{order._id}") 
                     i.fa.fa-chevron-right 

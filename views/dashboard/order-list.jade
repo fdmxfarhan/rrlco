@@ -1,0 +1,5 @@
+.orders-list-item(id="orders-list-item-#{i}")
+    .col= order.ownerNmae
+    .col #{dateConvert.convertDate(order.date)}
+    .col= order.phone
+    .col= order.delivery

@@ -194,7 +194,6 @@
     .order-info .left-side a.remove-order:hover{
         color: var(--blue);
     }
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .admin-control-order{
         overflow: hidden;
     }
@@ -216,6 +215,26 @@
     .admin-control-order a:hover{
         background-color: var(--green);
     }
+    .orders-list-item{
+        width: 90%;
+        margin: 1vw auto;
+        color: white;
+        overflow: hidden;
+        border-radius: 0.8vw;
+        cursor: pointer;
+        background-color: var(--skyblue);
+    }
+    .orders-list-item:hover{
+        background-color: var(--blue);
+    }
+    .orders-list-item .col{
+        float: right;
+        width: 20%;
+        padding: 0.8vw 1vw;
+        font-size: 1vw;
+    }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+
 }
 @media only screen and (max-width: 800px) {
     .order-progress{
@@ -412,6 +431,46 @@
     }
     .order-info .left-side a.remove-order:hover{
         color: var(--blue);
+    }
+    .admin-control-order{
+        overflow: hidden;
+    }
+    .admin-control-order a{
+        background-color: var(--red);
+        color: white;
+        display: block;
+        float: right;
+        width: 40%;
+        text-align: center;
+        margin: 0 5%;
+        border-radius: 1.5vw;
+        padding: 1.3vw 0;
+        font-size: 3vw;
+    }
+    .admin-control-order a i{
+        padding: 0 1.5vw;
+    }
+    .admin-control-order a:hover{
+        background-color: var(--green);
+    }
+    .orders-list-item{
+        width: 90%;
+        margin: 3vw auto;
+        color: white;
+        overflow: hidden;
+        border-radius: 3vw;
+        cursor: pointer;
+        background-color: var(--skyblue);
+    }
+    .orders-list-item:hover{
+        background-color: var(--blue);
+    }
+    .orders-list-item .col{
+        float: right;
+        width: 40%;
+        padding: 1vw 0;
+        font-size: 3vw;
+        text-align: center;
     }
 }
 

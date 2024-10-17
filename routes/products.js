@@ -99,6 +99,7 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
 });   
 router.get('/delete-product-picture', ensureAuthenticated, (req, res, next) => {
     var {id, index} = req.query;
+    console.log(index)
     if(req.user.role == 'admin'){
         Product.findById(id, (err, product) => {
             product.pictures.splice(index, 1);

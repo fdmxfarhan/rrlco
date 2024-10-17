@@ -5,6 +5,7 @@ block styles
     link(rel="stylesheet", href="/css/dashboard/order-progress.css")
 
 block content
+    .hide#orderlen= orders.length
     .dashboard-view 
         .dashboard-cont-view
             .content
@@ -27,6 +28,7 @@ block content
             .content
                 -for(var i=0; i<orders.length; i++){
                     -var order = orders[i];
+                    include order-list
                     include order-progress
                 -}
         .sidebar-view 
@@ -38,4 +40,23 @@ block content
     script(src="/js/dashboard.js") 
     script.
         document.getElementById('sidebar-link-6').classList.add('active');
-
+        var numOfOrders = parseInt(document.getElementById('orderlen').textContent)
+        $(document).ready(function(){
+            var orderProgress = [];
+            for(var i=0; i<numOfOrders; i++){
+                $(`#order-progress-${i}`).hide();
+                $(`#order-info-${i}`).hide();
+                orderProgress.push({
+                    index: i,
+                    btn: $(`#orders-list-item-${i}`),
+                    progress: $(`#order-progress-${i}`),
+                    info: $(`#order-info-${i}`),
+                })
+            }
+            orderProgress.forEach(element => {
+                element.btn.click(() => {
+                    element.info.slideToggle(300);
+                    element.progress.slideToggle(300);
+                })
+            });
+        });
