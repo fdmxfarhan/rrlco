@@ -70,7 +70,7 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
     }
     else if(req.user.role == 'admin')
     {
-        Order.find({compeleted: false}, (err, orders) => {
+        Order.find({compeleted: false, payed: true}, (err, orders) => {
             Product.countDocuments({}).then((numOfProduct) => {
                 Course.countDocuments({}).then((numOfCourse) => {
                     Order.countDocuments({}).then((numOfOrder) => {
