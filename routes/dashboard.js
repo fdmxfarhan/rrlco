@@ -54,6 +54,7 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
         var coursesID = coursesList.map(item => item.id);
         Course.find({_id: {$in: coursesID}}, (err, courses) => {
             Order.find({ownerID: req.user._id, compeleted: false}, (err, orders) => {
+                orders.reverse();
                 res.render('./dashboard/user-dashboard', {
                     theme: req.session.theme,
                     user: req.user,
@@ -73,6 +74,7 @@ router.get('/', ensureAuthenticated, (req, res, next) => {
             Product.countDocuments({}).then((numOfProduct) => {
                 Course.countDocuments({}).then((numOfCourse) => {
                     Order.countDocuments({}).then((numOfOrder) => {
+                        orders.reverse();
                         res.render('./dashboard/admin-dashboard', {
                             theme: req.session.theme,
                             user: req.user,
@@ -393,7 +395,7 @@ router.get('/remove-discount-from-cart', ensureAuthenticated, (req, res, next) =
     });
 });
 router.get('/compelete-order', ensureAuthenticated, (req, res, next) => {
-    var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
+    var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 0;
     if(req.user.shoppingcart.length > 0){
         totalPrice = cart_total_price(req.user.shoppingcart);
         tax = get_tax(req.user.shoppingcart);
@@ -534,19 +536,23 @@ router.get('/admin-order-next', ensureAuthenticated, (req, res, next) => {
     }
 });
 router.get('/admin-orders', ensureAuthenticated, (req, res, next) => {
-    Order.find({}, (err, orders) => {
-        res.render('./dashboard/admin-orders', {
-            theme: req.session.theme,
-            user: req.user,
-            orders,
-            dateConvert,
-            dot,
-            orderStateNum,
-        });
-    })
+    if(req.user.role == 'admin'){
+        Order.find({}, (err, orders) => {
+            orders.reverse();
+            res.render('./dashboard/admin-orders', {
+                theme: req.session.theme,
+                user: req.user,
+                orders,
+                dateConvert,
+                dot,
+                orderStateNum,
+            });
+        })
+    }
 });
 router.get('/orders', ensureAuthenticated, (req, res, next) => {
     Order.find({ownerID: req.user._id}, (err, orders) => {
+        orders.reverse();
         res.render('./dashboard/user-orders', {
             theme: req.session.theme,
             user: req.user,

@@ -16,10 +16,13 @@ var getNumber = (text) => {
 var cityChange = () => {
     if(document.getElementById('city-select').value != 'تهران'){
         document.getElementById('peyk-option').setAttribute('disabled', 'true');
+        document.getElementById('post-option').removeAttribute('disabled');
         document.getElementById('delivery-select').value = 'پست پیشتاز';
     }
     else{
         document.getElementById('peyk-option').removeAttribute('disabled');
+        document.getElementById('post-option').setAttribute('disabled', 'true');
+        document.getElementById('delivery-select').value = 'پیک موتوری';
     }
 }
 var deliverychanged = () => {
