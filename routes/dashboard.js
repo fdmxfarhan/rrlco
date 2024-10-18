@@ -18,32 +18,32 @@ const Discount = require('../models/Discount');
 const Order = require('../models/Order');
 const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState, get_tax } = require('../config/order');
 const Animalfeeder = require('../models/Animalfeeder');
-// const axios = require('axios');
-// const IPDATA_API_KEY = '158c2ff37720fa92af3af37cfb8bf0bce4423dc168821d1a202d6ad0';
+const axios = require('axios');
+const IPDATA_API_KEY = '158c2ff37720fa92af3af37cfb8bf0bce4423dc168821d1a202d6ad0';
 
-// async function checkVPN(req, res, next) {
-//     try {
-//         const userIP = req.ip; // Get the user's IP address
-//         console.log(userIP)
-//         // Make a request to ipdata API to check for VPN status
-//         const response = await axios.get(`https://api.ipdata.co/${userIP}?api-key=${IPDATA_API_KEY}`);
+async function checkVPN(req, res, next) {
+    try {
+        const userIP = req.ip; // Get the user's IP address
+        console.log(userIP)
+        // Make a request to ipdata API to check for VPN status
+        const response = await axios.get(`https://api.ipdata.co/${userIP}?api-key=${IPDATA_API_KEY}`);
         
-//         const isUsingVPN = response.data.threat.is_vpn; // Check if the IP is using a VPN
+        const isUsingVPN = response.data.threat.is_vpn; // Check if the IP is using a VPN
         
-//         if (isUsingVPN) {
-//             return res.status(403).json({ message: 'Access denied: VPN detected.' });
-//         } else {
-//             next(); // Allow the request to proceed if no VPN is detected
-//         }
-//     } catch (error) {
-//         console.error('Error checking VPN status:', error);
-//         return res.status(500).json({ message: 'Error checking VPN status.' });
-//     }
-// }
+        if (isUsingVPN) {
+            return res.status(403).json({ message: 'Access denied: VPN detected.' });
+        } else {
+            next(); // Allow the request to proceed if no VPN is detected
+        }
+    } catch (error) {
+        console.error('Error checking VPN status:', error);
+        return res.status(500).json({ message: 'Error checking VPN status.' });
+    }
+}
 
-// router.get('/checkvpn', checkVPN, (req, res, next) => {
-//     res.send('Welcome to the protected route. No VPN detected!');
-// });
+router.get('/checkvpn', checkVPN, (req, res, next) => {
+    res.send('Welcome to the protected route. No VPN detected!');
+});
 
 // sms('09336448037', 'hello');
 
