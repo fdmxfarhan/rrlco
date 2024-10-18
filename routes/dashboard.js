@@ -41,8 +41,22 @@ async function checkVPN(req, res, next) {
     }
 }
 
-router.get('/checkvpn', checkVPN, (req, res, next) => {
-    res.send('Welcome to the protected route. No VPN detected!');
+router.get('/check-vpn', async (req, res) => {
+    const ip = req.ip; // Get user's IP address
+    console.log(ip)
+    const apiKey = 'f29841994da430';
+    const url = `https://ipinfo.io/${ip}/json?token=${apiKey}`;
+  
+    try {
+        const response = await axios.get(url);
+        const isVpn = response.data.proxy || response.data.vpn; // Check if it's a VPN or proxy
+        res.json({ vpnDetected: isVpn });
+        console.log(response.data.proxy)
+        console.log(response.data.vpn)
+    } catch (error) {
+        res.status(500).json({ error: 'Error checking VPN status' });
+        console.log(error)
+    }
 });
 
 // sms('09336448037', 'hello');
