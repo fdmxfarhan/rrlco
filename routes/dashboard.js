@@ -42,7 +42,7 @@ async function checkVPN(req, res, next) {
 }
 
 router.get('/check-vpn', async (req, res) => {
-    const ip = req.ip; // Get user's IP address
+    const ip = req.ip.split(':').pop(); // Get user's IP address
     console.log(ip)
     const apiKey = 'f29841994da430';
     const url = `https://ipinfo.io/${ip}/json?token=${apiKey}`;
