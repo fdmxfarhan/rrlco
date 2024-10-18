@@ -24,9 +24,10 @@ const ipinfo = new IPinfoWrapper("f29841994da430");
 
 router.get('/checkvpn', (req, res, next) => {
     var ip = req.ip.split(':').pop();
+    console.log(ip)
     ipinfo.lookupIp(ip).then((response) => {
         console.log(response);
-        res.send(response)
+        // res.send(response)
     });
 });
 
