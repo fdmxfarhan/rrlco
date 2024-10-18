@@ -18,45 +18,18 @@ const Discount = require('../models/Discount');
 const Order = require('../models/Order');
 const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState, get_tax } = require('../config/order');
 const Animalfeeder = require('../models/Animalfeeder');
-const axios = require('axios');
-const IPDATA_API_KEY = '158c2ff37720fa92af3af37cfb8bf0bce4423dc168821d1a202d6ad0';
+const { IPinfoWrapper } = require("node-ipinfo");
 
-async function checkVPN(req, res, next) {
-    try {
-        const userIP = req.ip; // Get the user's IP address
-        console.log(userIP)
-        // Make a request to ipdata API to check for VPN status
-        const response = await axios.get(`https://api.ipdata.co/${userIP}?api-key=${IPDATA_API_KEY}`);
-        
-        const isUsingVPN = response.data.threat.is_vpn; // Check if the IP is using a VPN
-        
-        if (isUsingVPN) {
-            return res.status(403).json({ message: 'Access denied: VPN detected.' });
-        } else {
-            next(); // Allow the request to proceed if no VPN is detected
-        }
-    } catch (error) {
-        console.error('Error checking VPN status:', error);
-        return res.status(500).json({ message: 'Error checking VPN status.' });
-    }
-}
+const ipinfo = new IPinfoWrapper("f29841994da430");
 
-router.get('/check-vpn', async (req, res) => {
-    const ip = req.ip.split(':').pop(); // Get user's IP address
-    console.log(ip)
-    const url = `https://ipinfo.io/${ip}?token=f29841994da430`;
-  
-    try {
-        const response = await axios.get(url);
-        const isVpn = response.data.proxy || response.data.vpn; // Check if it's a VPN or proxy
-        res.json({ vpnDetected: isVpn });
-        console.log(response.data.proxy)
-        console.log(response.data.vpn)
-    } catch (error) {
-        res.status(500).json({ error: 'Error checking VPN status' });
-        console.log(error)
-    }
+router.get('/checkvpn', (req, res, next) => {
+    var ip = req.ip.split(':').pop();
+    ipinfo.lookupIp(ip).then((response) => {
+        console.log(response);
+        res.send(response)
+    });
 });
+
 
 // sms('09336448037', 'hello');
 
