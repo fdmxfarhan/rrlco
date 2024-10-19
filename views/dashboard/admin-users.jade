@@ -3,6 +3,7 @@ extends ../layout
 block styles
     link(rel="stylesheet", href="/css/dashboard/dashboard.css")
     link(rel="stylesheet", href="/css/dashboard/admin-users.css")
+    link(rel="stylesheet", href="/css/forms.css")
 
 block content
     .dashboard-view 
@@ -13,6 +14,14 @@ block content
                         i.fa.fa-users
                         | مدیریت کاربران
                         .stat #{users.length} کاربر
+                .form-view
+                    form#buyform(action="/dashboard/admin-change-pass" method="POST") 
+                        .raw 
+                            select.quarter#city-select(name="userID") 
+                                -for(var i=0; i<users.length; i++)
+                                    option(value="#{users[i]._id}")= users[i].fullname
+                            input.quarter(type="text" name="password" placeholder="کلمه عبور جدید" required value="1234")
+                            button.blue(type="submit") تغییر کلمه عبور
                 .users-list 
                     -for(var i=0; i<users.length; i++){
                         .item

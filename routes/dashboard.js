@@ -19,11 +19,13 @@ const Order = require('../models/Order');
 const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum2State, prevOrderState, get_tax } = require('../config/order');
 const Animalfeeder = require('../models/Animalfeeder');
 const { IPinfoWrapper } = require("node-ipinfo");
+const bcrypt = require('bcryptjs');
 
 const ipinfo = new IPinfoWrapper("f29841994da430");
 
 router.get('/checkvpn', (req, res, next) => {
     var ip = req.ip.split(':').pop();
+    if(ip == '1') ip = '127.0.0.1';
     console.log(ip)
     ipinfo.lookupIp(ip).then((response) => {
         console.log(response);
@@ -613,6 +615,16 @@ router.post('/admin-sms', ensureAuthenticated, (req, res, next) => {
         res.redirect('/dashboard/admin-sms');
     }else res.send('access denied!!');
 }); 
-
+router.post('/admin-change-pass', ensureAuthenticated, (req, res, next) => {
+    var {userID, password} = req.body;
+    if(req.user.role == 'admin'){
+        bcrypt.genSalt(10, (err, salt) => bcrypt.hash(password, salt, (err, hash) => {
+            User.updateMany({_id: userID}, {$set: {password: hash}}, (err, doc) => {
+                req.flash('success_msg', 'تغییر کلمه عبور انجام شد.');
+                res.redirect('/dashboard/admin-users');
+            })
+        }));
+    }
+}); 
 
 module.exports = router;

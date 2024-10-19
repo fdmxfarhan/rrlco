@@ -3,6 +3,7 @@ extends ../layout
 block styles
     link(rel="stylesheet", href="/css/dashboard/dashboard.css")
     link(rel="stylesheet", href="/css/dashboard/order-progress.css")
+    link(rel="stylesheet", href="/css/forms.css")
 
 block content
     .dashboard-view 
@@ -29,6 +30,8 @@ block content
                     -var order = orders[i];
                     include order-progress
                 -}
+                
+                                
         .sidebar-view 
             include sidebar
         
