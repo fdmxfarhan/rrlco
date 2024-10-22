@@ -1,4 +1,58 @@
 @media only screen and (min-width: 600px) {
+    .incomplete-popup{
+        position: fixed;
+        top: 5vw;
+        width: 60%;
+        background-color: var(--white);
+        left: 20%;
+        z-index: 100;
+        padding: 1vw 2vw;
+        border-radius: 1vw;
+    }
+    .incomplete-popup .title{
+        font-size: 1.2vw;
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+    }
+    .incomplete-popup i#close-incomplete{
+        position: absolute;
+        top: 1vw;
+        left: 1vw;
+        cursor: pointer;
+        font-size: 1.5vw;
+        color: var(--text);
+    }
+    .incomplete-popup i#close-incomplete:hover{
+        color: var(--red);
+    }
 }
 @media only screen and (max-width: 600px) {
+    .incomplete-popup{
+        position: fixed;
+        top: 15vw;
+        width: 90%;
+        background-color: var(--white);
+        left: 5%;
+        z-index: 100;
+        padding: 3vw 4vw;
+        border-radius: 3vw;
+    }
+    .incomplete-popup .title{
+        font-size: 3.2vw;
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+    }
+    .incomplete-popup i#close-incomplete{
+        position: absolute;
+        top: 3vw;
+        left: 3vw;
+        cursor: pointer;
+        font-size: 3.5vw;
+        color: var(--text);
+    }
+    .incomplete-popup i#close-incomplete:hover{
+        color: var(--red);
+    }
 }

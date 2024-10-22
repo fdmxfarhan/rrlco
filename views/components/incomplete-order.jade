@@ -1,6 +1,20 @@
 -if(incompleteOrders){
-    .incomplete-popup 
+    .incomplete-popup.hide
         .title شما یک سفارش پرداخت نشده دارید.
         -var order = incompleteOrders;
         include ../dashboard/order-progress
+        i.fa.fa-times#close-incomplete 
+    script.
+        $(document).ready(() => {
+            $('.black-modal').show();
+            $('.incomplete-popup').show();
+            $('.black-modal').click(() => {
+                $('.black-modal').hide();
+                $('.incomplete-popup').hide();
+            })
+            $('#close-incomplete').click(() => {
+                $('.black-modal').hide();
+                $('.incomplete-popup').hide();
+            })
+        })
 -}

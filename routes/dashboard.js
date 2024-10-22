@@ -625,5 +625,74 @@ router.post('/admin-change-pass', ensureAuthenticated, (req, res, next) => {
         }));
     }
 }); 
+router.get('/admin-user-cart', ensureAuthenticated, (req, res, next) => {
+    var {userID} = req.query;
+    var totalPrice = 0, discount = 0, tax = 0;
+    if(req.user.role == 'admin'){
+        User.findById(userID, (err, user) => {
+            totalPrice = cart_total_price(user.shoppingcart);
+            tax = get_tax(user.shoppingcart);
+            Discount.findById(user.currentdicount, (err, currentdicount) => {
+                if(currentdicount) discount = cart_discount(currentdicount, user.shoppingcart);
+                Product.find({}, (err, products) => {
+                    res.render('./dashboard/admin-user-cart', {
+                        theme: req.session.theme,
+                        user: req.user,
+                        dot,
+                        totalPrice,
+                        discount,
+                        tax,
+                        currentdicount,
+                        shoppingcart: user.shoppingcart,
+                        products,
+                        userID,
+                    });
+                })
+            })
+        })
+    }
+});
+router.post('/admin-add-product-to-user-cart', ensureAuthenticated, (req, res, next) => {
+    var {userID, productID, count} = req.body;
+    if(count) count = parseInt(count);
+    var type = 'product';
+    if(req.user.role == 'admin'){
+        User.findById(userID, (err, user) => {
+            var shoppingcart = user.shoppingcart
+            Product.findById(productID, (err, product) => {
+                var already_exist = false;
+                for(var i=0; i<shoppingcart.length; i++){
+                    if(shoppingcart[i].item._id == productID){
+                        shoppingcart[i].count = parseInt(shoppingcart[i].count) + count;
+                        already_exist = true;
+                    }
+                }
+                if(!already_exist){
+                    shoppingcart.push({
+                        item: product,
+                        count,
+                        type,
+                    });
+                }
+                User.updateMany({_id: userID}, {$set: {shoppingcart}}, (err, doc) => {
+                    req.flash('success_msg', 'به سبد خرید اضافه شد');
+                    res.redirect(`/dashboard/admin-user-cart?userID=${userID}`);
+                });
+            });
+        })
+    }
+});
+router.get('/admin-delete-item-cart', ensureAuthenticated, (req, res, next) => {
+    var {index, userID} = req.query;
+    User.findById(userID, (err, user) => {
+        var shoppingcart = user.shoppingcart;
+        shoppingcart.splice(index, 1);
+        User.updateMany({_id: userID}, {$set: {shoppingcart}}, (err, doc) => {
+            res.redirect(`/dashboard/admin-user-cart?userID=${userID}`);
+        });
+    });
+});
+
+
 
 module.exports = router;

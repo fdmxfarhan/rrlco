@@ -1,0 +1,120 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/shopping-cart.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content 
+                .shoppingcart-orders
+                    h1.title
+                        i.fa.fa-tags
+                        | سبد خرید
+                        a.delete-cart(href="/dashboard/admin-delete-cart" onclick="return confirm('مطمئن هستید؟')") 
+                            i.fa.fa-trash
+                            | حذف سبد خرید
+                    .list 
+                        -if(shoppingcart.length > 0){
+                            -for(var i=0; i<shoppingcart.length; i++){
+                                -if(shoppingcart[i].type == 'product'){
+                                    .item 
+                                        a.cover(href="/products/product-view?id=#{shoppingcart[i].item._id}")  
+                                            img(src="#{shoppingcart[i].item.pictures[0]}", alt="" loading="lazy")
+                                        .info 
+                                            h1= shoppingcart[i].item.title
+                                            h2 #{dot(shoppingcart[i].item.price)} تومان
+                                            h3 کد کالا: #{shoppingcart[i].item.productCode}
+                                        .count
+                                            button.add(type="button" onclick="add()")
+                                                i.fa.fa-plus 
+                                            input#count-input(type="number" name="count" value="#{shoppingcart[i].count}")
+                                            button.sub(type="button" onclick="sub()")
+                                                i.fa.fa-minus
+                                        .total-price #{dot(shoppingcart[i].count * shoppingcart[i].item.price)} تومان
+                                        a.delete-item(href="/dashboard/admin-delete-item-cart?index=#{i}&userID=#{userID}") 
+                                            i.fa.fa-times
+                                -}else if(shoppingcart[i].type == 'course'){
+                                    .item 
+                                        a.cover(href="/courses/course-view?id=#{shoppingcart[i].item._id}")  
+                                            img(src="#{shoppingcart[i].item.cover}", alt="" loading="lazy")
+                                        .info 
+                                            h1= shoppingcart[i].item.title
+                                            h2 #{dot(shoppingcart[i].item.price)} تومان
+                                            h3 کد کالا: #{shoppingcart[i].item.courseCode}
+                                        .count 
+
+                                        .total-price #{dot(shoppingcart[i].item.price)} تومان
+                                        a.delete-item(href="/dashboard/admin-delete-item-cart?index=#{i}&userID=#{userID}") 
+                                            i.fa.fa-times
+                                -}else if(shoppingcart[i].type == 'print3d'){
+                                    .item 
+                                        a.cover(href="/print3d/print3d-view?id=#{shoppingcart[i].item._id}")  
+                                            i.fa.fa-file-text.print3d-icon
+                                        .info 
+                                            h1 پرینت سه بعدی #{shoppingcart[i].item.title}
+                                            h2 #{shoppingcart[i].item.filament} #{shoppingcart[i].item.color}
+                                            h3 #{shoppingcart[i].item.infill}% - #{shoppingcart[i].item.layerhieght}
+                                        .count 
+                                            button.add(type="button" onclick="add()")
+                                                i.fa.fa-plus 
+                                            input#count-input(type="number" name="count" value="#{shoppingcart[i].count}")
+                                            button.sub(type="button" onclick="sub()")
+                                                i.fa.fa-minus
+                                        .total-price #{dot(shoppingcart[i].item.price)} تومان
+                                        a.delete-item(href="/dashboard/admin-delete-item-cart?index=#{i}&userID=#{userID}") 
+                                            i.fa.fa-times
+                                -}
+                            -}
+                        -}else
+                            .cart-empty سبد خرید شما خالی است.
+                    .form-view
+                        form#buyform(action="/dashboard/admin-add-product-to-user-cart" method="POST") 
+                            input.hide(type="text" name="userID" value="#{userID}")
+                            .raw 
+                                select.dual(name="productID") 
+                                    -for(var i=0; i<products.length; i++)
+                                        option(value="#{products[i]._id}")= products[i].title
+                                input.quarter(type="number" name="count" value="1")
+                                button.inline.blue(type="submit") افزودن محصول
+                    a.continue-shopping(href="/products") ادامه خرید
+                        i.fa.fa-arrow-left
+        .sidebar-view
+            .sidebar-visible
+                .shopping-cart-info 
+                    h1 #{shoppingcart.length} کالا در سبد خرید شما
+                    .discount
+                        -if(currentdicount){
+                            .label کد تخفیف اعمال شده
+                            a.remove(href="/dashboard/remove-discount-from-cart") 
+                                i.fa.fa-times 
+                                | حذف کد تخفیف
+                        -}else{
+                            .label کد تخفیف دارید؟
+                            .val    
+                                form(action="/dashboard/apply-discount-tocart" method="POST") 
+                                    input(type="text" name="discountnumber" placeholder="کد تخفیف")
+                                    button(type="submit") بررسی
+                        -}
+                    .item 
+                        .label مجموع کالاها: 
+                        .val #{dot(totalPrice)} تومان
+                    .item 
+                        .label تخفیف: 
+                        .val #{dot(discount)} تومان
+                    .item 
+                        .label ارزش افزوده: 
+                        .val #{dot(tax)} تومان
+                    .item 
+                        .label مجموع: 
+                        .val.green #{dot(totalPrice + tax - discount)} تومان
+                    a.buy(href="/dashboard/admin-compelete-order")
+                        i.fa.fa-shopping-cart 
+                        | ثبت سفارش
+            //- include sidebar
+        
+
+    script(src="/js/dashboard.js") 
+

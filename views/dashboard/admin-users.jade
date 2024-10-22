@@ -21,25 +21,28 @@ block content
                                 -for(var i=0; i<users.length; i++)
                                     option(value="#{users[i]._id}")= users[i].fullname
                             input.quarter(type="text" name="password" placeholder="کلمه عبور جدید" required value="1234")
-                            button.blue(type="submit") تغییر کلمه عبور
+                            button.inline.blue(type="submit") تغییر کلمه عبور
                 .users-list 
                     -for(var i=0; i<users.length; i++){
                         .item
                             .name
                                 i.fa.fa-user
-                                | #{users[i].fullname}
+                                | #{users[i].fullname} 
                             .phone 
                                 i.fa.fa-phone
-                                | #{users[i].phone}
+                                | #{users[i].phone} 
                             .email 
                                 i.fa.fa-map-marker
-                                | #{users[i].address}
+                                | #{users[i].address} 
                             .role(class="#{users[i].role == 'admin'? 'red': 'green'}")= users[i].role
                             .actions
                                 a.edit(href="#") 
                                     i.fa.fa-edit
-                                a.delete(href="/dashboard/delete-user?userID=#{users[i]._id}" onclick="return confirm('مطمئن هستید؟')") 
-                                    i.fa.fa-trash
+                                a.edit(href="/dashboard/admin-user-cart?userID=#{users[i]._id}") 
+                                    i.fa.fa-shopping-cart
+                                    | #{users[i].shoppingcart.length}
+                                //- a.delete(href="/dashboard/delete-user?userID=#{users[i]._id}" onclick="return confirm('مطمئن هستید؟')") 
+                                //-     i.fa.fa-trash
                     -}
         .sidebar-view 
             include sidebar
