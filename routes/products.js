@@ -11,6 +11,10 @@ const searchText = require('../config/searchText');
 const bcrypt = require('bcryptjs');
 const sms = require('../config/sms');
 const passport = require('passport');
+const Order = require('../models/Order');
+const { orderStateNum } = require('../config/order');
+const timedigit = require('../config/timedigit');
+const dateConvert = require('../config/dateConvert');
 
 
 router.get('/', (req, res, next) => {
@@ -32,16 +36,35 @@ router.get('/product-view', (req, res, next) => {
     var productID = req.query.id;
     Product.findById(productID, (err, product) => {
         Product.find({category: product.category}, (err, relatedProducts) => {
-            if(product){
-                res.render('./products/product-view', {
-                    theme: req.session.theme,
-                    user: req.user,
-                    product,
-                    productCategories,
-                    dot,
-                    relatedProducts,
+            if(req.user){
+                Order.findOne({ownerID: req.user._id, payed: false}, (err, incompleteOrders) => {
+                    if(product){
+                        res.render('./products/product-view', {
+                            theme: req.session.theme,
+                            user: req.user,
+                            product,
+                            productCategories,
+                            dot,
+                            relatedProducts,
+                            incompleteOrders,
+                            orderStateNum,
+                            timedigit,
+                            dateConvert,
+                        });
+                    } else res.send('product not found');
                 });
-            } else res.send('product not found');
+            }else{
+                if(product){
+                    res.render('./products/product-view', {
+                        theme: req.session.theme,
+                        user: req.user,
+                        product,
+                        productCategories,
+                        dot,
+                        relatedProducts,
+                    });
+                } else res.send('product not found');
+            }
         })
     })
 });

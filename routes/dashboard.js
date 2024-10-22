@@ -33,7 +33,6 @@ router.get('/checkvpn', (req, res, next) => {
     });
 });
 
-
 // sms('09336448037', 'hello');
 
 router.get('/', ensureAuthenticated, (req, res, next) => {

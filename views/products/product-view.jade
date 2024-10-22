@@ -4,9 +4,13 @@ block styles
     link(rel="stylesheet", href="/css/products/product-view.css")
     link(rel="stylesheet", href="/css/gallery.css")
     link(rel='stylesheet', href='/css/four-card.css')
+    link(rel="stylesheet", href="/css/dashboard/order-progress.css")
+    link(rel="stylesheet", href="/css/incomplete-order.css")
 
 block content
     include ./login-popup
+    -if(user)
+        include ../components/incomplete-order
     .product-view 
         .content 
             .pictures 
