@@ -143,6 +143,7 @@ body{
         border-bottom-right-radius: 1vw;
         outline: none;
         width: 12vw;
+        color: var(--black);
     }
     .searchbar button.submit{
         background-color: var(--red);

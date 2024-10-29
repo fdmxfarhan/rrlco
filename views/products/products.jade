@@ -5,6 +5,7 @@ block styles
     link(rel='stylesheet', href='/css/four-card.css')
     
 block content
+
     div#dataContainer(data-mydata='#{JSON.stringify(products)}')
     .product-view 
         .product-cont-view
@@ -17,7 +18,7 @@ block content
                         a.last(href="#") جدید ترین
                     .searchbar 
                         form(action="/products/search" method="POST")
-                            input.text(type="text" placeholder="جستجو..." name="word" value="#{typeof(word) != 'undefined'? word : ''}")
+                            input.text#search-input(type="text" placeholder="جستجو..." name="word" value="#{typeof(word) != 'undefined'? word : ''}" onchange="searchWord()")
                             button.submit(type="submit")
                                 i.fa.fa-search
             .content
@@ -27,9 +28,9 @@ block content
                             i.fa.fa-times
                     -}
                 br
-                .four-card-view
+                .four-card-view#products-view
                     -for(var i=0; i<products.length; i++){
-                        a.card.triple(href="/products/product-view?id=#{products[i]._id}")
+                        a.card.triple(href="/products/product-view?id=#{products[i]._id}" id="product-card-#{i}")
                             .image 
                                 img(src="#{products[i].pictures[0]}", alt="" loading="lazy")
                             h1= products[i].title
@@ -54,10 +55,6 @@ block content
         .sidebar-view 
             include sidebar
     script(src="/js/product.js")
+    script(src="/js/product-search.js")
     script.
         document.getElementById('navlink-2').classList.add('active');
-        
-        const dataElement = document.getElementById('dataContainer');
-        const myData = JSON.parse(dataElement.getAttribute('data-mydata'));
-        
-        console.log(myData); // Now you can use myData in your JS code

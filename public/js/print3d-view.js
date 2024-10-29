@@ -82,9 +82,12 @@ var updatePrice = () => {
         price = count * (abscost * volume * ((infill+100)/100));
         if(document.getElementById('colorABS').value == 'مشکی') stl_viewer.set_color(1, "#3F4253");
         if(document.getElementById('colorABS').value == 'سفید') stl_viewer.set_color(1, "#eef1f7");
-        if(document.getElementById('colorABS').value == 'سبز') stl_viewer.set_color(1, "#4ac91c");
-        if(document.getElementById('colorABS').value == 'آبی') stl_viewer.set_color(1, "#4895EF");
+        if(document.getElementById('colorABS').value == 'سبز' ) stl_viewer.set_color(1, "#4ac91c");
+        if(document.getElementById('colorABS').value == 'آبی' ) stl_viewer.set_color(1, "#4895EF");
         if(document.getElementById('colorABS').value == 'طوسی') stl_viewer.set_color(1, "#595b66");
+        if(document.getElementById('colorABS').value == 'زرد' ) stl_viewer.set_color(1, "#fcf803");
+        if(document.getElementById('colorABS').value == 'قرمز') stl_viewer.set_color(1, "#fc0320");
+        if(document.getElementById('colorABS').value == 'صورتی') stl_viewer.set_color(1, "#fc03f8");
     }
     else if(filament == 'PLA'){
         document.getElementById('colorABS').classList.add('hide');
