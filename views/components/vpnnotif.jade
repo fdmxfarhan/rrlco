@@ -1,0 +1,19 @@
+link(rel="stylesheet", href="/css/components/vpnnotif.css")
+
+.vpn-popup.hide
+    .title لطفا VPN خود را خاموش کنید.
+    p کاربر گرامی، لطفا جهت ادامه خرید فیلترشکن خود را خاموش نموده و سپس ادامه دهید.
+    .submit-btn#vpn-submit-btn خاموش کردم
+    i.fa.fa-times#close-vpn 
+script.
+    $(document).ready(() => {
+        $('.black-modal').show();
+        $('.vpn-popup').show();
+        var closeNotif = () => {
+            $('.black-modal').hide();
+            $('.vpn-popup').hide();
+        }
+        $('.black-modal').click(closeNotif);
+        $('#close-vpn').click(closeNotif);
+        $('#vpn-submit-btn').click(closeNotif);
+    })

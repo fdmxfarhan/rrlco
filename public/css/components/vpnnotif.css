@@ -1,0 +1,100 @@
+@media only screen and (min-width: 600px) {
+    .vpn-popup{
+        position: fixed;
+        top: 15vw;
+        width: 30%;
+        background-color: var(--white);
+        left: 35%;
+        z-index: 100;
+        padding: 1vw 0;
+        border-radius: 1vw;
+        min-height: 15vw;
+    }
+    .vpn-popup .title{
+        font-size: 1.2vw;
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+    }
+    .vpn-popup i#close-vpn{
+        position: absolute;
+        top: 1vw;
+        left: 1vw;
+        cursor: pointer;
+        font-size: 1.5vw;
+        color: var(--text);
+    }
+    .vpn-popup i#close-vpn:hover{
+        color: var(--red);
+    }
+    .vpn-popup p{
+        width: 90%;
+        margin: 1vw auto;
+        font-size: 1vw;
+    }
+    .vpn-popup .submit-btn{
+        background-color: var(--red);
+        font-size: 1.2vw;
+        color: white;
+        border-radius: 1vw;
+        width: 90%;
+        margin: 1vw auto;
+        padding: 0.8vw 0;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 5vw;
+    }
+    .vpn-popup .submit-btn:hover{
+        background-color: var(--green);
+    }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
+}
+@media only screen and (max-width: 600px) {
+    .vpn-popup{
+        position: fixed;
+        top: 30vh;
+        width: 90%;
+        background-color: var(--white);
+        left: 5%;
+        z-index: 100;
+        padding: 3vw 0;
+        border-radius: 3vw;
+    }
+    .vpn-popup .title{
+        font-size: 4vw;
+        text-align: center;
+        color: var(--red);
+        font-weight: bold;
+    }
+    .vpn-popup i#close-vpn{
+        position: absolute;
+        top: 3vw;
+        left: 3vw;
+        cursor: pointer;
+        font-size: 3.5vw;
+        color: var(--text);
+    }
+    .vpn-popup i#close-vpn:hover{
+        color: var(--red);
+    }
+    .vpn-popup p{
+        width: 90%;
+        margin: 3vw auto;
+        font-size: 3.2vw;
+    }
+    .vpn-popup .submit-btn{
+        background-color: var(--red);
+        font-size: 3.6vw;
+        color: white;
+        border-radius: 3vw;
+        width: 90%;
+        margin: 3vw auto;
+        padding: 1.6vw 0;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 10vh;
+    }
+    .vpn-popup .submit-btn:hover{
+        background-color: var(--green);
+    }
+}

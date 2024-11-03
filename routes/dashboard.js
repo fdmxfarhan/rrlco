@@ -416,6 +416,10 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
         req.flash('error_msg', 'کد پستی صحیح نمی‌باشد.');
         res.redirect('/dashboard/compelete-order');
     }
+    else if(req.user.shoppingcart.length == 0){
+        req.flash('error_msg', 'سبد خرید شما خالی است.');
+        res.redirect('/dashboard')
+    }
     else{
         var totalPrice = 0, discount = 0, tax=0, deliveryPrice = 60000;
         totalPrice = cart_total_price(req.user.shoppingcart);
