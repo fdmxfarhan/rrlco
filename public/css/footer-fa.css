@@ -38,6 +38,8 @@
         overflow: hidden;
         display: flex;
         flex-direction: row;
+        width: 90%;
+        margin: 1vw auto;
     }
     footer .four-part-view .part{
         width: 25%;
