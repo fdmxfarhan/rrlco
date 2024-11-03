@@ -224,9 +224,8 @@
         cursor: pointer;
         background-color: var(--skyblue);
     }
-    .orders-list-item.done{
-        background-color: var(--lightgray);
-    }
+    .orders-list-item.done{background-color: var(--lightgreen);}
+    .orders-list-item.notpayed{background-color: var(--lightgray);}
     .orders-list-item:hover{
         background-color: var(--blue);
     }
@@ -237,7 +236,6 @@
         font-size: 1vw;
     }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
-
 }
 @media only screen and (max-width: 800px) {
     .order-progress{
@@ -478,10 +476,6 @@
     .orders-list-item.done{
         background-color: var(--lightgray);
     }
+    .orders-list-item.notpayed{background-color: var(--lightgray);}
 }
-
-
-
-
-
 

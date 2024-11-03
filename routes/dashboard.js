@@ -466,7 +466,7 @@ router.get('/remove-order', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
         Order.deleteOne({_id: orderID}, (err) => {
             req.flash('success_msg', 'سفارش حذف شد.');
-            res.redirect(`/dashboard`);
+            res.redirect(`/dashboard/admin-orders`);
         });
     }
     else{
