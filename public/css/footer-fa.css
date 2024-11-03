@@ -45,6 +45,7 @@
     }
     footer .four-part-view .part h1{
         font-family: 'iransans';
+        color: white;
         font-size: 1.2vw;
     }
     footer .four-part-view .part a.link{
@@ -60,6 +61,7 @@
     footer .four-part-view .part .note{
         font-size: 1vw;
         text-align: justify;        
+        color: white;
     }
     footer .four-part-view .part .note .bold{
         color: var(--red);
@@ -71,6 +73,7 @@
     }
     .address{
         font-size: 1vw;
+        color: white;
         text-align: justify;
     }
     .address i{
