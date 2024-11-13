@@ -77,6 +77,7 @@ body{
         position: absolute;
         right: 10%;
         top: 7vw;
+        width: 50vw;
     }
     header .top-info .hello{
         color: var(--lightgray);
