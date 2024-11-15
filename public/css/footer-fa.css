@@ -84,6 +84,21 @@
     footer .contact-list img{
         width: 3vw;
     }
+    
+    .phone{
+        font-size: 1vw;
+        color: white;
+        text-align: justify;
+    }
+    .phone i{
+        padding-left: 0.4vw;
+    }
+    .phone a{
+        color: white;
+    }
+    .phone a:hover{
+        color: var(--blue);
+    }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
@@ -171,5 +186,20 @@
     }
     footer .contact-list img{
         width: 9vw;
+    }
+
+    .phone{
+        font-size: 3vw;
+        color: white;
+        text-align: justify;
+    }
+    .phone i{
+        padding-left: 1vw;
+    }
+    .phone a{
+        color: white;
+    }
+    .phone a:hover{
+        color: var(--blue);
     }
 }
