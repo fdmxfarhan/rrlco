@@ -7,6 +7,14 @@ block styles
     link(rel="stylesheet", href="/css/dashboard/order-progress.css")
     link(rel="stylesheet", href="/css/incomplete-order.css")
 
+    meta(name="product_id" content="#{product._id}")
+    meta(name="product_name" content="#{product.title}")
+    meta(property="og:image" content="http://rrlco.ir#{product.pictures[i]}")
+    meta(name="product_price" content="#{product.price}")
+    meta(name="product_old_price" content="#{product.price}")
+    meta(name="availability" content="#{product.available}")
+    meta(name="guarantee" content="true")
+
 block content
     include ./login-popup
     -if(user)
