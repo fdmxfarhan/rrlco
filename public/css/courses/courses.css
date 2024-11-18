@@ -182,7 +182,30 @@ body{
         padding-right: 0.5vw;
     }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
-    
+    .content h1.desc-title{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--blue);
+        width: 90%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+    .content p.desc{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+        margin-top: 0.5vw;
+        margin-bottom: 1vw;
+    }
+    .content ul.desc{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+    }
 }
 @media only screen and (max-width: 800px) {
     .course-view{
