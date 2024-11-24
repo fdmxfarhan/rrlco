@@ -41,8 +41,8 @@ block content
                                 a.edit(href="/dashboard/admin-user-cart?userID=#{users[i]._id}") 
                                     i.fa.fa-shopping-cart
                                     | #{users[i].shoppingcart.length}
-                                //- a.delete(href="/dashboard/delete-user?userID=#{users[i]._id}" onclick="return confirm('مطمئن هستید؟')") 
-                                //-     i.fa.fa-trash
+                                a.delete(href="/dashboard/delete-user?userID=#{users[i]._id}" onclick="return confirm('مطمئن هستید؟')") 
+                                    i.fa.fa-trash
                     -}
         .sidebar-view 
             include sidebar
