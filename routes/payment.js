@@ -13,32 +13,33 @@ const passport = require('passport');
 // Docs: https://www.npmjs.com/package/zarinpal-checkout
 
 router.get('/', (req, res, next) => {
-  zarinpal.PaymentRequest({
-      Amount: '5000', // In Tomans
-      CallbackURL: 'https://rrlco.ir/payment/payment-call-back',
-      Description: 'A Payment from Node.JS',
-      Email: 'hi@siamak.work',
-      Mobile: '09120000000'
+    var amount = req.query.amount;
+    zarinpal.PaymentRequest({
+        Amount: `${amount}`, // In Tomans
+        CallbackURL: 'https://rrlco.ir/payment/payment-call-back',
+        Description: 'fdmxfarhan',
+        Email: 'hi@siamak.work',
+        Mobile: '09336448037'
 
     }).then(response => {
-      if (response.status === 100) {
-        console.log(response);
-        // response.authority should be saved
-        res.redirect(response.url);
-      }
+        if (response.status === 100) {
+            console.log(response);
+            // response.authority should be saved
+            res.redirect(response.url);
+        }
     }).catch(err => {
-      console.error(err);
+        console.error(err);
     });
 });
 router.get('/payment-call-back', (req, res, next) => {
     // req.query.Authority should be checked
-    if(req.query.Status == 'OK'){
+    if (req.query.Status == 'OK') {
 
-    }else{
+    } else {
         console.log(req.query);
         res.send(req.query);
     }
-    
+
 });
 router.get('/pay-order', (req, res, next) => {
     var orderID = req.query.id;
@@ -51,7 +52,7 @@ router.get('/pay-order', (req, res, next) => {
             Mobile: req.user.phone,
         }).then(response => {
             if (response.status === 100) {
-                Order.updateMany({_id: orderID}, {$set: {paymentAuthority: response.authority}}, (err, doc) => {
+                Order.updateMany({ _id: orderID }, { $set: { paymentAuthority: response.authority } }, (err, doc) => {
                     console.log(response);
                     res.redirect(response.url);
                 });
@@ -62,10 +63,10 @@ router.get('/pay-order', (req, res, next) => {
     })
 });
 router.get('/order-payment-call-back', (req, res, next) => {
-    if(req.query.Status == 'OK'){
-        Order.findOne({paymentAuthority: req.query.Authority}, (err, order) => {
+    if (req.query.Status == 'OK') {
+        Order.findOne({ paymentAuthority: req.query.Authority }, (err, order) => {
             console.log(order);
-            Order.updateMany({paymentAuthority: req.query.Authority}, {$set: {payed: true, state: 'در حال پردازش'}}, (err, doc) => {
+            Order.updateMany({ paymentAuthority: req.query.Authority }, { $set: { payed: true, state: 'در حال پردازش' } }, (err, doc) => {
                 User.findById(order.ownerID, (err, user) => {
                     console.log(user);
                     req.login(user, (err) => {
@@ -80,14 +81,14 @@ router.get('/order-payment-call-back', (req, res, next) => {
                 });
             })
         })
-    }else{
+    } else {
         req.flash('error_msg', 'پرداخت انجام نشد');
         res.redirect('/dashboard');
     }
 });
 router.get('/pay-online-course', (req, res, next) => {
-    if(!req.user.payableCourse) res.send('no payable course found!!');
-    else{
+    if (!req.user.payableCourse) res.send('no payable course found!!');
+    else {
         payableCourse = req.user.payableCourse;
         Course.findById(payableCourse.id, (err, course) => {
             zarinpal.PaymentRequest({
@@ -98,7 +99,7 @@ router.get('/pay-online-course', (req, res, next) => {
                 Mobile: req.user.phone,
             }).then(response => {
                 if (response.status === 100) {
-                    User.updateMany({_id: req.user._id}, {$set: {paymentAuthority: response.authority}}, (err, doc) => {
+                    User.updateMany({ _id: req.user._id }, { $set: { paymentAuthority: response.authority } }, (err, doc) => {
                         console.log(response);
                         res.redirect(response.url);
                     });
@@ -112,19 +113,19 @@ router.get('/pay-online-course', (req, res, next) => {
 router.get('/online-course-payment-call-back', (req, res, next) => {
     // req.query.Authority should be checked
     console.log(req.query);
-    if(req.query.Status == 'OK'){
+    if (req.query.Status == 'OK') {
         var payableCourse = req.user.payableCourse;
         var courses = req.user.courses;
         payableCourse.payed = true;
         payableCourse.auth = req.query.Authority;
         courses.push(payableCourse)
-        User.updateMany({paymentAuthority: req.query.Authority}, {$set: {courses}}, (err, doc) => {
+        User.updateMany({ paymentAuthority: req.query.Authority }, { $set: { courses } }, (err, doc) => {
             sms(req.user.phone, 'ثبت نام شما با موفقیت انجام شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses')
             sms('09336448037', `ثبت نام دوره جدید:\nکاربر: ${req.user.fullname}\nتلفن: ${req.user.phone}`);
             req.flash('success_msg', 'پرداخت با موفقیت انجام شد');
             res.redirect(`/courses/course-view?id=${payableCourse.id}`);
         });
-    }else{
+    } else {
         req.flash('error_msg', 'پرداخت انجام نشد');
         res.redirect('/dashboard');
     }
