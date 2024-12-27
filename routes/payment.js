@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
 router.get('/payment-call-back', (req, res, next) => {
     // req.query.Authority should be checked
     if (req.query.Status == 'OK') {
-
+        res.send(req.query)
     } else {
         console.log(req.query);
         res.send(req.query);
