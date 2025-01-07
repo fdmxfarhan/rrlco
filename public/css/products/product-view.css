@@ -259,6 +259,22 @@ body{
         margin-top: 4vw;
         margin-bottom: 0;;
     }
+    a.datasheet{
+        width: 95%;
+        margin: auto;
+        display: block;
+        padding-top: 1vw;
+        color: var(--text);
+        cursor: pointer;
+        font-family: 'iransans';
+        font-size: 1.2vw;
+        font-weight: bold;
+    }
+    a.datasheet:hover{color: var(--blue);}
+    a.datasheet i{
+        padding-left: 1vw;
+        font-size: 2vw;
+    }
     /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
@@ -515,5 +531,21 @@ body{
         padding: 1vw 5%;
         margin-top: 4vw;
         margin-bottom: 0;;
+    }
+    a.datasheet{
+        width: 95%;
+        margin: auto;
+        display: block;
+        padding-top: 2vw;
+        color: var(--text);
+        cursor: pointer;
+        font-family: 'iransans';
+        font-size: 3.3vw;
+        font-weight: bold;
+    }
+    a.datasheet:hover{color: var(--blue);}
+    a.datasheet i{
+        padding-left: 3vw;
+        font-size: 5vw;
     }
 }

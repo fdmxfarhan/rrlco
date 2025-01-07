@@ -60,3 +60,31 @@ block content
                 })
             });
         });
+        var numOfOrders = #{orders.length};
+        $(document).ready(() => {
+            var orders = [];
+            for(var i=0; i<numOfOrders; i++){
+                orders.push({
+                    phone: $(`#order-progress-phone-${i}`), 
+                    owner: $(`#order-progress-owner-${i}`), 
+                    postcode: $(`#order-progress-postcode-${i}`), 
+                    address: $(`#order-progress-address-${i}`), 
+                    id: i
+                })
+            }
+            orders.forEach(order => {
+                order.phone.click(() => {
+                    navigator.clipboard.writeText(order.phone.text());
+                })
+                order.owner.click(() => {
+                    navigator.clipboard.writeText(order.owner.text());
+                })
+                order.postcode.click(() => {
+                    navigator.clipboard.writeText(order.postcode.text());
+                })
+                order.address.click(() => {
+                    navigator.clipboard.writeText(order.address.text());
+                })
+                
+            });
+        })

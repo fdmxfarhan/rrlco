@@ -435,7 +435,7 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
                 ownerID: req.user._id,
                 ownerNmae: req.user.fullname,
                 items: req.user.shoppingcart,
-                description: '',
+                description,
                 totalPrice,
                 discount,
                 tax,

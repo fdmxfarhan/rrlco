@@ -30,6 +30,7 @@ router.get('/', (req, res, next) => {
             user: req.user
         });
     }
+    
     else if(req.session.lang == 'FA'){
         Product.find({showHome: true}, (err, products) => {
             Course.find({}, (err, courses) => {

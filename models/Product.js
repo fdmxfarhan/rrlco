@@ -26,7 +26,10 @@ var ProductSchema = new mongoose.Schema({
         default: true,
     },
     shortdescription: String,
-    description: String,
+    description: {
+        type: String,
+        default: '',
+    },
     relatedProducts: [String],
     stars: [Number],
     techspecs: {
@@ -56,6 +59,10 @@ var ProductSchema = new mongoose.Schema({
     showHome: {
         type: Boolean,
         default: false,
+    },
+    datasheet: {
+        type: String,
+        default: '',
     },
 });
 

@@ -92,6 +92,19 @@ block content
                             -} else{
                                 .not-available ناموجود
                             -}
+                -if(product.datasheet != ''){
+
+                a.datasheet(href='#{product.datasheet}' target="__blank")
+                    i.fa.fa-file-pdf
+                    | دانلود دیتاشیت
+                -}
+                -if(user && user.role == 'admin'){
+                    .add-photo
+                        form(action="/upload/add-product-datasheet" method="POST" enctype="multipart/form-data") 
+                            input.hide(type="text" name="id" value="#{product._id}")
+                            input.file(type="file" name="datasheet")
+                            button(type="submit") +
+                -}
                 .category 
                     .label دسته بندی: 
                     a.value(href="/products?category=#{product.category}")= product.category
@@ -117,8 +130,6 @@ block content
                         i.fa.fa-edit  
                     a.times(href="/products/delete-product?id=#{product._id}" onclick="return confirm('مطمئن هستید؟')")
                         i.fa.fa-times 
-                    
-                    
             -}
         .content 
             h1.title توضیحات بیشتر

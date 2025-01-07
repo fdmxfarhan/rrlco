@@ -119,6 +119,7 @@
         display: inline;
         color: var(--text);
     }
+    .order-info .right-side .delivery-info .raw .item .val:hover{color: var(--blue);}
     .order-info .right-side .delivery-info .address-raw{
         font-size: 0.9vw;
         color: var(--text);
@@ -358,6 +359,7 @@
         display: inline;
         color: var(--text);
     }
+    .order-info .right-side .delivery-info .raw .item .val:hover{color: var(--blue);}
     .order-info .right-side .delivery-info .address-raw{
         font-size: 2.7vw;
         color: var(--text);

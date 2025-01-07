@@ -57,22 +57,27 @@
                     .label
                         i.fa.fa-user
                         | گیرنده: 
-                    .val= order.ownerNmae
+                    .val(id="order-progress-owner-#{i}")= order.ownerNmae
             .raw 
                 .item 
                     .label
                         i.fa.fa-phone
                         | تلفن: 
-                    .val= order.phone
+                    .val(id="order-progress-phone-#{i}")= order.phone
                 .item 
                     .label
                         i.fa.fa-barcode
                         | کد پستی: 
-                    .val= order.postCode
+                    .val(id="order-progress-postcode-#{i}")= order.postCode
             .address-raw
                 i.fa.fa-map-marker-alt
                 | آدرس: 
-                .text= order.address
+                .text(id="order-progress-address-#{i}")= order.address
+            .address-raw
+                i.fa.fa-comment
+                | توضیحات: 
+                .text= order.description
+            
     .left-side 
         -if(!order.payed){
             a.remove-order(href="/dashboard/remove-order?id=#{order._id}") 
