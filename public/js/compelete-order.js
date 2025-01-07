@@ -21,7 +21,7 @@ var cityChange = () => {
     }
     else{
         document.getElementById('peyk-option').removeAttribute('disabled');
-        document.getElementById('post-option').setAttribute('disabled', 'true');
+        document.getElementById('post-option').removeAttribute('disabled');
         document.getElementById('delivery-select').value = 'پیک موتوری';
     }
 }

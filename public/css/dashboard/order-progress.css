@@ -81,6 +81,7 @@
         margin-right: 1vw;
         font-size: 0.9vw;
     }
+    .order-info .right-side .invoice-view .item .name a{color: var(--text);}
     .order-info .right-side .invoice-view .item .count{
         float: right;
         width: 10%;
@@ -118,6 +119,7 @@
     .order-info .right-side .delivery-info .raw .item .val{
         display: inline;
         color: var(--text);
+        cursor: pointer;
     }
     .order-info .right-side .delivery-info .raw .item .val:hover{color: var(--blue);}
     .order-info .right-side .delivery-info .address-raw{
@@ -321,6 +323,7 @@
         margin-right: 3vw;
         font-size: 2.9vw;
     }
+    .order-info .right-side .invoice-view .item .name a{color: var(--text);}
     .order-info .right-side .invoice-view .item .count{
         float: right;
         width: 10%;
@@ -358,6 +361,7 @@
     .order-info .right-side .delivery-info .raw .item .val{
         display: inline;
         color: var(--text);
+        cursor: pointer;
     }
     .order-info .right-side .delivery-info .raw .item .val:hover{color: var(--blue);}
     .order-info .right-side .delivery-info .address-raw{
