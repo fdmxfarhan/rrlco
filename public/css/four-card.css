@@ -42,10 +42,11 @@
         width: 21.5%;
         margin: 1vw 1.6%;
         /* border: 0.1vw solid var(--lightgray); */
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.02);;
         border-radius: 0.5vw;
         overflow: hidden;
         float: right;
+        height: 28vw;
     }
     .four-card-view.scroll a.card{
         background-color: var(--white);
