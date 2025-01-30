@@ -33,18 +33,21 @@ router.get('/', (req, res, next) => {
     
     else if(req.session.lang == 'FA'){
         Product.find({showHome: true}, (err, products) => {
-            Course.find({}, (err, courses) => {
-                products.sort((a, b) => b.weight - a.weight);
-                res.render('home-fa',{
-                    theme: req.session.theme,
-                    lang: req.session.lang,
-                    user: req.user,
-                    products,
-                    courses,
-                    dot,
-                    timedigit,
-                });
-            })
+            Product.find({}, (err, allProducts) => {
+                Course.find({}, (err, courses) => {
+                    products.sort((a, b) => b.weight - a.weight);
+                    res.render('home-fa',{
+                        theme: req.session.theme,
+                        lang: req.session.lang,
+                        user: req.user,
+                        products,
+                        courses,
+                        dot,
+                        timedigit,
+                        recentProducts: allProducts.slice(-15),
+                    });
+                })
+            });
         });
     }
     // res.redirect('/rcj');

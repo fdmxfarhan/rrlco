@@ -6,6 +6,7 @@ block styles
     link(rel='stylesheet', href='/css/four-card.css')
     link(rel="stylesheet", href="/css/dashboard/order-progress.css")
     link(rel="stylesheet", href="/css/incomplete-order.css")
+    link(rel="stylesheet", href="/css/comments.css")
 
     meta(name="product_id" content="#{product._id}")
     meta(name="product_name" content="#{product.title}")
@@ -140,6 +141,47 @@ block content
                     -else
                         | #{product.description[i]}
                 -}
+        .content 
+            h1.title سوالات / نظرات کاربران
+            .comments-view
+                -for(var i=0 ; i < product.comments.length; i++){
+                    .comment-item 
+                        .avatar 
+                            i.fa.fa-user
+                        .info 
+                            .title 
+                                h1= product.comments[i].fullname
+                                h2 #{product.comments[i].date.year}/#{product.comments[i].date.month}/#{product.comments[i].date.day}
+                            p
+                                -for(var j=0; j<product.comments[i].description.length; j++){
+                                    -if(product.comments[i].description[j] == '\n')
+                                        br
+                                    -else
+                                        | #{product.comments[i].description[j]}
+                                -}
+                            .actions 
+                                a.like 
+                                    i.fa.fa-thumbs-up
+                                    .val 0
+                                a.reply Reply
+                                -if(user && user.role == 'admin'){
+                                    a.delete(href="/products/delete-comment?productID=#{product._id}&index=#{i}") 
+                                        i.fa.fa-trash 
+                                        | حذف
+                                -}
+                -}
+            .form-view.add-comment-view 
+                form(action="/products/products-add-comment" method="POST" ) 
+                    input.hide(type="text" name="productID" value="#{product._id}")
+                    .raw 
+                        input.dual(type="text" name="fullname" placeholder="نام و نام خانوادگی" value="#{typeof(user) == 'undefined' ? '' : user.fullname}")
+                        input.quarter(type="text" name="phone" placeholder="شماره تماس" value="#{typeof(user) == 'undefined' ? '' : user.phone}")
+                        input.quarter(type="text" name="email" placeholder="ایمیل" value="#{typeof(user) == 'undefined' ? '' : user.email}")
+                    .raw
+                        textarea.short(name="description" placeholder="توضیحات کوتاه")
+                    .align-left
+                        button.blue(type="submit") ثبت نظر
+            
         h1.related محصولات مرتبط
         .scroll-card-view
             .four-card-view.width80.scroll#scroll-view-1

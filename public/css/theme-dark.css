@@ -43,6 +43,10 @@
     --verylightblue: #222222;
     --darkpurple: #3700b3;
     --white: #282828;
+    
+    --antiflashWhite: #EFF2F5ff;
+    --timberwolf: #D2D3D3ff;
+    --emerald: #0CC27E;
 }
 html{scroll-behavior: smooth;}
 body::-webkit-scrollbar {width: 0.5vw;}

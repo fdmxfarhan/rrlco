@@ -155,6 +155,41 @@ html
         section.white
             h1.title
                 .line 
+                .text محصولات جدید
+            .scroll-card-view
+                .four-card-view.width80.scroll#scroll-view-1
+                    button.scroll-btn#scroll-btn-right(onclick="scroll_right()")
+                        i.fa.fa-chevron-right
+                    .scroll-view
+                        -for(var i=0; i<recentProducts.length; i++){
+                            a(href="/products/product-view?id=#{recentProducts[i]._id}").card 
+                                .image 
+                                    img(src="#{recentProducts[i].pictures[0]}", alt="")
+                                h1= recentProducts[i].title
+                                -if(recentProducts[i].available)
+                                    .available.green موجود
+                                -else
+                                    .available.red نا موجود
+                                .nodiscount
+                                    .val= dot(recentProducts[i].nodiscountprice)
+                                    .unit تومان
+                                .info 
+                                    .price
+                                        .val= dot(recentProducts[i].price)
+                                        .unit تومان
+                                    -if(recentProducts[i].available){
+                                        .buy-btn 
+                                            i.fa.fa-shopping-cart
+                                            | خرید
+                                    -}
+                        -}
+                    button.scroll-btn#scroll-btn-left(onclick="scroll_left()")
+                        i.fa.fa-chevron-left
+            a.seemore(href="/products") مشاهده بیشتر 
+                i.fa.fa-chevron-left
+        section.white
+            h1.title
+                .line 
                 .text دوره‌های آموزشی
             .triple-card-view.width80
                 -for(var i=0; i < courses.length && i < 3; i++){

@@ -18,11 +18,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 90%;
         padding: 0.7vw 1.5vw;
         margin-bottom: 1vw;
-        border-radius: 1vw;
+        border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
         color: var(--black);
@@ -33,11 +33,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 40%;
         padding: 0.7vw 1.5vw;
         margin-bottom: 1vw;
-        border-radius: 1vw;
+        border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
         color: var(--black);
@@ -48,11 +48,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 18.7%;
         padding: 0.7vw 1vw;
         margin-bottom: 1vw;
-        border-radius: 1vw;
+        border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
         color: var(--black);
@@ -70,11 +70,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 89%;
         padding: 1vw 1.5vw;
         margin-bottom: 0.5vw;
-        border-radius: 1vw;
+        border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
         resize: vertical;
@@ -96,11 +96,11 @@
         width: fit-content;
         padding: 0.4vw 2vw;
         font-size: 1vw;
-        border-radius: 1vw;
+        border-radius: 0.4vw;
         color: white;
         border: none;
         font-family: 'iransans';
-        margin-top: 1.6vw;
+        margin-top: 0.6vw;
         margin-left: 5%;
     }
     .form-view button.inline{
@@ -117,8 +117,8 @@
     .form-view .date-input{
         display: block;
         width: 45%;
-        background-color: var(--lightergray);
-        border-radius: 1vw;
+        background-color: var(--antiflashWhite);
+        border-radius: 0.4vw;
         overflow: hidden;
     }
     .form-view .date-input .label{
@@ -153,14 +153,14 @@
         font-family: 'iransans';
         font-size: 1.3vw;
         width: 94%;
-        border-radius: 1vw;
+        border-radius: 0.4vw;
         /* margin-bottom: 1vw; */
     }
     .form-view .upload-area i{
         font-size: 1.6vw;
     }
     .form-view .upload-area:hover {
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
     }
     .form-view .upload-area input{
         position: absolute;
@@ -200,11 +200,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 60%;
         padding: 2vw 3.5vw;
         margin-bottom: 3vw;
-        border-radius: 3vw;
+        border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
         color: var(--black);
@@ -216,11 +216,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 60%;
         padding: 2vw 3vw;
         margin-bottom: 3vw;
-        border-radius: 3vw;
+        border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
         color: var(--black);
@@ -238,11 +238,11 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 89%;
         padding: 2vw 3vw;
         margin-bottom: 1vw;
-        border-radius: 3vw;
+        border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
         resize: vertical;
@@ -264,7 +264,7 @@
         width: fit-content;
         padding: 2vw 4vw;
         font-size: 3vw;
-        border-radius: 3vw;
+        border-radius: 1vw;
         color: white;
         border: none;
         font-family: 'iransans';
@@ -285,7 +285,7 @@
     .form-view .date-input{
         display: block;
         width: 45%;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         border-radius: 1vw;
         overflow: hidden;
     }
@@ -321,14 +321,14 @@
         font-family: 'iransans';
         font-size: 3.3vw;
         width: 94%;
-        border-radius: 3vw;
+        border-radius: 1vw;
         /* margin-bottom: 1vw; */
     }
     .form-view .upload-area i{
         font-size: 3.6vw;
     }
     .form-view .upload-area:hover {
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
     }
     .form-view .upload-area input{
         position: absolute;
@@ -349,7 +349,7 @@
         margin: auto;
         border: none;
         outline: none;
-        background-color: var(--lightergray);
+        background-color: var(--antiflashWhite);
         width: 36%;
         padding: 2vw 5%;
         margin-bottom: 3vw;
