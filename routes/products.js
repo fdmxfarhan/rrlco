@@ -333,7 +333,7 @@ router.post('/products-add-comment', (req, res, next) => {
             replys: [],
         });
         product.save().then(doc => {
-            sms('09336448037', `کامنت جدید: \n${description}\n\nhttp://localhost:3000/products/product-view?id=${productID}`);
+            sms('09336448037', `کامنت جدید: \n${description}\n\nhttp://rrlco.ir/products/product-view?id=${productID}`);
             req.flash('success_msg', 'کامنت شما ثبت شد. با تشکر.');
             res.redirect(`/products/product-view?id=${productID}`);
         }).catch(err => console.log(err));
