@@ -70,6 +70,12 @@
                         i.fa.fa-barcode
                         | کد پستی: 
                     .val(id="order-progress-postcode-#{i}")= order.postCode
+            .raw 
+                .item 
+                    .label
+                        i.fa.fa-map-marker-alt
+                        | شهر: 
+                    .val(id="order-progress-city-#{i}")= order.city
             .address-raw
                 i.fa.fa-map-marker-alt
                 | آدرس: 
