@@ -28,7 +28,7 @@ var paymentRoute = require('./routes/payment');
 var animalfeederRoute = require('./routes/animalfeeder');
 var elecrepairRoute = require('./routes/elecrepair');
 var farhanRoute = require('./routes/farhan');
-
+var manufacture = require('./routes/manufacture');
 
 
 // Mongo DB connect
@@ -107,7 +107,7 @@ app.use('/payment', paymentRoute);
 app.use('/animalfeeder', animalfeederRoute);
 app.use('/elecrepair', elecrepairRoute);
 app.use('/farhan', farhanRoute);
-
+app.use('/manufacture', manufacture);
 
 
 // catch 404 and forward to error handler

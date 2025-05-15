@@ -85,4 +85,7 @@ module.exports = {
         "همدان",
         "یزد",
     ],
+    manufacturedCategoury: [
+        
+    ],
 }

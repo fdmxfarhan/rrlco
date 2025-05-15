@@ -1,0 +1,7 @@
+.sidebar 
+    .user-info 
+        h1 دسته بندی‌ها
+    .nav-view 
+        -for(var i=0; i<productCategories.length; i++)
+            a.link#sidebar-link-1(href="/products?category=#{productCategories[i]}")= productCategories[i]
+        
