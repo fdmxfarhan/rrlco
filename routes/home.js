@@ -79,4 +79,8 @@ router.get('/app/sitemap.xml', (req, res, next) => {
     console.log(__dirname)
     res.sendFile(path.join(__dirname, '../config/sitemap.xml'));
 })
+router.get('/rrl', (req, res, next) => {
+    res.redirect('http://45.90.72.56:3003/');
+})
+
 module.exports = router;
