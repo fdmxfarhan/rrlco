@@ -120,6 +120,41 @@ html
         section.white
             h1.title
                 .line 
+                .text دوره‌های آموزشی
+            .triple-card-view.width80
+                -for(var i=0; i < courses.length && i < 3; i++){
+                    a(href="/courses/course-view?id=#{courses[i]._id}").card 
+                        .image 
+                            img(src="#{courses[i].cover}", alt="")
+                            -if(courses[i].type == 'مجازی')
+                                .type.green آنلاین
+                            -if(courses[i].type == 'آفلاین')
+                                .type.pink آفلاین
+                            -if(courses[i].type == 'حضوری')
+                                .type.blue حضوری
+                        h1= courses[i].title
+                        p= courses[i].shortdescription
+                        .teacher 
+                            i.fa.fa-user 
+                            .text= courses[i].teacher
+                        .line
+                        .info 
+                            .stat 
+                                i.fa.fa-clock
+                                .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
+                            .price
+                                -if(courses[i].price > 0){
+                                    .val= dot(courses[i].price)
+                                    .unit تومان
+                                -}else{
+                                    .unit رایگان
+                                -}
+                -}
+            a.seemore(href="/courses") مشاهده بیشتر 
+                i.fa.fa-chevron-left
+        section.white
+            h1.title
+                .line 
                 .text تخفیف‌های ویژه فروشگاه
             .scroll-card-view
                 .four-card-view.width80.scroll#scroll-view-1
@@ -186,41 +221,6 @@ html
                     button.scroll-btn#scroll-btn-left(onclick="scroll_left()")
                         i.fa.fa-chevron-left
             a.seemore(href="/products") مشاهده بیشتر 
-                i.fa.fa-chevron-left
-        section.white
-            h1.title
-                .line 
-                .text دوره‌های آموزشی
-            .triple-card-view.width80
-                -for(var i=0; i < courses.length && i < 3; i++){
-                    a(href="/courses/course-view?id=#{courses[i]._id}").card 
-                        .image 
-                            img(src="#{courses[i].cover}", alt="")
-                            -if(courses[i].type == 'مجازی')
-                                .type.green آنلاین
-                            -if(courses[i].type == 'آفلاین')
-                                .type.pink آفلاین
-                            -if(courses[i].type == 'حضوری')
-                                .type.blue حضوری
-                        h1= courses[i].title
-                        p= courses[i].shortdescription
-                        .teacher 
-                            i.fa.fa-user 
-                            .text= courses[i].teacher
-                        .line
-                        .info 
-                            .stat 
-                                i.fa.fa-clock
-                                .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
-                            .price
-                                -if(courses[i].price > 0){
-                                    .val= dot(courses[i].price)
-                                    .unit تومان
-                                -}else{
-                                    .unit رایگان
-                                -}
-                -}
-            a.seemore(href="/courses") مشاهده بیشتر 
                 i.fa.fa-chevron-left
         section.white
             h1.title

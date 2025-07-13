@@ -42,11 +42,17 @@
                         i.fa.fa-play 
                         | شروع یادگیری
                 -}else{
-                    -if(course.type == 'مجازی')
-                        a.buy(href="/courses/register-course?id=#{course._id}") 
-                            i.fa.fa-user-graduate
-                            | ثبت نام در دوره
-                    -else
+                    -if(course.type == 'مجازی'){
+                        -if(user){
+                            a.buy(href="/courses/register-course?id=#{course._id}") 
+                                i.fa.fa-user-graduate
+                                | ثبت نام در دوره
+                        -}else{
+                            a.buy#register-popup-btn 
+                                i.fa.fa-user-graduate
+                                | ثبت نام در دوره
+                        -}
+                    -}else
                         a.buy(href="/dashboard/add-to-cart?type=course&id=#{course._id}") 
                             i.fa.fa-shopping-cart 
                             | افزودن به سبد خرید

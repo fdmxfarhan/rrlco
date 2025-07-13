@@ -9,12 +9,15 @@ const mail = require('../config/mail');
 const dot = require('../config/dot');
 const timedigit = require('../config/timedigit');
 const {productCategories, coursetypes, courseCategories} = require('../config/consts')
+const bcrypt = require('bcryptjs');
+const sms = require('../config/sms');
 
 
 router.get('/', (req, res, next) => {
     var { category } = req.query;
     Course.find({enable: true}, (err, courses) => {
         if(category) courses = courses.filter((e) => e.category == category);
+        courses.reverse();
         res.render('./courses/courses', {
             theme: req.session.theme,
             user: req.user,
@@ -177,6 +180,80 @@ router.get('/register-course', ensureAuthenticated, (req, res, next) => {
         res.redirect(`/payment/pay-online-course`)
     });
 });   
+router.post('/register-and-addtocart', (req, res, next) => {
+    var {
+        courseID,
+        firstName,
+        lastName,
+        phone,
+        email,
+        address,
+        password,
+        configpassword
+    } = req.body;
+    const ipAddress = req.connection.remoteAddress;
+    const role = 'user',
+        card = 0;
+    const fullname = firstName + ' ' + lastName;
+    let errors = [];
+    User.findOne({
+        $or: [{
+            email: email
+        }, {
+            phone: phone
+        }]
+    }, (err, user) => {
+        if (user) {
+            errors.push({
+                msg: 'ایمیل یا شماره تلفن قبلا ثبت شده است.'
+            });
+            res.render('register', {
+                firstName,
+                lastName,
+                phone,
+                email,
+                errors,
+                address
+            });
+        } else {
+            const newUser = new User({
+                ipAddress,
+                fullname,
+                firstName,
+                lastName,
+                phone,
+                email,
+                password,
+                role,
+                card,
+                address,
+                shoppingcart: [],
+                payableCourse: {
+                    id: courseID, 
+                    payed: false, 
+                    auth: ''
+                }
+            });
+            // Hash password
+            bcrypt.genSalt(10, (err, salt) => bcrypt.hash(newUser.password, salt, (err, hash) => {
+                if (err) throw err;
+                newUser.password = hash;
+                newUser.save().then(user => {
+                    req.login(user, (err) => {
+                        if (err) {
+                            console.log(err);
+                            return res.redirect('/users/login');
+                        }
+                        sms('09336448037', `ثبت نام کاربر جدید:\n ${fullname}\n ${phone}`);
+                        sms(phone, 'به مرکز تحقیقات رباتیک و برنامه نویسی خوش آمدید.\n https://rrlco.ir')
+                        req.flash('success_msg', 'ثبت نام با موفقیت انجام شد.');
+                        res.redirect(`/payment/pay-online-course`)
+                    });
+                }).catch(err => console.log(err));
+            }));
+        }
+    })
+});
 router.post('/online-course/add-participator', ensureAuthenticated, (req, res, next) => {
     var {courseID, userID} = req.body;
     if(req.user.role == 'admin'){

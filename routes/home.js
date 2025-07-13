@@ -36,6 +36,7 @@ router.get('/', (req, res, next) => {
             Product.find({}, (err, allProducts) => {
                 Course.find({}, (err, courses) => {
                     products.sort((a, b) => b.weight - a.weight);
+                    courses.reverse()
                     res.render('home-fa',{
                         theme: req.session.theme,
                         lang: req.session.lang,
