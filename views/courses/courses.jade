@@ -28,7 +28,7 @@ block content
                 br
                 .triple-card-view
                     -for(var i=0; i<courses.length; i++){
-                        a(href="/courses/course-view?id=#{courses[i]._id}").card 
+                        a(href="/courses/course-view?id=#{courses[i]._id}").card.fixed-height2
                             .image 
                                 img(src="#{courses[i].cover}", alt="")
                                 -if(courses[i].type == 'مجازی')

@@ -123,7 +123,7 @@ html
                 .text دوره‌های آموزشی
             .triple-card-view.width80
                 -for(var i=0; i < courses.length && i < 3; i++){
-                    a(href="/courses/course-view?id=#{courses[i]._id}").card 
+                    a(href="/courses/course-view?id=#{courses[i]._id}").card.fixed-height
                         .image 
                             img(src="#{courses[i].cover}", alt="")
                             -if(courses[i].type == 'مجازی')
