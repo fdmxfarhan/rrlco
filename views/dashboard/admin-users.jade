@@ -27,7 +27,7 @@ block content
                         .item
                             .name
                                 i.fa.fa-user
-                                | #{users[i].fullname} 
+                                a(href="/dashboard/admin-user-view?userID=#{users[i]._id}")  #{users[i].fullname} 
                             .phone 
                                 i.fa.fa-phone
                                 | #{users[i].phone} 

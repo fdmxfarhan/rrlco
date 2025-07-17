@@ -696,6 +696,18 @@ router.get('/admin-delete-item-cart', ensureAuthenticated, (req, res, next) => {
         });
     });
 });
+router.get('/admin-user-view', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        var {userID} = req.query;
+        User.findById(userID, (err, viewingUser) => {
+            res.render('./dashboard/admin-user-view', {
+                theme: req.session.theme,
+                user: req.user,
+                viewingUser,
+            });
+        });
+    }else res.send('access denied!!');
+});
 
 
 

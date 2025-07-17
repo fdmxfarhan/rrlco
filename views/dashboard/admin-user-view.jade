@@ -1,0 +1,96 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-users.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                h1 User Information
+                if user
+                    ul.user-info
+                        li Full Name: 
+                            | #{viewingUser.fullname || viewingUser.firstName + ' ' + viewingUser  .lastName}
+                        li Email: 
+                            | #{viewingUser.email}
+                        li Phone: 
+                            | #{viewingUser.phone}
+                        li Phone Confirmed: 
+                            | #{viewingUser.phoneConfirmed}
+                        li National ID: 
+                            | #{viewingUser.idNumber}
+                        li Sex: 
+                            | #{viewingUser.sex}
+                        li Role: 
+                            | #{viewingUser.role}
+                        li Education: 
+                            | #{viewingUser.education}
+                        li Main Address: 
+                            | #{viewingUser.mainAddress}
+                        li All Addresses: 
+                            if viewingUser .addresses.length
+                                ul
+                                    each addr in viewingUser   .addresses
+                                        li= JSON.stringify(addr)
+                            else
+                                | No additional addresses
+                        li IP Address: 
+                            | #{viewingUser.ipAddress}
+                        li Card Number: 
+                            | #{viewingUser.card}
+                        li Confirm Code: 
+                            | #{viewingUser.confirmcode}
+                        li Registration Date: 
+                            | #{viewingUser.date ? viewingUser .date.toLocaleDateString() : 'N/A'}
+
+                        li Avatar ID: 
+                            | #{viewingUser.avatar}
+
+                        li Shopping Cart Items: 
+                            if viewingUser .shoppingcart.length
+                                ul
+                                    each item in viewingUser   .shoppingcart
+                                        li= JSON.stringify(item)
+                            else
+                                | Empty
+
+                        li Courses: 
+                            if viewingUser .courses.length
+                                ul
+                                    each course in viewingUser .courses
+                                        li= JSON.stringify(course)
+                            else
+                                | No enrolled courses
+
+                        li Payable Course: 
+                            if viewingUser .payableCourse
+                                pre= JSON.stringify(viewingUser.payableCourse, null, 2)
+                            else
+                                | None
+
+                        li Current Discount: 
+                            pre= JSON.stringify(viewingUser.currentdicount, null, 2)
+
+                        li Payment Authority: 
+                            | #{viewingUser.paymentAuthority}
+
+                        li Uploaded Files:
+                            if viewingUser .file.length
+                                ul
+                                    each f in viewingUser  .file
+                                        li= JSON.stringify(f)
+                            else
+                                | No files uploaded
+
+                else
+                    p.text-danger User not found or not loaded.
+        .sidebar-view 
+            include sidebar
+
+block scripts
+    script.
+        document.getElementById('sidebar-link-2').classList.add('active');
+    script(src="/js/dashboard.js")
