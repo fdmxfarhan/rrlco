@@ -13,6 +13,7 @@ const Course = require('../models/Course');
 const Print3d = require('../models/Print3d');
 const RepairOrder = require('../models/RepairOrder');
 const dateConvert = require('../config/dateConvert');
+const Teacher = require('../models/Teacher');
 
 router.use(bodyparser.urlencoded({extended: true}));
 var storage = multer.diskStorage({
@@ -186,6 +187,25 @@ router.post('/add-product-datasheet', upload.single('datasheet'), (req, res, nex
                 res.redirect(`/products/product-view?id=${id}`);
             }).catch(err => console.log(err));
         });
+    }
+});
+router.post('/add-teacher', ensureAuthenticated, upload.single('picture'), (req, res, next) => {
+    const file = req.file;
+    var {firstName, lastName, title, description, address, website, phone, telegram, instagram, email, age, experienceYears, numOfCourses, lastUpdate} = req.body;
+
+    if (!file) {
+        res.send('no file to upload');
+    }
+    else if(req.user.role == 'admin'){
+        const newTeacher = new Teacher({
+            date: new Date(),
+            firstName, lastName, title, description, address, website, phone, telegram, instagram, email, age, experienceYears, numOfCourses, lastUpdate,
+            fullName: firstName + ' ' + lastName,
+            cover: file.destination.slice(6) + '/' + file.originalname,
+        });
+        newTeacher.save().then(teacher => {
+            res.redirect(`/teachers/teacher-view?id=${newTeacher._id}`);
+        }).catch(err => console.log(err));
     }
 });
 

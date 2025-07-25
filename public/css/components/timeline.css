@@ -11,7 +11,7 @@
     font-size: 1.2rem;
     color: var(--blue);
     margin-bottom: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 0;
     font-weight: bold;
 }
 .timeline h1.time-title i{
@@ -22,7 +22,7 @@
 .timeline .bulet-container {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .timeline .bulet-view {
@@ -69,11 +69,12 @@
 .timeline .text p {
     margin: 0;
     color: var(--gray);
+    font-weight: normal;
     font-size: 0.97rem;
 }
 
 .timeline .text a {
-    color: var(--blue);
+    color: var(--lightblue);
     text-decoration: underline;
     font-size: 0.95rem;
 }
@@ -81,29 +82,29 @@
     color: var(--red);
 }
 .content h1.desc-title{
-        font-family: 'iransans';
-        font-size: 1.1vw;
-        color: var(--blue);
-        width: 90%;
-        margin: auto;
-        margin-top: 2vw;
-    }
-    .content p.desc{
-        font-family: 'iransans';
-        font-size: 1.1vw;
-        color: var(--text);
-        width: 90%;
-        margin: auto;
-        margin-top: 0.5vw;
-        margin-bottom: 1vw;
-    }
-    .content ul.desc{
-        font-family: 'iransans';
-        font-size: 1.1vw;
-        color: var(--text);
-        width: 90%;
-        margin: auto;
-    }
+    font-family: 'iransans';
+    font-size: 1.1vw;
+    color: var(--blue);
+    width: 90%;
+    margin: auto;
+    margin-top: 2vw;
+}
+.content p.desc{
+    font-family: 'iransans';
+    font-size: 1.1vw;
+    color: var(--text);
+    width: 90%;
+    margin: auto;
+    margin-top: 0.5vw;
+    margin-bottom: 1vw;
+}
+.content ul.desc{
+    font-family: 'iransans';
+    font-size: 1.1vw;
+    color: var(--text);
+    width: 90%;
+    margin: auto;
+}
 @media only screen and (max-width: 600px) {
     .timeline {
         padding: 0 5px;

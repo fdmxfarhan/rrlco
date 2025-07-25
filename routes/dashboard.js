@@ -733,5 +733,4 @@ router.get('/add-teacher', ensureAuthenticated, (req, res, next) => {
     else res.render('./error');
 });
 
-
 module.exports = router;

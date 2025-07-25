@@ -18,7 +18,7 @@ var TeacherSchema = new mongoose.Schema({
     default: '',
   },
   title: String,
-  picture: {
+  cover: {
     type: String,
     default: '',
   },
@@ -56,7 +56,7 @@ var TeacherSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
-  
+  date: Date,
 });
 
 var Teacher = mongoose.model('Teacher', TeacherSchema);

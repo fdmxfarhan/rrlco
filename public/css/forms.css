@@ -25,6 +25,7 @@
     }
     .form-view .raw input.full,
     .form-view .raw select.full{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -36,10 +37,10 @@
         border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
-        color: var(--black);
     }
     .form-view .raw input.dual,
     .form-view .raw select.dual{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -51,10 +52,10 @@
         border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
-        color: var(--black);
     }
     .form-view .raw input.quarter,
     .form-view .raw select.quarter{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -66,7 +67,6 @@
         border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
-        color: var(--black);
         font-size: 1vw;
     }
     .form-view .raw select.quarter{width: 23%;}
@@ -77,6 +77,7 @@
     }
     .form-view .raw textarea.short,
     .form-view .raw textarea.long{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -90,7 +91,6 @@
         margin-left: 1vw;
         resize: vertical;
         font-size: 1vw;
-        color: var(--black);
     }
     .form-view .raw textarea.short{height: 4vw;}
     .form-view .raw textarea.long{height: 10vw;}
@@ -218,6 +218,7 @@
     }
     .form-view .raw input.full,
     .form-view .raw select.full{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -229,11 +230,11 @@
         border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
-        color: var(--black);
         font-size: 3vw;
     }
     .form-view .raw input.dual,
     .form-view .raw select.dual{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -245,11 +246,11 @@
         border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
-        color: var(--black);
         font-size: 3vw;
     }
     .form-view .raw input.quarter,
     .form-view .raw select.quarter{
+        color: black;
         display: inline;
         margin: auto;
         border: none;
@@ -261,7 +262,6 @@
         border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
-        color: var(--black);
         font-size: 3vw;
     }
     .form-view .raw select.quarter{width: 66%;}
@@ -285,7 +285,7 @@
         margin-left: 3vw;
         resize: vertical;
         font-size: 3vw;
-        color: var(--black);
+        color: black;
     }
     .form-view .raw textarea.short{height: 15vw;}
     .form-view .raw textarea.long{height: 30vw;}

@@ -1,0 +1,40 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/teachers/teacher-view.css")
+
+block content
+    .cv-container
+        .cv-header-flex
+            .cv-info-box
+                h1 #{teacher.firstName} #{teacher.lastName}
+                h2 #{teacher.title}
+            a.cv-image-link(href=teacher.cover, target="_blank")
+                img.cv-image(src=teacher.cover, alt=teacher.firstName + ' ' + teacher.lastName)
+        .cv-main-layout
+            .cv-main-content
+                .cv-main-box
+                    h3.cv-box-title تحصیلات
+                    //- Add education content here
+                .cv-main-box
+                    h3.cv-box-title تجربیات
+                    //- Add experience content here
+            .cv-sidebar
+                .cv-box
+                    h3.cv-box-title معرفی کلی
+                    p.cv-description #{teacher.description}
+                .cv-box
+                    h3.cv-box-title اطلاعات تماس
+                    ul.cv-contact-list
+                        li
+                            i.fa.fa-phone 
+                            | تلفن: 
+                            |  #{teacher.phone}
+                        li
+                            i.fa.fa-envelope
+                            | ایمیل: 
+                            |  #{teacher.email}
+                        li
+                            i.fa.fa-map-marker
+                            | آدرس: 
+                            |  #{teacher.address}
