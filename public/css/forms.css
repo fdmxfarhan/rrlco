@@ -1,4 +1,15 @@
 @media only screen and (min-width: 800px) {
+    .form-view h1.title{
+        color: var(--red);
+        font-size: 1.2vw;
+        margin: 0;
+        padding: 2vw 0;
+        position: relative;    
+        margin-bottom: 1vw;    
+    }
+    .form-view h1.title i{
+        padding-left: 0.5vw;
+    }
     .form-view {
         width: 90%;
         margin: 1vw auto;
@@ -181,6 +192,17 @@
     }
 }
 @media only screen and (max-width: 800px) {
+    .form-view h1.title{
+        color: var(--red);
+        font-size: 3.2vw;
+        margin: 0;
+        padding: 5vw 0;
+        position: relative;    
+        margin-bottom: 3vw;    
+    }
+    .form-view h1.title i{
+        padding-left: 1.5vw;
+    }
     .form-view {
         width: 90%;
         margin: 3vw auto;
@@ -193,6 +215,22 @@
     .form-view form{
         margin-bottom: 10vw;
         display: block;
+    }
+    .form-view .raw input.full,
+    .form-view .raw select.full{
+        display: inline;
+        margin: auto;
+        border: none;
+        outline: none;
+        background-color: var(--antiflashWhite);
+        width: 90%;
+        padding: 2vw 3.5vw;
+        margin-bottom: 3vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 3vw;
+        color: var(--black);
+        font-size: 3vw;
     }
     .form-view .raw input.dual,
     .form-view .raw select.dual{

@@ -1,0 +1,36 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/title-components.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-teacher.css")
+    link(rel="stylesheet", href="/css/triple-card.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-users
+                        | لیست مدرسین
+                        a.add(href="/dashboard/add-teacher") 
+                            i.fa.fa-plus 
+                            | افزودن 
+                        .searchbar 
+                            form(action="/dashboard/admin-teacher-search" method="POST")
+                                input.text(type="text" placeholder="جستجو..." name="search")
+                                button.submit(type="submit")
+                                    i.fa.fa-search
+                .triple-card-view
+                    
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-9').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+

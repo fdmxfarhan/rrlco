@@ -1,0 +1,52 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .form-view
+                    h1.title
+                        i.fa.fa-plus
+                        | افزودن مدرس جدید
+                .form-view
+                    form(action="/upload/add-teacher" method="POST" enctype="multipart/form-data") 
+                        .raw 
+                            input.quarter(type="text" name="firstName" placeholder="نام")
+                            input.quarter(type="text" name="lastName" placeholder="نام خانوادگی")
+                            input.dual(type="text" name="title" placeholder="عنوان")
+                        .raw
+                            textarea.short(name="description" placeholder="توضیحات")
+                        .raw 
+                            input.full(type="text" name="address" placeholder="آدرس")
+                        .raw 
+                            input.quarter(type="text" name="website" placeholder="وبسایت")
+                            input.quarter(type="text" name="phone" placeholder="تلفن")
+                            input.quarter(type="text" name="telegram" placeholder="تلگرام")
+                            input.quarter(type="text" name="instagram" placeholder="اینستاگرام")
+                        .raw 
+                            input.quarter(type="text" name="email" placeholder="ایمیل")
+                            input.quarter(type="number" name="age" placeholder="سن")
+                            input.quarter(type="number" name="experienceYears" placeholder="تجربه کار (به سال)")
+                            input.quarter(type="number" name="numOfCourses" placeholder="تعداد دوره ها")
+                        .raw 
+                            input.dual(type="text" name="lastUpdate" placeholder="آخرین ویرایش")
+
+                        .upload
+                            input.file(type="file" name="picture")
+                        .align-left
+                            button.red(type="submit") ثبت
+
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-9').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+
