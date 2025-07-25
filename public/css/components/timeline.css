@@ -1,0 +1,157 @@
+/* Timeline container */
+.timeline {
+    margin: 40px 2vw 2vw 0;
+    padding: 0 20px;
+    position: relative;
+    direction: rtl;
+    max-width: 600px;
+}
+
+.timeline .time-title {
+    font-size: 1.2rem;
+    color: var(--blue);
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+    font-weight: bold;
+}
+.timeline h1.time-title i{
+    padding-left: 0.5vw;
+    color: var(--lightgray);
+}
+
+.timeline .bulet-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.timeline .bulet-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 32px;
+    margin-left: 16px;
+    margin-right: 8px;
+}
+
+.timeline .bulet {
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: 3px solid var(--red);
+    border-radius: 50%;
+    z-index: 2;
+    margin: 0;
+}
+
+.timeline .line {
+    width: 4px;
+    height: 40px;
+    background: var(--red);
+    margin: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    z-index: 1;
+}
+
+.timeline .text {
+    flex: 1;
+    padding-top: 2px;
+}
+
+.timeline .text h1 {
+    font-size: 1.1rem;
+    margin: 0 0 0.3rem 0;
+    color: var(--black);
+    font-weight: 600;
+}
+
+.timeline .text p {
+    margin: 0;
+    color: var(--gray);
+    font-size: 0.97rem;
+}
+
+.timeline .text a {
+    color: var(--blue);
+    text-decoration: underline;
+    font-size: 0.95rem;
+}
+.timeline .text a:hover {
+    color: var(--red);
+}
+.content h1.desc-title{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--blue);
+        width: 90%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+    .content p.desc{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+        margin-top: 0.5vw;
+        margin-bottom: 1vw;
+    }
+    .content ul.desc{
+        font-family: 'iransans';
+        font-size: 1.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+    }
+@media only screen and (max-width: 600px) {
+    .timeline {
+        padding: 0 5px;
+        max-width: 100%;
+    }
+    .timeline .bulet-view {
+        min-width: 24px;
+        margin-left: 8px;
+        margin-right: 4px;
+    }
+    .timeline .bulet {
+        width: 12px;
+        height: 12px;
+        border-width: 2px;
+    }
+    .timeline .line {
+        width: 3px;
+        height: 30px;
+    }
+    .timeline .time-title {
+        font-size: 1rem;
+    }
+    .timeline .text h1 {
+        font-size: 1rem;
+    }
+    .timeline h1.time-title i{padding-left: 1.5vw;}
+    .content h1.desc-title{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--blue);
+        width: 90%;
+        margin: auto;
+        margin-top: 5vw;
+    }
+    .content p.desc{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+        margin-top: 1.5vw;
+        margin-bottom: 3vw;
+    }
+    .content ul.desc{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+    }
+}

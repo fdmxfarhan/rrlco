@@ -96,7 +96,7 @@ body{
         text-align: center;
         padding: 0.8vw 1vw;
         font-size: 1.1vw;
-        background-color: var(--white);white);
+        background-color: var(--white);
     }
     .course-view .sidebar .nav-view a.logout:hover{
         /* background-color: var(--lightergray); */
@@ -181,7 +181,6 @@ body{
     .filters-view a.remove-filter i{
         padding-right: 0.5vw;
     }
-    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
     .content h1.desc-title{
         font-family: 'iransans';
         font-size: 1.1vw;
@@ -206,6 +205,7 @@ body{
         width: 90%;
         margin: auto;
     }
+    /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 }
 @media only screen and (max-width: 800px) {
     .course-view{
@@ -293,7 +293,7 @@ body{
         text-align: center;
         padding: 0.8vw 1vw;
         font-size: 3.1vw;
-        background-color: var(--white);white);
+        background-color: var(--white);
     }
     .course-view .sidebar .nav-view a.logout:hover{
         /* background-color: var(--lightergray); */
@@ -377,6 +377,30 @@ body{
     }
     .filters-view a.remove-filter i{
         padding-right: 0.5vw;
+    }
+    .content h1.desc-title{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--blue);
+        width: 90%;
+        margin: auto;
+        margin-top: 5vw;
+    }
+    .content p.desc{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
+        margin-top: 1.5vw;
+        margin-bottom: 3vw;
+    }
+    .content ul.desc{
+        font-family: 'iransans';
+        font-size: 3.1vw;
+        color: var(--text);
+        width: 90%;
+        margin: auto;
     }
 }
 
