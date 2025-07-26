@@ -7,15 +7,15 @@
                 i.fa.fa-book
                 | #{course.title}
             .info 
-                .label هزینه آموزش
+                .label هزینه ثبت نام
                 -if(course.price > 0)
                     .val.price #{dot(course.price)} تومان
                 -else
                     .val.price رایگان
-            .info 
-                .label تعداد شرکت کننده
-                .val= course.numofattendes
-                    i.fa.fa-user
+            //- .info 
+            //-     .label تعداد شرکت کننده
+            //-     .val= course.numofattendes
+            //-         i.fa.fa-user
             .info 
                 .label ظرفیت
                 .val= course.capacity
