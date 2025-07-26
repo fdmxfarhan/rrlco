@@ -399,6 +399,7 @@ p{text-align: justify;}
     .experience-item .title h2 {
         font-size: 3vw;
     }
+    .experience-item .title h2{text-align: justify;}
     .education-item .date h1,
     .education-item .date h2,
     .experience-item .date h1,
