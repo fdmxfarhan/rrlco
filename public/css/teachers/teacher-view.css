@@ -220,6 +220,7 @@ p{text-align: justify;}
     margin: 0.2rem 0 0 0;
     font-weight: normal;
 }
+.experience-item .title h2{text-align: justify;}
 
 .experience-item .date h1,
 .education-item .date h1,
@@ -399,7 +400,6 @@ p{text-align: justify;}
     .experience-item .title h2 {
         font-size: 3vw;
     }
-    .experience-item .title h2{text-align: justify;}
     .education-item .date h1,
     .education-item .date h2,
     .experience-item .date h1,
