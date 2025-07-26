@@ -2,27 +2,92 @@ extends ../layout
 
 block styles
     link(rel="stylesheet", href="/css/teachers/teacher-view.css")
+    link(rel="stylesheet", href="/css/forms.css")
 
 block content
     .cv-container
         .cv-header-flex
+            a.cv-image-link(href=teacher.cover, target="_blank")
+                img.cv-image(src=teacher.cover, alt=teacher.firstName + ' ' + teacher.lastName)
             .cv-info-box
                 h1 #{teacher.firstName} #{teacher.lastName}
                 h2 #{teacher.title}
-            a.cv-image-link(href=teacher.cover, target="_blank")
-                img.cv-image(src=teacher.cover, alt=teacher.firstName + ' ' + teacher.lastName)
+                .contacts
+                    a(href="https://instagram.com/#{teacher.instagram}" target="_blank") 
+                        img(src="/img/instagram.png", alt="")
+                    a(href="https://t.me/#{teacher.telegram}" target="_blank") 
+                        img(src="/img/telegram.png", alt="")
+                    if user && user.role == 'admin'
+                        a(href="/teachers/edit-teacher?teacherID=#{teacher._id}") 
+                            i.fa.fa-edit
+                .stars 
+                    -for(var i=0; i < teacher.stars ; i++)
+                        i.fa.fa-star
         .cv-main-layout
             .cv-main-content
                 .cv-main-box
                     h3.cv-box-title تحصیلات
-                    //- Add education content here
+                    .education-list-view 
+                        -for(var i=0; i< teacher.educations.length; i++){
+                            -education = teacher.educations[i];
+                            .education-item 
+                                i.fa.fa-user-graduate
+                                .title 
+                                    h1= education.title 
+                                    h2= education.subject 
+                                .date 
+                                    h1= education.date 
+                                    h2= education.degree
+                                if user && user.role == 'admin'
+                                    a.delete(href="/teachers/remove-education?teacherID=#{teacher._id}&index=#{i}") 
+                                        i.fa.fa-trash
+                        -}
+                    -if(user && user.role == 'admin'){
+                        .form-view
+                            form(action="/teachers/add-education" method="POST") 
+                                input.hide(type="text" name="teacherID" value="#{teacher._id}")
+                                .raw 
+                                    input.dual(type="text" name="title" placeholder="عنوان")
+                                    input.dual(type="text" name="date" placeholder="تاریخ")
+                                .raw
+                                    input.dual(type="text" name="subject" placeholder="رشته")
+                                    input.quarter(type="text" name="degree" placeholder="مقطع")
+                                    button.red.quarter(type="submit") ثبت
+                    -}
                 .cv-main-box
                     h3.cv-box-title تجربیات
-                    //- Add experience content here
+                    .experience-list-view 
+                        -for(var i=0; i< teacher.experiences.length; i++){
+                            -experience = teacher.experiences[i];
+                            .experience-item 
+                                i.fa.fa-building-user
+                                .title 
+                                    h1= experience.title 
+                                    h2= experience.description 
+                                .date 
+                                    h1= experience.date 
+                                    h2= experience.location
+                                if user && user.role == 'admin'
+                                    a.delete(href="/teachers/remove-experience?teacherID=#{teacher._id}&index=#{i}") 
+                                        i.fa.fa-trash
+                        -}
+                    -if(user && user.role == 'admin'){
+                        .form-view
+                            form(action="/teachers/add-experience" method="POST") 
+                                input.hide(type="text" name="teacherID" value="#{teacher._id}")
+                                .raw 
+                                    input.dual(type="text" name="title" placeholder="عنوان")
+                                    input.dual(type="text" name="date" placeholder="تاریخ")
+                                .raw
+                                    input.dual(type="text" name="description" placeholder="توضیحات")
+                                    input.quarter(type="text" name="location" placeholder="مکان")
+                                    button.red.quarter(type="submit") ثبت
+                    -}
             .cv-sidebar
                 .cv-box
                     h3.cv-box-title معرفی کلی
                     p.cv-description #{teacher.description}
+                    .last-update آخرین ویراییش #{teacher.lastUpdate}
                 .cv-box
                     h3.cv-box-title اطلاعات تماس
                     ul.cv-contact-list
@@ -38,3 +103,6 @@ block content
                             i.fa.fa-map-marker
                             | آدرس: 
                             |  #{teacher.address}
+                        li 
+                            
+                    

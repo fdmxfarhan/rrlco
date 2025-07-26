@@ -28,7 +28,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 90%;
@@ -43,7 +43,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 40%;
@@ -58,7 +58,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 18.7%;
@@ -80,7 +80,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 89%;
@@ -190,6 +190,10 @@
         height: 8vw;
         padding-top: 6vw;
     }
+    .form-view button.quarter{
+        display: inline;
+        width: 18.7%;
+    }
 }
 @media only screen and (max-width: 800px) {
     .form-view h1.title{
@@ -221,7 +225,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 90%;
@@ -237,7 +241,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 60%;
@@ -253,7 +257,7 @@
         color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 60%;
@@ -274,7 +278,7 @@
     .form-view .raw textarea.long{
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 89%;
