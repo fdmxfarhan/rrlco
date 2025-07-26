@@ -16,13 +16,15 @@
 }
 .support .item .label{
     width: 30%;
+    font-family: 'iransans';
+    font-size: 1vw;
+    color: var(--black);
+    font-weight: bold;
 }
 .support .item .val{
     width: 70%;
     font-family: 'iransans';
     font-size: 1vw;
-    font-weight: bold;
-    color: var(--black);
     text-align: left;
     direction: ltr;
 }
@@ -37,4 +39,27 @@
     color: var(--blue);
     direction: ltr;
     text-align: left;
+}
+@media only screen and (max-width: 800px) {
+    .support{
+        padding: 0 3vw;
+    } 
+    .support p {
+        font-size: 2.9vw;
+    }
+    .support .item{
+        margin-bottom: 3vw;
+    }
+    .support .item .label{
+        font-size: 3.9vw;
+    }
+    .support .item .val a{
+        font-size: 3.9vw;
+    }
+    .support .item .val i,
+    .support .item .val img{
+        font-size: 3.5vw;
+        width: 4vw;
+        margin-right: 3vw;
+    }
 }
