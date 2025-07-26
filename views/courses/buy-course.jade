@@ -36,6 +36,11 @@
                 .label نوع دوره
                 .val= course.type
                     i.fa.fa-laptop
+            .info 
+                .label مدرس
+                .val 
+                    a(href="/teachers/teacher-view?id=#{course.teacherID}")= course.teacher
+                    i.fa.fa-user-graduate
             .actions 
                 -if(course.price == 0){
                     a.buy(href="/courses/course-session?index=0&id=#{course._id}") 

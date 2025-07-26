@@ -133,12 +133,15 @@ router.get('/add-product', ensureAuthenticated, (req, res, next) => {
 });
 router.get('/add-course', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
-        res.render('./dashboard/admin-add-course', {
-            theme: req.session.theme,
-            user: req.user,
-            coursetypes,
-            courseCategories,
-        });
+        Teacher.find({}, (err, teachers) => {
+            res.render('./dashboard/admin-add-course', {
+                theme: req.session.theme,
+                user: req.user,
+                coursetypes,
+                courseCategories,
+                teachers,
+            });
+        })
     }
     else res.render('./error');
 });

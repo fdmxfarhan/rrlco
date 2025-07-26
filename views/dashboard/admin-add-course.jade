@@ -23,7 +23,10 @@ block content
                         .raw
                             textarea.long(name="description" placeholder="توضیحات کامل")
                         .raw 
-                            input.dual(type="text" name="teacher" placeholder="مدرس")
+                            //- input.dual(type="text" name="teacher" placeholder="مدرس")
+                            select.quarter(name="teacherID") 
+                                -for(var i=0; i<teachers.length; i++)
+                                    option(value="#{teachers[i]._id}") #{teachers[i].firstName} #{teachers[i].lastName}
                             select.quarter(name="type") 
                                 -for(var i=0; i<coursetypes.length; i++)
                                     option(value="#{coursetypes[i]}")= coursetypes[i]
