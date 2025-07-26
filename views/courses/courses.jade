@@ -58,10 +58,11 @@ block content
                     -}
             .content
                 include ./timeline
-                    
                 br
         .sidebar-view 
             include sidebar
+            br
+            include ./support
     script(src="/js/course.js")
     script.
         document.getElementById('navlink-3').classList.add('active');

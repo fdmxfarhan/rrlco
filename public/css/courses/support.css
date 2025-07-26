@@ -1,0 +1,40 @@
+.support{
+    padding: 0 1vw;
+} 
+.support p {
+    text-align: justify;
+    font-family: 'iransans';
+    font-size: 0.9vw;
+    color: var(--text);
+}
+.support .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    margin-bottom: 1vw;
+}
+.support .item .label{
+    width: 30%;
+}
+.support .item .val{
+    width: 70%;
+    font-family: 'iransans';
+    font-size: 1vw;
+    font-weight: bold;
+    color: var(--black);
+    text-align: left;
+    direction: ltr;
+}
+.support .item .val i,
+.support .item .val img{
+    width: 1.5vw;
+    margin-right: 1vw;
+}
+.support .item .val a{
+    font-family: 'iransans';
+    font-size: 1vw;
+    color: var(--blue);
+    direction: ltr;
+    text-align: left;
+}
