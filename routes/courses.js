@@ -5,6 +5,7 @@ const { ensureAuthenticated } = require('../config/auth');
 var User = require('../models/User');
 var Product = require('../models/Product');
 var Course = require('../models/Course');
+var Teacher = require('../models/Teacher');
 const mail = require('../config/mail');
 const dot = require('../config/dot');
 const timedigit = require('../config/timedigit');
@@ -150,23 +151,28 @@ router.get('/delete-course', ensureAuthenticated, (req, res, next) => {
 router.get('/edit-course', ensureAuthenticated, (req, res, next) => {
     var courseID = req.query.id;
     Course.findById(courseID, (err, course) => {
-        res.render('./courses/edit-course', {
-            theme: req.session.theme,
-            user: req.user,
-            course,
-            courseCategories,
-            coursetypes,
-            dot, timedigit,
-        });
+        Teacher.find({}, (err, teachers) => {
+            res.render('./courses/edit-course', {
+                theme: req.session.theme,
+                user: req.user,
+                course,
+                courseCategories,
+                coursetypes,
+                dot, timedigit,
+                teachers,
+            });
+        })
     });
 });   
 router.post('/edit-course', ensureAuthenticated, (req, res, next) => {
-    var {courseID, minCap, title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, hours, minutes, capacity, classLink} = req.body;
+    var {courseID, minCap, title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, hours, minutes, capacity, classLink} = req.body;
     if(req.user.role == 'admin'){
-        Course.updateMany({_id: courseID}, {$set: {minCap, title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, totalTime: {hours, minutes, seconds: 0}, capacity, classLink}}, (err, course) => {
-            req.flash('success_msg', 'تغیرات ذخیره شد.');
-            res.redirect(`/courses/course-view?id=${courseID}`);
-        });
+        Teacher.findById(teacherID, (err, teacher) => {
+            Course.updateMany({_id: courseID}, {$set: {minCap, title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, totalTime: {hours, minutes, seconds: 0}, capacity, classLink, teacher: teacher.firstName + ' ' + teacher.lastName}}, (err, course) => {
+                req.flash('success_msg', 'تغیرات ذخیره شد.');
+                res.redirect(`/courses/course-view?id=${courseID}`);
+            });
+        })
     }
 });   
 router.get('/register-course', ensureAuthenticated, (req, res, next) => {

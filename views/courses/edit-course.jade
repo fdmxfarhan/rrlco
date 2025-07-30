@@ -21,7 +21,11 @@ block content
                             textarea.long(name="description" placeholder="توضیحات کامل") #{course.description}
                         .raw 
                             .label-quarter مدرس:
-                            input.quarter(type="text" name="teacher" value="#{course.teacher}" placeholder="مدرس")
+                            //- input.quarter(type="text" name="teacher" value="#{course.teacher}" placeholder="مدرس")
+                            select.quarter(name="teacherID") 
+                                option(value="#{course.teacherID}")= course.teacher
+                                -for(var i=0; i<teachers.length; i++)
+                                    option(value="#{teachers[i]._id}") #{teachers[i].firstName} #{teachers[i].lastName}
                             select.quarter(name="type" value="#{course.type}") 
                                 option(value="#{course.type}")= course.type
                                 -for(var i=0; i<coursetypes.length; i++)

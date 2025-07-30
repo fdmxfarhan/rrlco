@@ -1,0 +1,53 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/teachers/teacher-view.css")
+    link(rel="stylesheet", href="/css/forms.css")
+
+block content
+    .cv-container
+        .cv-header-flex
+            a.cv-image-link(href=teacher.cover, target="_blank")
+                img.cv-image(src=teacher.cover, alt=teacher.firstName + ' ' + teacher.lastName)
+            .cv-info-box
+                h1 #{teacher.firstName} #{teacher.lastName}
+                h2 #{teacher.title}
+                .contacts
+                    a(href="https://instagram.com/#{teacher.instagram}" target="_blank") 
+                        img(src="/img/instagram.png", alt="")
+                    a(href="https://t.me/#{teacher.telegram}" target="_blank") 
+                        img(src="/img/telegram.png", alt="")
+                .stars 
+                    -for(var i=0; i < teacher.stars ; i++)
+                        i.fa.fa-star
+        .cv-main-layout
+            .cv-main-content
+                .cv-main-box
+                    h3.cv-box-title تحصیلات
+                    
+                .cv-main-box
+                    h3.cv-box-title تجربیات
+                    
+            .cv-sidebar
+                .cv-box
+                    h3.cv-box-title معرفی کلی
+                    p.cv-description #{teacher.description}
+                    .last-update آخرین ویراییش #{teacher.lastUpdate}
+                .cv-box
+                    h3.cv-box-title اطلاعات تماس
+                    ul.cv-contact-list
+                        li
+                            i.fa.fa-phone 
+                            | تلفن: 
+                            |  #{teacher.phone}
+                        li
+                            i.fa.fa-envelope
+                            | ایمیل: 
+                            |  #{teacher.email}
+                        li
+                            i.fa.fa-map-marker
+                            | آدرس: 
+                            |  #{teacher.address}
+                        li 
+                            
+                    

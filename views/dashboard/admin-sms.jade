@@ -27,6 +27,18 @@ block content
                                 textarea.short(name="text" placeholder="متن پیام...")
                             .align-left
                                 button.blue(type="submit") ارسال پیام
+                    .form-view
+                        form#buyform(action="/dashboard/admin-sms" method="POST") 
+                            .raw 
+                                .label-quarter
+                                    i.fa.fa-location-dot
+                                    | گیرنده: 
+                                input.dual(type="text" name="target" value="" placeholder="09XXXXXXXXX")
+                            .raw 
+                                .rawlabel متن:
+                                textarea.short(name="text" placeholder="متن پیام...")
+                            .align-left
+                                button.blue(type="submit") ارسال پیام
         .sidebar-view 
             include sidebar
         

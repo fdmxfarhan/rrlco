@@ -13,6 +13,7 @@ const Course = require('../models/Course');
 const Print3d = require('../models/Print3d');
 const RepairOrder = require('../models/RepairOrder');
 const dateConvert = require('../config/dateConvert');
+const Teacher = require('../models/Teacher');
 
 router.use(bodyparser.urlencoded({extended: true}));
 var storage = multer.diskStorage({
@@ -55,7 +56,7 @@ router.post('/add-product', ensureAuthenticated, upload.single('picture'), (req,
 });
 router.post('/add-course', ensureAuthenticated, upload.single('picture'), (req, res, next) => {
     const file = req.file;
-    var {title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, capacity, hours, minutes} = req.body;
+    var {title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, capacity, hours, minutes} = req.body;
     var sessionContents = [];
     for(var i=0; i<sessions; i++) sessionContents.push({title: '', hours: 0, minutes: 0, description: '', type: 'locked', file: ''});
 
@@ -63,16 +64,19 @@ router.post('/add-course', ensureAuthenticated, upload.single('picture'), (req, 
         res.send('no file to upload');
     }
     else if(req.user.role == 'admin'){
-        const newCourse = new Course({
-            date: new Date(),
-            title, price, nodiscountprice, shortdescription, description, teacher, type, category, sessions, capacity,
-            totalTime: {hours, minutes, seconds: 0},
-            sessionContents,
-            cover: file.destination.slice(6) + '/' + file.originalname,
-        });
-        newCourse.save().then(course => {
-            res.redirect(`/courses/course-view?id=${newCourse._id}`);
-        }).catch(err => console.log(err));
+        Teacher.findById(teacherID, (err, teacher) => {
+            const newCourse = new Course({
+                date: new Date(),
+                title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, capacity,
+                teacher: teacher.firstName + ' ' + teacher.lastName,
+                totalTime: {hours, minutes, seconds: 0},
+                sessionContents,
+                cover: file.destination.slice(6) + '/' + file.originalname,
+            });
+            newCourse.save().then(course => {
+                res.redirect(`/courses/course-view?id=${newCourse._id}`);
+            }).catch(err => console.log(err));
+        })
     }
 });
 router.post('/print3d', ensureAuthenticated, upload.single('myfile'), (req, res, next) => {
@@ -186,6 +190,25 @@ router.post('/add-product-datasheet', upload.single('datasheet'), (req, res, nex
                 res.redirect(`/products/product-view?id=${id}`);
             }).catch(err => console.log(err));
         });
+    }
+});
+router.post('/add-teacher', ensureAuthenticated, upload.single('picture'), (req, res, next) => {
+    const file = req.file;
+    var {firstName, lastName, title, description, address, website, phone, telegram, instagram, email, age, experienceYears, numOfCourses, lastUpdate} = req.body;
+
+    if (!file) {
+        res.send('no file to upload');
+    }
+    else if(req.user.role == 'admin'){
+        const newTeacher = new Teacher({
+            date: new Date(),
+            firstName, lastName, title, description, address, website, phone, telegram, instagram, email, age, experienceYears, numOfCourses, lastUpdate,
+            fullname: firstName + ' ' + lastName,
+            cover: file.destination.slice(6) + '/' + file.originalname,
+        });
+        newTeacher.save().then(teacher => {
+            res.redirect(`/teachers/teacher-view?id=${newTeacher._id}`);
+        }).catch(err => console.log(err));
     }
 });
 

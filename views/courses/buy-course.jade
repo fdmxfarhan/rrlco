@@ -7,15 +7,15 @@
                 i.fa.fa-book
                 | #{course.title}
             .info 
-                .label هزینه آموزش
+                .label هزینه ثبت نام
                 -if(course.price > 0)
                     .val.price #{dot(course.price)} تومان
                 -else
                     .val.price رایگان
-            .info 
-                .label تعداد شرکت کننده
-                .val= course.numofattendes
-                    i.fa.fa-user
+            //- .info 
+            //-     .label تعداد شرکت کننده
+            //-     .val= course.numofattendes
+            //-         i.fa.fa-user
             .info 
                 .label ظرفیت
                 .val= course.capacity
@@ -36,6 +36,11 @@
                 .label نوع دوره
                 .val= course.type
                     i.fa.fa-laptop
+            .info 
+                .label مدرس
+                .val 
+                    a(href="/teachers/teacher-view?id=#{course.teacherID}")= course.teacher
+                    i.fa.fa-user-graduate
             .actions 
                 -if(course.price == 0){
                     a.buy(href="/courses/course-session?index=0&id=#{course._id}") 

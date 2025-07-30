@@ -20,6 +20,7 @@ const { cart_total_price, cart_discount, orderStateNum, nextOrderState, orderNum
 const Animalfeeder = require('../models/Animalfeeder');
 const { IPinfoWrapper } = require("node-ipinfo");
 const bcrypt = require('bcryptjs');
+const Teacher = require('../models/Teacher');
 
 const ipinfo = new IPinfoWrapper("f29841994da430");
 
@@ -33,7 +34,7 @@ router.get('/checkvpn', (req, res, next) => {
     });
 });
 
-sms('09336448037', 'server is started !!');
+// sms('09336448037', 'server is started !!');
 
 router.get('/', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'user')
@@ -132,12 +133,15 @@ router.get('/add-product', ensureAuthenticated, (req, res, next) => {
 });
 router.get('/add-course', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'admin'){
-        res.render('./dashboard/admin-add-course', {
-            theme: req.session.theme,
-            user: req.user,
-            coursetypes,
-            courseCategories,
-        });
+        Teacher.find({}, (err, teachers) => {
+            res.render('./dashboard/admin-add-course', {
+                theme: req.session.theme,
+                user: req.user,
+                coursetypes,
+                courseCategories,
+                teachers,
+            });
+        })
     }
     else res.render('./error');
 });
@@ -708,7 +712,28 @@ router.get('/admin-user-view', ensureAuthenticated, (req, res, next) => {
         });
     }else res.send('access denied!!');
 });
-
-
+router.get('/admin-teachers', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Teacher.find({}, (err, teachers) => {
+            res.render('./dashboard/admin-teachers', {
+            theme: req.session.theme,
+                user: req.user,
+                teachers,
+                dot,
+                timedigit,
+            });
+        })
+    }
+    else res.render('./error');
+});
+router.get('/add-teacher', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        res.render('./dashboard/admin-add-teacher', {
+            theme: req.session.theme,
+            user: req.user,
+        });
+    }
+    else res.render('./error');
+});
 
 module.exports = router;

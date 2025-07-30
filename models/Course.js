@@ -11,7 +11,7 @@ var CourseSchema = new mongoose.Schema({
   shortdescription: String,
   description: String,
   teacher: String,
-  teacherID: String,
+  teacherID: {type: String, default: ''},
   teacherCV: String,
   type: String,
   startDate: Date,

@@ -1,4 +1,15 @@
 @media only screen and (min-width: 800px) {
+    .form-view h1.title{
+        color: var(--red);
+        font-size: 1.2vw;
+        margin: 0;
+        padding: 2vw 0;
+        position: relative;    
+        margin-bottom: 1vw;    
+    }
+    .form-view h1.title i{
+        padding-left: 0.5vw;
+    }
     .form-view {
         width: 90%;
         margin: 1vw auto;
@@ -14,9 +25,10 @@
     }
     .form-view .raw input.full,
     .form-view .raw select.full{
+        color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 90%;
@@ -25,13 +37,13 @@
         border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
-        color: var(--black);
     }
     .form-view .raw input.dual,
     .form-view .raw select.dual{
+        color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 40%;
@@ -40,13 +52,13 @@
         border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
-        color: var(--black);
     }
     .form-view .raw input.quarter,
     .form-view .raw select.quarter{
+        color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 18.7%;
@@ -55,7 +67,6 @@
         border-radius: 0.4vw;
         font-family: 'iransans';
         margin-left: 1vw;
-        color: var(--black);
         font-size: 1vw;
     }
     .form-view .raw select.quarter{width: 23%;}
@@ -66,9 +77,10 @@
     }
     .form-view .raw textarea.short,
     .form-view .raw textarea.long{
+        color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.1vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 89%;
@@ -79,7 +91,6 @@
         margin-left: 1vw;
         resize: vertical;
         font-size: 1vw;
-        color: var(--black);
     }
     .form-view .raw textarea.short{height: 4vw;}
     .form-view .raw textarea.long{height: 10vw;}
@@ -179,8 +190,23 @@
         height: 8vw;
         padding-top: 6vw;
     }
+    .form-view button.quarter{
+        display: inline;
+        width: 18.7%;
+    }
 }
 @media only screen and (max-width: 800px) {
+    .form-view h1.title{
+        color: var(--red);
+        font-size: 3.2vw;
+        margin: 0;
+        padding: 5vw 0;
+        position: relative;    
+        margin-bottom: 3vw;    
+    }
+    .form-view h1.title i{
+        padding-left: 1.5vw;
+    }
     .form-view {
         width: 90%;
         margin: 3vw auto;
@@ -194,11 +220,28 @@
         margin-bottom: 10vw;
         display: block;
     }
-    .form-view .raw input.dual,
-    .form-view .raw select.dual{
+    .form-view .raw input.full,
+    .form-view .raw select.full{
+        color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
+        outline: none;
+        background-color: var(--antiflashWhite);
+        width: 90%;
+        padding: 2vw 3.5vw;
+        margin-bottom: 3vw;
+        border-radius: 1vw;
+        font-family: 'iransans';
+        margin-left: 3vw;
+        font-size: 3vw;
+    }
+    .form-view .raw input.dual,
+    .form-view .raw select.dual{
+        color: black;
+        display: inline;
+        margin: auto;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 60%;
@@ -207,14 +250,14 @@
         border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
-        color: var(--black);
         font-size: 3vw;
     }
     .form-view .raw input.quarter,
     .form-view .raw select.quarter{
+        color: black;
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 60%;
@@ -223,7 +266,6 @@
         border-radius: 1vw;
         font-family: 'iransans';
         margin-left: 3vw;
-        color: var(--black);
         font-size: 3vw;
     }
     .form-view .raw select.quarter{width: 66%;}
@@ -236,7 +278,7 @@
     .form-view .raw textarea.long{
         display: inline;
         margin: auto;
-        border: none;
+        border: 0.3vw solid var(--lightgray);
         outline: none;
         background-color: var(--antiflashWhite);
         width: 89%;
@@ -247,7 +289,7 @@
         margin-left: 3vw;
         resize: vertical;
         font-size: 3vw;
-        color: var(--black);
+        color: black;
     }
     .form-view .raw textarea.short{height: 15vw;}
     .form-view .raw textarea.long{height: 30vw;}

@@ -1,0 +1,52 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/title-components.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-teacher.css")
+    link(rel="stylesheet", href="/css/triple-card.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-users
+                        | لیست مدرسین
+                        a.add(href="/dashboard/add-teacher") 
+                            i.fa.fa-plus 
+                            | افزودن 
+                        .searchbar 
+                            form(action="/dashboard/admin-teacher-search" method="POST")
+                                input.text(type="text" placeholder="جستجو..." name="search")
+                                button.submit(type="submit")
+                                    i.fa.fa-search
+                .data-list-view 
+                    .title-raw 
+                        .item.center.col30 نام و نام خانوادگی
+                        .item.center.col30 عنوان
+                        .item.center.col20 آخرین ویرایش
+                        .item.center.col10 حذف
+                    -for(var i=0; i<teachers.length; i++){
+                        .raw 
+                            .item.center.col30.bold  
+                                i.fa.fa-tag.icon 
+                                a(href="/teachers/teacher-view?id=#{teachers[i]._id}")  #{teachers[i].firstName} #{teachers[i].lastName}  
+                            .item.center.col30 #{teachers[i].title}
+                            .item.center.col20 #{teachers[i].lastUpdate}
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-teacher?id=#{teachers[i]._id}") 
+                                    i.fa.fa-trash-can 
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+    script.
+        document.getElementById('sidebar-link-9').classList.add('active');
+    script(src="/js/dashboard.js") 
+
+
