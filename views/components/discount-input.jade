@@ -1,0 +1,11 @@
+if courseDiscount
+    .discount-input-view 
+        .code کد تخفیف: #{courseDiscount.code}
+        a.delete(href="/courses/delete-discount") 
+            i.fa.fa-times   
+else
+    .discount-input-view 
+        form(action="/courses/add-discount")
+            input.hide(type="text" name="courseID" value="#{course._id}")
+            input.text(type="text" name="code" placeholder="کد تخفیف دارید؟")
+            input.submit(type="submit" value="ثبت")

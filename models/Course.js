@@ -49,6 +49,7 @@ var CourseSchema = new mongoose.Schema({
     type: Number,
     default: 1,
   },
+  hasDiscount: {type: Boolean, default: true},
 });
 
 var Course = mongoose.model('Course', CourseSchema);
