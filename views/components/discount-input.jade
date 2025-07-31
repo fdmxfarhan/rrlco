@@ -1,7 +1,7 @@
 if courseDiscount
     .discount-input-view 
         .code کد تخفیف: #{courseDiscount.code}
-        a.delete(href="/courses/delete-discount") 
+        a.delete(href="/courses/delete-discount?courseID=#{course._id}") 
             i.fa.fa-times   
 else
     .discount-input-view 

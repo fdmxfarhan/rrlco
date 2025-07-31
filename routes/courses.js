@@ -343,5 +343,10 @@ router.get('/add-discount', (req, res, next) => {
         }
     })
 });
+router.get('/delete-discount', (req, res, next) => {
+    req.session.courseDiscount = null;
+    req.flash('success_msg', 'کد تخفیف با موفقیت حذف شد!');
+    res.redirect(req.get('referer')); // Redirect to the previous URL
+});
 
 module.exports = router;
