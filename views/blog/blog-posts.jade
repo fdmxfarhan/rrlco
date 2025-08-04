@@ -1,0 +1,26 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/blog/blog-view.css")
+    link(rel="stylesheet", href="/css/blog/blog-posts.css")
+
+block content
+    .blog-view-container
+        .sidebar-view 
+            include sidebar
+        .blog-view-content
+            .two-col-view
+                for blogpost in blogposts
+                    .blog-post-item
+                        a(href=`/blog/blog-view?id=${blogpost._id}`)
+                            img(src=`${blogpost.coverImage}` alt="blogpost cover")
+                            h2 #{blogpost.title}
+                            p #{blogpost.shortDescription}
+                            .blog-post-item-footer
+                                p 
+                                    i.fa.fa-user
+                                    | #{blogpost.author}
+                                p 
+                                    | #{dateConvert.convertDate(blogpost.createdAt)}
+                                    i.fa.fa-calendar

@@ -1,0 +1,52 @@
+body {
+    background-color: var(--light);
+}
+
+.blog-view-container {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-view-content {
+    width: 60%;
+    height: 100%;
+    padding: 30px 50px;
+    margin: 0 2.5%;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+.blog-view-content-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-view-content-header h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--skyblue);
+    margin: 0;
+    padding: 0;
+}
+.sidebar-view {
+    width: 25%;
+    height: 100%;
+    margin-right: 3%;
+}
+.content-container *{
+    font-family: 'iransans' !important;
+}
+.blog-view-content-header img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+}

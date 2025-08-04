@@ -1,0 +1,15 @@
+link(rel="stylesheet", href="/css/blog/sidebar.css")
+
+.sidebar
+    h1.title دسته بندی ها
+    .links
+        a(href="#") همه
+        a(href="#") رباتیک
+        a(href="#") الکترونیک
+        a(href="#") نرم افزار
+        a(href="#") آردوینو
+.sidebar
+    h1.title آخرین محتوا
+    .links
+        for blogpost in blogposts
+            a(href="#")= blogpost.title

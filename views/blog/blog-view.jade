@@ -1,0 +1,15 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/blog/blog-view.css")
+
+block content
+    .blog-view-container
+        .sidebar-view 
+            include sidebar
+        .blog-view-content
+            .blog-view-content-header
+                h2 #{blogpost.title}
+                img(src=`${blogpost.coverImage}` alt="blogpost cover")
+                .content-container!= blogpost.content
