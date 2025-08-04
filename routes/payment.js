@@ -87,12 +87,17 @@ router.get('/order-payment-call-back', (req, res, next) => {
     }
 });
 router.get('/pay-online-course', (req, res, next) => {
+    var courseDiscount = req.session.courseDiscount;
+    console.log(courseDiscount)
+    var discountAmount = 0;
     if (!req.user.payableCourse) res.send('no payable course found!!');
     else {
         payableCourse = req.user.payableCourse;
         Course.findById(payableCourse.id, (err, course) => {
+            if (courseDiscount) discountAmount = course.price * courseDiscount.amount / 100;
+            console.log(discountAmount)
             zarinpal.PaymentRequest({
-                Amount: course.price, // In Tomans
+                Amount: course.price - discountAmount, // In Tomans
                 CallbackURL: 'https://rrlco.ir/payment/online-course-payment-call-back',
                 Description: `پرداخت دوره آنلاین ${req.user.fullname}`,
                 Email: req.user.email,

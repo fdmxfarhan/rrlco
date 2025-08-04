@@ -17,6 +17,7 @@
     to {margin-top: 0.5vw;}
 }
 :root {
+    --font-family: 'iransans';
     --purple: #7209B7;
     --yellow: #ffcc00;
     --hover: #8305be;

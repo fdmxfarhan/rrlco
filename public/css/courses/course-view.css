@@ -11,6 +11,7 @@ body{
     background-color: var(--lightergray);
 }
 p{text-align: justify;}
+
 @media only screen and (min-width: 800px) {
     .course-view{
         /* background-color: var(--lightergray); */
