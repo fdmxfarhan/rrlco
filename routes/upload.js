@@ -14,6 +14,7 @@ const Print3d = require('../models/Print3d');
 const RepairOrder = require('../models/RepairOrder');
 const dateConvert = require('../config/dateConvert');
 const Teacher = require('../models/Teacher');
+const Blogpost = require('../models/Blogpost');
 
 router.use(bodyparser.urlencoded({extended: true}));
 var storage = multer.diskStorage({
@@ -212,4 +213,46 @@ router.post('/add-teacher', ensureAuthenticated, upload.single('picture'), (req,
     }
 });
 
+router.post('/blog-upload-image', ensureAuthenticated, upload.single('file'), (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ error: 'Unauthorized' });
+    }
+    
+    if (!req.file) {
+        return res.status(400).json({ error: 'No file uploaded' });
+    }
+    
+    // Return the image URL in the format Froala expects
+    const imageUrl = `${req.file.destination.slice(6)}/${req.file.originalname}`;
+    res.json({ link: imageUrl });
+});
+router.post('/admin-blog-create', ensureAuthenticated, upload.single('coverImage'), (req, res, next) => {
+    console.log(req.body);
+    const file = req.file;
+    if (!file) {
+        res.send('no file to upload');
+        return;
+    }
+    if(req.user.role == 'admin'){
+        var {title, content, shortDescription, author, category, tags} = req.body;
+        if(!title || !content){
+            req.flash('error_msg', 'لطفا تمام فیلدها را پر کنید.');
+            res.redirect('/dashboard/admin-blog');
+        }else{
+            var newBlogpost = new Blogpost({
+                title,
+                content,
+                shortDescription,
+                author,
+                category,
+                tags,
+                coverImage: file.destination.slice(6) + '/' + file.originalname,
+            });
+            newBlogpost.save().then(blogpost => {
+                req.flash('success_msg', 'بلاگ با موفقیت ایجاد شد.');
+                res.redirect(`/blog/blog-view?id=${newBlogpost._id}`);
+            }).catch(err => console.log(err));
+        }
+    }else res.render('./error');
+});
 module.exports = router;

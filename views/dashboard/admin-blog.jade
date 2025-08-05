@@ -1,0 +1,46 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/title-components.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-discount.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+    
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .products-view
+                    h1.title
+                        i.fa.fa-users
+                        | محتوا های وبلاگ
+                        a.add(href="/dashboard/admin-blog-create") 
+                            i.fa.fa-plus 
+                            | افزودن 
+                        .searchbar 
+                            form(action="/dashboard/admin-blog-search" method="POST")
+                                input.text(type="text" placeholder="جستجو..." name="search")
+                                button.submit(type="submit")
+                                    i.fa.fa-search
+                .data-list-view 
+                    .title-raw 
+                        .item.center.col60 عنوان
+                        .item.center.col20 آخرین ویرایش
+                        .item.center.col10 ویرایش
+                    -for(var i=0; i<blogposts.length; i++){
+                        .raw 
+                            .item.col60.bold  
+                                i.fa.fa-tag.icon 
+                                a(href="/blog/blog-view?id=#{blogposts[i]._id}")  #{blogposts[i].title}  
+                            .item.center.col30 #{blogposts[i].lastUpdate}
+                            .item.center.col10 
+                                a.delete(href="/dashboard/admin-blog-delete?id=#{blogposts[i]._id}") 
+                                    i.fa.fa-trash-can 
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-11').classList.add('active');

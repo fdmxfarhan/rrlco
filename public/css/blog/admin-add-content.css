@@ -1,0 +1,52 @@
+.blog-form-container {
+    padding: 1vw 2vw;
+}
+.title-blog {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    color: var(--red);
+}
+form.blog-form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+form.blog-form input.title {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 50%;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}   
+form.blog-form .submit-btn {
+    background-color: var(--red);
+    color: #fff;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 20px;
+    font-family: 'iransans';
+}
+form.blog-form .submit-btn:hover {
+    background-color: var(--green);
+}
+textarea.short-description{
+    width: 50%;
+    height: 100px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+form.blog-form input.file{
+    margin-bottom: 20px;
+}
+.fr-toolbar .fr-btn[data-cmd="codeBlock"] {
+    display: inline-block !important;
+    visibility: visible !important;
+}

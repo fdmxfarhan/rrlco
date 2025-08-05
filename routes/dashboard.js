@@ -21,8 +21,10 @@ const Animalfeeder = require('../models/Animalfeeder');
 const { IPinfoWrapper } = require("node-ipinfo");
 const bcrypt = require('bcryptjs');
 const Teacher = require('../models/Teacher');
+const Blogpost = require('../models/Blogpost');
 
 const ipinfo = new IPinfoWrapper("f29841994da430");
+// sms('09336448037', 'server is started !!');
 
 router.get('/checkvpn', (req, res, next) => {
     var ip = req.ip.split(':').pop();
@@ -33,9 +35,6 @@ router.get('/checkvpn', (req, res, next) => {
         // res.send(response)
     });
 });
-
-// sms('09336448037', 'server is started !!');
-
 router.get('/', ensureAuthenticated, (req, res, next) => {
     if(req.user.role == 'user')
     {
@@ -734,6 +733,31 @@ router.get('/add-teacher', ensureAuthenticated, (req, res, next) => {
         });
     }
     else res.render('./error');
+});
+router.get('/admin-blog', ensureAuthenticated, (req, res, next) => {
+    Blogpost.find({}, (err, blogposts) => {
+        res.render('./dashboard/admin-blog', {
+            theme: req.session.theme,
+            user: req.user,
+            blogposts,
+        });
+    });
+});
+router.get('/admin-blog-create', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        res.render('./dashboard/admin-blog-create', {
+            theme: req.session.theme,
+            user: req.user,
+        });
+    }
+    else res.render('./error');
+});
+router.get('/admin-blog-delete', ensureAuthenticated, (req, res, next) => {
+    var {id} = req.query;
+    Blogpost.deleteOne({_id: id}, (err) => {
+        req.flash('success_msg', 'بلاگ با موفقیت حذف شد.');
+        res.redirect('/dashboard/admin-blog');
+    });
 });
 
 module.exports = router;
