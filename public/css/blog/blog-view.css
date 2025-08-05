@@ -45,7 +45,8 @@ body {
     font-family: 'iransans' !important;
 }
 .blog-view-content-header img.cover-image{
-    width: 100%;
+    width: 90%;
+    margin: auto;
     /* height: 300px; */
     object-fit: cover;
     border-radius: 10px;
@@ -53,7 +54,10 @@ body {
     margin-bottom: 40px;
 
 }
-
+p.short_description {
+    text-align: justify;
+    font-size: 14px;
+}
 @media (max-width: 768px) {
     .blog-view-container {
         flex-direction: column-reverse;
