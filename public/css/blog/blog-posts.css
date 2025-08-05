@@ -17,13 +17,13 @@
     float: right;
     width: 45%;
     margin: 10px 2%;
-    border: 1px solid var(--lightergray);
+    border: 0.1vw solid var(--timberwolf);
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 .two-col-view .blog-post-item img{
     width: 100%;
-    height: 250px;
+    height: 260px;
     object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
