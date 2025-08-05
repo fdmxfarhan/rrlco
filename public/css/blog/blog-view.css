@@ -40,6 +40,7 @@ body {
 }
 .content-container{
     text-align: unset;
+    overflow: hidden;
 }
 .content-container *{
     font-family: 'iransans' !important;
@@ -74,5 +75,10 @@ p.short_description {
         /* height: 180px; */
         margin-bottom: 20px;
     }
+    .content-container img{
+        width: 100% !important;
+        height: auto !important;
+    }
+
 }
 
