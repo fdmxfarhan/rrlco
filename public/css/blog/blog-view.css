@@ -38,10 +38,13 @@ body {
     height: 100%;
     margin-right: 3%;
 }
+.content-container{
+    text-align: unset;
+}
 .content-container *{
     font-family: 'iransans' !important;
 }
-.blog-view-content-header img{
+.blog-view-content-header img.cover-image{
     width: 100%;
     height: 300px;
     object-fit: cover;
@@ -63,7 +66,7 @@ body {
         padding: 15px 10px;
         box-sizing: border-box;
     }
-    .blog-view-content-header img {
+    .blog-view-content-header img.cover-image {
         height: 180px;
         margin-bottom: 20px;
     }
