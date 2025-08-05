@@ -86,6 +86,9 @@
                 .text= order.description
             
     .left-side 
+        if user.role == 'admin'
+            a.recipt(href="/dashboard/admin-print-recipt") 
+                i.fa.fa-print
         -if(!order.payed){
             a.remove-order(href="/dashboard/remove-order?id=#{order._id}") 
                 i.fa.fa-times 
