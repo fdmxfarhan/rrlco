@@ -59,23 +59,141 @@ block content
     script(type="text/javascript" src="/froala/js/plugins/code_view.min.js")
     script(type="text/javascript" src="/froala/js/plugins/code_block.min.js")
     script.
+        //- (function () {
+        //- const editorInstance = new FroalaEditor('#edit', {
+        //-     enter: FroalaEditor.ENTER_P,
+        //-     placeholderText: null,
+        //-     direction: 'rtl',
+        //-     align: 'right',
+        //-     // Simplified toolbar with code block prominently displayed
+        //-     toolbarButtons: [
+        //-         'bold', 'italic', 'underline', '|',
+        //-         'textColor', 'backgroundColor', '|', 
+        //-         'fontSize', 'fontFamily', '|',
+        //-         'alignLeft', 'alignCenter', 'alignRight', '|',
+        //-         'formatOL', 'formatUL', 'quote', '|',
+        //-         'insertLink', 'insertImage', 'insertTable', '|',
+        //-         'codeBlock', '|',  // Code block button prominently placed
+        //-         'undo', 'redo', 'fullscreen', 'html'
+        //-     ],
+        //-     // Code block configuration
+        //-     codeBlockLanguages: {
+        //-         'python': 'Python',
+        //-         'javascript': 'JavaScript',
+        //-         'java': 'Java',
+        //-         'cpp': 'C++',
+        //-         'c': 'C',
+        //-         'csharp': 'C#',
+        //-         'php': 'PHP',
+        //-         'ruby': 'Ruby',
+        //-         'go': 'Go',
+        //-         'swift': 'Swift',
+        //-         'kotlin': 'Kotlin',
+        //-         'html': 'HTML',
+        //-         'css': 'CSS',
+        //-         'scss': 'SCSS',
+        //-         'json': 'JSON',
+        //-         'xml': 'XML',
+        //-         'sql': 'SQL',
+        //-         'bash': 'Bash',
+        //-         'powershell': 'PowerShell',
+        //-         'yaml': 'YAML',
+        //-         'markdown': 'Markdown',
+        //-         'typescript': 'TypeScript',
+        //-         'r': 'R',
+        //-         'matlab': 'MATLAB',
+        //-         'perl': 'Perl',
+        //-         'lua': 'Lua'
+        //-     },
+        //-     // Code view configuration
+        //-     codeMirror: true,
+        //-     codeMirrorOptions: {
+        //-         lineNumbers: true,
+        //-         mode: 'text/html',
+        //-         theme: 'default',
+        //-         indentUnit: 2,
+        //-         lineWrapping: true,
+        //-         foldGutter: true,
+        //-         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+        //-     },
+        //-     // Code beautifier options
+        //-     codeBeautifierOptions: {
+        //-         end_with_newline: true,
+        //-         indent_inner_html: true,
+        //-         indent_char: ' ',
+        //-         indent_size: 2,
+        //-         wrap_line_length: 0
+        //-     },
+        //-     // Color options
+        //-     colorsBackground: [
+        //-         '#61BD6D', '#1ABC9C', '#54ACD2', '#2C82C9', '#9365B8', '#475577', '#CCCCCC',
+        //-         '#41A85F', '#00A885', '#3D8EB9', '#2969B0', '#553982', '#28324E', '#000000',
+        //-         '#F7DA64', '#FBA026', '#EB6B56', '#E25041', '#A38F84', '#EFEFEF', '#FFFFFF',
+        //-         '#FAC51C', '#F37934', '#D14841', '#B8312F', '#7C706B', '#D1D5D8', 'REMOVE'
+        //-     ],
+        //-     colorsText: [
+        //-         '#61BD6D', '#1ABC9C', '#54ACD2', '#2C82C9', '#9365B8', '#475577', '#CCCCCC',
+        //-         '#41A85F', '#00A885', '#3D8EB9', '#2969B0', '#553982', '#28324E', '#000000',
+        //-         '#F7DA64', '#FBA026', '#EB6B56', '#E25041', '#A38F84', '#EFEFEF', '#FFFFFF',
+        //-         '#FAC51C', '#F37934', '#D14841', '#B8312F', '#7C706B', '#D1D5D8', 'REMOVE'
+        //-     ],
+        //-     // Image upload configuration
+        //-     imageUploadURL: '/upload/blog-upload-image',
+        //-     imageUploadParams: {
+        //-         id: 'my_editor'
+        //-     },
+        //-     imageUploadMethod: 'POST',
+        //-     imageMaxSize: 100 * 1024 * 1024, // 100MB
+        //-     imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif', 'webp'],
+        //-     events: {
+        //-     initialized: function () {
+        //-         const editor = this
+        //-         // Set RTL direction and right alignment after initialization
+        //-         this.$el.css('direction', 'rtl');
+        //-         this.$el.css('text-align', 'right');
+                
+        //-         this.el.closest('form').addEventListener('submit', function (e) {
+        //-         // Sync the editor content with the textarea before submission
+        //-         editor.html.sync();
+        //-         console.log('Form content:', editor.$oel.val());
+        //-         // Form will now submit normally
+        //-         })
+        //-     },
+        //-     'codeBlock.insert': function () {
+        //-         console.log('Code block inserted');
+        //-     }
+        //-     }
+        //- })
+        //- })()
+
+
+
+
+
+        
         (function () {
         const editorInstance = new FroalaEditor('#edit', {
             enter: FroalaEditor.ENTER_P,
             placeholderText: null,
             direction: 'rtl',
             align: 'right',
-            // Simplified toolbar with code block prominently displayed
-            toolbarButtons: [
-                'bold', 'italic', 'underline', '|',
-                'textColor', 'backgroundColor', '|', 
-                'fontSize', 'fontFamily', '|',
-                'alignLeft', 'alignCenter', 'alignRight', '|',
-                'formatOL', 'formatUL', 'quote', '|',
-                'insertLink', 'insertImage', 'insertTable', '|',
-                'codeBlock', '|',  // Code block button prominently placed
-                'undo', 'redo', 'fullscreen', 'html'
-            ],
+            // Toolbar configuration with color tools and code block features
+            toolbarButtons: {
+                'moreText': {
+                    'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting']
+                },
+                'moreParagraph': {
+                    'buttons': ['alignLeft', 'alignCenter', 'alignRight', 'alignJustify', 'formatOL', 'formatUL', 'paragraphFormat', 'paragraphStyle', 'lineHeight', 'outdent', 'indent', 'quote']
+                },
+                'moreRich': {
+                    'buttons': ['insertLink', 'insertImage', 'insertVideo', 'insertTable', 'codeBlock', 'emoticons', 'fontAwesome', 'specialCharacters', 'embedly', 'insertFile', 'insertHR']
+                },
+                'moreMisc': {
+                    'buttons': ['undo', 'redo', 'fullscreen', 'print', 'getPDF', 'spellChecker', 'selectAll', 'html', 'help'],
+                    'align': 'right',
+                    'buttonsVisible': 2
+                }
+            },
             // Code block configuration
             codeBlockLanguages: {
                 'python': 'Python',
@@ -143,7 +261,7 @@ block content
                 id: 'my_editor'
             },
             imageUploadMethod: 'POST',
-            imageMaxSize: 100 * 1024 * 1024, // 100MB
+            imageMaxSize: 100 * 1024 * 1024, // 5MB
             imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif', 'webp'],
             events: {
             initialized: function () {
@@ -158,9 +276,6 @@ block content
                 console.log('Form content:', editor.$oel.val());
                 // Form will now submit normally
                 })
-            },
-            'codeBlock.insert': function () {
-                console.log('Code block inserted');
             }
             }
         })
