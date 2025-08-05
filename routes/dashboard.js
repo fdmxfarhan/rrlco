@@ -759,5 +759,15 @@ router.get('/admin-blog-delete', ensureAuthenticated, (req, res, next) => {
         res.redirect('/dashboard/admin-blog');
     });
 });
+router.get('/admin-print-recipt', ensureAuthenticated, (req, res, next) => {
+    Order.findById(req.query.orderID, (err, order) => {
+        res.render('./order-recipt', {
+            theme: req.session.theme,
+            user: req.user,
+            order, 
+        });
+    })
+});
+
 
 module.exports = router;
