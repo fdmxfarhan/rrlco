@@ -82,3 +82,89 @@ p.short_description {
 
 }
 
+/* Add this to your blog-view.css file */
+
+/* Code block styling */
+.content-container pre {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 16px 0;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    direction: ltr; /* Keep code LTR even in RTL layout */
+    text-align: left;
+}
+
+.content-container pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre;
+}
+
+.content-container code {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 90%;
+    color: #d14;
+}
+
+/* Syntax highlighting colors */
+.content-container .hljs-keyword,
+.content-container .hljs-selector-tag,
+.content-container .hljs-built_in {
+    color: #007020;
+    font-weight: bold;
+}
+
+.content-container .hljs-string,
+.content-container .hljs-title {
+    color: #4070a0;
+}
+
+.content-container .hljs-comment,
+.content-container .hljs-quote {
+    color: #60a0b0;
+    font-style: italic;
+}
+
+.content-container .hljs-number,
+.content-container .hljs-literal {
+    color: #40a070;
+}
+
+.content-container .hljs-meta {
+    color: #4c8317;
+}
+
+.content-container .hljs-emphasis {
+    font-style: italic;
+}
+
+.content-container .hljs-strong {
+    font-weight: bold;
+}
+
+/* Dark theme alternative */
+@media (prefers-color-scheme: dark) {
+    .content-container pre {
+        background-color: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .content-container code {
+        background-color: #2d3748;
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+}

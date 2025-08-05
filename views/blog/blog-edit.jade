@@ -3,19 +3,6 @@ extends ../layout
 block styles
     link(rel="stylesheet", href="/css/forms.css")
     link(rel="stylesheet", href="/css/blog/blog-view.css")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css")
-    link(rel="stylesheet", href="/froala/css/froala_editor.css")
-    link(rel="stylesheet", href="/froala/css/froala_style.css")
-    link(rel="stylesheet", href="/froala/css/plugins/code_view.css")
-    link(rel="stylesheet", href="/froala/css/plugins/image_manager.css")
-    link(rel="stylesheet", href="/froala/css/plugins/image.css")
-    link(rel="stylesheet", href="/froala/css/plugins/table.css")
-    link(rel="stylesheet", href="/froala/css/plugins/video.css")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css")
-    link(rel="stylesheet", href="/froala/css/plugins/colors.css")
-    link(rel="stylesheet", href="/froala/css/plugins/code_view.css")
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css")
-    link(rel="stylesheet", href="/froala/css/plugins/code_block.css")
 
 block content
     .blog-view-container
@@ -32,251 +19,83 @@ block content
                         script.
                             new FroalaEditor("div#froala-editor");
                         button.submit-btn(type='submit') ثبت
-    
-
-
-    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js")
-    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js")
-    script(type="text/javascript" src="/froala/js/froala_editor.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/align.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/code_beautifier.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/code_view.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/draggable.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/image.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/image_manager.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/link.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/lists.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/paragraph_format.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/paragraph_style.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/table.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/video.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/url.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/entities.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/colors.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/font_size.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/font_family.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/code_beautifier.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/code_view.min.js")
-    script(type="text/javascript" src="/froala/js/plugins/code_block.min.js")
+                        
+    script(src="https://cdn.tiny.cloud/1/4hadxl3pj0it7cd5uuxfwif1ij4vjx1e2lbflw2iv89rmr6x/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous")
     script.
-        //- (function () {
-        //- const editorInstance = new FroalaEditor('#edit', {
-        //-     enter: FroalaEditor.ENTER_P,
-        //-     placeholderText: null,
-        //-     direction: 'rtl',
-        //-     align: 'right',
-        //-     // Simplified toolbar with code block prominently displayed
-        //-     toolbarButtons: [
-        //-         'bold', 'italic', 'underline', '|',
-        //-         'textColor', 'backgroundColor', '|', 
-        //-         'fontSize', 'fontFamily', '|',
-        //-         'alignLeft', 'alignCenter', 'alignRight', '|',
-        //-         'formatOL', 'formatUL', 'quote', '|',
-        //-         'insertLink', 'insertImage', 'insertTable', '|',
-        //-         'codeBlock', '|',  // Code block button prominently placed
-        //-         'undo', 'redo', 'fullscreen', 'html'
-        //-     ],
-        //-     // Code block configuration
-        //-     codeBlockLanguages: {
-        //-         'python': 'Python',
-        //-         'javascript': 'JavaScript',
-        //-         'java': 'Java',
-        //-         'cpp': 'C++',
-        //-         'c': 'C',
-        //-         'csharp': 'C#',
-        //-         'php': 'PHP',
-        //-         'ruby': 'Ruby',
-        //-         'go': 'Go',
-        //-         'swift': 'Swift',
-        //-         'kotlin': 'Kotlin',
-        //-         'html': 'HTML',
-        //-         'css': 'CSS',
-        //-         'scss': 'SCSS',
-        //-         'json': 'JSON',
-        //-         'xml': 'XML',
-        //-         'sql': 'SQL',
-        //-         'bash': 'Bash',
-        //-         'powershell': 'PowerShell',
-        //-         'yaml': 'YAML',
-        //-         'markdown': 'Markdown',
-        //-         'typescript': 'TypeScript',
-        //-         'r': 'R',
-        //-         'matlab': 'MATLAB',
-        //-         'perl': 'Perl',
-        //-         'lua': 'Lua'
-        //-     },
-        //-     // Code view configuration
-        //-     codeMirror: true,
-        //-     codeMirrorOptions: {
-        //-         lineNumbers: true,
-        //-         mode: 'text/html',
-        //-         theme: 'default',
-        //-         indentUnit: 2,
-        //-         lineWrapping: true,
-        //-         foldGutter: true,
-        //-         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-        //-     },
-        //-     // Code beautifier options
-        //-     codeBeautifierOptions: {
-        //-         end_with_newline: true,
-        //-         indent_inner_html: true,
-        //-         indent_char: ' ',
-        //-         indent_size: 2,
-        //-         wrap_line_length: 0
-        //-     },
-        //-     // Color options
-        //-     colorsBackground: [
-        //-         '#61BD6D', '#1ABC9C', '#54ACD2', '#2C82C9', '#9365B8', '#475577', '#CCCCCC',
-        //-         '#41A85F', '#00A885', '#3D8EB9', '#2969B0', '#553982', '#28324E', '#000000',
-        //-         '#F7DA64', '#FBA026', '#EB6B56', '#E25041', '#A38F84', '#EFEFEF', '#FFFFFF',
-        //-         '#FAC51C', '#F37934', '#D14841', '#B8312F', '#7C706B', '#D1D5D8', 'REMOVE'
-        //-     ],
-        //-     colorsText: [
-        //-         '#61BD6D', '#1ABC9C', '#54ACD2', '#2C82C9', '#9365B8', '#475577', '#CCCCCC',
-        //-         '#41A85F', '#00A885', '#3D8EB9', '#2969B0', '#553982', '#28324E', '#000000',
-        //-         '#F7DA64', '#FBA026', '#EB6B56', '#E25041', '#A38F84', '#EFEFEF', '#FFFFFF',
-        //-         '#FAC51C', '#F37934', '#D14841', '#B8312F', '#7C706B', '#D1D5D8', 'REMOVE'
-        //-     ],
-        //-     // Image upload configuration
-        //-     imageUploadURL: '/upload/blog-upload-image',
-        //-     imageUploadParams: {
-        //-         id: 'my_editor'
-        //-     },
-        //-     imageUploadMethod: 'POST',
-        //-     imageMaxSize: 100 * 1024 * 1024, // 100MB
-        //-     imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif', 'webp'],
-        //-     events: {
-        //-     initialized: function () {
-        //-         const editor = this
-        //-         // Set RTL direction and right alignment after initialization
-        //-         this.$el.css('direction', 'rtl');
-        //-         this.$el.css('text-align', 'right');
-                
-        //-         this.el.closest('form').addEventListener('submit', function (e) {
-        //-         // Sync the editor content with the textarea before submission
-        //-         editor.html.sync();
-        //-         console.log('Form content:', editor.$oel.val());
-        //-         // Form will now submit normally
-        //-         })
-        //-     },
-        //-     'codeBlock.insert': function () {
-        //-         console.log('Code block inserted');
-        //-     }
-        //-     }
-        //- })
-        //- })()
-
-
-
-
-
-        
-        (function () {
-        const editorInstance = new FroalaEditor('#edit', {
-            enter: FroalaEditor.ENTER_P,
-            placeholderText: null,
-            direction: 'rtl',
-            align: 'right',
-            // Toolbar configuration with color tools and code block features
-            toolbarButtons: {
-                'moreText': {
-                    'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting']
-                },
-                'moreParagraph': {
-                    'buttons': ['alignLeft', 'alignCenter', 'alignRight', 'alignJustify', 'formatOL', 'formatUL', 'paragraphFormat', 'paragraphStyle', 'lineHeight', 'outdent', 'indent', 'quote']
-                },
-                'moreRich': {
-                    'buttons': ['insertLink', 'insertImage', 'insertVideo', 'insertTable', 'codeBlock', 'emoticons', 'fontAwesome', 'specialCharacters', 'embedly', 'insertFile', 'insertHR']
-                },
-                'moreMisc': {
-                    'buttons': ['undo', 'redo', 'fullscreen', 'print', 'getPDF', 'spellChecker', 'selectAll', 'html', 'help'],
-                    'align': 'right',
-                    'buttonsVisible': 2
-                }
-            },
-            // Code block configuration
-            codeBlockLanguages: {
-                'python': 'Python',
-                'javascript': 'JavaScript',
-                'java': 'Java',
-                'cpp': 'C++',
-                'c': 'C',
-                'csharp': 'C#',
-                'php': 'PHP',
-                'ruby': 'Ruby',
-                'go': 'Go',
-                'swift': 'Swift',
-                'kotlin': 'Kotlin',
-                'html': 'HTML',
-                'css': 'CSS',
-                'scss': 'SCSS',
-                'json': 'JSON',
-                'xml': 'XML',
-                'sql': 'SQL',
-                'bash': 'Bash',
-                'powershell': 'PowerShell',
-                'yaml': 'YAML',
-                'markdown': 'Markdown',
-                'typescript': 'TypeScript',
-                'r': 'R',
-                'matlab': 'MATLAB',
-                'perl': 'Perl',
-                'lua': 'Lua'
-            },
-            // Code view configuration
-            codeMirror: true,
-            codeMirrorOptions: {
-                lineNumbers: true,
-                mode: 'text/html',
-                theme: 'default',
-                indentUnit: 2,
-                lineWrapping: true,
-                foldGutter: true,
-                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-            },
-            // Code beautifier options
-            codeBeautifierOptions: {
-                end_with_newline: true,
-                indent_inner_html: true,
-                indent_char: ' ',
-                indent_size: 2,
-                wrap_line_length: 0
-            },
-            // Color options
-            colorsBackground: [
-                '#61BD6D', '#1ABC9C', '#54ACD2', '#2C82C9', '#9365B8', '#475577', '#CCCCCC',
-                '#41A85F', '#00A885', '#3D8EB9', '#2969B0', '#553982', '#28324E', '#000000',
-                '#F7DA64', '#FBA026', '#EB6B56', '#E25041', '#A38F84', '#EFEFEF', '#FFFFFF',
-                '#FAC51C', '#F37934', '#D14841', '#B8312F', '#7C706B', '#D1D5D8', 'REMOVE'
+        tinymce.init({
+            selector: 'textarea#edit',
+            plugins: [
+                // Core editing features
+                'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+                // Your account includes a free trial of TinyMCE premium features
+                // Try the most popular premium features until Aug 18, 2025:
+                'checklist', 'mediaembed', 'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown','importword', 'exportword', 'exportpdf'
             ],
-            colorsText: [
-                '#61BD6D', '#1ABC9C', '#54ACD2', '#2C82C9', '#9365B8', '#475577', '#CCCCCC',
-                '#41A85F', '#00A885', '#3D8EB9', '#2969B0', '#553982', '#28324E', '#000000',
-                '#F7DA64', '#FBA026', '#EB6B56', '#E25041', '#A38F84', '#EFEFEF', '#FFFFFF',
-                '#FAC51C', '#F37934', '#D14841', '#B8312F', '#7C706B', '#D1D5D8', 'REMOVE'
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
             ],
-            // Image upload configuration
-            imageUploadURL: '/upload/blog-upload-image',
-            imageUploadParams: {
-                id: 'my_editor'
-            },
-            imageUploadMethod: 'POST',
-            imageMaxSize: 100 * 1024 * 1024, // 5MB
-            imageAllowedTypes: ['jpeg', 'jpg', 'png', 'gif', 'webp'],
-            events: {
-            initialized: function () {
-                const editor = this
-                // Set RTL direction and right alignment after initialization
-                this.$el.css('direction', 'rtl');
-                this.$el.css('text-align', 'right');
-                
-                this.el.closest('form').addEventListener('submit', function (e) {
-                // Sync the editor content with the textarea before submission
-                editor.html.sync();
-                console.log('Form content:', editor.$oel.val());
-                // Form will now submit normally
-                })
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+            
+            // RTL Configuration
+            //- directionality: 'rtl',
+            //- content_style: 'body { direction: rtl; text-align: right; }',
+            
+            // Image Upload Configuration
+            images_upload_url: '/upload/blog-upload-image',
+            images_upload_base_path: '/',
+            images_upload_credentials: true,
+            automatic_uploads: true,
+            
+            // Handle upload errors and success
+            images_upload_handler: function (blobInfo, success, failure, progress) {
+                return new Promise(function(resolve, reject) {
+                    var xhr, formData;
+                    xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
+                    xhr.open('POST', '/upload/blog-upload-image');
+                    
+                    xhr.upload.onprogress = function (e) {
+                        if (progress && e.lengthComputable) {
+                            progress(e.loaded / e.total * 100);
+                        }
+                    };
+                    
+                    xhr.onload = function() {
+                        var json;
+                        if (xhr.status !== 200) {
+                            reject('HTTP Error: ' + xhr.status);
+                            return;
+                        }
+                        
+                        try {
+                            json = JSON.parse(xhr.responseText);
+                        } catch (e) {
+                            reject('Invalid JSON response');
+                            return;
+                        }
+                        
+                        // Handle both 'link' and 'location' response formats
+                        var imageUrl = json.link || json.location;
+                        if (!imageUrl) {
+                            reject('No image URL in response');
+                            return;
+                        }
+                        
+                        resolve(imageUrl);
+                    };
+                    
+                    xhr.onerror = function () {
+                        reject('Image upload failed due to a XHR transport error. Code: ' + xhr.status);
+                    };
+                    
+                    formData = new FormData();
+                    formData.append('file', blobInfo.blob(), blobInfo.filename());
+                    xhr.send(formData);
+                });
             }
-            }
-        })
-        })()
+        });
+
