@@ -27,5 +27,6 @@ block content
                     if user && user.role == 'admin'
                         a(href="/blog/blog-edit?id=#{blogpost._id}") 
                             i.fa.fa-edit
+                p.short_description= blogpost.shortDescription
                 img.cover-image(src=`${blogpost.coverImage}` alt="blogpost cover")
                 .content-container!= blogpost.content
