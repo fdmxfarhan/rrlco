@@ -50,3 +50,22 @@ body {
     margin-bottom: 40px;
 
 }
+
+@media (max-width: 768px) {
+    .blog-view-container {
+        flex-direction: column-reverse;
+        padding: 10px 0;
+    }
+    .sidebar-view,
+    .blog-view-content {
+        width: 100%;
+        margin: 0 0 20px 0;
+        padding: 15px 10px;
+        box-sizing: border-box;
+    }
+    .blog-view-content-header img {
+        height: 180px;
+        margin-bottom: 20px;
+    }
+}
+

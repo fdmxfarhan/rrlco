@@ -66,3 +66,38 @@
 .blog-post-item-footer p i{
     font-size: 12px;
 }
+
+@media (max-width: 768px) {
+    .two-col-view {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .two-col-view .blog-post-item {
+        width: 100%;
+        margin: 0;
+    }
+    
+    .two-col-view .blog-post-item img {
+        height: 180px;
+    }
+    
+    .two-col-view .blog-post-item h2 {
+        font-size: 16px;
+        padding: 8px 15px;
+    }
+    
+    .two-col-view .blog-post-item p {
+        font-size: 14px;
+        padding: 0 15px;
+        margin-bottom: 15px;
+    }
+    
+    .blog-post-item-footer p {
+        font-size: 14px;
+    }
+    
+    .blog-post-item-footer p i {
+        font-size: 14px;
+    }
+}
