@@ -147,7 +147,8 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
         category,
         defaultcount,
         available,
-        weight
+        weight,
+        colors,
     } = req.body;
     if (available == 'true') available = true;
     else available = false;
@@ -163,7 +164,8 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
             category,
             weight,
             defaultcount,
-            available
+            available,
+            colors: colors.split('،'),
         }, (err, doc) => {
             res.redirect(`/products/product-view?id=${id}`);
         });

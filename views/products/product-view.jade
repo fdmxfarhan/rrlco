@@ -71,6 +71,11 @@ block content
                     form(action="/dashboard/add-to-cart" method="POST") 
                         input.hide(type="text" name="type" value="product")
                         input.hide(type="text" name="id" value="#{product._id}")
+                        if product.colors.length > 0
+                            .color رنگ: 
+                                select#colors(name="color")
+                                    for color in product.colors 
+                                        option(value="#{color}")= color
                         .label تعداد: 
                         .count 
                             button.add(type="button" onclick="add()")

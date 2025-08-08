@@ -170,7 +170,7 @@ router.get('/add-to-cart', ensureAuthenticated, (req, res, next) => {
     }
 });
 router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
-    var {type, id, count} = req.body;
+    var {type, id, count, color} = req.body;
     count = parseInt(count);
     var shoppingcart = req.user.shoppingcart;
     if(type == 'product'){
@@ -192,6 +192,7 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
                         item: product,
                         count,
                         type,
+                        color,
                     });
                 }
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart}}, (err, doc) => {

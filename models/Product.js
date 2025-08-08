@@ -64,6 +64,10 @@ var ProductSchema = new mongoose.Schema({
         type: String,
         default: '',
     },
+    colors: {
+        type: [String],
+        default: [],
+    },
 });
 
 var Product = mongoose.model('Product', ProductSchema);

@@ -34,7 +34,9 @@ block content
                                 option(value="true") موجود
                                 option(value="false") ناموجود
                             input.quarter(type="number" name="weight" placeholder="وزن" value="#{product.weight}")
-                            
+                        .raw
+                            input.dual(type="text" name="colors" placeholder="رنگ های موجود" value="#{product.colors.join('، ')}")
+
                         //- .upload 
                         //-     input.file(type="file" name="picture" value="#{product.picture}")
                         .align-left

@@ -115,6 +115,18 @@ body{
         margin-top: 2vw;
         color: var(--black);
     }
+    .product-view .content .info-view .shop-control .color select{
+        color: black;
+        margin: auto;
+        border: 0.1vw solid var(--lightgray);
+        outline: none;
+        background-color: var(--antiflashWhite);
+        padding: 0.4vw 1.5vw;
+        margin-bottom: 1vw;
+        border-radius: 0.4vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
+    }
     .product-view .content .info-view .shop-control .count{
         float: right;
         width: 50%;
@@ -547,5 +559,17 @@ body{
     a.datasheet i{
         padding-left: 3vw;
         font-size: 5vw;
+    }
+    .product-view .content .info-view .shop-control .color select{
+        color: black;
+        margin: auto;
+        border: 0.1vw solid var(--lightgray);
+        outline: none;
+        background-color: var(--antiflashWhite);
+        padding: 1vw 2.5vw;
+        margin-bottom: 1vw;
+        border-radius: 0.4vw;
+        font-family: 'iransans';
+        margin-left: 1vw;
     }
 }
