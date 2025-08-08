@@ -219,6 +219,10 @@ p{text-align: justify;}
         color: var(--blue);
         margin-bottom: 0;
     }
+    .course-view .course-cover .margin-veiw{
+        width: 90%;
+        margin: 1vw auto;
+    }
     .course-view .course-cover p.desc{
         font-size: 1.1vw;
         padding: 0.4vw 0;
@@ -603,6 +607,10 @@ p{text-align: justify;}
         margin: 3vw auto;
         color: var(--blue);
         margin-bottom: 0;
+    }
+    .course-view .course-cover .margin-veiw{
+        width: 90%;
+        margin: 1vw auto;
     }
     .course-view .course-cover p.desc{
         font-size: 3.1vw;

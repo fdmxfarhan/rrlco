@@ -23,13 +23,8 @@ block content
                             -else
                                 | #{course.shortdescription[i]}
                         -}
-                    p.desc
-                        -for(var i=0; i<course.description.length; i++) {
-                            -if(course.description[i] == '\n')
-                                br
-                            -else
-                                | #{course.description[i]}
-                        -}
+                    .margin-veiw
+                        p.desc!= course.description
                     -if(purchased && course.type == 'مجازی'){
                         a.enter-link(href="#{course.classLink}") 
                             i.fa.fa-sign-in-alt

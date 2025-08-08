@@ -3,6 +3,8 @@ extends ../layout
 block styles
     link(rel="stylesheet", href="/css/forms.css")
     link(rel="stylesheet", href="/css/blog/blog-view.css")
+    //- link(rel="stylesheet", href="https://cdn.tiny.cloud/1/4hadxl3pj0it7cd5uuxfwif1ij4vjx1e2lbflw2iv89rmr6x/tinymce/8/skins/content/default/content.min.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css")
 
 block content
     .blog-view-container
@@ -11,5 +13,12 @@ block content
         .blog-view-content
             .blog-view-content-header
                 h2 #{blogpost.title}
-                img(src=`${blogpost.coverImage}` alt="blogpost cover")
+                    if user && user.role == 'admin'
+                        a(href="/blog/blog-edit?id=#{blogpost._id}") 
+                            i.fa.fa-edit
+                p.short_description= blogpost.shortDescription
+                img.cover-image(src=`${blogpost.coverImage}` alt="blogpost cover")
                 .content-container!= blogpost.content
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js")
