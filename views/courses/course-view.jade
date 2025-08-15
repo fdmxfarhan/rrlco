@@ -14,7 +14,12 @@ block content
             .content
                 .course-cover
                     .cover
-                        img(src="#{course.cover}", alt="")
+                        //- if course.type == 'آفلاین'
+                        if course.sessionContents[0].file && course.sessionContents[0].file != ''
+                            video(width="320" height="240" controls controlsList="nodownload" oncontextmenu="return false;") 
+                                source(src="#{course.sessionContents[0].file}")
+                        else
+                            img(src="#{course.cover}", alt="")
                     h1.title= course.title
                     p.desc
                         -for(var i=0; i<course.shortdescription.length; i++) {
