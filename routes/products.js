@@ -22,7 +22,9 @@ const {
 const timedigit = require('../config/timedigit');
 const dateConvert = require('../config/dateConvert');
 
-
+Product.deleteMany({title: 'برای مجموعه 5 عددی بلاک های اور سایز 20mm'}, (err, doc) => {
+    console.log('done')
+})
 
 router.get('/', (req, res, next) => {
     var {
