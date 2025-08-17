@@ -68,6 +68,10 @@ var ProductSchema = new mongoose.Schema({
         type: [String],
         default: [],
     },
+    buyPrice: {
+        type: Number,
+        default: 0,
+    }
 });
 
 var Product = mongoose.model('Product', ProductSchema);
