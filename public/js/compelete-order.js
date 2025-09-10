@@ -30,7 +30,7 @@ var deliverychanged = () => {
         var totalprice    = getNumber(document.getElementById('total-price').textContent);
         var discountprice = getNumber(document.getElementById('discount-price').textContent);
         var taxprice      = getNumber(document.getElementById('tax-price').textContent);
-        var deliveryprice = 60000;
+        var deliveryprice = 70000;
         document.getElementById('delivery-price').textContent = dot(deliveryprice);
         document.getElementById('sum-price').textContent = dot(totalprice + taxprice + deliveryprice - discountprice);
     }
