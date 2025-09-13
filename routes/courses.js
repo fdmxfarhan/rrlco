@@ -19,6 +19,7 @@ router.get('/', (req, res, next) => {
     var { category } = req.query;
     Course.find({ enable: true }, (err, courses) => {
         if (category) courses = courses.filter((e) => e.category == category);
+        courses.reverse();
         courses.sort((a, b) => b.sortWeight - a.sortWeight);
         res.render('./courses/courses', {
             theme: req.session.theme,
