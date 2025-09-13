@@ -810,7 +810,6 @@ router.get('/view-certificate', (req, res, next) => {
 });
 router.get('/admin-print-invoice', (req, res, next) => {
     Order.findById(req.query.orderID, (err, order) => {
-        console.log(order)
         res.render('./order-invoice', {
             theme: req.session.theme,
             user: req.user,
@@ -820,4 +819,9 @@ router.get('/admin-print-invoice', (req, res, next) => {
         });
     })
 });
+
+
+
+
+
 module.exports = router;
