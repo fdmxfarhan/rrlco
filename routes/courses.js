@@ -19,7 +19,7 @@ router.get('/', (req, res, next) => {
     var { category } = req.query;
     Course.find({ enable: true }, (err, courses) => {
         if (category) courses = courses.filter((e) => e.category == category);
-        courses.reverse();
+        products.sort((a, b) => b.sortWeight - a.sortWeight);
         res.render('./courses/courses', {
             theme: req.session.theme,
             user: req.user,
@@ -169,10 +169,10 @@ router.get('/edit-course', ensureAuthenticated, (req, res, next) => {
     });
 });
 router.post('/edit-course', ensureAuthenticated, (req, res, next) => {
-    var { courseID, minCap, title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, hours, minutes, capacity, classLink } = req.body;
+    var { sortWeight, courseID, minCap, title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, hours, minutes, capacity, classLink } = req.body;
     if (req.user.role == 'admin') {
         Teacher.findById(teacherID, (err, teacher) => {
-            Course.updateMany({ _id: courseID }, { $set: { minCap, title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, totalTime: { hours, minutes, seconds: 0 }, capacity, classLink, teacher: teacher.firstName + ' ' + teacher.lastName } }, (err, course) => {
+            Course.updateMany({ _id: courseID }, { $set: { sortWeight, minCap, title, price, nodiscountprice, shortdescription, description, teacherID, type, category, sessions, totalTime: { hours, minutes, seconds: 0 }, capacity, classLink, teacher: teacher.firstName + ' ' + teacher.lastName } }, (err, course) => {
                 req.flash('success_msg', 'تغیرات ذخیره شد.');
                 res.redirect(`/courses/course-view?id=${courseID}`);
             });

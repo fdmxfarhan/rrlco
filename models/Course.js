@@ -50,6 +50,10 @@ var CourseSchema = new mongoose.Schema({
     default: 1,
   },
   hasDiscount: {type: Boolean, default: true},
+  sortWeight: {
+    type: Number,
+    default: 0,
+  }
 });
 
 var Course = mongoose.model('Course', CourseSchema);
