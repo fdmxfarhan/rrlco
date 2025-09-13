@@ -1,0 +1,156 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    margin-top: 5vw;
+    align-items: flex-end;
+    border-bottom: 0.5vw solid var(--red);
+    padding-bottom: 0.5vw;
+}
+.header .qr-code {
+    width: 20%;
+}
+.header .qr-code img{
+    width: 8vw;
+    display: block;
+}
+.header .center{
+    width: 60%;
+    text-align: center;
+}
+.header .center img{
+    width: 5vw;
+}
+.header .center h1{
+    margin: 0;
+    padding: 0;
+    font-size: 1.6vw;
+}
+.header .center h2{
+    margin: 0;
+    padding: 0;
+    font-size: 1.2vw;
+}
+.header .date{
+    width: 20%;
+}
+.header .date .item{
+    margin: 0;
+    padding: 0;
+    font-size: 1vw;
+    margin-top: 0.5vw;
+    text-align: left;
+}
+.header .date .item .title{
+    font-weight: bold;
+    display: inline;
+}
+.header .date .item .val{
+    font-weight: normal;
+    display: inline;
+}
+.costumer-info {
+    flex-direction: row;
+    display: flex;
+    width: 80%;
+    margin: 1vw auto;
+    background-color: var(--lightgray);
+}
+.costumer-info .item{
+    flex: 1;
+    padding: 2vw 3vw;
+    font-size: 1.5vw;
+}
+.costumer-info .item .title{
+    font-weight: normal;
+    display: inline;
+}
+.costumer-info .item .val{
+    font-weight: bold;
+    display: inline;
+}
+.order-list {
+    width: 80%;
+    margin: 1vw auto;
+    min-height: 15vw;
+}
+.order-list table{
+    width: 100%;
+    text-align: right;
+    border-collapse: collapse;
+}
+.order-list table .center{
+    text-align: center;
+}
+.order-list table tr.header-tr{
+    background-color: var(--lightgray);
+}
+.order-list table th{
+    padding: 1.5vw 1vw;
+    font-size: 1.2vw;
+}
+.order-list table td{
+    padding: 0.5vw 1vw;
+    border: 0.1vw solid var(--lightgray);
+    font-size: 1.1vw;
+}
+.order-list table .col5{width: 5%;}
+.order-list table .col10{width: 10%;}
+.order-list table .col20{width: 20%;}
+.order-list table .col30{width: 30%;}
+.order-list table .col40{width: 40%;}
+.order-list table .col50{width: 50%;}
+.general-info{
+    width: 80%;
+    margin: 2vw auto;
+    flex-direction: row;
+    display: flex;
+}
+.general-info .address{
+    flex: 1;
+}
+.general-info .address .item{
+    font-size: 1.2vw;
+    width: 90%;
+    margin-bottom: 1vw;
+}
+.general-info .address .item .title{
+    font-weight: bold;
+    display: inline;
+}
+.general-info .address .item .val{
+    font-weight: normal;
+    display: inline;
+}
+.general-info .final-prices{
+    flex: 1;
+}
+.general-info .final-prices table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+.general-info .final-prices table td{
+    border: 0.1vw solid var(--lightgray);
+    padding: 0.5vw;
+    width: 50%;
+    font-size: 1.1vw;
+}
+.general-info .final-prices table td.last{background-color: var(--lightgray);}
+.slogan{
+    text-align: center;
+    padding: 1vw;
+    font-size: 1.2vw;
+}
+@media print {
+  @page {
+    size: A4; /* Paper size: A4, orientation: landscape */
+    margin: 0;          /* Remove all margins */
+  }
+  body {
+    margin: 0;          /* Remove default body margin */
+    -webkit-print-color-adjust: exact; /* Chrome / Safari */
+    print-color-adjust: exact;         /* Standard */
+  }
+}

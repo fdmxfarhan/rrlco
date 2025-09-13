@@ -19,4 +19,78 @@ html(lang="en")
         link(rel='stylesheet', href='/css/messages.css')
         link(rel='stylesheet', href='/css/invoice.css')
     body 
-    
+      .invoice
+        .header 
+          .qr-code 
+            img(src="/img/qr.png", alt="qr")
+          .center
+            img(src="/img/logo.png", alt="logo")
+            h1 فاکتور فروش
+            h2 مرکز تحقیقات رباتیک
+          .date 
+            .item 
+              .title تاریخ ثبت: 
+              .val= dateConvert.convertDate(order.date)
+            .item 
+              .title کد پیگیری: 
+              .val -
+        .costumer-info 
+          .item 
+            .title خریدار: 
+            .val= order.ownerNmae
+          .item 
+            .title تلفن: 
+            .val= order.phone
+          .item 
+            .title کد پستی: 
+            .val= order.postCode
+        .order-list 
+          table
+            tr.header-tr
+              th.col5.center ردیف
+              th.col50 نام کالا
+              th.col5.center تعداد
+              th.center قیمت واحد (تومان)
+              th.center جمع قیمت (تومان)
+            -for(var i=0; i<order.items.length; i++){
+              tr 
+                td.col5.center= i+1
+                td.col50= order.items[i].item.title
+                td.col5.center= order.items[i].count
+                td.center= dot(order.items[i].item.price)
+                td.center= dot(order.items[i].item.price * order.items[i].count)
+            -}
+        .general-info
+          .address 
+            .item
+              .title نشانی: 
+              .val= order.address
+            .item 
+              .title تلفن خریدار: 
+              .val= order.phone 
+            .item 
+              .title نحوه ارسال: 
+              .val= order.delivery 
+            .item 
+              .val مهر فروشگاه: 
+
+          .final-prices 
+            table 
+              tr 
+                td جمع اقلام
+                td #{dot(order.totalPrice)} تومان
+              tr 
+                td تخفیف
+                td #{dot(order.discount)} تومان
+              tr 
+                td هزینه ارسال
+                td #{dot(order.deliveryPrice)} تومان
+              tr 
+                td ارزش افزوده
+                td #{dot(order.tax)}  تومان
+              tr 
+                td.last مجموع
+                td.last #{dot(order.totalPrice + order.deliveryPrice + order.tax - order.discount)} تومان
+        .slogan سپاس از اعتماد شما
+
+

@@ -761,7 +761,7 @@ router.get('/admin-blog-delete', ensureAuthenticated, (req, res, next) => {
         res.redirect('/dashboard/admin-blog');
     });
 });
-router.get('/admin-print-recipt', ensureAuthenticated, (req, res, next) => {
+router.get('/admin-print-recipt', (req, res, next) => {
     Order.findById(req.query.orderID, (err, order) => {
         res.render('./order-recipt', {
             theme: req.session.theme,
@@ -808,13 +808,15 @@ router.get('/view-certificate', (req, res, next) => {
         });
     });
 });
-router.get('/admin-print-invoice', ensureAuthenticated, (req, res, next) => {
+router.get('/admin-print-invoice', (req, res, next) => {
     Order.findById(req.query.orderID, (err, order) => {
         console.log(order)
         res.render('./order-invoice', {
             theme: req.session.theme,
             user: req.user,
             order, 
+            dateConvert,
+            dot,
         });
     })
 });
