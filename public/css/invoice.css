@@ -54,7 +54,7 @@
     flex-direction: row;
     display: flex;
     width: 80%;
-    margin: 1vw auto;
+    margin: 2vw auto;
     background-color: var(--lightgray);
 }
 .costumer-info .item{
