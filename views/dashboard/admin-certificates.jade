@@ -1,0 +1,53 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-discount.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .add-discount
+                    .form-view
+                        form(action="/dashboard/admin-add-certificate" method="POST") 
+                            .raw 
+                                input.quarter(type="text" name="fullName" placeholder="نام نام خانوادگی")
+                                input.quarter(type="text" name="date" placeholder="تاریخ")
+                                input.quarter(type="text" name="courseName" placeholder="نام دوره")
+                                input.quarter(type="text" name="score" placeholder="نمره")
+                            .align-left
+                                button.blue(type="submit") افزودن سرتیفیکیت
+                .data-list-view 
+                    .title-raw 
+                        .item.center.col30 نام و نام خانوادگی
+                        .item.center.col20 تاریخ
+                        .item.center.col20 نام دوره
+                        .item.center.col10 نمره
+                        .item.center.col10 مشاهده
+                        .item.center.col10 حذف
+                    -for(var i=0; i<certificates.length; i++){
+                        .raw 
+                            .item.center.col30 #{certificates[i].fullName} 
+                            .item.center.col20 #{certificates[i].date} 
+                            .item.center.col20 #{certificates[i].courseName} 
+                            .item.center.col10 #{certificates[i].score} 
+                            .item.center.col10 
+                                a.delete(href="/dashboard/view-certificate?id=#{certificates[i]._id}") 
+                                    i.fa.fa-eye
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-certificate?id=#{certificates[i]._id}") 
+                                    i.fa.fa-trash
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-12').classList.add('active');
+

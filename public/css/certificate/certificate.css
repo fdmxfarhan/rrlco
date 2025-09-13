@@ -1,0 +1,80 @@
+@font-face{
+    font-family: 'sacramento';
+    src: url('sacramento.ttf');
+}
+@font-face{
+    font-family: 'itcedscr';
+    src: url('itcedscr.ttf');
+}
+
+.image-view{
+    width: 100%;
+}
+.image-view img{
+    display: block;
+    width: 100%;
+}
+
+
+.image-view .fullname{
+    position: absolute;
+    top: 35vw;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    font-size: 5vw;
+    font-family: 'sacramento';
+    color: var(--brown);
+}
+.image-view .date{
+    position: absolute;
+    top: 47vw;
+    right: 10vw;
+    width: 30%;
+    text-align: center;
+    z-index: 10;
+    color: var(--brown);
+    font-size: 3vw;
+    font-family: 'itcedscr';
+}
+.image-view .coursename{
+    position: absolute;
+    top: 47vw;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    font-size: 3vw;
+    color: var(--brown);
+    font-family: 'itcedscr';
+}
+.image-view .score{
+    position: absolute;
+    top: 47vw;
+    left: 15vw;
+    width: 30%;
+    text-align: center;
+    z-index: 10;
+    color: var(--brown);
+    font-size: 3vw;
+    font-family: 'itcedscr';
+}
+.image-view img.logo{
+    display: block;
+    position: absolute;
+    z-index: 10;
+    top: 54vw;
+    right: 13vw;
+    width: 10vw;
+}
+@media print {
+  @page {
+    size: A4 landscape; /* Paper size: A4, orientation: landscape */
+    margin: 0;          /* Remove all margins */
+  }
+
+  body {
+    margin: 0;          /* Remove default body margin */
+  }
+}

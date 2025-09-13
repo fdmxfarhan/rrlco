@@ -73,7 +73,7 @@ block content
                         input.hide(type="text" name="id" value="#{product._id}")
                         if product.colors.length > 0
                             .color رنگ: 
-                                select#colors(name="color")
+                                select#color(name="color")
                                     for color in product.colors 
                                         option(value="#{color}")= color
                         .label تعداد: 

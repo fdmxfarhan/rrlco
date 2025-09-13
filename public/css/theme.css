@@ -47,6 +47,7 @@
     --antiflashWhite: #EFF2F5ff;
     --timberwolf: #D2D3D3ff;
     --emerald: #0CC27E;
+    --brown: #4b2817;
 }
 html{scroll-behavior: smooth;}
 body::-webkit-scrollbar {width: 0.5vw;}

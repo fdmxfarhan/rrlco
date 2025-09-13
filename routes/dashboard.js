@@ -22,6 +22,7 @@ const { IPinfoWrapper } = require("node-ipinfo");
 const bcrypt = require('bcryptjs');
 const Teacher = require('../models/Teacher');
 const Blogpost = require('../models/Blogpost');
+const Certificate = require('../models/Certificate');
 
 const ipinfo = new IPinfoWrapper("f29841994da430");
 // sms('09336448037', 'server is started !!');
@@ -769,6 +770,52 @@ router.get('/admin-print-recipt', ensureAuthenticated, (req, res, next) => {
         });
     })
 });
-
-
+router.get('/admin-certificates', ensureAuthenticated, (req, res, next) => {
+    Certificate.find({}, (err, certificates) => {
+        res.render('./dashboard/admin-certificates', {
+                theme: req.session.theme,
+                user: req.user,
+                certificates,
+            });
+    })
+});
+router.post('/admin-add-certificate', ensureAuthenticated, (req, res, next) => {
+    var {fullName, date, courseName, score} = req.body;
+    if(req.user.role == 'admin'){
+        var newcertificate = new Certificate({fullName, date, courseName, score});
+        newcertificate.save().then(certificate => {
+            req.flash('success_msg', 'سرتیفیکیت اضافه شد.');
+            res.redirect(`/dashboard/admin-certificates`);
+        }).catch(err => console.log(err));
+    }
+});
+router.get('/delete-certificate', ensureAuthenticated, (req, res, next) => {
+    var certificateID = req.query.id;
+    if(req.user.role == 'admin'){
+        Certificate.deleteOne({_id: certificateID}, (err) => {
+            res.redirect(`/dashboard/admin-certificates`);
+        });
+    }
+    else res.render('./error')
+}); 
+router.get('/view-certificate', (req, res, next) => {
+    var certificateID = req.query.id;
+    Certificate.findById(certificateID, (err, certificate) => {
+        res.render('./dashboard/admin-certificate-view', {
+            theme: req.session.theme,
+            user: req.user,
+            certificate,
+        });
+    });
+});
+router.get('/admin-print-invoice', ensureAuthenticated, (req, res, next) => {
+    Order.findById(req.query.orderID, (err, order) => {
+        console.log(order)
+        res.render('./order-invoice', {
+            theme: req.session.theme,
+            user: req.user,
+            order, 
+        });
+    })
+});
 module.exports = router;
