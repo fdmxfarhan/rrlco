@@ -56,6 +56,8 @@
     width: 80%;
     margin: 2vw auto;
     background-color: var(--lightgray);
+    border: 0.1vw solid black;
+
 }
 .costumer-info .item{
     flex: 1;
@@ -86,14 +88,18 @@
 .order-list table tr.header-tr{
     background-color: var(--lightgray);
 }
+.order-list table tr{
+    border: 0.1vw solid black;
+}
 .order-list table th{
     padding: 1.5vw 1vw;
-    font-size: 1.2vw;
+    font-size: 1.4vw;
 }
 .order-list table td{
     padding: 0.5vw 1vw;
-    border: 0.1vw solid var(--lightgray);
-    font-size: 1.1vw;
+    border: 0.1vw solid black;
+    font-size: 1.4vw;
+    color: black;
 }
 .order-list table .col5{width: 5%;}
 .order-list table .col10{width: 10%;}
@@ -132,16 +138,18 @@
     border-collapse: collapse;
 }
 .general-info .final-prices table td{
-    border: 0.1vw solid var(--lightgray);
+    border: 0.1vw solid black;
     padding: 0.5vw;
     width: 50%;
-    font-size: 1.1vw;
+    font-size: 1.4vw;
+    font-weight: bold;
 }
 .general-info .final-prices table td.last{background-color: var(--lightgray);}
 .slogan{
     text-align: center;
     padding: 1vw;
     font-size: 1.2vw;
+    font-weight: bold;
 }
 @media print {
   @page {
