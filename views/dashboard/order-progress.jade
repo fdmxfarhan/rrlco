@@ -43,7 +43,10 @@
             -for(var j=0; j<order.items.length; j++){
                 .item 
                     .name
-                        a(href="/products/product-view?id=#{order.items[j].item._id}" target='__blank')= order.items[j].item.title + ' ' + order.items[j].color
+                        a(href="/products/product-view?id=#{order.items[j].item._id}" target='__blank')
+                            | #{order.items[j].item.title}
+                            if typeof(order.items[j].color) != 'undefined' && order.items[j].color != null
+                                |  - رنگ: #{order.items[j].color}
                     .count #{order.items[j].count} عدد
                     .price #{dot(order.items[j].item.price)} تومان
             -}

@@ -456,9 +456,13 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
                 state: 'در انتظار پرداخت',
                 date: new Date(),
             });
-            newOrder.save().then(discount => {
+            newOrder.save().then(doc => {
                 User.updateMany({_id: req.user._id}, {$set: {shoppingcart: []}}, (err, doc) => {
-                    sms('09336448037', `ثبت سفارش جدید:\nکاربر: ${req.user.fullname}\nتلفن: ${req.user.phone}`);
+                    var itemsList = '';
+                    for(var i=0; i<newOrder.items.length; i++){
+                        itemsList += `${newOrder.items[i].item.title} - تعداد: ${newOrder.items[i].count}\n`;
+                    }
+                    sms('09336448037', `ثبت سفارش جدید:\nکاربر: ${req.user.fullname}\nتلفن: ${req.user.phone}\nاقلام سفارش: ${itemsList}`);
                     sms(req.user.phone, `سفارش شما با موفقیت ثبت شد.\n\nمرکز تحقیقات رباتیک.\nhttps://rrlco.ir/courses`);
                     res.redirect(`/payment/pay-order?id=${newOrder._id}`);
                 });
