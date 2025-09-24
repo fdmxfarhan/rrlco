@@ -183,7 +183,7 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
             else{
                 var already_exist = false;
                 for(var i=0; i<shoppingcart.length; i++){
-                    if(shoppingcart[i].item._id == id){
+                    if(shoppingcart[i].item._id == id ){
                         shoppingcart[i].count += count;
                         already_exist = true;
                     }
