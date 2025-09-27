@@ -22,6 +22,9 @@ const {
 const timedigit = require('../config/timedigit');
 const dateConvert = require('../config/dateConvert');
 
+Product.updateMany({colors: ['']}, {$set: {colors: []}}, (err, product) => {
+    console.log('products updated')
+})
 
 router.get('/', (req, res, next) => {
     var {
@@ -165,7 +168,8 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
             weight,
             defaultcount,
             available,
-            colors: colors.split('،'),
+            // colors: colors.split('،'),
+            colors: colors == ''?  [] : colors.split('،'),
         }, (err, doc) => {
             res.redirect(`/products/product-view?id=${id}`);
         });
