@@ -6,6 +6,7 @@ const {
 } = require('../config/auth');
 var User = require('../models/User');
 var Product = require('../models/Product');
+const Archive = require('../models/Archive');
 const mail = require('../config/mail');
 const dot = require('../config/dot');
 const {
@@ -21,7 +22,6 @@ const {
 } = require('../config/order');
 const timedigit = require('../config/timedigit');
 const dateConvert = require('../config/dateConvert');
-
 
 router.get('/', (req, res, next) => {
     var {
@@ -129,11 +129,24 @@ router.get('/disable-product', ensureAuthenticated, (req, res, next) => {
 router.get('/delete-product', ensureAuthenticated, (req, res, next) => {
     var productID = req.query.id;
     if (req.user.role == 'admin') {
-        Product.deleteOne({
-            _id: productID
-        }, (err) => {
-            res.redirect(`/products`);
-        });
+        Product.findById(productID, (err, product) => {
+            var newArchive = new Archive({
+                object: product,
+                userID: req.user._id,
+                type: 'product',
+                action: 'delete',
+                date: dateConvert.getToday(),
+                userFullname: req.user.fullname,
+            });
+            newArchive.save().then(doc => {
+                Product.deleteOne({
+                    _id: productID
+                }, (err) => {
+                    req.flash('success_msg', 'محصول با موفقیت حذف شد');
+                    res.redirect(`/products`);
+                });
+            }).catch(err => console.log(err));
+        })
     } else res.render('./error');
 });
 router.post('/edit-product', ensureAuthenticated, (req, res, next) => {

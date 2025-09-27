@@ -1,0 +1,39 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-discount.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .data-list-view 
+                    .title-raw 
+                        .item.center.col15 عنوان
+                        .item.center.col10 اقدام
+                        .item.center.col10 تاریخ
+                        .item.center.col10 کاربر
+                        .item.center.col10 برگرداندن
+                    -for(var i=0; i<archives.length; i++){
+                        .raw 
+                            .item.center.col15 #{archives[i].type} 
+                            .item.center.col10 #{archives[i].action} 
+                            .item.center.col10 #{archives[i].date} 
+                            .item.center.col10 #{archives[i].userFullname} 
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-discount?id=#{archives[i]._id}") 
+                                    i.fa.fa-undo-alt
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-8').classList.add('active');
+
