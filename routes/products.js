@@ -45,6 +45,7 @@ router.get('/', (req, res, next) => {
 router.get('/product-view', (req, res, next) => {
     var productID = req.query.id;
     Product.findById(productID, (err, product) => {
+        console.log(product);
         Product.find({
             category: product.category
         }, (err, relatedProducts) => {
