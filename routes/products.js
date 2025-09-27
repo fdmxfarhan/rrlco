@@ -22,9 +22,6 @@ const {
 const timedigit = require('../config/timedigit');
 const dateConvert = require('../config/dateConvert');
 
-Product.updateMany({colors: ['']}, {$set: {colors: []}}, (err, product) => {
-    console.log('products updated')
-})
 
 router.get('/', (req, res, next) => {
     var {
