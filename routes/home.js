@@ -83,5 +83,8 @@ router.get('/app/sitemap.xml', (req, res, next) => {
 router.get('/rrl', (req, res, next) => {
     res.redirect('http://45.90.72.56:3003/');
 })
-
+router.get('/search', (req, res, next) => {
+    var {word} = req.query;
+    
+})
 module.exports = router;
