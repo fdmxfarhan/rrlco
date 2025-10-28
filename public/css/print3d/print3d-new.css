@@ -118,62 +118,6 @@ body{
 .product-view .content .sort-control{
     position: relative;
 }
-.product-view .content .sort-control h1{
-    font-size: 1vw;
-    margin: 0;
-    padding: 1.5vw 3vw;
-    padding-right: 1vw;
-    margin-bottom: 1vw;
-    color: var(--text);
-}
-.product-view .content .sort-control h1 a{
-    color: var(--lightgray);
-    font-size: 0.8vw;
-    display: inline;
-    padding: 0 0.6vw;
-    border-left: 0.1vw solid var(--lightgray);
-}
-.product-view .content .sort-control h1 a.last{border: none;}
-.product-view .content .sort-control h1 a:hover{
-    color: var(--purple);
-}
-.product-view .content .sort-control h1 .line{
-    display: inline;
-    width: 0.1vw;
-    height: 1vw;
-    background-color: var(--lightgray);
-}
-.searchbar{
-    position: absolute;
-    left: 2vw;
-    top: 1.2vw;
-}
-.searchbar input.text{
-    border: none;
-    background-color: var(--lightergray);
-    font-family: 'iransans';
-    padding: 0.5vw 2vw;
-    font-size: 1vw;
-    border-top-right-radius: 1vw;
-    border-bottom-right-radius: 1vw;
-    outline: none;
-    width: 12vw;
-}
-.searchbar button.submit{
-    background-color: var(--purple);
-    border-top-left-radius: 1vw;
-    border-bottom-left-radius: 1vw;
-    border: none;
-    padding: 0.5vw 1vw;
-    font-size: 1vw;
-    color: white;
-    font-family: 'iransans';
-    outline: none;
-    cursor: pointer;
-}
-.searchbar button:hover{
-    background-color: var(--pink);
-}
 .stl_cont{
     width: 100%;
     height: 90vh;
@@ -360,28 +304,6 @@ body{
     color: var(--dark);
     font-weight: bold;
 }
-section.decription-content{
-    width: 90%;
-    margin: 2vw auto;
-}
-section.decription-content h1{
-    color: var(--purple);
-    font-size: 1.2vw;
-    margin-top: 2vw;
-}
-section.decription-content p{
-    color: var(--text);
-    font-size: 1vw;
-    text-align: justify;
-}
-section.decription-content .images-view{
-    overflow: hidden;
-}
-section.decription-content .images-view img{
-    width: 23%;
-    margin: 0 1%;
-    border-radius: 0.5vw;
-}
 h1.print3d-title{
     font-size: 1.3vw;
     color: var(--purple);
@@ -392,3 +314,141 @@ h1.print3d-title{
 
 /* -------------------------------------- Responsive Until Here ------------------------------------------- */
 
+@media only screen and (max-width: 800px) {
+    .product-view{
+    width: 95%;
+    flex-direction: column;
+    }
+    .product-view .product-cont-view{
+        width: 100%;
+        border-radius: 3vw;
+    }
+    .product-view .sidebar-view{
+        width: 100%;
+    }
+    .product-view .sidebar{
+        border-radius: 3vw;
+    }
+    .product-view .product-cont-view .content{
+        border-radius: 3vw;
+    }
+    .product-view h1.preview-title{
+        font-size: 3.3vw;
+        padding: 3vw 6vw;
+    }
+    .product-view .sidebar .user-info h1{
+        font-size: 3.3vw;
+        padding: 3vw 6vw;
+    }
+    .product-view .sidebar .user-info .info a.edit{
+        font-size: 2.9vw;
+        margin-bottom: 6vw;
+    }
+    .product-view .sidebar .user-info .info a.edit i{
+        padding-left: 1.5vw;
+    }
+    .product-view .sidebar .nav-view a.link{
+        padding: 1.5vw 3vw;
+        border-bottom: 0.3vw solid var(--lightergray);
+        font-size: 3vw;
+    }
+    .stl_cont{
+        height: 50vh;
+    }
+    
+    .print3d-info h1{
+        font-size: 3.2vw;
+        margin: 6vw 0;
+        margin-bottom: 1.6vw;
+    }
+    .print3d-info h1 i{
+        padding-left: 1.5vw;
+    }
+    .print3d-info p{
+        font-size: 3vw;
+        margin-bottom: 3vw;
+    }
+    .print3d-info .label{
+        font-size: 3.1vw;
+        margin-bottom: 9vw;
+    }
+    .print3d-info .submit {
+        margin-bottom: 6vw;
+    }
+    .print3d-info .submit button{
+        border-radius: 3vw;
+        padding: 1.8vw 0;
+        font-size: 3.2vw;
+    }
+    .print3d-info .submit button i{
+        padding-left: 3vw;
+    }
+    .print3d-info .upload-area{
+        border: 0.8vw dashed var(--blue);
+        padding: 6vw 0;
+        font-size: 3.3vw;
+        border-radius: 3vw;
+    }
+    .print3d-info .upload-area i{
+        font-size: 3.6vw;
+    }
+    .print3d-guide {
+        top: 13vw;
+    }
+    .print3d-guide img{width: 25vw;}
+    .print3d-stat{
+        bottom: 1.5vw;
+    }
+    .print3d-stat .item{
+        width: 50%;
+        font-size: 3vw;
+    }
+    .print3d-stat .item i{
+        padding-left: 1.5vw;
+    }
+    .print3d-stat .item .label{
+        padding-left: 3.5vw;
+    }
+    .print3d-info .item .label{
+        width: 30%;
+        padding-top: 1vw;
+    }
+    .print3d-info .item .val{
+        width: 70%;
+    }
+    .print3d-info .item .val.price{
+        font-size: 3.2vw;
+        margin-bottom: 6vw;
+    }
+    .print3d-info .item .val select,
+    .print3d-info .item .val input{
+        display: block;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: var(--lightgray);
+        padding: 1.7vw 3vw;
+        margin-bottom: 3vw;
+        border-radius: 2vw;
+        font-family: 'iransans';
+        font-size: 3vw;
+    }
+    .print3d-info .item input.title{
+        display: block;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: var(--lightgray);
+        padding: 1.9vw 3vw;
+        margin-bottom: 3vw;
+        border-radius: 2vw;
+        font-size: 3vw;
+    }
+    h1.print3d-title{
+        font-size: 3.3vw;
+        color: var(--purple);
+        width: 90%;
+        margin: auto;
+        margin-top: 2vw;
+    }
+}
