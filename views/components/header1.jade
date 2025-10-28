@@ -1,0 +1,71 @@
+header 
+    canvas(id="nokey" width="800" height="800")
+    .top-info 
+        .hello 
+            .line 
+            .text خوش آمدید به 
+        h1.name  
+            //- .red تـــ
+            //- | ــینکو
+            | مرکز تحقیقات رباتیک
+        .hello
+            //- .text.title3 INSTRUMENTS 
+            //- .text.title2 TEHRAN 
+            .text.title2 RRLco
+        ul.jobs
+            li 
+                a(href="/courses") دوره های آموزشی رباتیک و برنامه نویسی
+            li 
+                a(href="/products") فروشگاه اینترنتی قطعات الکترونیکی
+            li 
+                a(href="/project") انجام پروژه‌های الکترونیکی و صنعتی
+            li 
+                a(href="/3dprint") سفارش پرینت 3 بعدی
+            li 
+                a(href="/elecrepair") تعمیرات بوردهای الکترونیکی
+        a.button(href="/products") ثبت سفارش
+        .socials
+            //- a(href="https://instagram.com/S.R.Brobotic" target="_blank") 
+            //-     i.fa.fa-instagram 
+            //- a(href="https://t.me/fdmxfarhan" target="_blank") 
+            //-     i.fa.fa-telegram 
+            a(href="mailto:test@yahoo.com") 
+                i.fa.fa-envelope 
+            a(href="tel:+989111111111") 
+                i.fa.fa-phone 
+    .top-image 
+        //- img(src="/img/robot.png")
+        .slideshow-container
+            .mySlides.fade
+                .numbertext 1 / 6
+                img(src='/img/home/01.jpg', style='width:100%')
+                .text پروژه های رباتیک
+            .mySlides.fade
+                .numbertext 2 / 6
+                img(src='/img/home/02.jpg', style='width:100%')
+                .text پروژه های برنامه نویسی
+            .mySlides.fade
+                .numbertext 3 / 6
+                img(src='/img/home/03.jpg', style='width:100%')
+                .text پرینت سه بعدی
+            .mySlides.fade
+                .numbertext 4 / 6
+                img(src='/img/home/04.jpg', style='width:100%')
+                .text پروژه‌های الکترونیک
+            .mySlides.fade
+                .numbertext 5 / 6
+                img(src='/img/home/05.jpg', style='width:100%')
+                .text دوره‌های آموزشی رباتیک
+            .mySlides.fade
+                .numbertext 6 / 6
+                img(src='/img/home/06.jpg', style='width:100%')
+                .text دوره‌های آموزشی برنامه نویسی
+            //- a.prev(onclick='plusSlides(-1)') &#x276E;
+            //- a.next(onclick='plusSlides(1)') &#x276F;
+            .bulletpoints
+                span.dot(onclick='currentSlide(1)')
+                span.dot(onclick='currentSlide(2)')
+                span.dot(onclick='currentSlide(3)')
+                span.dot(onclick='currentSlide(4)')
+                span.dot(onclick='currentSlide(5)')
+                span.dot(onclick='currentSlide(6)')

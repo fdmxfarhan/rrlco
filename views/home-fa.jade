@@ -14,145 +14,15 @@ html
         link(rel='stylesheet', href='/css/four-card.css')
         link(rel='stylesheet', href='/css/double-side.css')
         link(rel='stylesheet', href='/css/slideshow.css')
+        link(rel="stylesheet", href="/css/components/header2.css")
     
     body
         .nav-black-modal
         .black-modal
-        nav 
-            #nav-collapse-button
-                i.fa.fa-bars
-            #nav-collapse-view 
-                a.active(href="/") صفحه اصلی 
-                a(href="/products") فروشگاه 
-                a(href="/courses") دوره‌ها 
-                a(href="/blog") بلاگ 
-                a(href="/print3d") پرینت سه بعدی 
-                //- a(href="/manufacture") محصولات
-                //- a(href="/cooperation") همکاری با ما
-                //- a(href="/about-us") درباره ما
-            .user-nav
-                -if(user){
-                    a.user(href="/dashboard")
-                        .text منوی کاربری
-                        i.fa.fa-user
-                -}else{
-                    a.user(href="/users/login")
-                        .text ورود/ثبت نام
-                        i.fa.fa-user
-                -}
-                a.cart(href="/dashboard/shopping-cart")  
-                    i.fa.fa-shopping-cart
-                a.cart(href="/products")  
-                    i.fa.fa-search
-            //- .languages 
-            //-     a(href="/?lang=FA").lang#farsi(class="#{lang == 'FA'? 'active' : ''}") FA 
-            //-     a(href="/?lang=EN").lang#english(class="#{lang == 'EN'? 'active' : ''}") EN
-        header 
-            canvas(id="nokey" width="800" height="800")
-            .top-info 
-                .hello 
-                    .line 
-                    .text خوش آمدید به 
-                h1.name  
-                    //- .red تـــ
-                    //- | ــینکو
-                    | مرکز تحقیقات رباتیک
-                .hello
-                    //- .text.title3 INSTRUMENTS 
-                    //- .text.title2 TEHRAN 
-                    .text.title2 RRLco
-                ul.jobs
-                    li 
-                        a(href="/courses") دوره های آموزشی رباتیک و برنامه نویسی
-                    li 
-                        a(href="/products") فروشگاه اینترنتی قطعات الکترونیکی
-                    li 
-                        a(href="/project") انجام پروژه‌های الکترونیکی و صنعتی
-                    li 
-                        a(href="/3dprint") سفارش پرینت 3 بعدی
-                    li 
-                        a(href="/elecrepair") تعمیرات بوردهای الکترونیکی
-                a.button(href="/products") ثبت سفارش
-                .socials
-                    //- a(href="https://instagram.com/S.R.Brobotic" target="_blank") 
-                    //-     i.fa.fa-instagram 
-                    //- a(href="https://t.me/fdmxfarhan" target="_blank") 
-                    //-     i.fa.fa-telegram 
-                    a(href="mailto:test@yahoo.com") 
-                        i.fa.fa-envelope 
-                    a(href="tel:+989111111111") 
-                        i.fa.fa-phone 
-            .top-image 
-                //- img(src="/img/robot.png")
-                .slideshow-container
-                    .mySlides.fade
-                        .numbertext 1 / 6
-                        img(src='/img/home/01.jpg', style='width:100%')
-                        .text پروژه های رباتیک
-                    .mySlides.fade
-                        .numbertext 2 / 6
-                        img(src='/img/home/02.jpg', style='width:100%')
-                        .text پروژه های برنامه نویسی
-                    .mySlides.fade
-                        .numbertext 3 / 6
-                        img(src='/img/home/03.jpg', style='width:100%')
-                        .text پرینت سه بعدی
-                    .mySlides.fade
-                        .numbertext 4 / 6
-                        img(src='/img/home/04.jpg', style='width:100%')
-                        .text پروژه‌های الکترونیک
-                    .mySlides.fade
-                        .numbertext 5 / 6
-                        img(src='/img/home/05.jpg', style='width:100%')
-                        .text دوره‌های آموزشی رباتیک
-                    .mySlides.fade
-                        .numbertext 6 / 6
-                        img(src='/img/home/06.jpg', style='width:100%')
-                        .text دوره‌های آموزشی برنامه نویسی
-                    //- a.prev(onclick='plusSlides(-1)') &#x276E;
-                    //- a.next(onclick='plusSlides(1)') &#x276F;
-                    .bulletpoints
-                        span.dot(onclick='currentSlide(1)')
-                        span.dot(onclick='currentSlide(2)')
-                        span.dot(onclick='currentSlide(3)')
-                        span.dot(onclick='currentSlide(4)')
-                        span.dot(onclick='currentSlide(5)')
-                        span.dot(onclick='currentSlide(6)')
-        section.white
-            h1.title
-                .line 
-                .text دوره‌های آموزشی
-            .triple-card-view.width80
-                -for(var i=0; i < courses.length && i < 3; i++){
-                    a(href="/courses/course-view?id=#{courses[i]._id}").card.fixed-height
-                        .image 
-                            img(src="#{courses[i].cover}", alt="")
-                            -if(courses[i].type == 'مجازی')
-                                .type.green آنلاین
-                            -if(courses[i].type == 'آفلاین')
-                                .type.pink آفلاین
-                            -if(courses[i].type == 'حضوری')
-                                .type.blue حضوری
-                        h1= courses[i].title
-                        p= courses[i].shortdescription
-                        .teacher 
-                            i.fa.fa-user 
-                            .text= courses[i].teacher
-                        .line
-                        .info 
-                            .stat 
-                                i.fa.fa-clock
-                                .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
-                            .price
-                                -if(courses[i].price > 0){
-                                    .val= dot(courses[i].price)
-                                    .unit تومان
-                                -}else{
-                                    .unit رایگان
-                                -}
-                -}
-            a.seemore(href="/courses") مشاهده بیشتر 
-                i.fa.fa-chevron-left
+        include ./components/nav-home
+        //- include ./components/header1
+        include ./components/header2
+        
         section.white
             h1.title
                 .line 
@@ -222,6 +92,41 @@ html
                     button.scroll-btn#scroll-btn-left(onclick="scroll_left()")
                         i.fa.fa-chevron-left
             a.seemore(href="/products") مشاهده بیشتر 
+                i.fa.fa-chevron-left
+        section.white
+            h1.title
+                .line 
+                .text دوره‌های آموزشی
+            .triple-card-view.width80
+                -for(var i=0; i < courses.length && i < 3; i++){
+                    a(href="/courses/course-view?id=#{courses[i]._id}").card.fixed-height
+                        .image 
+                            img(src="#{courses[i].cover}", alt="")
+                            -if(courses[i].type == 'مجازی')
+                                .type.green آنلاین
+                            -if(courses[i].type == 'آفلاین')
+                                .type.pink آفلاین
+                            -if(courses[i].type == 'حضوری')
+                                .type.blue حضوری
+                        h1= courses[i].title
+                        p= courses[i].shortdescription
+                        .teacher 
+                            i.fa.fa-user 
+                            .text= courses[i].teacher
+                        .line
+                        .info 
+                            .stat 
+                                i.fa.fa-clock
+                                .val #{timedigit(courses[i].totalTime.hours)}:#{timedigit(courses[i].totalTime.minutes)}:00
+                            .price
+                                -if(courses[i].price > 0){
+                                    .val= dot(courses[i].price)
+                                    .unit تومان
+                                -}else{
+                                    .unit رایگان
+                                -}
+                -}
+            a.seemore(href="/courses") مشاهده بیشتر 
                 i.fa.fa-chevron-left
         section.white
             h1.title

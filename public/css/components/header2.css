@@ -1,0 +1,97 @@
+header.header2 .header2-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+header.header2 h1.main-title{
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--red);
+    margin: 0;
+    padding: 0;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+header.header2 .triple-section{
+    display: flex;
+    flex-direction: row;
+    padding: 0 9vw;
+}
+header.header2 .triple-section .part{
+    flex: 1;
+    margin: 0 2vw;
+}
+header.header2 .triple-section .part img{
+    width: 100%;
+    border-radius: 3vw;
+    border: 0.3vw solid var(--lightgray);
+    height: 42vh;
+    object-fit: cover;
+    object-position: center;
+    transition-duration: 300ms;
+}
+header.header2 .triple-section .part:hover img{
+    border: 0.3vw solid var(--red);
+}
+header.header2 .triple-section .part.small img{
+    width: 90%;
+    height: 35vh;
+}
+header.header2 .triple-section .part h1{
+    font-size: 1.4vw;
+    text-align: center;
+    color: var(--blue);
+    margin: 0;
+    padding: 0;
+}
+header.header2 .triple-section .part p{
+    text-align: center;
+    font-size: 1vw;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+}
+header.header2 .triple-section .part a{
+    display: block;
+    width: fit-content;
+    margin: auto;
+    background-color: var(--red);
+    color: white;
+    font-size: 'iransans';
+    padding: 0.5vw 3vw;
+    border-radius: 1vw;
+    margin-top: 0.7vw;
+}
+header.header2 .triple-section .part a:hover{
+    background-color: var(--red2);
+}
+@media only screen and (max-width: 600px) {
+    header.header2 h1.main-title{
+        font-size: 5vw;
+    }
+    header.header2 .triple-section{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header.header2 .triple-section .part h1{
+        font-size: 3vw;
+    }
+    header.header2 .triple-section .part p{
+        font-size: 3vw;
+    }
+    header.header2 .triple-section .part a{
+        font-size: 3vw;
+        padding: 1vw 3vw;
+        border-radius: 3vw;
+    }
+    header.header2 .triple-section .part{
+        margin: 0;
+        margin-bottom: 3vw;
+    }
+    header.header2 .triple-section .part.small img,
+    header.header2 .triple-section .part img{
+        height: 20vw;
+        width: 100%;
+    }
+}

@@ -212,11 +212,10 @@ router.post('/add-teacher', ensureAuthenticated, upload.single('picture'), (req,
         }).catch(err => console.log(err));
     }
 });
-
-router.post('/blog-upload-image', ensureAuthenticated, upload.single('file'), (req, res) => {
-    if (req.user.role !== 'admin') {
-        return res.status(403).json({ error: 'Unauthorized' });
-    }
+router.post('/blog-upload-image', upload.single('file'), (req, res) => {
+    // if (req.user.role !== 'admin') {
+    //     return res.status(403).json({ error: 'Unauthorized' });
+    // }
     
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
@@ -255,4 +254,5 @@ router.post('/admin-blog-create', ensureAuthenticated, upload.single('coverImage
         }
     }else res.render('./error');
 });
+
 module.exports = router;

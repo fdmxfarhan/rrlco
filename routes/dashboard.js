@@ -224,6 +224,36 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
         })
     }
 });
+router.post('/add-to-cart-print3d', ensureAuthenticated, (req, res, next) => {
+    var {stl_url, type, price, title, filament, colorABS, colorPLA, infill, count, layerhieght} = req.body;
+    var color = colorABS;
+    if(filament == 'PLA') color = colorPLA;
+    var shoppingcart = req.user.shoppingcart;
+    var newPrint3d = new Print3d({
+        title, 
+        filament, 
+        color, 
+        infill, 
+        price, 
+        layerhieght, 
+        date: new Date(), 
+        username: req.user.fullname, 
+        userID: req.user._id,
+        file: stl_url,
+    })    
+    newPrint3d.save().then(doc => {
+        console.log(newPrint3d);
+        shoppingcart.push({
+            item: newPrint3d,
+            count,
+            type,
+        });
+        User.updateMany({_id: req.user._id}, {$set: {shoppingcart}}, (err, doc) => {
+            req.flash('success_msg', 'به سبد خرید اضافه شد');
+            res.redirect(`/dashboard/shopping-cart`);
+        });
+    }).catch(err => console.log(err));
+});
 router.get('/shopping-cart', ensureAuthenticated, (req, res, next) => {
     var totalPrice = 0, discount = 0, tax = 0;
     totalPrice = cart_total_price(req.user.shoppingcart);
@@ -413,8 +443,8 @@ router.get('/compelete-order', ensureAuthenticated, (req, res, next) => {
     }
 });
 router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
-    var {city, postCode, delivery, phone, address, description} = req.body;
-    if(!city || !postCode || !delivery || !phone || !address){
+    var {city, postCode, delivery, phone, address, description, school} = req.body;
+    if(!city || !delivery || !phone || school == '-- انتخاب مدرسه --'){
         req.flash('error_msg', 'لطفا تمام فیلدها را پر کنید.');
         res.redirect('/dashboard/compelete-order');
     }
@@ -450,7 +480,7 @@ router.post('/compelete-order', ensureAuthenticated, (req, res, next) => {
                 delivery,
                 city,
                 postCode,
-                address,
+                address: delivery == 'مدرسه'? school : address,
                 phone,
                 payed: false,
                 compeleted: false,

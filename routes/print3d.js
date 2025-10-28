@@ -17,6 +17,9 @@ router.get('/', (req, res, next) => {
             user: req.user,
             dot,
             products,
+            dot,
+            print3dCosts,
+            filaments,
         });
     })
 });

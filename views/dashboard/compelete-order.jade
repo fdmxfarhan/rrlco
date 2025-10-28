@@ -41,13 +41,25 @@ block content
                                 select.quarter#delivery-select(name="delivery" onchange="deliverychanged()") 
                                     option#peyk-option(value="پیک موتوری") پیک موتوری (پس کرایه)
                                     option#post-option(value="پست پیشتاز") پست پیشتاز (70 تومان)
+                                    option#school-option(value="مدرسه") ارسال به مدارس تهران (رایگان)
                                 .label-quarter.pad
                                     i.fa.fa-phone
                                     | شماره تماس: 
                                 input.quarter(type="text" name="phone" placeholder="شماره تماس" value="#{user.phone}")
-                            .raw 
+                            .raw#address-field
                                 .rawlabel آدرس:
                                 textarea.short(name="address" placeholder="آدرس خود را وارد کنید...")= user.address
+                            .raw#school-select-field.hide
+                                .rawlabel انتخاب مدرسه (فقط لیست مدارس  زیر قابل انتخاب است):
+                                select.full(name="school") 
+                                    option(value="انتخاب مدرسه") -- انتخاب مدرسه --
+                                    option(value="دبیرستان علامه طباطبایی واحد پاسداران") دبیرستان علامه طباطبایی واحد پاسداران
+                                    option(value="دبیرستان علامه طباطبایی واحد فرمانیه") دبیرستان علامه طباطبایی واحد فرمانیه
+                                    option(value="دبیرستان علامه طباطبایی واحد میرداماد") دبیرستان علامه طباطبایی واحد میرداماد
+                                    option(value="دبیرستان علامه حلی 5 دوره دوم") دبیرستان علامه حلی 5 دوره دوم
+                                    option(value="دبیرستان حق شناس دوره اول") دبیرستان حق شناس دوره اول
+                                    option(value="دبیرستان فرزانگان 4") دبیرستان فرزانگان 4
+                                
                             .raw 
                                 .rawlabel توضیحات:
                                 textarea.short(name="description" placeholder="اگر توضیح خاصی در مورد سفارش خود دارید آن را در این بنویسید.")

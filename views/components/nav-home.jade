@@ -1,0 +1,29 @@
+nav 
+    #nav-collapse-button
+        i.fa.fa-bars
+    #nav-collapse-view 
+        a.active(href="/") صفحه اصلی 
+        a(href="/products") فروشگاه 
+        a(href="/courses") دوره‌ها 
+        a(href="/blog") بلاگ 
+        a(href="/print3d") پرینت سه بعدی 
+        //- a(href="/manufacture") محصولات
+        //- a(href="/cooperation") همکاری با ما
+        //- a(href="/about-us") درباره ما
+    .user-nav
+        -if(user){
+            a.user(href="/dashboard")
+                .text منوی کاربری
+                i.fa.fa-user
+        -}else{
+            a.user(href="/users/login")
+                .text ورود/ثبت نام
+                i.fa.fa-user
+        -}
+        a.cart(href="/dashboard/shopping-cart")  
+            i.fa.fa-shopping-cart
+        a.cart(href="/products")  
+            i.fa.fa-search
+    //- .languages 
+    //-     a(href="/?lang=FA").lang#farsi(class="#{lang == 'FA'? 'active' : ''}") FA 
+    //-     a(href="/?lang=EN").lang#english(class="#{lang == 'EN'? 'active' : ''}") EN

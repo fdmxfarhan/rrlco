@@ -1,10 +1,13 @@
 extends ../layout
 
 block styles
-    link(rel="stylesheet", href="/css/print3d/print3d.css")
+    link(rel="stylesheet", href="/css/print3d/print3d-new.css")
     link(rel='stylesheet', href='/css/four-card.css')
     
 block content
+    #abscost.hide= print3dCosts.ABS
+    #placost.hide= print3dCosts.PLA
+
     .product-view 
         .sidebar-view 
             .sidebar 
@@ -15,19 +18,61 @@ block content
                         h1 
                             i.fa.fa-file
                             | فایل خود را انتخاب کنید
-                        p فرمت قابل قبول stl می‌باشد. لطفا جهت استعلام قیمت و ثبت سفارش، فایل خود را آپلود نمایید.
-                        form(action="/upload/print3d" method="POST" enctype="multipart/form-data") 
-                            .upload-area انتخاب فایل 
-                                i.fa.fa-cloud-upload
-                                input#fileinput(type="file" name="myfile" accept=".stl")
-                            .label#upload-filename فایل stl خود را انتخاب کنید.
-                            .submit 
-                                button(type="submit")
-                                    i.fa.fa-upload 
-                                    | استعلام قیمت و سفارش
+                        //- p فرمت قابل قبول stl می‌باشد. لطفا جهت استعلام قیمت و ثبت سفارش، فایل خود را آپلود نمایید.
+                        .upload-area انتخاب فایل 
+                            i.fa.fa-cloud-upload
+                            input#fileinput(type="file" name="myfile" accept=".stl")
+                        .label#upload-filename فایل stl خود را انتخاب کنید.
+                        form(action="/dashboard/add-to-cart-print3d" method="POST") 
+                            //- input.hide(type="text" name="id" value="#{print3d._id}")
+                            input.hide(type="text" name="stl_url" id="stl-url")
+                            input.hide(type="text" name="type" value="print3d")
+                            input.hide(type="number" name="price" id="price-input")
+                            .item
+                                input.title(type="text" name="title" placeholder="عنوان" required)
+                            .item 
+                                .label نوع فیلامنت: 
+                                .val
+                                    select(onchange="updatePrice()" name="filament" id="filament") 
+                                        option(value="PLA") PLA
+                                        option(value="ABS") ABS
+                            .item 
+                                .label رنگ: 
+                                .val
+                                    select#colorABS(onchange="updatePrice()" name="colorABS") 
+                                        -for(var i=0; i<filaments.ABS.length; i++){
+                                            option(value="#{filaments.ABS[i]}") #{filaments.ABS[i]}
+                                        -}
+                                    select#colorPLA.hide(onchange="updatePrice()" name="colorPLA") 
+                                        -for(var i=0; i<filaments.PLA.length; i++){
+                                            option(value="#{filaments.PLA[i]}") #{filaments.PLA[i]}
+                                        -}
+                                    
+                            .item 
+                                .label تراکم (%): 
+                                .val 
+                                    input(type="number" onchange="updatePrice()" name="infill" id="infill" value="20" min="10" max="100")
+                            .item 
+                                .label تعداد: 
+                                .val 
+                                    input(type="number" onchange="updatePrice()" name="count" id="count" value="1" min="1" max="100")
+                            .item 
+                                .label ضخامت لایه: 
+                                .val 
+                                    input(type="number" onchange="updatePrice()" name="layerhieght" id="layerhieght" value="0.2" min="0.1" max="0.6" step="0.01")
+                            .item 
+                                .label قیمت
+                                .val.price#price-value 0 تومان
+                            .submit
+                                button.green(type="submit")
+                                    i.fa.fa-shopping-cart
+                                    | افزودن به سبد خرید
         .product-cont-view
             .content
+                h1.preview-title پیش نمایش سه بعدی
                 .stl_cont#stl_cont
+                .print3d-guide 
+                    img(src="/img/3dprintguide.png", alt="")
                 .print3d-stat 
                     .item
                         i.fa.fa-database
@@ -47,38 +92,135 @@ block content
                         i.fa.fa-arrows
                         .label ارتفاع(mm): 
                         .val#info-height 0
-            .content 
-                include description
-            .content 
-                h1.print3d-title محصولات پرینت سه بعدی
-                .four-card-view
-                    -for(var i=0; i<products.length; i++){
-                        a(href="/products/product-view?id=#{products[i]._id}").card.triple
-                            .image 
-                                img(src="#{products[i].pictures[0]}", alt="")
-                            h1= products[i].title
-                            -if(products[i].available)
-                                .available.green موجود
-                            -else
-                                .available.red نا موجود
-                            .nodiscount
-                                .val= dot(products[i].nodiscountprice)
-                                .unit تومان
-                            .info 
-                                .price
-                                    .val= dot(products[i].price)
-                                    .unit تومان
-                                -if(products[i].available){
-                                    .buy-btn 
-                                        i.fa.fa-shopping-cart
-                                        | خرید
-                                -}
-                    -}
-                          
-
-    
 
     script(src="/js/stl/stl_viewer.min.js")
-    script(src="/js/print3d.js")
+    //- script(src="/js/print3d-view.js")
+    //- script(src="/js/print3d.js")
     script.
         document.getElementById('navlink-4').classList.add('active');
+    script.
+        // initialize viewer
+        const viewer = new StlViewer(document.getElementById("stl_cont"), {
+            bgcolor: "#111",
+            rotate: true,
+            zoom: 400 ,
+            //- zoom: true,
+            auto_resize: true,
+            fit_camera: true, 
+            model_loaded_callback: (id) => {
+                console.log("STL loaded:", id);
+                updateData();
+            },
+        });
+
+        // handle file input
+        const fileInput = document.getElementById("fileinput");
+        const label = document.getElementById("upload-filename");
+        const uploadUrl = "/upload/blog-upload-image"; // your upload API
+
+        async function uploadSTL(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch(uploadUrl, {
+                    method: 'POST',
+                    body: formData
+                });
+                console.log(response)
+                const result = await response.json();
+
+                if (!response.ok) {
+                    alert(result.error || "Upload failed");
+                    return null;
+                }
+
+                // set hidden input value to uploaded file URL
+                document.getElementById('stl-url').value = result.link;
+                console.log("Uploaded to:", result.link);
+                return result.link;
+            } catch (err) {
+                console.error("Upload error:", err);
+                alert("خطا در آپلود فایل");
+                return null;
+            }
+        }
+
+        // modify the previous file input listener to upload after preview
+        fileInput.addEventListener("change", (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            label.textContent = file.name;
+
+            // show preview first
+            viewer.clean();
+            const localUrl = URL.createObjectURL(file);
+            viewer.add_model({ id: 1, filename: localUrl });
+            viewer.on_model_loaded = () => URL.revokeObjectURL(localUrl);
+
+            // then upload to server
+            uploadSTL(file);
+        });
+        var abscost = parseFloat(document.getElementById('abscost').textContent);
+        var placost = parseFloat(document.getElementById('placost').textContent);
+
+        var dot = function(number){
+            number = number.toString();
+            var result = '';
+            for (let i = number.length-1; i >= 0; i--) {
+                result += number[i];
+                if((number.length - i)%3 == 0 && i>0)
+                    result += '.';
+            }
+            return(result.split("").reverse().join(""));
+        };
+        var updatePrice = () => {
+            var filament = document.getElementById('filament').value;
+            var infill = parseInt(document.getElementById('infill').value);
+            var count = parseInt(document.getElementById('count').value);
+            var layerhieght = parseFloat(document.getElementById('layerhieght').value);
+            var volume = parseInt(document.getElementById('info-volume').textContent);
+
+            var price = 0;
+            if(filament == 'ABS'){
+                document.getElementById('colorABS').classList.remove('hide');
+                document.getElementById('colorPLA').classList.add('hide');
+                price = count * (abscost * volume * ((infill+100)/100));
+                if(document.getElementById('colorABS').value == 'مشکی') viewer.set_color(1, "#3F4253");
+                if(document.getElementById('colorABS').value == 'سفید') viewer.set_color(1, "#eef1f7");
+                if(document.getElementById('colorABS').value == 'سبز' ) viewer.set_color(1, "#4ac91c");
+                if(document.getElementById('colorABS').value == 'آبی' ) viewer.set_color(1, "#4895EF");
+                if(document.getElementById('colorABS').value == 'طوسی') viewer.set_color(1, "#595b66");
+                if(document.getElementById('colorABS').value == 'زرد' ) viewer.set_color(1, "#fcf803");
+                if(document.getElementById('colorABS').value == 'قرمز') viewer.set_color(1, "#fc0320");
+                if(document.getElementById('colorABS').value == 'صورتی') viewer.set_color(1, "#fc03f8");
+            }
+            else if(filament == 'PLA'){
+                document.getElementById('colorABS').classList.add('hide');
+                document.getElementById('colorPLA').classList.remove('hide');
+                price = count * (placost * volume * ((infill+100)/100));
+                if(document.getElementById('colorPLA').value == 'مشکی') viewer.set_color(1, "#3F4253");
+                if(document.getElementById('colorPLA').value == 'سفید') viewer.set_color(1, "#eef1f7");
+                if(document.getElementById('colorPLA').value == 'سبز') viewer.set_color(1, "#00e676");
+                if(document.getElementById('colorPLA').value == 'آبی') viewer.set_color(1, "#4361EE");
+                if(document.getElementById('colorPLA').value == 'طوسی') viewer.set_color(1, "#595b66");
+            }
+            console.log(layerhieght)
+            if(layerhieght < 0.16) price *= 1.5;
+            else if(layerhieght < 0.25) price *= 1.2;
+            else if(layerhieght < 0.35) price *= 1.1;
+
+            document.getElementById('price-value').textContent = dot(Math.round(price/1000)*1000) + ' تومان';
+            document.getElementById('price-input').value = (Math.round(price/1000)*1000).toString();
+        }
+        var updateData = () => {
+            var data = viewer.get_model_info(1);
+            // viewer.set_color(1, "#111111");
+            document.getElementById('info-volume').textContent = Math.round(data.area);
+            document.getElementById('info-width').textContent = Math.round(data.dims.x);
+            document.getElementById('info-length').textContent = Math.round(data.dims.y);
+            document.getElementById('info-height').textContent = Math.round(data.dims.z);
+            updatePrice()
+
+        };

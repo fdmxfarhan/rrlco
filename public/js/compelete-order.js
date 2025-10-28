@@ -16,11 +16,13 @@ var getNumber = (text) => {
 var cityChange = () => {
     if(document.getElementById('city-select').value != 'تهران'){
         document.getElementById('peyk-option').setAttribute('disabled', 'true');
+        document.getElementById('school-option').setAttribute('disabled', 'true');
         document.getElementById('post-option').removeAttribute('disabled');
         document.getElementById('delivery-select').value = 'پست پیشتاز';
     }
     else{
         document.getElementById('peyk-option').removeAttribute('disabled');
+        document.getElementById('school-option').removeAttribute('disabled');
         document.getElementById('post-option').removeAttribute('disabled');
         document.getElementById('delivery-select').value = 'پیک موتوری';
     }
@@ -33,6 +35,8 @@ var deliverychanged = () => {
         var deliveryprice = 70000;
         document.getElementById('delivery-price').textContent = dot(deliveryprice);
         document.getElementById('sum-price').textContent = dot(totalprice + taxprice + deliveryprice - discountprice);
+        document.getElementById('address-field').classList.remove('hide');
+        document.getElementById('school-select-field').classList.add('hide');
     }
     else if(document.getElementById('delivery-select').value == 'پیک موتوری'){
         var totalprice    = getNumber(document.getElementById('total-price').textContent);
@@ -41,5 +45,17 @@ var deliverychanged = () => {
         var deliveryprice = 0;
         document.getElementById('delivery-price').textContent = dot(deliveryprice);
         document.getElementById('sum-price').textContent = dot(totalprice + taxprice + deliveryprice - discountprice);
+        document.getElementById('address-field').classList.remove('hide');
+        document.getElementById('school-select-field').classList.add('hide');
+    }
+    else if(document.getElementById('delivery-select').value == 'مدرسه'){
+        var totalprice    = getNumber(document.getElementById('total-price').textContent);
+        var discountprice = getNumber(document.getElementById('discount-price').textContent);
+        var taxprice      = getNumber(document.getElementById('tax-price').textContent);
+        var deliveryprice = 0;
+        document.getElementById('delivery-price').textContent = dot(deliveryprice);
+        document.getElementById('sum-price').textContent = dot(totalprice + taxprice + deliveryprice - discountprice);
+        document.getElementById('address-field').classList.add('hide');
+        document.getElementById('school-select-field').classList.remove('hide');
     }
 }
