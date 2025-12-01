@@ -33,8 +33,8 @@ module.exports = {
         'برنامه نویسی اندروید و IOS',
     ],
     print3dCosts: {
-        ABS: 4.5,
-        PLA: 6,
+        ABS: 10,
+        PLA: 12,
     },
     filaments: {
         ABS: [
