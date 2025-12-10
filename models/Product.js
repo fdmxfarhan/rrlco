@@ -48,9 +48,9 @@ var ProductSchema = new mongoose.Schema({
     },
     sessionsInfo: [Object],
     date: Date,
-    numofbuy: {
+    numOfAvailable: {
         type: Number,
-        default: 0,
+        default: 1,
     },
     weight: {
         type: Number,

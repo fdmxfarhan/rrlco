@@ -33,7 +33,7 @@ var upload = multer({ storage: storage });
 
 router.post('/add-product', ensureAuthenticated, upload.single('picture'), (req, res, next) => {
     const file = req.file;
-    const { title, price, nodiscountprice, shortdescription, description, category, defaultcount} = req.body;
+    const { title, price, nodiscountprice, shortdescription, description, category, defaultcount, numOfAvailable} = req.body;
     if (!file) {
         res.send('no file to upload');
     }
@@ -48,6 +48,7 @@ router.post('/add-product', ensureAuthenticated, upload.single('picture'), (req,
             category,
             defaultcount,
             enable: true,
+            numOfAvailable,
             pictures: [file.destination.slice(6) + '/' + file.originalname],
         });
         newProduct.save().then(product => {

@@ -17,6 +17,7 @@ block styles
     meta(name="guarantee" content="true")
 
 block content
+    #numOfAvailable= product.numOfAvailable
     include ./login-popup
     -if(user)
         include ../components/incomplete-order
@@ -50,8 +51,8 @@ block content
             .info-view 
                 h1= product.title
                 .stat 
-                    .title کد کالا: 
-                    .code= product.productCode
+                    .title موجودی: 
+                    .code #{product.numOfAvailable} عدد
                     .comments 
                         a(href="#") نظرات
                     .stars 
@@ -226,7 +227,11 @@ block content
     script.
         document.getElementById('navlink-2').classList.add('active');
         function add(){
-            document.getElementById('count-input').value = parseInt(document.getElementById('count-input').value) + 1;
+            var numOfAvailable = parseInt(document.getElementById('numOfAvailable').textContent);
+            if(parseInt(document.getElementById('count-input').value) < numOfAvailable)
+                document.getElementById('count-input').value = parseInt(document.getElementById('count-input').value) + 1;
+            else
+                alert('موجود نمی‌باشد')
         }
         function sub(){
             if(parseInt(document.getElementById('count-input').value) > 1)

@@ -162,6 +162,7 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
         available,
         weight,
         colors,
+        numOfAvailable
     } = req.body;
     if (available == 'true') available = true;
     else available = false;
@@ -178,6 +179,7 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
             weight,
             defaultcount,
             available,
+            numOfAvailable,
             // colors: colors.split('،'),
             colors: colors == ''?  [] : colors.split('،'),
         }, (err, doc) => {

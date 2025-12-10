@@ -28,6 +28,7 @@ block content
                                 -for(var i=0; i<productCategories.length; i++)
                                     option(value="#{productCategories[i]}")= productCategories[i]
                             input.quarter(type="number" name="defaultcount" placeholder="تعداد دیفالت")
+                            input.quarter(type="number" name="numOfAvailable" placeholder="تعداد موجود")
                         .upload 
                             input.file(type="file" name="picture")
                         .align-left
