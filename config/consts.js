@@ -34,7 +34,7 @@ module.exports = {
     ],
     print3dCosts: {
         ABS: 19,
-        PLA: 15,
+        PLA: 12,
     },
     filaments: {
         ABS: [
