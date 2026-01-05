@@ -87,4 +87,10 @@ router.get('/search', (req, res, next) => {
     var {word} = req.query;
     
 })
+router.get('/smars', (req, res, next) => {
+    res.render('./projects/smars',{
+        theme: req.session.theme,
+        lang: req.session.lang,
+    });
+})
 module.exports = router;

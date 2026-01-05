@@ -1,0 +1,44 @@
+.blog-view-content{color: var(--text);}
+.sidebar a{
+    color: var(--text);
+}
+h1.title{
+    color: var(--skyblue);
+    font-family: 'iransans';
+    font-size: 20px;
+}
+h2.title{
+    color: var(--blue);
+    font-family: 'iransans';
+    font-size: 18px;
+}
+img.pic{
+    width: 100%;
+    height: auto;
+}
+p{
+    font-family: 'iransans';
+    font-size: 17px;
+    text-align: justify;
+    color: var(--text);
+}
+a.download{
+    color: var(--skyblue);
+    font-family: 'iransans';
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid var(--skyblue);
+    padding: 1vw 2vw;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    background-color: transparent;
+    transition-duration: 300ms;
+}
+a.download i{
+    margin-left: 1vw;
+}
+a.download:hover{
+    background-color: var(--skyblue);
+    color: white;
+}
