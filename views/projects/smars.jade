@@ -13,7 +13,7 @@ block content
             include sidebar
         .blog-view-content
             h1.title آموزش ساخت ربات کنترلی با موبایل (arduino + Bluetooth)
-            img.pic(src="/img/projects/smars/01.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/01.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             h1.title معرفی کلی پروژه
             p در این آموزش قصد داریم به‌صورت کاملاً عملی و پروژه‌محور یک ربات دوچرخ کنترلی با موبایل را طراحی و راه‌اندازی کنیم. این ربات با استفاده از آردوینو Uno، شیلد درایور موتور L293 و ماژول بلوتوث HC-05 ساخته می‌شود و از طریق تلفن همراه (اندروید) قابل کنترل است.
             p این پروژه به‌گونه‌ای طراحی شده که برای افراد مبتدی نیز کاملاً مناسب باشد و بدون نیاز به پیش‌زمینه تخصصی، مفاهیم پایه‌ای زیر را به شما آموزش دهد:
@@ -23,71 +23,80 @@ block content
                 li ارتباط بی‌سیم با بلوتوث
                 li برنامه‌نویسی پایه آردوینو
                 li مونتاژ مکانیکی و الکترونیکی یک پروژه واقعی
-            img.pic(src="/img/projects/smars/instructions/01.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/01.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             
             h1.title مراحل ساخت
             h2.title 1. لحیم کردن اتصالات
             p در این مرحله، اتصالات مورد نیاز برای راه‌اندازی ربات را لحیم می‌کنیم. این اتصالات شامل لحیم کردن سیم‌ها به ماژول‌ها و موتور‌ها است. برای این کار به یک دستگاه لحیم‌کاری و مهارت‌های اولیه لحیم‌کاری نیاز داریم.
             p ابتدا سیم های موتورها را لحیم میکنیم.
-            img.pic(src="/img/projects/smars/instructions/02.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/02.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p سپس خروجی باتری را به B+ و B- ماژول شارژر Type C لحیم میکنیم.
-            img.pic(src="/img/projects/smars/instructions/07.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/07.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p در ادامه خروجی ماژول شارژ را به ورودی ماژول افزاینده MT3608 متصل می‌کنیم.
-            img.pic(src="/img/projects/smars/instructions/08.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/08.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             
             
             h2.title 2. مونتاژ مکانیکی
             p در این مرحله، اجزای مکانیکی ربات را مونتاژ می‌کنیم. این شامل نصب موتور‌ها، چرخ‌ها و سایر قطعات مکانیکی است.
             p ابتدا موتور ها را در جای خود قرار دهید و با استفاده از قفل ها آنها را محکم کنید. جهت استحکام بیشتر پیشنهاد می‌شود از چسب حرارتی در پشت موتورها استفاده شود.
-            img.pic(src="/img/projects/smars/instructions/03.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/04.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/03.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/04.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p سپس چرخ ها را متصل میکنیم. توجه کنید که دو مدل چرخ در این پروژه استفاده می‌شود. چرخ هایی که سوراخ بزرگتری دارند به شاسی و چرخ های دیگر به موتورها متصل می‌شوند.
-            img.pic(src="/img/projects/smars/instructions/05.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/05.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p در ادامه زنجیر چرخ های چپ و راست را متصل میکنیم.
-            img.pic(src="/img/projects/smars/instructions/06.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/06.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             
 
             h2.title 3. مونتاژ قطعات الکترونیکی
             p در این مرحله باید قطعات الکترونیکی شامل باتری، مدار شارژ و افزاینده ولتاژ را روی بدنه ربات سوار کنیم. برای اینکار ابتدا باتری لیتیوم پلیمر را میان دو موتور قرار می‌دهیم. استفاده از چسب حرارتی برای استحکام بیشتر می‌تواند در این مرحله مفید باشد.
-            img.pic(src="/img/projects/smars/instructions/09.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/09.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p سپس ماژول افزاینده ولتاژ را روی باتری با چسب حرارتی یا چسب دو طرفه قرار می‌دهیم. 
-            img.pic(src="/img/projects/smars/instructions/10.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/10.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p در نهایت ماژول شارژر را در قسمت پشتی ربات طوری قرار می‌دهیم که در دسترس باشد و بتوان از پورت USB Type C آن به راحتی استفاده کرد.
-            img.pic(src="/img/projects/smars/instructions/11.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/11.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
 
             h2.title 4. مونتاژ آردوینو
             p این ربات به گونه‌ای طراحی شده است که تمامی اتصالات بدون پیچ و مهره بوده و قطعات به راحتی در جای خود قرار می‌گیرند. در این مرحله بورد آردوینو UNO را به صورت کشویی روی شاسی سوار می‌کنیم به طوری که پورت USB آن پشت ربات قرار گیرد. توجه داشته باشید که سیم‌های تغذیه و موتورها را از زیر بورد جهت اتصال به شیلد درایور موتور عبور دهیم.
-            img.pic(src="/img/projects/smars/instructions/12.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/13.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/14.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/12.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/13.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/14.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             
             h2.title 5. نصب شیلد درایور موتور
             p شیلد درایور موتور L293D جهت کنترل سرعت و جهت چرخش موتورهای DC طراحی شده و به راحتی روی بورد آردوینو UNO سوار می‌شود.
-            img.pic(src="/img/projects/smars/instructions/15.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/16.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/15.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/16.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             p سیم موتورها مطابق با تصویر زیر به ترمینال‌های آبی رنگ پشت شیلد درایور متصل می‌شوند. پیش از اتصال سیم ها با استفاده از پیچ‌گوشتی پیچ‌های ترمینال را باز کرده و سپس سیم‌ها را داخل ترمینال قرار داده و پیچ ها را محکم کنید.
-            img.pic(src="/img/projects/smars/instructions/17.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/18.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/17.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/18.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             
             h2.title 6. اتصال ماژول بلوتوث
             p استفاده از ماژول بلوتوث جهت کنترل ربات با استفاده از موبایل اختیاری است و در صورت نیاز می‌توان مطابق تصویر زیر آن را به شیلد درایور متصل کرد.
-            img.pic(src="/img/projects/smars/instructions/19.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/19.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
 
             h2.title 7. اتصال سنسور فاصله سنج
             p سنسور فاصله سنج SRF-04 یک سنسور اولتراسونیک است که جهت اندازه گیری فاصله و تشخیص موانع استفاده می‌شود. اتصال این سنسور روی ربات به صورت زیر می‌باشد.
-            img.pic(src="/img/projects/smars/instructions/20.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/21.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/22.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/23.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/24.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
-            img.pic(src="/img/projects/smars/instructions/25.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            img.pic(src="/img/projects/smars/instructions/20.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/21.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/22.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/23.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/24.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/25.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
             
             h2.title 8. آپلود برنامه روی ربات
             p جهت آپلود برنامه روی ربات به نرم افزار Arduino IDE نیاز داریم که می‌توان از وب سایت رسمی آردوینو دانلود کرد. پس از دانلود فایل برنامه آن را اجرا کرده و بر روی بورد آردوینو آپلود نمایید.
-            a.download(href="" download target="__blank__")
+            a.download(href="/SMARS.ino" download target="__blank__")
                 i.fa.fa-cloud-download 
                 | دانلود برنامه ربات کنترلی با موبایل 
-            img.pic(src="/img/projects/smars/instructions/26.jpg", alt="آموزش ساخت ربات کنترلی با موبایل")
+            br
+            a.download(href="/ArduinoCar.apk" download target="__blank__")
+                i.fa.fa-cloud-download 
+                | دانلود مستقیم اپلیکیشن اندروید ArduinoCar
+            br
+            a.download(href="https://play.google.com/store/apps/details?id=com.electro_tex.bluetoothcar&hl=fa" target="__blank__")
+                i.fa.fa-cloud-download 
+                | دانلود اپلیکیشن ArduinoCar از GooglePlay
+            img.pic(src="/img/projects/smars/instructions/27.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
+            img.pic(src="/img/projects/smars/instructions/29.jpg", alt="آموزش ساخت ربات کنترلی با موبایل" loading="lazy")
 
 
             

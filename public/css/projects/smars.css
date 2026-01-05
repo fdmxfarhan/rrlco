@@ -27,7 +27,7 @@ a.download{
     font-family: 'iransans';
     font-size: 18px;
     border-radius: 10px;
-    border: 2px solid var(--skyblue);
+    border: 3px dashed var(--skyblue);
     padding: 1vw 2vw;
     display: inline-block;
     margin-bottom: 10px;
@@ -42,3 +42,130 @@ a.download:hover{
     background-color: var(--skyblue);
     color: white;
 }
+
+
+
+
+
+.product-view.scroll a.card{
+    background-color: var(--white);
+    width: 17vw;
+    margin: 1vw 1vw;
+    /* float: none;
+    display: inline-block; */
+}
+.product-view a.card.triple{
+    width: 100%;
+}
+.product-view a.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.304), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+.product-view a.card .image{
+    position: relative;
+}
+.product-view a.card .image .type{
+    position: absolute;
+    bottom: 0.4vw;
+    left: 0.4vw;
+    color: white;
+    font-size: 1vw;
+    padding: 0.1vw 1vw;
+    border-radius: 0.2vw;
+}
+.product-view a.card .image .type.pink{background-color: var(--pink);}
+.product-view a.card .image .type.green{background-color: var(--green);}
+.product-view a.card .image .type.purple{background-color: var(--purple);}
+.product-view a.card .image .type.blue{background-color: var(--blue);}
+.product-view a.card .image .type.red{background-color: var(--red2);}
+.product-view a.card img{
+    width: 100%;
+    display: block;
+}
+.product-view a.card h1{
+    color: var(--skyblue);
+    font-size: 17px;
+    margin: 0;
+    /* margin-top: 0.5vw; */
+    padding: 0.4vw 1vw;
+    height: 3vw;
+}
+.product-view a.card p{
+    font-size: 0.8vw;
+    padding: 0 1vw;
+    margin: 0;
+    text-align: justify;
+    color: var(--text);
+}
+.product-view a.card .teacher{
+    font-size: 1vw;
+    color: var(--lightgray);
+    padding: 0 1vw;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+}
+.product-view a.card .teacher i{
+    padding-left: 0.5vw;
+}
+.product-view a.card .teacher .text{
+    display: inline;
+}
+.product-view a.card .line{
+    background-color: var(--lightergray);
+    height: 0.1vw;
+    width: 100%;
+}
+.product-view a.card .info{
+    padding: 0 1vw;
+    padding-bottom: 1vw;
+    overflow: hidden;
+}
+.product-view a.card .info .buy-btn{
+    float: right;
+    color: white;
+    padding: 5px 20px;
+    font-family: 'iransans';
+    background-color: var(--red);
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 0.5vw;
+}
+.product-view a.card .info .buy-btn:hover{
+    background-color: var(--pink);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.107), 0 6px 20px 0 rgba(0, 0, 0, 0.097);;
+}
+.product-view a.card .info .buy-btn i{
+    padding-left: 0.5vw;
+}
+.product-view a.card .info .price{
+    float: left;
+    color: var(--green);
+    font-size: 1.1vw;
+    font-weight: bold;
+}
+.product-view a.card .info .price .val{
+    display: inline;
+}
+.product-view a.card .info .price .unit{
+    display: inline;
+    padding-right: 0.5vw;
+}
+.product-view a.card .nodiscount{
+    text-align: left;
+    font-size: 1vw;
+    color: var(--lightgray);
+    padding: 0 1vw;
+    text-decoration: line-through;
+}
+.product-view a.card .nodiscount .val{
+    display: inline;
+}
+.product-view a.card .nodiscount .unit{
+    display: inline;
+    padding-right: 0.5vw;
+}
+.product-view a.card .available{
+    padding: 0 1vw;
+    font-size: 0.9vw;
+}
+.product-view a.card .available.green{color: var(--green);}
+.product-view a.card .available.red{color: var(--red2);}
