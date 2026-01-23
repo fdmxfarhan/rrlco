@@ -6,6 +6,7 @@ const {
 } = require('../config/auth');
 var User = require('../models/User');
 var Product = require('../models/Product');
+var Logs = require('../models/Logs');
 const Archive = require('../models/Archive');
 const mail = require('../config/mail');
 const dot = require('../config/dot');
@@ -22,6 +23,7 @@ const {
 } = require('../config/order');
 const timedigit = require('../config/timedigit');
 const dateConvert = require('../config/dateConvert');
+
 
 router.get('/', (req, res, next) => {
     var {
@@ -130,15 +132,24 @@ router.get('/delete-product', ensureAuthenticated, (req, res, next) => {
     var productID = req.query.id;
     if (req.user.role == 'admin') {
         Product.findById(productID, (err, product) => {
-            var newArchive = new Archive({
-                object: product,
-                userID: req.user._id,
-                type: 'product',
-                action: 'delete',
+            // var newArchive = new Archive({
+            //     object: product,
+            //     userID: req.user._id,
+            //     type: 'product',
+            //     action: 'delete',
+            //     date: dateConvert.getToday(),
+            //     userFullname: req.user.fullname,
+            // });
+            // newArchive.save().then(doc => {
+            var newLog = new Logs({
                 date: dateConvert.getToday(),
-                userFullname: req.user.fullname,
-            });
-            newArchive.save().then(doc => {
+                title: 'حذف محصول ' + product.title,
+                type: 'delete-product',
+                backup: product,
+                userName: req.user.fullname,
+                userID: req.user._id,
+            })
+            newLog.save().then(doc => {
                 Product.deleteOne({
                     _id: productID
                 }, (err) => {
@@ -372,5 +383,28 @@ router.get('/delete-comment', ensureAuthenticated, (req, res, next) => {
         });
     }
 });
-
+router.get('/admin-disable-all', ensureAuthenticated, (req, res, next) => {
+    if(req.user.role == 'admin'){
+        Product.find({enable: true}, (err, products) => {
+            newLog = new Logs({
+                date: dateConvert.getToday(),
+                title: 'غیر فعال سازی تمام محصولات',
+                type: 'disable-all-products',
+                backup: products,
+                userName: req.user.fullname,
+                userID: req.user._id,
+            })
+            newLog.save().then(doc => {
+                console.log('$$$ Log Saved');
+            }).catch(err => console.log(err))
+            Product.updateMany({}, {$set: {enable: false}}, (err, doc) => {
+                if(err) console.log(err);
+                req.flash('success_msg', 'همه محصولات غیر فعال شدند.');
+                res.redirect('/dashboard/admin-shop');
+            })
+        })
+    }else{
+        res.send('permission denied...!!!')
+    }
+});
 module.exports = router;

@@ -21,6 +21,9 @@ block content
                                 input.text(type="text" placeholder="جستجو..." name="search")
                                 button.submit(type="submit")
                                     i.fa.fa-search
+                    a.button(href="/products/admin-disable-all") 
+                        i.fa.fa-delete-left
+                        | غیر فعال کردن همه محصولات
                 .four-card-view
                     -for(var i=0; i<products.length; i++){
                         a(href="/products/product-view?id=#{products[i]._id}").card.triple

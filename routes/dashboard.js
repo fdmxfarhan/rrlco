@@ -24,6 +24,7 @@ const Teacher = require('../models/Teacher');
 const Blogpost = require('../models/Blogpost');
 const Certificate = require('../models/Certificate');
 const Archive = require('../models/Archive');
+const Logs = require('../models/Logs');
 
 const ipinfo = new IPinfoWrapper("f29841994da430");
 // sms('09336448037', 'server is started !!');
@@ -860,6 +861,15 @@ router.get('/archives', ensureAuthenticated, (req, res, next) => {
             theme: req.session.theme,
             user: req.user,
             archives,
+        });
+    });
+});
+router.get('/logs', ensureAuthenticated, (req, res, next) => {
+    Logs.find({}, (err, logs) => {
+        res.render('./dashboard/admin-logs', {
+            theme: req.session.theme,
+            user: req.user,
+            logs,
         });
     });
 });

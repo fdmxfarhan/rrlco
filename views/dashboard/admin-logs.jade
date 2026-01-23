@@ -1,0 +1,45 @@
+extends ../layout
+
+block styles
+    link(rel="stylesheet", href="/css/dashboard/dashboard.css")
+    link(rel="stylesheet", href="/css/dashboard/admin-discount.css")
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/list-view.css")
+
+block content
+    .dashboard-view 
+        .dashboard-cont-view
+            .content
+                .data-list-view 
+                    .title-raw 
+                        .item.col40 عنوان
+                        .item.center.col20 کاربر
+                        .item.center.col10 تاریخ
+                        .item.center.col10 برگرداندن
+                        .item.center.col10 حذف
+                        .item.center.col10 جزئیات
+                    -for(var i=0; i<logs.length; i++){
+                        .raw 
+                            .item.col40 #{logs[i].title} 
+                            .item.center.col20 #{logs[i].userName} 
+                            .item.center.col10 #{logs[i].date} 
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-discount?id=#{logs[i]._id}") 
+                                    i.fa.fa-undo-alt
+                            .item.center.col10 
+                                a.delete(href="/dashboard/delete-discount?id=#{logs[i]._id}") 
+                                    i.fa.fa-trash
+                            .item.center.col10 
+                                a.blue(href="/dashboard/delete-discount?id=#{logs[i]._id}") 
+                                    i.fa.fa-eye
+                    -}
+        .sidebar-view 
+            include sidebar
+        
+
+
+                 
+    script(src="/js/dashboard.js") 
+    script.
+        document.getElementById('sidebar-link-8').classList.add('active');
+

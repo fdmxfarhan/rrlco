@@ -57,6 +57,7 @@
     .data-list-view .item.col90{width: 90%;}
     .data-list-view .item.col95{width: 95%;}
     .data-list-view .item a.delete{color: var(--red);}
+    .data-list-view .item a.blue{color: var(--blue);}
     .data-list-view .item a.delete:hover{color: var(--pink);}
     .data-list-view h1.title{
         color: var(--black);

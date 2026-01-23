@@ -126,7 +126,7 @@ function convertDate(date) {
     return convertDateTime;
 }
 function convertClock(date) {
-    var convertDateTime = get_hour_minute_second(date);
+    var convertDateTime = get_hour_minute_second(date.toString());
     convertDateTime = convertDateTime[0] + ":" + convertDateTime[1] + ":" + convertDateTime[2];
     return convertDateTime;
 }

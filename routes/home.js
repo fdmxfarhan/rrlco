@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
     
     else if(req.session.lang == 'FA'){
         Product.find({showHome: true}, (err, products) => {
-            Product.find({}, (err, allProducts) => {
+            Product.find({enable: true}, (err, allProducts) => {
                 Course.find({}, (err, courses) => {
                     products.sort((a, b) => b.weight - a.weight);
                     courses.reverse()
