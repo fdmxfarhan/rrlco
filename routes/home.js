@@ -75,22 +75,41 @@ router.get('/theme', (req, res, next) => {
     } else {
         res.redirect('/'); // Fallback: redirect to home if there's no referrer
     }
-})
+});
 router.get('/app/sitemap.xml', (req, res, next) => {
     console.log(__dirname)
     res.sendFile(path.join(__dirname, '../config/sitemap.xml'));
-})
+});
 router.get('/rrl', (req, res, next) => {
     res.redirect('http://45.90.72.56:3003/');
-})
+});
 router.get('/search', (req, res, next) => {
     var {word} = req.query;
     
-})
+});
 router.get('/smars', (req, res, next) => {
     res.render('./projects/smars',{
         theme: req.session.theme,
         lang: req.session.lang,
     });
-})
+});
+router.get('/ARM1', (req, res, next) => {
+    res.render('./projects/ARM1',{
+        theme: req.session.theme,
+        lang: req.session.lang,
+    });
+});
+router.get('/ARM2', (req, res, next) => {
+    res.render('./projects/ARM2',{
+        theme: req.session.theme,
+        lang: req.session.lang,
+    });
+});
+router.get('/voltagebooster', (req, res, next) => {
+    res.render('./projects/voltagebooster',{
+        theme: req.session.theme,
+        lang: req.session.lang,
+    });
+});
+
 module.exports = router;
