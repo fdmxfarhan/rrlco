@@ -53,10 +53,11 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         maxAge: SESS_TIME ,
-        sameSite: true,
-        secure: false
+        sameSite: 'lax',
+        secure: true
     }
 }));
+app.set('trust proxy', 1);
 
 // passport config
 require('./config/passports')(passport);
@@ -140,7 +141,7 @@ app.use(function(err, req, res, next) {
 });
 
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+// var httpsServer = https.createServer(credentials, app);
 
 // Initialize Socket.IO server
 // ----------------------------------NOTE: For ESP8266 install version 2.x -> npm install socket.io@2.4.1
@@ -194,9 +195,9 @@ http_wss.on('connection', (ws) => io_callback(ws));
 httpServer.listen(3000, () => {
     console.log('http server is started :)')
 });
-httpsServer.listen(443, () => {
-    console.log('https server is started :)')
-});
+// httpsServer.listen(443, () => {
+//     console.log('https server is started :)')
+// });
 
 
 
