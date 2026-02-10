@@ -22,7 +22,7 @@ router.get('/', (req, res, next) => {
     var {lang} = req.query;
     if(lang) req.session.lang = lang;
     if(!req.session.lang)     req.session.lang = 'FA';
-    if(!req.session.theme)     req.session.theme = 'light';
+    if(!req.session.theme)     req.session.theme = 'dark';
     if(req.session.lang == 'EN'){
         res.render('home',{
             theme: req.session.theme,
