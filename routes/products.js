@@ -47,9 +47,10 @@ router.get('/', (req, res, next) => {
 router.get('/product-view', (req, res, next) => {
     var productID = req.query.id;
     Product.findById(productID, (err, product) => {
-        console.log(product);
+        // console.log(product);
         Product.find({
-            category: product.category
+            category: product.category,
+            enable: true
         }, (err, relatedProducts) => {
             if (req.user) {
                 Order.findOne({
@@ -192,7 +193,7 @@ router.post('/edit-product', ensureAuthenticated, (req, res, next) => {
             available,
             numOfAvailable,
             // colors: colors.split('،'),
-            colors: colors == ''?  [] : colors.split('،'),
+            colors: colors == '' ? [] : colors.split('،'),
         }, (err, doc) => {
             res.redirect(`/products/product-view?id=${id}`);
         });
@@ -384,8 +385,8 @@ router.get('/delete-comment', ensureAuthenticated, (req, res, next) => {
     }
 });
 router.get('/admin-disable-all', ensureAuthenticated, (req, res, next) => {
-    if(req.user.role == 'admin'){
-        Product.find({enable: true}, (err, products) => {
+    if (req.user.role == 'admin') {
+        Product.find({ enable: true }, (err, products) => {
             newLog = new Logs({
                 date: dateConvert.getToday(),
                 title: 'غیر فعال سازی تمام محصولات',
@@ -397,13 +398,13 @@ router.get('/admin-disable-all', ensureAuthenticated, (req, res, next) => {
             newLog.save().then(doc => {
                 console.log('$$$ Log Saved');
             }).catch(err => console.log(err))
-            Product.updateMany({}, {$set: {enable: false}}, (err, doc) => {
-                if(err) console.log(err);
+            Product.updateMany({}, { $set: { enable: false } }, (err, doc) => {
+                if (err) console.log(err);
                 req.flash('success_msg', 'همه محصولات غیر فعال شدند.');
                 res.redirect('/dashboard/admin-shop');
             })
         })
-    }else{
+    } else {
         res.send('permission denied...!!!')
     }
 });
