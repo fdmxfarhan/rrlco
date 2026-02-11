@@ -16,7 +16,7 @@ router.get('/', (req, res, next) => {
     var amount = req.query.amount;
     zarinpal.PaymentRequest({
         Amount: `${amount}`, // In Tomans
-        CallbackURL: 'https://rrlco.ir/payment/payment-call-back',
+        CallbackURL: 'http://rrlco.ir/payment/payment-call-back',
         Description: 'fdmxfarhan',
         Email: 'hi@siamak.work',
         Mobile: '09336448037'
@@ -46,7 +46,7 @@ router.get('/pay-order', (req, res, next) => {
     Order.findById(orderID, (err, order) => {
         zarinpal.PaymentRequest({
             Amount: order.totalPrice + order.deliveryPrice + order.tax - order.discount, // In Tomans
-            CallbackURL: 'https://rrlco.ir/payment/order-payment-call-back',
+            CallbackURL: 'http://rrlco.ir/payment/order-payment-call-back',
             Description: `پرداخت سفارش کاربر ${req.user.fullname}`,
             Email: req.user.email,
             Mobile: req.user.phone,
@@ -98,7 +98,7 @@ router.get('/pay-online-course', (req, res, next) => {
             console.log(discountAmount)
             zarinpal.PaymentRequest({
                 Amount: course.price - discountAmount, // In Tomans
-                CallbackURL: 'https://rrlco.ir/payment/online-course-payment-call-back',
+                CallbackURL: 'http://rrlco.ir/payment/online-course-payment-call-back',
                 Description: `پرداخت دوره آنلاین ${req.user.fullname}`,
                 Email: req.user.email,
                 Mobile: req.user.phone,
