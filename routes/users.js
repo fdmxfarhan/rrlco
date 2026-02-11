@@ -82,9 +82,9 @@ router.post('/login', function(req, res, next){
     if(!username || !password){
       errors.push({msg: 'لطفا موارد خواسته شده را کامل کنید!'});
     }
-    if(errors.length > 0 ){
-      res.render('login', { errors, username, password});
-    }
+    // if(errors.length > 0 ){
+    //   res.render('login', { errors, username, password});
+    // }
     passport.authenticate('local', {
       successRedirect: '/dashboard?login=true',
       failureRedirect: '/users/login',

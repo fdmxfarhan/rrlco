@@ -209,7 +209,7 @@ router.post('/add-to-cart', ensureAuthenticated, (req, res, next) => {
         var {title, filament, colorABS, colorPLA, infill, layerhieght, price} = req.body;
         var color = colorABS;
         if(filament == 'PLA') color = colorPLA;
-        Print3d.updateMany({_id: id}, {$set: {title, filament, color, infill, price, layerhieght, date: new Date(), username: req.user.fullname, userID: req.user._id}}, (err, doc) => {
+        Print3d.updateMany({_id: id}, {$set: {title, filament, color, infill, price: price/count, layerhieght, date: new Date(), username: req.user.fullname, userID: req.user._id}}, (err, doc) => {
             Print3d.findById(id, (err, print3d) => {
                 console.log(print3d);
                 shoppingcart.push({
