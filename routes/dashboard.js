@@ -235,7 +235,7 @@ router.post('/add-to-cart-print3d', ensureAuthenticated, (req, res, next) => {
         filament, 
         color, 
         infill, 
-        price, 
+        price: price/count, 
         layerhieght, 
         date: new Date(), 
         username: req.user.fullname, 
