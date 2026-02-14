@@ -195,7 +195,7 @@ http_wss.on('connection', (ws) => io_callback(ws));
 */
 
 
-httpServer.listen(80, () => {
+httpServer.listen(3000, () => {
     console.log('http server is started :)')
 });
 httpsServer.listen(443, () => {
