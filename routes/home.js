@@ -9,6 +9,8 @@ const Product = require('../models/Product');
 const Course = require('../models/Course');
 const dot = require('../config/dot');
 const timedigit = require('../config/timedigit');
+const Order = require('../models/Order');
+const dateConvert = require('../config/dateConvert');
 
 
 // User.find({role: 'user'}, (err, users) => {
@@ -111,5 +113,15 @@ router.get('/voltagebooster', (req, res, next) => {
         lang: req.session.lang,
     });
 });
-
+router.get('/view-invoice', (req, res, next) => {
+    Order.findById(req.query.id, (err, order) => {
+        res.render('./order-invoice-user', {
+            theme: req.session.theme,
+            user: req.user,
+            order, 
+            dateConvert,
+            dot,
+        });
+    })
+});
 module.exports = router;

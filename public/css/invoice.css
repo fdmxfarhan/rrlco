@@ -151,6 +151,20 @@
     font-size: 1.2vw;
     font-weight: bold;
 }
+a.pay-link i{
+    padding-left: 1vw;
+}
+a.pay-link{
+    background-color: var(--red);
+    color: white;
+    padding: 1vw 2vw;
+    display: inline-block;
+    border-radius: 1vw;
+    font-size: 1.2vw;
+}
+a.pay-link:hover{
+    background-color: var(--green);
+}
 @media print {
   @page {
     size: A4; /* Paper size: A4, orientation: landscape */

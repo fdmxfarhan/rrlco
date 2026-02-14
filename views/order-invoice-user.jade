@@ -22,7 +22,9 @@ html(lang="en")
       .invoice
         .header 
           .qr-code 
-            img(src="/qrcodes/link.png", alt="qr")
+            a.pay-link(href="/payment?amount=#{order.totalPrice + order.deliveryPrice + order.tax - order.discount}", target="_blank") 
+              i.fa.fa-credit-card
+              | پرداخت آنلاین
           .center
             img(src="/img/logo.png", alt="logo")
             h1 فاکتور فروش

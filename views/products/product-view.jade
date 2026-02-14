@@ -17,7 +17,7 @@ block styles
     meta(name="guarantee" content="true")
 
 block content
-    #numOfAvailable= product.numOfAvailable
+    #numOfAvailable.hide= product.numOfAvailable
     include ./login-popup
     -if(user)
         include ../components/incomplete-order

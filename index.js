@@ -54,7 +54,7 @@ app.use(session({
     cookie: {
         maxAge: SESS_TIME ,
         sameSite: 'lax',
-        secure: true
+        secure: false
     }
 }));
 app.set('trust proxy', 1);

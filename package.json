@@ -31,6 +31,7 @@
     "nodemailer": "^6.4.17",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "qrcode": "^1.5.4",
     "request": "^2.88.2",
     "socket.io": "^2.4.1",
     "ws": "^8.18.0",

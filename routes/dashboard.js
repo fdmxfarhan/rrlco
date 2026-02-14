@@ -25,6 +25,9 @@ const Blogpost = require('../models/Blogpost');
 const Certificate = require('../models/Certificate');
 const Archive = require('../models/Archive');
 const Logs = require('../models/Logs');
+const QRCode = require('qrcode');
+const path = require('path');
+const fs = require('fs');
 
 const ipinfo = new IPinfoWrapper("f29841994da430");
 // sms('09336448037', 'server is started !!');
@@ -798,6 +801,7 @@ router.get('/admin-blog-delete', ensureAuthenticated, (req, res, next) => {
     });
 });
 router.get('/admin-print-recipt', (req, res, next) => {
+    
     Order.findById(req.query.orderID, (err, order) => {
         res.render('./order-recipt', {
             theme: req.session.theme,
@@ -846,12 +850,26 @@ router.get('/view-certificate', (req, res, next) => {
 });
 router.get('/admin-print-invoice', (req, res, next) => {
     Order.findById(req.query.orderID, (err, order) => {
-        res.render('./order-invoice', {
-            theme: req.session.theme,
-            user: req.user,
-            order, 
-            dateConvert,
-            dot,
+        const url = `http://rrlco.ir/view-invoice?id=${order._id}`;
+        const outputDir = path.join(__dirname, '../public/qrcodes');
+        if (!fs.existsSync(outputDir)) {
+            fs.mkdirSync(outputDir);
+        }
+        const outputPath = path.join(outputDir, 'link.png');
+        QRCode.toFile(outputPath, url, {
+            type: 'png',
+            width: 200,
+            margin: 0,
+        }, function (err) {
+            if (err) throw err;
+            console.log('QR code saved to:', outputPath);
+            res.render('./order-invoice', {
+                theme: req.session.theme,
+                user: req.user,
+                order, 
+                dateConvert,
+                dot,
+            });
         });
     })
 });
